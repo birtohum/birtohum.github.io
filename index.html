@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>birtohum — merak ettiğim soruları çalışan şeylere çeviriyorum</title>
+<meta name="description" content="19 proje, 5 canlı veri sitesi: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
+<meta property="og:title" content="birtohum — 19 proje, 5 canlı site">
+<meta property="og:description" content="Vergi kanunu kaç kez değişti? Bugün nefes almak kaç sigara? Yapay zekâ yapay zekâyı denetleyebilir mi? Cevaplar veriyle.">
+<meta property="og:image" content="gorsel/mevzuat-haritasi.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --kagit:#f6f3ea;--cizgi:rgba(20,20,20,.07);--murekkep:#141414;--soluk:#5b5850;--kart:#fffdf7;
+  --fosfor:#ffe14d;--damga:#d7261e;--yesil:#1f7a4a;--mavi:#2050c8;--kenar:#141414;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --kagit:#121210;--cizgi:rgba(255,255,255,.05);--murekkep:#f2efe6;--soluk:#a9a59a;--kart:#1b1a17;
+  --fosfor:#e8c62e;--damga:#ff5a4f;--yesil:#5fd394;--mavi:#8aa8ff;--kenar:#f2efe6}}
+:root[data-theme="dark"]{--kagit:#121210;--cizgi:rgba(255,255,255,.05);--murekkep:#f2efe6;--soluk:#a9a59a;--kart:#1b1a17;
+  --fosfor:#e8c62e;--damga:#ff5a4f;--yesil:#5fd394;--mavi:#8aa8ff;--kenar:#f2efe6}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--murekkep);font:17px/1.55 "Bricolage Grotesque",system-ui,sans-serif;
+  background-color:var(--kagit);
+  background-image:linear-gradient(var(--cizgi) 1px,transparent 1px),linear-gradient(90deg,var(--cizgi) 1px,transparent 1px);
+  background-size:28px 28px}
+a{color:inherit}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.sar{max-width:1120px;margin:0 auto;padding:0 20px}
+.fos{background:linear-gradient(transparent 55%,var(--fosfor) 55%,var(--fosfor) 92%,transparent 92%);padding:0 .08em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .fos{color:var(--murekkep)}}
+
+/* üst */
+.ust{display:flex;justify-content:space-between;align-items:center;padding:18px 0;font-size:.85rem}
+.ust .ad{font-weight:800;letter-spacing:-.01em;font-size:1.05rem;text-decoration:none}
+.ust nav{display:flex;gap:18px}
+.ust nav a{text-decoration:none;color:var(--soluk)}
+.ust nav a:hover{color:var(--murekkep)}
+@media (max-width:640px){.ust nav{display:none}}
+
+/* hero */
+.hero{padding:56px 0 30px}
+.etiket{font:600 .75rem/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--soluk)}
+.hero h1{font-size:clamp(2.4rem,6.4vw,5.2rem);line-height:.98;letter-spacing:-.035em;font-weight:800;margin:18px 0 22px;max-width:15ch}
+.hero .alt{font-size:clamp(1.1rem,2.2vw,1.4rem);max-width:40ch;margin:0;color:var(--soluk)}
+.hero .alt b{color:var(--murekkep)}
+
+/* soru şeridi */
+.soru{margin:44px 0 0;border:2px solid var(--kenar);background:var(--kart);border-radius:4px;display:grid;grid-template-columns:auto 1fr auto;align-items:stretch;box-shadow:6px 6px 0 var(--kenar)}
+.soru .s-et{padding:18px;border-right:2px solid var(--kenar);display:grid;place-items:center;background:var(--fosfor);color:#141414}
+.soru .s-metin{padding:16px 20px;font-size:clamp(1.15rem,2.6vw,1.75rem);font-weight:600;letter-spacing:-.01em;min-height:3.4em;display:flex;align-items:center}
+.soru .s-metin span{transition:opacity .35s,transform .35s}
+.soru .s-metin span.gizli{opacity:0;transform:translateY(8px)}
+.soru a.s-git{display:flex;align-items:center;gap:8px;padding:0 22px;border-left:2px solid var(--kenar);text-decoration:none;font-weight:800;white-space:nowrap}
+.soru a.s-git:hover{background:var(--murekkep);color:var(--kagit)}
+@media (max-width:640px){.soru{grid-template-columns:1fr}.soru .s-et{border-right:0;border-bottom:2px solid var(--kenar);place-items:start;padding:10px 16px}.soru a.s-git{border-left:0;border-top:2px solid var(--kenar);padding:14px 16px}}
+
+/* sayaçlar */
+.sayac{display:grid;grid-template-columns:repeat(5,1fr);margin:42px 0 0;border-top:2px solid var(--kenar);border-bottom:2px solid var(--kenar)}
+.sayac div{padding:18px 14px;border-right:1px solid var(--cizgi)}
+.sayac div:last-child{border-right:0}
+.sayac b{display:block;font-size:clamp(1.6rem,3.6vw,2.6rem);line-height:1;letter-spacing:-.03em;font-weight:800;font-variant-numeric:tabular-nums}
+.sayac span{font-size:.85rem;color:var(--soluk)}
+@media (max-width:760px){.sayac{grid-template-columns:repeat(2,1fr)}.sayac div{border-bottom:1px solid var(--cizgi)}.sayac div:last-child{grid-column:1/-1}}
+
+/* bölüm başlıkları */
+section{padding:80px 0 0}
+.bas{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+.bas .no{font:600 .8rem "IBM Plex Mono",monospace;border:2px solid var(--kenar);padding:4px 8px;border-radius:3px}
+.bas h2{font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.03em;line-height:1;margin:0;font-weight:800}
+.bas p{flex-basis:100%;margin:8px 0 0;color:var(--soluk);max-width:60ch}
+
+/* canlı siteler: her kart kendi sitesinin kimliğinde */
+.canli{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.site{position:relative;grid-column:span 3;border-radius:6px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;min-height:420px;
+  border:2px solid var(--kenar);box-shadow:6px 6px 0 var(--kenar);transition:transform .15s,box-shadow .15s}
+.site:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--kenar)}
+.site:nth-child(n+3){grid-column:span 2}
+.site .ic{padding:22px 22px 0;flex:1;display:flex;flex-direction:column}
+.site .ust-satir{display:flex;justify-content:space-between;gap:10px;font:600 .7rem/1.2 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.site .canli-n{display:inline-flex;align-items:center;gap:6px}
+.site .canli-n::before{content:"";width:8px;height:8px;border-radius:50%;background:#2fd27a;box-shadow:0 0 0 0 rgba(47,210,122,.6);animation:nabiz 1.8s infinite}
+@keyframes nabiz{70%{box-shadow:0 0 0 8px rgba(47,210,122,0)}100%{box-shadow:0 0 0 0 rgba(47,210,122,0)}}
+.site h3{margin:18px 0 8px;line-height:1.02;letter-spacing:-.02em}
+.site .kanca{margin:0 0 16px;font-size:.98rem;opacity:.85;max-width:38ch}
+.site .resim{margin-top:auto;height:170px;border-top:2px solid currentColor;overflow:hidden;opacity:.95}
+.site .resim img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s}
+.site:hover .resim img{transform:scale(1.04)}
+.site .git{position:absolute;right:14px;bottom:14px;background:var(--fosfor);color:#141414;font:800 .85rem "Bricolage Grotesque";padding:7px 12px;border-radius:99px;border:2px solid #141414}
+@media (max-width:900px){.site,.site:nth-child(n+3){grid-column:span 3}}
+@media (max-width:620px){.canli{grid-template-columns:1fr}.site,.site:nth-child(n+3){grid-column:1/-1;min-height:380px}}
+
+/* mevzuat: gazete */
+.s-mevzuat{background:#f4efe1;color:#1d1b16;font-family:Georgia,"Times New Roman",serif}
+.s-mevzuat h3{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:700;font-family:Georgia,serif;border-top:3px double #1d1b16;border-bottom:1px solid #1d1b16;padding:10px 0}
+.s-mevzuat h3 em{color:#b3261e;font-style:normal}
+/* meclis: daktilo */
+.s-meclis{background:#151a2e;color:#efe6d2;font-family:"IBM Plex Mono",monospace}
+.s-meclis h3{font-family:"IBM Plex Mono",monospace;font-size:clamp(1.4rem,2.6vw,2rem);font-weight:600}
+.s-meclis .imlec{display:inline-block;width:.6em;height:1em;background:#efe6d2;vertical-align:-.12em;animation:yanson 1s steps(1) infinite}
+@keyframes yanson{50%{opacity:0}}
+/* hava: duman */
+.s-hava{background:radial-gradient(120% 90% at 20% 10%,#dfe9ef 0%,#c9cdc8 55%,#b9a993 100%);color:#1c1d1f}
+.s-hava h3{font-size:clamp(3.6rem,7vw,5.4rem);font-weight:800;letter-spacing:-.05em;margin-top:8px}
+.s-hava h3 small{font-size:.3em;letter-spacing:0;font-weight:600}
+.s-hava .sigara{display:flex;gap:4px;margin:-4px 0 14px}
+.s-hava .sigara i{width:46px;height:9px;border-radius:2px;background:linear-gradient(90deg,#e8a451 0 22%,#f4f1ea 22% 92%,#e0563a 92%)}
+.s-hava .sigara i.yarim{width:23px;background:linear-gradient(90deg,#e8a451 0 44%,#f4f1ea 44%)}
+/* enflasyon: fiş */
+.s-enflasyon{background:#ffd23f;color:#141414}
+.s-enflasyon .fis{background:#fffdf6;margin:14px 0 18px;padding:14px 16px;font:600 .78rem/1.6 "IBM Plex Mono",monospace;box-shadow:0 6px 16px rgba(0,0,0,.18);
+  -webkit-mask:radial-gradient(circle at 6px 100%,transparent 5px,#000 5.5px) -6px 100%/12px 100% repeat-x;mask:radial-gradient(circle at 6px 100%,transparent 5px,#000 5.5px) -6px 100%/12px 100% repeat-x}
+.s-enflasyon .fis div{display:flex;justify-content:space-between;gap:10px}
+.s-enflasyon .fis .top{border-top:1px dashed #141414;margin-top:6px;padding-top:6px;font-size:1.05rem}
+.s-enflasyon h3{font-size:1.5rem;font-weight:800;margin-top:12px}
+/* iett: LED */
+.s-iett{background:#0c0c0b;color:#ffb000}
+.s-iett h3{font-family:"IBM Plex Mono",monospace;font-size:clamp(2.6rem,5vw,3.6rem);color:#ffb000;text-shadow:0 0 12px rgba(255,176,0,.55);font-weight:600}
+.s-iett h3 small{font-size:.38em;color:#6ee7a0;text-shadow:0 0 8px rgba(110,231,160,.5)}
+.s-iett .hatlar{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.s-iett .hatlar span{font:800 .7rem "Bricolage Grotesque";color:#fff;padding:3px 7px;border-radius:4px}
+
+/* proje ızgarası */
+.filtre{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+.filtre button{font:600 .9rem "Bricolage Grotesque";padding:9px 16px;border-radius:99px;border:2px solid var(--kenar);background:var(--kart);color:var(--murekkep);cursor:pointer;min-height:44px}
+.filtre button[aria-pressed="true"]{background:var(--murekkep);color:var(--kagit)}
+.izgara{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:900px){.izgara{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.izgara{grid-template-columns:1fr}}
+.proje{position:relative;background:var(--kart);border:2px solid var(--kenar);border-radius:6px;padding:20px 20px 18px;display:flex;flex-direction:column;gap:10px;transition:transform .15s,box-shadow .15s}
+.proje:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--kenar)}
+.proje .em{font-size:2rem;line-height:1}
+.proje h3{margin:0;font-size:1.35rem;letter-spacing:-.02em;line-height:1.1}
+.proje .ne{margin:0;color:var(--soluk);font-size:.97rem}
+.proje .sonuc{margin:4px 0 0;padding:10px 12px;border-left:4px solid var(--fosfor);background:color-mix(in srgb,var(--fosfor) 14%,transparent);font-size:.93rem}
+.proje .sonuc b{font-weight:800}
+.proje .alt{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.proje .alt span{font:600 .7rem "IBM Plex Mono",monospace;border:1px solid var(--soluk);color:var(--soluk);border-radius:3px;padding:2px 6px}
+.proje .linkler{display:flex;gap:14px;font-weight:700;font-size:.92rem}
+.proje .linkler a{text-decoration:none;border-bottom:2px solid var(--fosfor)}
+.damga{position:absolute;top:16px;right:14px;transform:rotate(6deg);font:800 .72rem/1 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--damga);border:2px solid var(--damga);padding:5px 7px;border-radius:3px;background:var(--kart)}
+.damga.iyi{color:var(--yesil);border-color:var(--yesil)}
+.damga.notr{color:var(--mavi);border-color:var(--mavi)}
+.proje[hidden]{display:none}
+
+/* işe yaramayanlar */
+.yaramayan{border:2px solid var(--kenar);background:var(--murekkep);color:var(--kagit);border-radius:6px;padding:clamp(22px,4vw,44px);box-shadow:6px 6px 0 var(--damga)}
+.yaramayan h2{font-size:clamp(1.8rem,4.2vw,3.2rem);line-height:1.02;letter-spacing:-.03em;margin:0 0 10px;font-weight:800}
+.yaramayan h2 s{text-decoration-color:var(--damga);text-decoration-thickness:.12em}
+.yaramayan > p{max-width:58ch;opacity:.8;margin:0 0 26px}
+.liste{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid rgba(127,127,127,.35)}
+.liste div{padding:16px 16px 16px 0;border-bottom:1px solid rgba(127,127,127,.35)}
+.liste div:nth-child(odd){padding-right:22px;border-right:1px solid rgba(127,127,127,.35)}
+.liste div:nth-child(even){padding-left:22px}
+.liste b{display:block;font-size:1.1rem}
+.liste span{opacity:.75;font-size:.95rem}
+.liste .x{color:var(--damga);font-weight:800;margin-right:6px}
+@media (max-width:680px){.liste{grid-template-columns:1fr}.liste div:nth-child(odd){border-right:0;padding-right:0}.liste div:nth-child(even){padding-left:0}}
+
+/* nasıl çalışıyorum */
+.ilke{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ilke div{border-top:4px solid var(--kenar);padding-top:14px}
+.ilke b{font-size:1.2rem;display:block;margin-bottom:6px}
+.ilke p{margin:0;color:var(--soluk)}
+@media (max-width:760px){.ilke{grid-template-columns:1fr}}
+
+footer{margin:90px 0 0;padding:44px 0 60px;border-top:2px solid var(--kenar)}
+footer .buyuk{font-size:clamp(2rem,5vw,3.6rem);font-weight:800;letter-spacing:-.035em;line-height:1;margin:0 0 20px}
+footer .linkler{display:flex;gap:12px;flex-wrap:wrap}
+footer .linkler a{font-weight:800;text-decoration:none;border:2px solid var(--kenar);padding:12px 18px;border-radius:99px;background:var(--kart);min-height:48px;display:inline-flex;align-items:center}
+footer .linkler a.ana{background:var(--fosfor);color:#141414;border-color:#141414}
+footer .kucuk{margin-top:30px;font-size:.8rem;color:var(--soluk)}
+
+.gorun{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.gorun.acik{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.gorun{opacity:1;transform:none}}
+:focus-visible{outline:3px solid var(--mavi);outline-offset:3px}
+</style>
+</head>
+<body>
+<div class="sar">
+  <header class="ust">
+    <a class="ad" href="#" id="ad">birtohum</a>
+    <nav class="mono"><a href="#canli">Canlı siteler</a><a href="#projeler">Projeler</a><a href="#yaramayan">İşe yaramayanlar</a><a href="#iletisim">İletişim</a></nav>
+  </header>
+
+  <div class="hero">
+    <div class="etiket">Portfolyo · Eylül–Kasım 2026</div>
+    <h1>Merak ettiğim soruları <span class="fos">çalışan şeylere</span> çeviriyorum.</h1>
+    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 19 proje var. Beşi şu an internette canlı, üçü her gün kendini güncelliyor.</p>
+
+    <div class="soru" aria-live="polite">
+      <div class="s-et etiket">Soru</div>
+      <div class="s-metin"><span id="soru-metin">Vergi kanunu 20 yılda kaç kez değişti?</span></div>
+      <a class="s-git" id="soru-git" href="https://birtohum.github.io/mevzuat-haritasi/" target="_blank" rel="noopener">Cevabı gör →</a>
+    </div>
+
+    <div class="sayac">
+      <div><b data-say="19">19</b><span>proje</span></div>
+      <div><b data-say="5">5</b><span>canlı veri sitesi</span></div>
+      <div><b data-say="99697">99.697</b><span>Resmî Gazete düzenlemesi okundu</span></div>
+      <div><b data-say="69" data-son=" mn">69 mn</b><span>Meclis kelimesi sayıldı</span></div>
+      <div><b data-say="1026">1.026</b><span>ölçülmüş yapay zekâ koşusu</span></div>
+    </div>
+  </div>
+
+  <section id="canli">
+    <div class="bas gorun"><span class="no">01</span><h2>Şu an canlı</h2>
+      <p>Her biri tek bir soruyu cevaplıyor ve her biri kendi kimliğiyle tasarlandı. Kaynak, yöntem ve sınırlar her sitenin altında yazıyor.</p></div>
+    <div class="canli">
+      <a class="site s-mevzuat gorun" href="https://birtohum.github.io/mevzuat-haritasi/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Mevzuat Haritası</span><span class="canli-n">Canlı</span></div>
+          <h3>Türkiye'de her gün ortalama <em>10</em> yeni düzenleme yayımlanıyor</h3>
+          <p class="kanca">2000'den bugüne 10.608 Resmî Gazete sayısı, 99.697 düzenleme. Hangi kanun kaç kez değişti, doğduğun gün ne yayımlandı?</p>
+        </div>
+        <div class="resim"><img src="gorsel/mevzuat-haritasi.webp" alt="Mevzuat Haritası sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-meclis gorun" href="https://birtohum.github.io/meclisin-dili/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Meclis'in Dili</span><span class="canli-n">Canlı</span></div>
+          <h3>&gt; <span id="daktilo">enflasyon</span><span class="imlec"></span></h3>
+          <p class="kanca">Bir kelime yaz, TBMM'de 1996'dan bu yana yıl yıl ne kadar konuşulduğunu gör. 3.731 birleşim, 69 milyon kelime. Yorum yok, yalnızca sayılar.</p>
+        </div>
+        <div class="resim"><img src="gorsel/meclisin-dili.webp" alt="Meclis'in Dili sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-hava gorun" href="https://birtohum.github.io/kac-sigara/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Kaç Sigara?</span><span class="canli-n">Her gün</span></div>
+          <h3>= 0,7 <small>sigara</small></h3>
+          <div class="sigara" aria-hidden="true"><i class="yarim"></i></div>
+          <p class="kanca">3 Kasım'da İstanbul'da nefes almak. Bakanlığın 210 istasyonundan il il PM2.5, kaba ama akılda kalan bir benzetmeyle.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kac-sigara.webp" alt="Kaç Sigara sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-enflasyon gorun" href="https://birtohum.github.io/sepet-enflasyonu/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Sepet Enflasyonu</span><span class="canli-n">Her gün</span></div>
+          <h3>Aynı sepet bugün kaç lira?</h3>
+          <div class="fis" aria-hidden="true">
+            <div><span>SÜT, PEYNİR, YUMURTA</span><span>2.177,46</span></div>
+            <div><span>EKMEK VE TAHILLAR</span><span>778,45</span></div>
+            <div><span>… 83 ÜRÜN</span><span></span></div>
+            <div class="top"><span>TOPLAM</span><span>11.607,79 ₺</span></div>
+          </div>
+          <p class="kanca">Kendi sepetini kur, kendi enflasyonunu TÜFE'yle yan yana gör.</p>
+        </div>
+        <div class="resim"><img src="gorsel/sepet-enflasyonu.webp" alt="Sepet Enflasyonu sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-iett gorun" href="https://birtohum.github.io/iett-dakiklik/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>İETT Dakiklik</span><span class="canli-n">Veri toplanıyor</span></div>
+          <div class="hatlar" aria-hidden="true"><span style="background:#d7392b">500T</span><span style="background:#2d6fb0">15F</span><span style="background:#1f8a5b">76D</span><span style="background:#7a4bb0">146T</span><span style="background:#b07a1f">40T</span></div>
+          <h3>1 <small>dk geç</small></h3>
+          <div class="mono" style="font-size:.72rem;color:#8a7a55;margin:-6px 0 12px">500T · SABAH 10 · ÖN SONUÇ, VERİ TOPLANIYOR</div>
+          <p class="kanca">Hattını yaz: otobüsün planına ne kadar uyuyor? İETT'nin canlı konum verisinden, dakikada bir.</p>
+        </div>
+        <div class="resim"><img src="gorsel/iett-dakiklik.webp" alt="İETT Dakiklik sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="projeler">
+    <div class="bas gorun"><span class="no">02</span><h2>Diğer 14 proje</h2>
+      <p>Yapay zekâ deneyleri, aileme ve tanıdıklarıma yaptığım uygulamalar, oyunlar. Her kartta neyi yaptığım ve gerçekte ne çıktığı yazıyor; damga sonucu özetliyor.</p></div>
+    <div class="filtre" role="group" aria-label="Projeleri süz" id="filtre"></div>
+    <div class="izgara" id="izgara"></div>
+  </section>
+
+  <section id="yaramayan">
+    <div class="yaramayan gorun">
+      <div class="etiket" style="color:inherit;opacity:.7">03 · Nadir bir bölüm</div>
+      <h2>Çoğu portfolyo bunları <s>saklar</s> göstermez.</h2>
+      <p>Deneylerimin bir kısmı işe yaramadı. Ama her birinde "neden" sorusunun ölçülmüş bir cevabı var, ve bence en çok şeyi bunlardan öğrendim.</p>
+      <div class="liste">
+        <div><b><span class="x">✗</span>Yapay zekâ yapay zekâyı denetleyemedi</b><span>Usta: 1.026 koşu. Tek başına model %60, bağımsız denetimle %58. İki model görevi aynı şekilde yanlış okuyor.</span></div>
+        <div><b><span class="x">✗</span>Kripto botu piyasayı yenemedi</b><span>4 dönemin 4'ünde de al-ve-tut stratejisinin gerisinde kaldı. Bir dönemde piyasa %1,9 kazanırken bot %18,2 kaybetti.</span></div>
+        <div><b><span class="x">✗</span>Tercih eğitimi (DPO) kazanç vermedi</b><span>Tohum'un 8B ve 14B modellerinde ölçülebilir fark çıkmadı; bıraktım.</span></div>
+        <div><b><span class="x">✗</span>Günlük gündemden tişört fikri: 10/10 elendi</b><span>Gündem öğelerinin hepsi kişi, takım ya da trajediydi. Etsy'de satılamazdı; takvim ve mevsimselliğe döndüm.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="bas gorun"><span class="no">04</span><h2>Nasıl çalışıyorum</h2></div>
+    <div class="ilke gorun">
+      <div><b>Önce soru, sonra kod.</b><p>Her proje tek bir cümleyle başlıyor: "Bugün nefes almak kaç sigara?" Cevaplamayan özellik eklenmiyor.</p></div>
+      <div><b>Ölçmeden "işe yarıyor" demem.</b><p>Gizli testler, elle denetlenmiş örneklemler, güven aralıkları. Sayı yoksa iddia da yok.</p></div>
+      <div><b>Gerçek insanlar için.</b><p>Annem ve babam için oyun uygulaması, eniştem için tişört atölyesi, esnaf için site. 70 yaşında biri de kullanabilmeli.</p></div>
+    </div>
+  </section>
+
+  <footer id="iletisim">
+    <p class="buyuk gorun">Bir sorun mu var?<br><span class="fos">Veriyle cevaplayalım.</span></p>
+    <div class="linkler">
+      <a class="ana" href="https://github.com/birtohum" target="_blank" rel="noopener">GitHub · birtohum ↗</a>
+      <a href="https://birtohum.github.io/mevzuat-haritasi/" target="_blank" rel="noopener">En sevdiğim: Mevzuat Haritası ↗</a>
+    </div>
+    <p class="kucuk mono">Bu sayfa ve projelerin çoğu yapay zekâ destekli geliştirildi (Claude Code). Sayılar projelerin kendi kayıtlarından alındı.</p>
+  </footer>
+</div>
+
+<script>
+"use strict";
+const PROJELER = [
+  {t: "yz", em: "🔨", ad: "Usta", ne: "Türkçe görev verilen, kendi kodunu bağımsız testlerle denetleyen kodlama ajanı. Meta AI Developer Hackathon'a gönderildi.",
+   sonuc: "<b>1.026 koşu, gizli testlerle:</b> tek başına model %60, Usta %58. Denetim döngüsü kazanç sağlamadı; nedeni ölçüldü ve yazıldı.",
+   damga: ["Kazanç yok", ""], alt: ["Python", "Meta Muse", "WSL korumalı alan"], link: [["Kod", "https://github.com/birtohum/usta"], ["Demo", "https://www.youtube.com/watch?v=f9RjvBsFDiU"]]},
+  {t: "yz", em: "🌱", ad: "Tohum", ne: "Sıfırdan küçük bir Türkçe dil modeli eğitip, sonra açık bir modeli Türkçe asistana dönüştürme denemesi.",
+   sonuc: "<b>4,8M parametre</b> sıfırdan (RTX 3060, 21 dk). Qwen3-8B + LoRA, 30 soruluk testte resmi modeli <b>10–2</b> geçti. 14B'de bağımsız hakem 7,79'a 7,37 (aralıklar çakışıyor).",
+   damga: ["10–2", "iyi"], alt: ["PyTorch", "LoRA", "H100"], link: []},
+  {t: "yz", em: "📉", ad: "Kripto RL botu", ne: "Gerçek para kullanmadan, geçmiş verilerle pekiştirmeli öğrenen bir alım-satım ajanı.",
+   sonuc: "Walk-forward test, 4 dönem: <b>4'ünde de</b> al-ve-tut stratejisini yenemedi. Tutarlı bir başarısızlık, şans değil.",
+   damga: ["Yenemedi", ""], alt: ["Python", "RL", "Backtest"], link: []},
+  {t: "yz", em: "📰", ad: "Gazete Özeti", ne: "Her gün Resmî Gazete'yi sade Türkçeyle özetler; her iddia gazetedeki birebir alıntıyla eşleştirilir.",
+   sonuc: "4 günde 37 metin: 180 iddianın 172'si yayımlandı, elle denetlenen 25'in 25'i doğru. Günde yaklaşık 0,04 $.",
+   damga: ["25/25", "iyi"], alt: ["Python", "OCR", "Doğrulama"], link: [["Kod", "https://github.com/birtohum/gazete-ozeti"]]},
+  {t: "urun", em: "💬", ad: "Yorum Yanıtlayıcı", ne: "Esnafın müşteri yorumlarına, yalnızca işletmenin verdiği bilgilere dayanan yanıt taslakları yazar.",
+   sonuc: "Hiç görülmemiş 15 kuaför yorumunun 15'i elle kabul edildi. Uydurma söz, sayı ya da telefon kodla yakalanıyor.",
+   damga: ["15/15", "iyi"], alt: ["Python", "Kural + model"], link: [["Kod", "https://github.com/birtohum/yorum-yanitlayici"]]},
+  {t: "urun", em: "👕", ad: "Tişört Atölyesi", ne: "Etsy'de tişört satan eniştem için: Türkçe fikir yaz, iki tasarım gelsin, koyu tişört sürümü ve Etsy yazısı tek tuşla.",
+   sonuc: "70 yaşında biri de kullanabilsin diye her ekranda tek soru, tek büyük düğme. Beklerken canlı aşamalar ve ipuçları.",
+   damga: ["Kullanımda", "notr"], alt: ["Python", "Görsel üretim", "Erişilebilirlik"], link: [["Kod", "https://github.com/birtohum/tisort-bulteni"]]},
+  {t: "urun", em: "🎲", ad: "Bizim Masa", ne: "Annem ve babam için aile oyun salonu: şifresiz, büyük yazılı, her telefon kendi. Okey yolda.",
+   sonuc: "<b>13'ten fazla oyun:</b> Kızma Birader, Tombala, Sudoku, Bir Kelime Bir İşlem, Atasözü… Sıra sırayla ya da canlı, bota karşı da.",
+   damga: ["Ailede", "iyi"], alt: ["React Native", "Expo", "Firebase"], link: []},
+  {t: "urun", em: "🎙️", ad: "Seslendir.io", ne: "Çok oyunculu \"kör dublaj\" parti oyunu. Herkes kendi repliğini başkalarını duymadan kaydeder, sonra dublaj birlikte izlenir.",
+   sonuc: "Gerçek oyuncularla yayındaydı: kendi sunucusunda, sıralama tablosu ve profillerle. <b>283 commit.</b> Şu an durdurulmuş.",
+   damga: ["Durduruldu", "notr"], alt: ["Next.js", "VPS", "Ses kaydı"], link: []},
+  {t: "urun", em: "🤝", ad: "Kaynaş", ne: "Arkadaş edinmekte zorlanan 15–24 yaş arası gençleri ortak ilgi alanları üzerinden buluşturan platform.",
+   sonuc: "Fotoğraf yok, çizim avatar; 18 yaş altına veli onayı ve veli paneli; yalnızca arkadaşlar arası mesaj. Kurulum aşamasında.",
+   damga: ["Prototip", "notr"], alt: ["Next.js", "Supabase", "Güvenlik"], link: []},
+  {t: "urun", em: "🏪", ad: "Mahalle Site", ne: "Mahalledeki esnafa tek sayfalık, hızlı site. Önizleme hazırlanıp işletmeye gönderiliyor; \"evet\" derse yayına alınıyor.",
+   sonuc: "Cloudflare Pages'te ücretsiz yayın; müşteri takibi ve teklif süreciyle birlikte.",
+   damga: ["Yayında", "iyi"], alt: ["HTML/CSS", "Cloudflare"], link: [["Örnek", "https://mahallesite.pages.dev/kafe/"]]},
+  {t: "urun", em: "🖥️", ad: "S.", ne: "Görevi yaz, arkana yaslan: bilgisayardaki Claude Code'u görev sonuna kadar yürüten masaüstü uygulaması.",
+   sonuc: "Kurulum dosyası olan Windows uygulaması, <b>149 commit.</b> Görev öncesi fikir danışmak için sohbet ekranı.",
+   damga: ["Kurulabilir", "notr"], alt: ["Electron", "Node.js"], link: []},
+  {t: "oyun", em: "🚚", ad: "Zabıta Geliyor!", ne: "Tek başına ya da arkadaşlarla oynanan, seyyar tezgâhlı kaos oyunu. Herkesin kendi arabası, ortak ya da rakip günlük kira hedefi.",
+   sonuc: "Godot ile erken prototip. Sıfır bütçe: yalnızca kalıcı ücretsiz araçlar.",
+   damga: ["Prototip", "notr"], alt: ["Godot", "GDScript"], link: []},
+  {t: "oyun", em: "🎯", ad: "DDNet Ödül", ne: "DDNet oyunu için kendi istemcim: sakin ekran, ödüllendirici geri bildirim, kavgada yol gösterme.",
+   sonuc: "C++ istemci kodunda yeni bileşen. Kural net: <b>hile yok</b>; otomatik nişan ya da vuruş yok, yalnızca görsel ve sesli bilgi.",
+   damga: ["Hile yok", "iyi"], alt: ["C++", "CMake"], link: []},
+  {t: "oyun", em: "🎧", ad: "Hardstyle Studio", ne: "Bir şarkıyı kendi yapısına uyan bir hardstyle versiyonuna çevirir: nakaratlar drop olur, kick'ler vuruşa ve akorlara kilitlenir.",
+   sonuc: "Demucs ile kanal ayrıştırma ve vuruş takibi; sonuç stem ve MIDI olarak DAW'a aktarılabiliyor.",
+   damga: ["Çalışıyor", "iyi"], alt: ["Python", "PyTorch", "Ses"], link: []},
+];
+const HEPSI = PROJELER;
+const TURLER = [["hepsi", "Hepsi"], ["yz", "Yapay zekâ"], ["urun", "İnsanlar için"], ["oyun", "Oyun ve müzik"]];
+
+function el(etiket, ozellik = {}, ...cocuk) {
+  const e = document.createElement(etiket);
+  for (const [k, v] of Object.entries(ozellik)) {
+    if (k === "html") e.innerHTML = v; else if (k === "class") e.className = v; else e.setAttribute(k, v);
+  }
+  for (const c of cocuk.flat()) if (c != null) e.append(c);
+  return e;
+}
+const izgara = document.getElementById("izgara");
+izgara.append(...HEPSI.map(p => el("article", {class: "proje", "data-tur": p.t},
+  el("span", {class: "damga " + p.damga[1]}, p.damga[0]),
+  el("div", {class: "em", "aria-hidden": "true"}, p.em),
+  el("h3", {}, p.ad),
+  el("p", {class: "ne"}, p.ne),
+  el("p", {class: "sonuc", html: p.sonuc}),
+  el("div", {class: "alt"}, p.alt.map(a => el("span", {}, a))),
+  p.link.length ? el("div", {class: "linkler"}, p.link.map(([y, u]) => el("a", {href: u, target: "_blank", rel: "noopener"}, y + " ↗"))) : null)));
+const sayi = t => t === "hepsi" ? HEPSI.length : HEPSI.filter(p => p.t === t).length;
+const filtre = document.getElementById("filtre");
+filtre.append(...TURLER.map(([t, ad]) => el("button", {"aria-pressed": t === "hepsi", "data-t": t}, `${ad} · ${sayi(t)}`)));
+filtre.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  for (const x of filtre.children) x.setAttribute("aria-pressed", x === b);
+  for (const p of izgara.children) p.hidden = b.dataset.t !== "hepsi" && p.dataset.tur !== b.dataset.t;
+});
+
+// dönen soru
+const SORULAR = [
+  ["Vergi kanunu 20 yılda kaç kez değişti?", "https://birtohum.github.io/mevzuat-haritasi/"],
+  ["Bugün İstanbul'da nefes almak kaç sigara?", "https://birtohum.github.io/kac-sigara/"],
+  ["Meclis'te \"enflasyon\" en çok hangi yıl konuşuldu?", "https://birtohum.github.io/meclisin-dili/"],
+  ["Aynı market sepeti bugün kaç lira?", "https://birtohum.github.io/sepet-enflasyonu/"],
+  ["500T otobüsü planına ne kadar uyuyor?", "https://birtohum.github.io/iett-dakiklik/"],
+  ["Yapay zekâ başka bir yapay zekânın kodunu denetleyebilir mi?", "#yaramayan"],
+  ["Doğduğun gün Resmî Gazete'de ne yayımlandı?", "https://birtohum.github.io/mevzuat-haritasi/"],
+];
+const azHareket = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let si = 0;
+const sm = document.getElementById("soru-metin"), sg = document.getElementById("soru-git");
+setInterval(() => {
+  si = (si + 1) % SORULAR.length;
+  sm.classList.add("gizli");
+  setTimeout(() => {
+    sm.textContent = SORULAR[si][0]; sg.href = SORULAR[si][1];
+    const ic = SORULAR[si][1].startsWith("#");
+    sg.target = ic ? "" : "_blank"; sm.classList.remove("gizli");
+  }, azHareket ? 0 : 350);
+}, 3800);
+
+// daktilo
+const KELIMELER = ["enflasyon", "terör", "deprem", "internet", "kadın", "emekli", "yapay zekâ"];
+const dk = document.getElementById("daktilo");
+if (!azHareket) {
+  let k = 0, i = KELIMELER[0].length, siliyor = true;
+  setInterval(() => {
+    const w = KELIMELER[k];
+    if (siliyor) { i--; if (i <= 0) { siliyor = false; k = (k + 1) % KELIMELER.length; } }
+    else { i++; if (i >= KELIMELER[k].length + 8) siliyor = true; }
+    dk.textContent = KELIMELER[k].slice(0, Math.max(0, Math.min(i, KELIMELER[k].length)));
+  }, 110);
+}
+
+// sayaçlar ve görünürlük
+const bicim = n => n.toLocaleString("tr-TR");
+const gozcu = new IntersectionObserver(girdiler => {
+  for (const g of girdiler) {
+    if (!g.isIntersecting) continue;
+    g.target.classList.add("acik");
+    gozcu.unobserve(g.target);
+  }
+}, {threshold: .12});
+document.querySelectorAll(".gorun").forEach(x => gozcu.observe(x));
+if (!azHareket) {
+  document.querySelectorAll("[data-say]").forEach(b => {
+    const hedef = +b.dataset.say, son = b.dataset.son || "", t0 = performance.now(), sure = 1400;
+    const adim = t => { const o = Math.min(1, (t - t0) / sure), e = 1 - Math.pow(1 - o, 3);
+      b.textContent = bicim(Math.round(hedef * e)) + son; if (o < 1) requestAnimationFrame(adim); };
+    requestAnimationFrame(adim);
+  });
+}
+</script>
+</body>
+</html>
