@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ege — merak ettiğim soruları çalışan şeylere çeviriyorum</title>
-<meta name="description" content="19 proje, 5 canlı veri sitesi: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
-<meta property="og:title" content="Ege — 19 proje, 5 canlı site">
+<meta name="description" content="19 proje, 6 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
+<meta property="og:title" content="Ege — 19 proje, 6 canlı site">
 <meta property="og:description" content="Vergi kanunu kaç kez değişti? Bugün nefes almak kaç sigara? Yapay zekâ yapay zekâyı denetleyebilir mi? Cevaplar veriyle.">
 <meta property="og:image" content="https://birtohum.github.io/og/ana.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -128,6 +128,20 @@ section{padding:80px 0 0}
 .s-iett h3{font-family:"IBM Plex Mono",monospace;font-size:clamp(2.6rem,5vw,3.6rem);color:#ffb000;text-shadow:0 0 12px rgba(255,176,0,.55);font-weight:600}
 .s-iett h3 small{font-size:.38em;color:#6ee7a0;text-shadow:0 0 8px rgba(110,231,160,.5)}
 .s-iett .hatlar{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+/* seslendir: karanlık salon, turuncu */
+.site.s-ses{grid-column:1/-1;background:radial-gradient(90% 120% at 85% 0%,#4a2412 0%,#1a1311 55%,#120e0c 100%);color:#f3ece6;flex-direction:row;min-height:300px}
+.s-ses .ic{padding:26px 26px 22px;flex:1 1 50%}
+.s-ses h3{font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:800;color:#fff}
+.s-ses h3 em{font-style:normal;color:#ff7a45}
+.s-ses .ses-dalga{display:flex;align-items:flex-end;gap:5px;height:44px;margin-top:auto;padding-bottom:30px}
+.s-ses .ses-dalga i{width:6px;height:calc(var(--h)*1%);background:#ff7a45;border-radius:3px;opacity:.85;animation:sesd 1.1s ease-in-out infinite alternate}
+.s-ses .ses-dalga i:nth-child(3n){animation-delay:-.4s}.s-ses .ses-dalga i:nth-child(3n+1){animation-delay:-.8s}
+@keyframes sesd{to{transform:scaleY(.35)}}
+.s-ses .ses-dalga i{transform-origin:bottom}
+.s-ses .resim{flex:1 1 50%;height:auto;margin:0;border-top:0;border-left:2px solid #ff7a45}
+.s-ses .resim img{object-position:left top}
+@media (max-width:760px){.site.s-ses{flex-direction:column}.s-ses .resim{height:190px;border-left:0;border-top:2px solid #ff7a45}}
+@media (prefers-reduced-motion:reduce){.s-ses .ses-dalga i{animation:none}}
 .s-iett .hatlar span{font:800 .7rem "Bricolage Grotesque";color:#fff;padding:3px 7px;border-radius:4px}
 
 /* proje ızgarası */
@@ -209,7 +223,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   <div class="hero">
     <div class="etiket">Ege · Portfolyo · Eylül–Kasım 2026</div>
     <h1>Merak ettiğim soruları <span class="fos">çalışan şeylere</span> çeviriyorum.</h1>
-    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 19 proje var. Beşi şu an internette canlı, üçü her gün kendini güncelliyor.</p>
+    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 19 proje var. Altısı şu an internette canlı, üçü her gün kendini güncelliyor.</p>
 
     <div class="soru" aria-live="polite">
       <div class="s-et etiket">Soru</div>
@@ -219,7 +233,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
 
     <div class="sayac">
       <div><b data-say="19">19</b><span>proje</span></div>
-      <div><b data-say="5">5</b><span>canlı veri sitesi</span></div>
+      <div><b data-say="6">6</b><span>canlı site</span></div>
       <div><b data-say="99697">99.697</b><span>Resmî Gazete düzenlemesi okundu</span></div>
       <div><b data-say="69" data-son=" mn">69 mn</b><span>Meclis kelimesi sayıldı</span></div>
       <div><b data-say="1026">1.026</b><span>ölçülmüş yapay zekâ koşusu</span></div>
@@ -285,6 +299,16 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/iett-dakiklik.webp" alt="İETT Dakiklik sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
+      <a class="site s-ses gorun" href="https://seslendir.site/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Seslendir.io</span><span class="canli-n">Canlı</span></div>
+          <h3>Kimse diğerini <em>duymadan</em> kaydediyor.</h3>
+          <p class="kanca">Arkadaşlarınla bir film sahnesini seslendir: herkese bir karakter düşer, finali birlikte ilk kez izlersiniz. Gerçek oyuncularla: 939 dublaj, 10.830 replik. Yanında 23 ücretsiz araç.</p>
+          <div class="ses-dalga" aria-hidden="true"><i style="--h:30"></i><i style="--h:55"></i><i style="--h:80"></i><i style="--h:45"></i><i style="--h:95"></i><i style="--h:60"></i><i style="--h:35"></i><i style="--h:70"></i><i style="--h:90"></i><i style="--h:50"></i><i style="--h:25"></i><i style="--h:65"></i><i style="--h:85"></i><i style="--h:40"></i><i style="--h:75"></i><i style="--h:55"></i><i style="--h:30"></i><i style="--h:60"></i></div>
+        </div>
+        <div class="resim"><img src="gorsel/p-seslendir.webp" alt="Seslendir.io sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
     </div>
   </section>
 
@@ -339,8 +363,8 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   </footer>
 </div>
 
-<script src="veri.js?v=7"></script>
-<script src="en.js?v=7"></script>
+<script src="veri.js?v=8"></script>
+<script src="en.js?v=8"></script>
 <script>
 "use strict";
 const HEPSI = PROJELER;

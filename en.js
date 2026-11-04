@@ -159,10 +159,10 @@ if (DIL === "en") {
     "nav.mono": `<a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 19 projects. Five are live on the web, and three update themselves every day.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 19 projects. Six are live on the web, and three update themselves every day.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
-    ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live data sites",
+    ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
     ".sayac div:nth-child(3) span": "Official Gazette regulations read", ".sayac div:nth-child(4) span": "words counted in Parliament",
     ".sayac div:nth-child(5) span": "measured AI agent runs",
     "#canli .bas h2": "Live now",
@@ -176,6 +176,8 @@ if (DIL === "en") {
     ".s-enflasyon h3": "What does the same basket cost today?",
     ".s-enflasyon .kanca": "Build your own basket and see your own inflation next to the official CPI.",
     ".s-iett h3": `1 <small>min late</small>`, ".s-iett .ic > .mono": "500T · 10 AM · EARLY RESULT, STILL COLLECTING",
+    ".s-ses .ust-satir span:last-child": "Live", ".s-ses h3": "Nobody hears the others <em>while recording.</em>",
+    ".s-ses .kanca": "Dub a film scene with your friends: everyone gets a character, and you watch the finale together for the first time. With real players: 939 dubs, 10,830 recorded lines. Plus 23 free tools.",
     ".s-iett .kanca": "Type your bus line: how closely does it keep to the timetable? From İETT's live vehicle positions, once a minute.",
     "#projeler .bas h2": "14 more projects",
     "#projeler .bas p": "AI experiments, apps I built for my family and people I know, and games. Each card says what I built and what actually came out of it; the stamp sums up the result.",
@@ -205,7 +207,7 @@ if (DIL === "en") {
   const hs = document.getElementById("hava-sayi"); if (hs) hs.innerHTML = `= 0.7 <small>cigarettes</small>`;
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "19 projects, 5 live data sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "19 projects, 6 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {
