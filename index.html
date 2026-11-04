@@ -139,8 +139,7 @@ section{padding:80px 0 0}
 @media (max-width:600px){.izgara{grid-template-columns:1fr}}
 .proje{position:relative;background:var(--kart);border:2px solid var(--kenar);border-radius:6px;padding:20px 20px 18px;display:flex;flex-direction:column;gap:10px;transition:transform .15s,box-shadow .15s}
 .proje:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--kenar)}
-.proje .em{font-size:2rem;line-height:1}
-.proje h3{margin:0;font-size:1.35rem;letter-spacing:-.02em;line-height:1.1}
+.proje h3{margin:26px 0 0;font-size:1.35rem;letter-spacing:-.02em;line-height:1.1}
 .proje .ne{margin:0;color:var(--soluk);font-size:.97rem}
 .proje .sonuc{margin:4px 0 0;padding:10px 12px;border-left:4px solid var(--fosfor);background:color-mix(in srgb,var(--fosfor) 14%,transparent);font-size:.93rem}
 .proje .sonuc b{font-weight:800}
@@ -340,8 +339,8 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   </footer>
 </div>
 
-<script src="veri.js?v=6"></script>
-<script src="en.js?v=6"></script>
+<script src="veri.js?v=7"></script>
+<script src="en.js?v=7"></script>
 <script>
 "use strict";
 const HEPSI = PROJELER;
@@ -358,7 +357,6 @@ function el(etiket, ozellik = {}, ...cocuk) {
 const izgara = document.getElementById("izgara");
 izgara.append(...HEPSI.map(p => el("article", {class: "proje", "data-tur": p.t},
   el("span", {class: "damga " + p.damga[1]}, p.damga[0]),
-  el("div", {class: "em", "aria-hidden": "true"}, p.em),
   el("h3", {}, p.ad),
   el("p", {class: "ne"}, p.ne),
   el("p", {class: "sonuc", html: p.sonuc}),
@@ -455,6 +453,6 @@ Promise.all(["ozet", "urunler"].map(a => fetch(`https://birtohum.github.io/sepet
     + `<div><span>… ${f.length} ${T("ÜRÜN", "ITEMS")}</span><span></span></div><div class="top"><span>${T("TOPLAM", "TOTAL")}</span><span>${para(top(f))} ₺</span></div>`;
 }).catch(() => {});
 </script>
-<script src="hikaye.js?v=5"></script>
+<script src="hikaye.js?v=6"></script>
 </body>
 </html>

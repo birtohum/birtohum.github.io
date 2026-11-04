@@ -76,7 +76,7 @@ function hikayeHTML(p) {
   return `${sahne}
   <div class="h-govde">
     <div class="h-et h-blok"><span class="damga ${p.damga[1]}">${esc(p.damga[0])}</span>${p.alt.map(a => `<span class="mono" style="font-size:.75rem;color:var(--soluk)">${esc(a)}</span>`).join("<span aria-hidden='true' style='color:var(--soluk)'>·</span>")}</div>
-    <h2 class="h-blok">${p.em} ${esc(p.ad)}</h2>
+    <h2 class="h-blok">${esc(p.ad)}</h2>
     <p class="h-soru h-blok">${esc(h.soru)}</p>
     <div class="h-sayilar h-blok">${h.sayilar.map(([b, s]) => `<div><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join("")}</div>
     <div class="h-blok"><h3>${T("Ne yaptım", "What I built")}</h3>${h.yaptim.map(t => `<p>${esc(t)}</p>`).join("")}</div>
