@@ -13,6 +13,8 @@ body.kilit{overflow:hidden}
   background-color:var(--kagit);background-image:linear-gradient(var(--cizgi) 1px,transparent 1px),linear-gradient(90deg,var(--cizgi) 1px,transparent 1px);background-size:28px 28px;
   border:2px solid var(--kenar);border-radius:10px;box-shadow:10px 10px 0 var(--kenar)}
 .pencere.acik{transform:translate(-50%,0) scale(1);opacity:1}
+/* display:flex, hidden özniteliğini ezmesin: kapalı pencere görünmez halde tıklamaları yutuyordu */
+.pencere[hidden],.perde[hidden]{display:none}
 @media (max-width:700px){
   .pencere{left:0;top:0;width:100vw;height:100vh;height:100dvh;border:0;border-radius:0;box-shadow:none;transform:translateY(40px)}
   .pencere.acik{transform:none}
