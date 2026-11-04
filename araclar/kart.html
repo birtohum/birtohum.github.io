@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Paylaşım kartı</title>
+<!-- 1200×630 paylaşım görseli şablonu. araclar/uret.mjs bunu ?id=<proje> ile açıp ekran görüntüsünü og/<id>.png olarak kaydeder. -->
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:1200px;height:630px;overflow:hidden}
+body{font-family:"Bricolage Grotesque",sans-serif;color:#141414;background:#f6f3ea;
+  background-image:linear-gradient(rgba(20,20,20,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(20,20,20,.07) 1px,transparent 1px);background-size:30px 30px;
+  padding:56px 64px;display:flex;flex-direction:column}
+.ust{display:flex;justify-content:space-between;align-items:center;font:600 22px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#5b5850}
+.ust span{text-transform:none;letter-spacing:.02em}
+.ust b{color:#141414;font-family:"Bricolage Grotesque";font-size:30px;letter-spacing:-.01em;text-transform:none}
+h1{font-size:96px;line-height:.95;letter-spacing:-.045em;margin:44px 0 22px;font-weight:800;max-width:1000px}
+.fos{background:linear-gradient(transparent 55%,#ffe14d 55%,#ffe14d 92%,transparent 92%)}
+p{font-size:36px;line-height:1.22;margin:0;max-width:980px;font-weight:600;padding-left:22px;border-left:8px solid #ffe14d}
+.alt{margin-top:auto;display:flex;gap:14px;align-items:center}
+.alt span{font:600 22px "IBM Plex Mono",monospace;border:3px solid #141414;padding:8px 14px;border-radius:6px;background:#fffdf7}
+.damga{position:absolute;right:64px;top:150px;transform:rotate(7deg);font:800 30px "IBM Plex Mono",monospace;letter-spacing:.05em;text-transform:uppercase;color:#d7261e;border:4px solid #d7261e;padding:10px 16px;border-radius:6px;background:#fffdf7}
+.damga.iyi{color:#1f7a4a;border-color:#1f7a4a}.damga.notr{color:#2050c8;border-color:#2050c8}
+.em{font-size:110px;position:absolute;right:80px;bottom:60px;line-height:1}
+.ana h1{font-size:118px}
+.sayac{display:flex;gap:0;margin-top:auto;border-top:4px solid #141414;border-bottom:4px solid #141414}
+.sayac div{flex:1;padding:18px 0}
+.sayac b{display:block;font-size:64px;line-height:1;letter-spacing:-.03em}
+.sayac span{font-size:22px;color:#5b5850}
+</style>
+</head>
+<body>
+<script src="../veri.js"></script>
+<script>
+const id = new URLSearchParams(location.search).get("id") || "ana";
+const kacis = s => String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+if (id === "ana") {
+  document.body.classList.add("ana");
+  document.body.innerHTML = `<div class="ust"><b>Ege</b><span>birtohum.github.io</span></div>
+    <h1>Merak ettiğim soruları <span class="fos">çalışan şeylere</span> çeviriyorum.</h1>
+    <div class="sayac"><div><b>19</b><span>proje</span></div><div><b>5</b><span>canlı veri sitesi</span></div><div><b>99.697</b><span>düzenleme okundu</span></div><div><b>1.026</b><span>ölçülmüş koşu</span></div></div>`;
+} else {
+  const p = PROJELER.find(x => HIKAYE[x.ad]?.id === id), h = HIKAYE[p.ad];
+  document.body.innerHTML = `<div class="ust"><b>Ege</b><span>birtohum.github.io · proje hikâyesi</span></div>
+    <span class="damga ${p.damga[1]}">${kacis(p.damga[0])}</span>
+    <h1>${kacis(p.ad)}</h1><p>${kacis(h.soru)}</p>
+    <div class="alt">${p.alt.map(a => `<span>${kacis(a)}</span>`).join("")}</div><div class="em">${p.em}</div>`;
+}
+</script>
+</body>
+</html>

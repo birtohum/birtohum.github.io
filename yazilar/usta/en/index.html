@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>I built an AI agent that checks its own code. After 1,026 runs, it was no better than not checking.</title><meta name="description" content="A small, honest experiment on &quot;LLM checks LLM&quot; — with every task, test and log open.">
+<link rel="canonical" href="https://birtohum.github.io/yazilar/usta/en/">
+<meta property="og:type" content="article"><meta property="og:title" content="I built an AI agent that checks its own code. After 1,026 runs, it was no better than not checking."><meta property="og:description" content="A small, honest experiment on &quot;LLM checks LLM&quot; — with every task, test and log open.">
+<meta property="og:url" content="https://birtohum.github.io/yazilar/usta/en/"><meta property="og:image" content="https://birtohum.github.io/og/usta.png"><meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"><style>:root{--kagit:#f6f3ea;--cizgi:rgba(20,20,20,.07);--murekkep:#141414;--soluk:#5b5850;--kart:#fffdf7;--fosfor:#ffe14d;--mavi:#2050c8}
+@media (prefers-color-scheme:dark){:root{--kagit:#121210;--cizgi:rgba(255,255,255,.05);--murekkep:#f2efe6;--soluk:#a9a59a;--kart:#1b1a17;--fosfor:#e8c62e;--mavi:#8aa8ff}}
+*{box-sizing:border-box}
+body{margin:0;color:var(--murekkep);font:18px/1.65 "Bricolage Grotesque",system-ui,sans-serif;background-color:var(--kagit);
+  background-image:linear-gradient(var(--cizgi) 1px,transparent 1px),linear-gradient(90deg,var(--cizgi) 1px,transparent 1px);background-size:28px 28px}
+.sar{max-width:720px;margin:0 auto;padding:0 20px 80px}
+.ust{display:flex;justify-content:space-between;align-items:center;padding:18px 0;font:600 .85rem "IBM Plex Mono",monospace}
+.ust a{text-decoration:none}.ust .ad{font:800 1.05rem "Bricolage Grotesque"}
+.etiket{font:600 .75rem "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--soluk);margin-top:40px}
+h1{font-size:clamp(2rem,5.4vw,3.2rem);line-height:1.02;letter-spacing:-.03em;margin:14px 0 18px}
+h1+p em{font-size:1.15rem;color:var(--soluk)}
+h2{font-size:1.6rem;letter-spacing:-.02em;margin:46px 0 10px;padding-top:12px;border-top:2px solid var(--murekkep)}
+a{color:inherit;text-decoration-color:var(--fosfor);text-decoration-thickness:3px;text-underline-offset:3px;word-break:break-word}
+strong{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--fosfor) 70%,transparent) 62%)}
+code{font:500 .86em "IBM Plex Mono",monospace;background:var(--kart);border:1px solid var(--cizgi);padding:1px 5px;border-radius:4px}
+blockquote{margin:22px 0;padding:14px 18px;border-left:6px solid var(--fosfor);background:var(--kart);border-radius:0 8px 8px 0}
+blockquote p{margin:0}
+.tablo{overflow-x:auto;margin:22px 0;border:2px solid var(--murekkep);border-radius:8px;background:var(--kart)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--cizgi)}th{font:600 .75rem "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--soluk)}
+li{margin:6px 0}
+.dil{display:inline-block;margin-top:6px;font:600 .8rem "IBM Plex Mono",monospace;border:2px solid var(--murekkep);border-radius:99px;padding:6px 12px;text-decoration:none}
+.son{margin-top:50px;padding:22px;border:2px solid var(--murekkep);border-radius:8px;background:var(--kart);box-shadow:5px 5px 0 var(--murekkep)}
+.son a{font-weight:800}
+.liste a{display:block;padding:20px;border:2px solid var(--murekkep);border-radius:8px;background:var(--kart);text-decoration:none;margin-top:16px;box-shadow:5px 5px 0 var(--murekkep)}
+.liste b{font-size:1.3rem;display:block}.liste span{color:var(--soluk);font-size:.9rem}</style></head>
+<body><div class="sar"><header class="ust"><a class="ad" href="/?dil=en">Ege</a><a href="/yazilar/">Writing</a></header>
+      <div class="etiket">2026-11-04 · 6 min read</div>
+      <a class="dil" href="../" hreflang="tr">Türkçe oku →</a><h1>I built an AI agent that checks its own code. After 1,026 runs, it was no better than not checking.</h1>
+<p><em>A small, honest experiment on &quot;LLM checks LLM&quot; — with every task, test and log open.</em></p>
+<p>Everyone building coding agents wants the same thing: an agent that doesn't just say &quot;done&quot;, but <em>proves</em> it. The obvious recipe is to have a second model check the first one's work. Write the tests separately, never show them to the coder, run them, send the failures back, repeat.</p>
+<p>I built exactly that during the Meta AI Developer Hackathon. The result surprised me. It's the reason this post exists.</p>
+<h2>The setup</h2>
+<p><strong>Usta</strong> (Turkish for &quot;master craftsman&quot;) is a coding agent for Turkish speakers. You give it a task in Turkish, by text or by voice. For example: &quot;write a function that validates a Turkish IBAN&quot;, or &quot;sum these invoice lines, Turkish number format, VAT at 1/10/20 %&quot;. Then:</p>
+<ol><li>An <strong>executor</strong> model writes and runs the code in an isolated, network-less workspace, using tool calls.</li><li><strong>In separate calls</strong>, a verifier model writes acceptance tests from the task text alone. It never sees the code, and the executor never sees the tests.</li><li>LLM-written tests can be wrong, so the verifier also writes a reference solution. Tests that the reference fails are dropped.</li><li>Failing tests go to an <strong>arbiter</strong> that enforces only what the task text clearly requires. Then they go back to the executor for up to three repair rounds. A round that breaks a previously passing test is rolled back.</li></ol>
+<p>The strongest version went further:</p>
+<ul><li>three independent test writers;</li><li>majority voting on which tests to keep;</li><li>mutation testing: the verifier writes 12–16 deliberately broken versions of the reference solution, and tests are added until they catch them.</li></ul>
+<p>By the end, the acceptance tests caught <strong>94% of these mutants</strong>. On paper, a very strong verifier.</p>
+<h2>How I measured it</h2>
+<p>The comparison was between three modes:</p>
+<ul><li><strong>(a)</strong> the executor alone,</li><li><strong>(b)</strong> the executor told to write and pass its own tests,</li><li><strong>(c)</strong> Usta: independent tests, arbiter, repair loop.</li></ul>
+<p>The tasks were 114 very hard, Turkey-specific coding tasks: tax IDs, IBAN checksums, invoice VAT, dates that slide past public holidays, Turkish number formats. Each task had 12–20 <strong>hidden tests</strong> that neither the executor nor Usta's test writer ever saw. Every task ran 3 times in every mode: <strong>1,026 runs</strong>, with zero infrastructure errors.</p>
+<h2>The result</h2>
+<div class="tablo"><table><thead><tr><th>Mode</th><th>Pass rate (95% CI)</th><th>&quot;Done&quot; verdicts that were actually correct</th></tr></thead><tbody><tr><td>(a) executor alone</td><td><strong>60.2%</strong> (52–68)</td><td>63%</td></tr><tr><td>(b) + its own tests</td><td>56.7% (49–64)</td><td>61%</td></tr><tr><td>(c) Usta</td><td>57.6% (49–65)</td><td>60%</td></tr></tbody></table></div>
+<p>Usta minus executor-alone: <strong>−2.6 points</strong> (95% CI −9.1 … +3.2). No significant difference, and the point estimate is slightly <em>negative</em>.</p>
+<p>The second column matters more than the first. When Usta said &quot;verified&quot;, it was right 60% of the time. When the executor simply said &quot;done&quot; on its own, it was right 63% of the time. <strong>The verification badge did not make the verdict more trustworthy.</strong></p>
+<p>The same held on two other task sets (157 and 34 tasks), with two different executors (Muse Spark and the open-weights Muse Glimmer 30B), across four versions of the verifier. No mode ever beat the executor alone significantly.</p>
+<h2>Why it didn't work</h2>
+<p>Here is one task, slightly simplified:</p>
+<blockquote><p><em>Write <code>topla(csv_path)</code> for an accounting office. Columns <code>tutar;adet;kdv_oran</code> (amount; quantity; VAT rate). Turkish number format. Empty quantity counts as 1… Return a dict with <code>toplam</code>, <code>kdv_toplam</code>, <code>bozuk_satir</code>.</em></p></blockquote>
+<p>Input: one line, amount 10.00, quantity 2, VAT 10%. What is <code>toplam</code> (the total)?</p>
+<ul><li>The executor said <strong>22.00</strong>: total <em>including</em> VAT. It gave this answer in all nine runs (three modes × three repeats).</li><li>In all three Usta runs, the acceptance tests (36 to 61 of them) passed on that code. They either expected 22.00 or never checked it, and Usta reported &quot;verified&quot;.</li><li>The hidden test expected <strong>20.00</strong>: total <em>before</em> VAT, with VAT reported separately in <code>kdv_toplam</code>.</li></ul>
+<p>The task text never says which one it means. There was no code bug here. The two readings of an ambiguous specification simply split, and the model writing the code and the model writing the checks landed on the same side.</p>
+<p>There were 16 tasks where every run of the executor alone and every Usta run failed the hidden tests, while Usta's own tests passed every time. Not all of them are ambiguities. One, for example, is a plain type bug, mixing <code>float</code> and <code>Decimal</code>, that the acceptance tests never exercised. But the same shape kept recurring: the checks did not probe the thing that went wrong.</p>
+<p>That is the pattern behind most failures:</p>
+<ol><li><strong>The errors were mostly about reading the task, not writing the code.</strong> Often the executor wrote correct code for a slightly different reading of the task.</li><li><strong>A verifier from the same model family shares those readings.</strong> Writing tests independently, in separate calls, does not make them independent in <em>judgment</em>. The coder and the checker read the task the same way, so they agree, and agreement looks like verification.</li><li><strong>Mutation scores measure the wrong thing.</strong> Catching 94% of mutants means the tests are sensitive to <em>small code changes</em>. They are blind to <em>what the code should do in the first place</em>.</li><li><strong>So coverage, not repair, is the bottleneck.</strong> A repair round ran in only 38 of 342 Usta runs. When the tests don't probe a requirement, the loop has nothing to fix.</li></ol>
+<p>There is an uncomfortable corollary. In the example above, the hidden test came from the same model too, in yet another call. Who is &quot;right&quot; about the VAT is itself a judgment. Part of what I measured as executor failure is really ambiguity in the benchmark. All three judges came from one model family, so the absolute pass rates are probably optimistic, and the true picture is noisier than the table suggests.</p>
+<h2>What I'd take away</h2>
+<ul><li><strong>&quot;A second LLM checks the first&quot; is not verification, when both share a model family and a reading of the task.</strong> It can still catch crashes and small bugs, but it won't catch the mistakes that matter most here.</li><li><strong>If you build such a loop, measure it against hidden tests.</strong> Measure with and without the loop, on the same tasks, with repeated runs. Without that, a green badge is a feeling.</li><li><strong>The more promising directions are about the specification, not the code:</strong> asking the user when a requirement is ambiguous (&quot;total before or after VAT?&quot;), verifiers from different model families, and tests derived from real examples rather than from the same task text.</li></ul>
+<h2>What Usta is good for</h2>
+<p>It still works end to end: Turkish voice or text, then code, then tests, then an evidence screen showing which tests passed in which round, which were not enforced, and why. That record is useful. It just isn't a guarantee, and the README says so.</p>
+<p>Everything is open: code, all three task sets with hidden tests, every run's log, and the analysis scripts. The whole project cost about $31 in API credit.</p>
+<p><strong>Repo:</strong> <a href="https://github.com/birtohum/usta">https://github.com/birtohum/usta</a> · <strong>Demo (3 min):</strong> <a href="https://www.youtube.com/watch?v=f9RjvBsFDiU">https://www.youtube.com/watch?v=f9RjvBsFDiU</a></p>
+<p><em>If you've seen a verifier loop that <strong>does</strong> beat the executor alone on hidden tests, I'd genuinely like to see the numbers.</em></p><div class="son">The project page, with screenshots and numbers: <a href="/?dil=en#proje/usta">Usta on my portfolio →</a></div></div></body></html>

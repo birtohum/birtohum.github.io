@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kendi kodunu denetleyen bir yapay zekâ ajanı yaptım. 1.026 denemenin sonunda, denetlemeyenden daha iyi değildi.</title><meta name="description" content="&quot;Yapay zekâ yapay zekâyı denetlesin&quot; fikri üzerine küçük ve dürüst bir deney. Bütün görevler, testler ve kayıtlar açık.">
+<link rel="canonical" href="https://birtohum.github.io/yazilar/usta/">
+<meta property="og:type" content="article"><meta property="og:title" content="Kendi kodunu denetleyen bir yapay zekâ ajanı yaptım. 1.026 denemenin sonunda, denetlemeyenden daha iyi değildi."><meta property="og:description" content="&quot;Yapay zekâ yapay zekâyı denetlesin&quot; fikri üzerine küçük ve dürüst bir deney. Bütün görevler, testler ve kayıtlar açık.">
+<meta property="og:url" content="https://birtohum.github.io/yazilar/usta/"><meta property="og:image" content="https://birtohum.github.io/og/usta.png"><meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"><style>:root{--kagit:#f6f3ea;--cizgi:rgba(20,20,20,.07);--murekkep:#141414;--soluk:#5b5850;--kart:#fffdf7;--fosfor:#ffe14d;--mavi:#2050c8}
+@media (prefers-color-scheme:dark){:root{--kagit:#121210;--cizgi:rgba(255,255,255,.05);--murekkep:#f2efe6;--soluk:#a9a59a;--kart:#1b1a17;--fosfor:#e8c62e;--mavi:#8aa8ff}}
+*{box-sizing:border-box}
+body{margin:0;color:var(--murekkep);font:18px/1.65 "Bricolage Grotesque",system-ui,sans-serif;background-color:var(--kagit);
+  background-image:linear-gradient(var(--cizgi) 1px,transparent 1px),linear-gradient(90deg,var(--cizgi) 1px,transparent 1px);background-size:28px 28px}
+.sar{max-width:720px;margin:0 auto;padding:0 20px 80px}
+.ust{display:flex;justify-content:space-between;align-items:center;padding:18px 0;font:600 .85rem "IBM Plex Mono",monospace}
+.ust a{text-decoration:none}.ust .ad{font:800 1.05rem "Bricolage Grotesque"}
+.etiket{font:600 .75rem "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--soluk);margin-top:40px}
+h1{font-size:clamp(2rem,5.4vw,3.2rem);line-height:1.02;letter-spacing:-.03em;margin:14px 0 18px}
+h1+p em{font-size:1.15rem;color:var(--soluk)}
+h2{font-size:1.6rem;letter-spacing:-.02em;margin:46px 0 10px;padding-top:12px;border-top:2px solid var(--murekkep)}
+a{color:inherit;text-decoration-color:var(--fosfor);text-decoration-thickness:3px;text-underline-offset:3px;word-break:break-word}
+strong{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--fosfor) 70%,transparent) 62%)}
+code{font:500 .86em "IBM Plex Mono",monospace;background:var(--kart);border:1px solid var(--cizgi);padding:1px 5px;border-radius:4px}
+blockquote{margin:22px 0;padding:14px 18px;border-left:6px solid var(--fosfor);background:var(--kart);border-radius:0 8px 8px 0}
+blockquote p{margin:0}
+.tablo{overflow-x:auto;margin:22px 0;border:2px solid var(--murekkep);border-radius:8px;background:var(--kart)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--cizgi)}th{font:600 .75rem "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--soluk)}
+li{margin:6px 0}
+.dil{display:inline-block;margin-top:6px;font:600 .8rem "IBM Plex Mono",monospace;border:2px solid var(--murekkep);border-radius:99px;padding:6px 12px;text-decoration:none}
+.son{margin-top:50px;padding:22px;border:2px solid var(--murekkep);border-radius:8px;background:var(--kart);box-shadow:5px 5px 0 var(--murekkep)}
+.son a{font-weight:800}
+.liste a{display:block;padding:20px;border:2px solid var(--murekkep);border-radius:8px;background:var(--kart);text-decoration:none;margin-top:16px;box-shadow:5px 5px 0 var(--murekkep)}
+.liste b{font-size:1.3rem;display:block}.liste span{color:var(--soluk);font-size:.9rem}</style></head>
+<body><div class="sar"><header class="ust"><a class="ad" href="/">Ege</a><a href="/yazilar/">Yazılar</a></header>
+      <div class="etiket">2026-11-04 · 5 dk okuma</div>
+      <a class="dil" href="en/" hreflang="en">Read in English →</a><h1>Kendi kodunu denetleyen bir yapay zekâ ajanı yaptım. 1.026 denemenin sonunda, denetlemeyenden daha iyi değildi.</h1>
+<p><em>&quot;Yapay zekâ yapay zekâyı denetlesin&quot; fikri üzerine küçük ve dürüst bir deney. Bütün görevler, testler ve kayıtlar açık.</em></p>
+<p>Kodlama ajanı yapan herkes aynı şeyi istiyor: &quot;bitti&quot; demekle kalmayan, bittiğini <em>kanıtlayan</em> bir ajan. Akla gelen ilk tarif de belli: ikinci bir model birincinin işini denetlesin. Testleri ayrı yazsın, kodu yazana hiç göstermesin, çalıştırsın, kalanları geri göndersin, tekrar etsin.</p>
+<p>Meta AI Developer Hackathon'da tam olarak bunu yaptım. Sonuç beni şaşırttı ve bu yazı o yüzden var.</p>
+<h2>Kurulum</h2>
+<p><strong>Usta</strong>, Türkçe konuşanlar için bir kodlama ajanı. Görevi Türkçe veriyorsun, yazıyla ya da sesle. Örneğin &quot;Türk IBAN'ını doğrulayan bir işlev yaz&quot; ya da &quot;şu fatura satırlarını topla; Türkçe sayı biçimi, KDV %1/10/20&quot;. Sonra:</p>
+<ol><li>Bir <strong>yürütücü</strong> model, kodu internetsiz, kapalı bir çalışma alanında araç çağrılarıyla yazıp çalıştırıyor.</li><li>Bir doğrulayıcı model, <strong>ayrı çağrılarda</strong> ve yalnızca görev metnine bakarak kabul testleri yazıyor. Kodu hiç görmüyor; yürütücü de testleri hiç görmüyor.</li><li>Yapay zekânın yazdığı testler de yanlış olabilir. Bu yüzden doğrulayıcı bir de referans çözüm yazıyor; referansın geçemediği testler atılıyor.</li><li>Kalan testler, yalnızca görev metninin açıkça istediği şeyleri dayatan bir <strong>hakeme</strong> gidiyor. Sonra hata çıktısı en fazla üç düzeltme turu için yürütücüye geri dönüyor. Daha önce geçen bir testi bozan tur geri alınıyor.</li></ol>
+<p>En güçlü sürüm daha da ileri gitti:</p>
+<ul><li>birbirinden bağımsız üç test yazarı;</li><li>hangi testin kalacağına çoğunluk oyuyla karar;</li><li>mutasyon testi: doğrulayıcı, referans çözümün bilerek bozulmuş 12–16 sürümünü yazıyor ve testler bunları yakalayana kadar ekleniyor.</li></ul>
+<p>Sonunda kabul testleri bu mutantların <strong>%94'ünü yakalıyordu</strong>. Kâğıt üzerinde çok güçlü bir doğrulayıcı.</p>
+<h2>Nasıl ölçtüm</h2>
+<p>Üç kipi karşılaştırdım:</p>
+<ul><li><strong>(a)</strong> yürütücü tek başına,</li><li><strong>(b)</strong> yürütücüye &quot;kendi testlerini yaz ve geçir&quot; denmiş hali,</li><li><strong>(c)</strong> Usta: bağımsız testler, hakem, düzeltme döngüsü.</li></ul>
+<p>Görevler, Türkiye'ye özgü 114 çok zor kodlama göreviydi: vergi kimlik numaraları, IBAN sağlama haneleri, faturada KDV, resmî tatile denk gelip kayan tarihler, Türkçe sayı biçimleri. Her görevin, ne yürütücünün ne de Usta'nın test yazarının gördüğü 12–20 <strong>gizli testi</strong> vardı. Her görev her kipte 3 kez koşuldu: <strong>1.026 koşu</strong>, sıfır altyapı hatası.</p>
+<h2>Sonuç</h2>
+<div class="tablo"><table><thead><tr><th>Kip</th><th>Geçme oranı (%95 güven aralığı)</th><th>&quot;Bitti&quot; hükümlerinden gerçekten doğru çıkanlar</th></tr></thead><tbody><tr><td>(a) yürütücü tek başına</td><td><strong>%60,2</strong> (52–68)</td><td>%63</td></tr><tr><td>(b) + kendi testleri</td><td>%56,7 (49–64)</td><td>%61</td></tr><tr><td>(c) Usta</td><td>%57,6 (49–65)</td><td>%60</td></tr></tbody></table></div>
+<p>Usta eksi tek başına: <strong>−2,6 puan</strong> (%95 güven aralığı −9,1 … +3,2). Anlamlı bir fark yok; nokta tahmini hatta biraz <em>eksi</em>.</p>
+<p>İkinci sütun birinciden daha önemli. Usta &quot;doğrulandı&quot; dediğinde %60 oranında haklıydı. Yürütücü kendi kendine &quot;bitti&quot; dediğinde %63 oranında haklıydı. <strong>Doğrulama rozeti, hükmü daha güvenilir yapmadı.</strong></p>
+<p>Aynı şey iki başka görev setinde de (157 ve 34 görev), iki farklı yürütücüyle (Muse Spark ve açık ağırlıklı Muse Glimmer 30B), doğrulayıcının dört farklı sürümünde de geçerliydi. Hiçbir kip, yürütücüyü tek başına anlamlı biçimde geçemedi.</p>
+<h2>Neden işe yaramadı</h2>
+<p>Biraz sadeleştirilmiş bir görev:</p>
+<blockquote><p><em>Bir muhasebe ofisi için <code>topla(csv_yolu)</code> yaz. Sütunlar <code>tutar;adet;kdv_oran</code>. Türkçe sayı biçimi. Boş adet 1 sayılır… Sonuç sözlüğü <code>toplam</code>, <code>kdv_toplam</code> ve <code>bozuk_satir</code> içersin.</em></p></blockquote>
+<p>Girdi: tek satır, tutar 10,00, adet 2, KDV %10. <code>toplam</code> kaç?</p>
+<ul><li>Yürütücü <strong>22,00</strong> dedi: KDV <em>dahil</em> toplam. Dokuz koşunun dokuzunda da (üç kip × üç tekrar) bu cevabı verdi.</li><li>Üç Usta koşusunun üçünde de kabul testleri (36 ile 61 arası) bu kodla geçti. Ya 22,00 bekliyorlardı ya da bunu hiç denemediler; Usta da &quot;doğrulandı&quot; dedi.</li><li>Gizli test <strong>20,00</strong> bekliyordu: KDV <em>hariç</em> toplam; KDV ayrıca <code>kdv_toplam</code>'da.</li></ul>
+<p>Görev metni hangisini kastettiğini hiç söylemiyor. Burada bir kod hatası yoktu. Belirsiz bir tarifin iki okunuşu ayrıştı ve kodu yazan model ile denetimi yazan model aynı tarafa düştü.</p>
+<p>Yürütücünün tek başına bütün koşularının ve Usta'nın bütün koşularının gizli testte kaldığı, ama Usta'nın kendi testlerinin her seferinde geçtiği 16 görev vardı. Hepsi belirsizlik değil. Örneğin biri, kabul testlerinin hiç denemediği düpedüz bir tür hatası (<code>float</code> ile <code>Decimal</code> karışıyor). Ama aynı şekil tekrar tekrar çıktı: denetimler, yanlış giden şeyi hiç yoklamıyordu.</p>
+<p>Başarısızlıkların çoğunun ardındaki örüntü bu:</p>
+<ol><li><strong>Hatalar çoğunlukla kodu yazmakla değil, görevi okumakla ilgiliydi.</strong> Yürütücü çoğu zaman görevin biraz farklı bir okunuşu için doğru kod yazdı.</li><li><strong>Aynı model ailesinden gelen bir doğrulayıcı aynı okunuşları paylaşıyor.</strong> Testleri ayrı çağrılarda bağımsız yazmak, onları <em>yargıda</em> bağımsız yapmıyor. Kodu yazan da denetleyen de görevi aynı okuyor; anlaşıyorlar ve bu anlaşma doğrulama gibi görünüyor.</li><li><strong>Mutasyon puanları yanlış şeyi ölçüyor.</strong> Mutantların %94'ünü yakalamak, testlerin <em>küçük kod değişikliklerine</em> duyarlı olduğunu gösteriyor. Kodun <em>aslında ne yapması gerektiğine</em> ise körler.</li><li><strong>Yani darboğaz düzeltme değil, kapsama.</strong> 342 Usta koşusunun yalnızca 38'inde bir düzeltme turu çalıştı. Testler bir gereksinimi yoklamıyorsa, döngünün düzeltecek bir şeyi olmuyor.</li></ol>
+<p>Bunun rahatsız edici bir sonucu da var. Yukarıdaki örnekte gizli test de aynı modelden, başka bir çağrıda geldi. KDV konusunda kimin &quot;haklı&quot; olduğu da bir yargı. Yürütücü hatası diye ölçtüğüm şeyin bir kısmı aslında ölçüt setinin kendi belirsizliği. Üç hakem de aynı model ailesinden olduğu için mutlak geçme oranları büyük ihtimalle iyimser; gerçek tablo, tablonun gösterdiğinden daha gürültülü.</p>
+<h2>Buradan ne çıkarırdım</h2>
+<ul><li><strong>İki model aynı aileden geliyor ve görevi aynı okuyorsa, &quot;ikinci model birinciyi denetlesin&quot; doğrulama değildir.</strong> Çökmeleri ve küçük hataları yine yakalayabilir, ama burada en çok önemli olan hataları yakalamaz.</li><li><strong>Böyle bir döngü kuruyorsan, gizli testlere karşı ölç.</strong> Döngülü ve döngüsüz, aynı görevlerde, tekrarlı koşularla ölç. Bu olmadan yeşil bir rozet sadece bir histir.</li><li><strong>Daha umut verici yönler kodla değil, tarifle ilgili:</strong> bir gereksinim belirsizse kullanıcıya sormak (&quot;toplam KDV dahil mi, hariç mi?&quot;), farklı model ailelerinden doğrulayıcılar, ve aynı görev metninden değil gerçek örneklerden türetilen testler.</li></ul>
+<h2>Usta ne işe yarıyor</h2>
+<p>Baştan sona hâlâ çalışıyor: Türkçe ses ya da yazı, sonra kod, sonra testler, sonra hangi testin hangi turda geçtiğini, hangisinin dayatılmadığını ve nedenini gösteren bir kanıt ekranı. Bu kayıt işe yarar. Sadece bir garanti değil ve README de bunu söylüyor.</p>
+<p>Her şey açık: kod, gizli testleriyle üç görev setinin hepsi, her koşunun kaydı ve analiz betikleri. Projenin bütün API harcaması yaklaşık 31 $.</p>
+<p><strong>Kod:</strong> <a href="https://github.com/birtohum/usta">https://github.com/birtohum/usta</a> · <strong>Demo (3 dk):</strong> <a href="https://www.youtube.com/watch?v=f9RjvBsFDiU">https://www.youtube.com/watch?v=f9RjvBsFDiU</a></p>
+<p><em>Gizli testlerde yürütücüyü tek başına gerçekten <strong>geçen</strong> bir doğrulama döngüsü gördüysen, sayılarını görmeyi çok isterim.</em></p><div class="son">Projenin hikâyesi, ekran görüntüleri ve rakamları: <a href="/#proje/usta">Usta'nın portfolyo sayfası →</a></div></div></body></html>

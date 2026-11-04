@@ -7,7 +7,12 @@
 <meta name="description" content="19 proje, 5 canlı veri sitesi: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
 <meta property="og:title" content="Ege — 19 proje, 5 canlı site">
 <meta property="og:description" content="Vergi kanunu kaç kez değişti? Bugün nefes almak kaç sigara? Yapay zekâ yapay zekâyı denetleyebilir mi? Cevaplar veriyle.">
-<meta property="og:image" content="gorsel/mevzuat-haritasi.webp">
+<meta property="og:image" content="https://birtohum.github.io/og/ana.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://birtohum.github.io/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://birtohum.github.io/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -39,6 +44,8 @@ a{color:inherit}
 .ust nav{display:flex;gap:18px}
 .ust nav a{text-decoration:none;color:var(--soluk)}
 .ust nav a:hover{color:var(--murekkep)}
+.dil-dugme{font:600 .78rem "IBM Plex Mono",monospace;border:2px solid var(--kenar);border-radius:99px;padding:6px 11px;text-decoration:none;margin-left:14px;min-height:36px;display:inline-flex;align-items:center}
+.ust nav{margin-left:auto}
 @media (max-width:640px){.ust nav{display:none}}
 
 /* hero */
@@ -168,6 +175,11 @@ section{padding:80px 0 0}
 .ilke p{margin:0;color:var(--soluk)}
 @media (max-width:760px){.ilke{grid-template-columns:1fr}}
 
+.yazi-afis{display:grid;gap:10px;text-decoration:none;padding:clamp(22px,4vw,36px);border:2px solid var(--kenar);border-radius:6px;background:var(--fosfor);color:#141414;box-shadow:6px 6px 0 var(--kenar);transition:transform .15s,box-shadow .15s}
+.yazi-afis:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--kenar)}
+.yazi-afis .etiket{color:#141414;opacity:.7}
+.yazi-afis b{font-size:clamp(1.4rem,3.2vw,2.2rem);line-height:1.1;letter-spacing:-.02em;max-width:30ch}
+.yazi-afis .oku{font-weight:800}
 footer{margin:90px 0 0;padding:44px 0 60px;border-top:2px solid var(--kenar)}
 footer .buyuk{font-size:clamp(2rem,5vw,3.6rem);font-weight:800;letter-spacing:-.035em;line-height:1;margin:0 0 20px}
 footer .linkler{display:flex;gap:12px;flex-wrap:wrap}
@@ -180,13 +192,19 @@ footer .kucuk{margin-top:30px;font-size:.8rem;color:var(--soluk)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.gorun{opacity:1;transform:none}}
 :focus-visible{outline:3px solid var(--mavi);outline-offset:3px}
 </style>
-<link rel="stylesheet" href="hikaye.css?v=3">
+<script>
+// Ziyaretçi sayacı (GoatCounter: çerez yok, kişisel veri yok). Hesap açılınca kodu buraya yaz, ör. "birtohum".
+const SAYAC = "";
+if (SAYAC) { const g = document.createElement("script"); g.async = true; g.src = "//gc.zgo.at/count.js"; g.dataset.goatcounter = `https://${SAYAC}.goatcounter.com/count`; document.head.append(g); }
+const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yol, title: baslik, event: true}); } catch (_) {} };
+</script>
+<link rel="stylesheet" href="hikaye.css?v=5">
 </head>
 <body>
 <div class="sar">
   <header class="ust">
     <a class="ad" href="#" id="ad">Ege</a>
-    <nav class="mono"><a href="#canli">Canlı siteler</a><a href="#projeler">Projeler</a><a href="#yaramayan">İşe yaramayanlar</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a></nav>
+    <nav class="mono"><a href="#canli">Canlı siteler</a><a href="#projeler">Projeler</a><a href="#yaramayan">İşe yaramayanlar</a><a href="yazilar/">Yazılar</a><a href="cv/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a></nav>
   </header>
 
   <div class="hero">
@@ -234,9 +252,9 @@ footer .kucuk{margin-top:30px;font-size:.8rem;color:var(--soluk)}
       <a class="site s-hava gorun" href="https://birtohum.github.io/kac-sigara/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Kaç Sigara?</span><span class="canli-n">Her gün</span></div>
-          <h3>= 0,7 <small>sigara</small></h3>
-          <div class="sigara" aria-hidden="true"><i class="yarim"></i></div>
-          <p class="kanca">3 Kasım'da İstanbul'da nefes almak. Bakanlığın 210 istasyonundan il il PM2.5, kaba ama akılda kalan bir benzetmeyle.</p>
+          <h3 id="hava-sayi">= 0,7 <small>sigara</small></h3>
+          <div class="sigara" id="hava-sigara" aria-hidden="true"><i class="yarim"></i></div>
+          <p class="kanca"><span id="hava-gun">3 Kasım'da</span> İstanbul'da nefes almak. Bakanlığın 210 istasyonundan il il PM2.5, kaba ama akılda kalan bir benzetmeyle.</p>
         </div>
         <div class="resim"><img src="gorsel/kac-sigara.webp" alt="Kaç Sigara sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
@@ -245,11 +263,12 @@ footer .kucuk{margin-top:30px;font-size:.8rem;color:var(--soluk)}
         <div class="ic">
           <div class="ust-satir"><span>Sepet Enflasyonu</span><span class="canli-n">Her gün</span></div>
           <h3>Aynı sepet bugün kaç lira?</h3>
-          <div class="fis" aria-hidden="true">
+          <div class="fis" id="fis" aria-hidden="true">
+            <div class="mono" id="fis-tarih" style="justify-content:center;opacity:.6">3 KASIM 2026 · ŞOK</div>
             <div><span>SÜT, PEYNİR, YUMURTA</span><span>2.177,46</span></div>
             <div><span>EKMEK VE TAHILLAR</span><span>778,45</span></div>
             <div><span>… 83 ÜRÜN</span><span></span></div>
-            <div class="top"><span>TOPLAM</span><span>11.607,79 ₺</span></div>
+            <div class="top"><span>TOPLAM</span><span id="fis-toplam">11.607,79 ₺</span></div>
           </div>
           <p class="kanca">Kendi sepetini kur, kendi enflasyonunu TÜFE'yle yan yana gör.</p>
         </div>
@@ -292,6 +311,14 @@ footer .kucuk{margin-top:30px;font-size:.8rem;color:var(--soluk)}
   </section>
 
   <section>
+    <a class="yazi-afis gorun" href="yazilar/usta/">
+      <span class="etiket">Yazı · 5 dk okuma · Türkçe ve İngilizce</span>
+      <b>Kendi kodunu denetleyen bir yapay zekâ ajanı yaptım. 1.026 denemenin sonunda, denetlemeyenden daha iyi değildi.</b>
+      <span class="oku">Oku →</span>
+    </a>
+  </section>
+
+  <section>
     <div class="bas gorun"><span class="no">04</span><h2>Nasıl çalışıyorum</h2></div>
     <div class="ilke gorun">
       <div><b>Önce soru, sonra kod.</b><p>Her proje tek bir cümleyle başlıyor: "Bugün nefes almak kaç sigara?" Cevaplamayan özellik eklenmiyor.</p></div>
@@ -305,60 +332,20 @@ footer .kucuk{margin-top:30px;font-size:.8rem;color:var(--soluk)}
     <div class="linkler">
       <a class="ana" href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn'den yaz ↗</a>
       <a href="https://github.com/birtohum" target="_blank" rel="noopener">GitHub · birtohum ↗</a>
+      <a href="cv/" id="f-cv">CV · PDF</a>
+      <a href="yazilar/" id="f-yazi">Yazılar</a>
       <a href="https://birtohum.github.io/mevzuat-haritasi/" target="_blank" rel="noopener">En sevdiğim: Mevzuat Haritası ↗</a>
     </div>
     <p class="kucuk mono">Bu sayfa ve projelerin çoğu yapay zekâ destekli geliştirildi (Claude Code). Sayılar projelerin kendi kayıtlarından alındı.</p>
   </footer>
 </div>
 
+<script src="veri.js?v=5"></script>
+<script src="en.js?v=5"></script>
 <script>
 "use strict";
-const PROJELER = [
-  {t: "yz", em: "🔨", ad: "Usta", ne: "Türkçe görev verilen, kendi kodunu bağımsız testlerle denetleyen kodlama ajanı. Meta AI Developer Hackathon'a gönderildi.",
-   sonuc: "<b>1.026 koşu, gizli testlerle:</b> tek başına model %60, Usta %58. Denetim döngüsü kazanç sağlamadı; nedeni ölçüldü ve yazıldı.",
-   damga: ["Kazanç yok", ""], alt: ["Python", "Meta Muse", "WSL korumalı alan"], link: [["Kod", "https://github.com/birtohum/usta"], ["Demo", "https://www.youtube.com/watch?v=f9RjvBsFDiU"]]},
-  {t: "yz", em: "🌱", ad: "Tohum", ne: "Sıfırdan küçük bir Türkçe dil modeli eğitip, sonra açık bir modeli Türkçe asistana dönüştürme denemesi.",
-   sonuc: "<b>4,8M parametre</b> sıfırdan (RTX 3060, 21 dk). Qwen3-8B + LoRA, 30 soruluk testte resmi modeli <b>10–2</b> geçti. 14B'de bağımsız hakem 7,79'a 7,37 (aralıklar çakışıyor).",
-   damga: ["10–2", "iyi"], alt: ["PyTorch", "LoRA", "H100"], link: []},
-  {t: "yz", em: "📉", ad: "Kripto RL botu", ne: "Gerçek para kullanmadan, geçmiş verilerle pekiştirmeli öğrenen bir alım-satım ajanı.",
-   sonuc: "Walk-forward test, 4 dönem: <b>4'ünde de</b> al-ve-tut stratejisini yenemedi. Tutarlı bir başarısızlık, şans değil.",
-   damga: ["Yenemedi", ""], alt: ["Python", "RL", "Backtest"], link: []},
-  {t: "yz", em: "📰", ad: "Gazete Özeti", ne: "Her gün Resmî Gazete'yi sade Türkçeyle özetler; her iddia gazetedeki birebir alıntıyla eşleştirilir.",
-   sonuc: "4 günde 37 metin: 180 iddianın 172'si yayımlandı, elle denetlenen 25'in 25'i doğru. Günde yaklaşık 0,04 $.",
-   damga: ["25/25", "iyi"], alt: ["Python", "OCR", "Doğrulama"], link: [["Kod", "https://github.com/birtohum/gazete-ozeti"]]},
-  {t: "urun", em: "💬", ad: "Yorum Yanıtlayıcı", ne: "Esnafın müşteri yorumlarına, yalnızca işletmenin verdiği bilgilere dayanan yanıt taslakları yazar.",
-   sonuc: "Hiç görülmemiş 15 kuaför yorumunun 15'i elle kabul edildi. Uydurma söz, sayı ya da telefon kodla yakalanıyor.",
-   damga: ["15/15", "iyi"], alt: ["Python", "Kural + model"], link: [["Kod", "https://github.com/birtohum/yorum-yanitlayici"]]},
-  {t: "urun", em: "👕", ad: "Tişört Atölyesi", ne: "Etsy'de tişört satan eniştem için: Türkçe fikir yaz, iki tasarım gelsin, koyu tişört sürümü ve Etsy yazısı tek tuşla.",
-   sonuc: "70 yaşında biri de kullanabilsin diye her ekranda tek soru, tek büyük düğme. Beklerken canlı aşamalar ve ipuçları.",
-   damga: ["Kullanımda", "notr"], alt: ["Python", "Görsel üretim", "Erişilebilirlik"], link: [["Kod", "https://github.com/birtohum/tisort-bulteni"]]},
-  {t: "urun", em: "🎲", ad: "Bizim Masa", ne: "Annem ve babam için aile oyun salonu: şifresiz, büyük yazılı, her telefon kendi. Okey yolda.",
-   sonuc: "<b>13'ten fazla oyun:</b> Kızma Birader, Tombala, Sudoku, Bir Kelime Bir İşlem, Atasözü… Sıra sırayla ya da canlı, bota karşı da.",
-   damga: ["Ailede", "iyi"], alt: ["React Native", "Expo", "Firebase"], link: []},
-  {t: "urun", em: "🎙️", ad: "Seslendir.io", ne: "Çok oyunculu \"kör dublaj\" parti oyunu. Herkes kendi repliğini başkalarını duymadan kaydeder, sonra dublaj birlikte izlenir.",
-   sonuc: "Gerçek oyuncularla yayındaydı: kendi sunucusunda, sıralama tablosu ve profillerle. <b>283 commit.</b> Şu an durdurulmuş.",
-   damga: ["Durduruldu", "notr"], alt: ["Next.js", "VPS", "Ses kaydı"], link: []},
-  {t: "urun", em: "🤝", ad: "Kaynaş", ne: "Arkadaş edinmekte zorlanan 15–24 yaş arası gençleri ortak ilgi alanları üzerinden buluşturan platform.",
-   sonuc: "Fotoğraf yok, çizim avatar; 18 yaş altına veli onayı ve veli paneli; yalnızca arkadaşlar arası mesaj. Kurulum aşamasında.",
-   damga: ["Prototip", "notr"], alt: ["Next.js", "Supabase", "Güvenlik"], link: []},
-  {t: "urun", em: "🏪", ad: "Mahalle Site", ne: "Mahalledeki esnafa tek sayfalık, hızlı site. Önizleme hazırlanıp işletmeye gönderiliyor; \"evet\" derse yayına alınıyor.",
-   sonuc: "Cloudflare Pages'te ücretsiz yayın; müşteri takibi ve teklif süreciyle birlikte.",
-   damga: ["Yayında", "iyi"], alt: ["HTML/CSS", "Cloudflare"], link: [["Örnek", "https://mahallesite.pages.dev/kafe/"]]},
-  {t: "urun", em: "🖥️", ad: "S.", ne: "Görevi yaz, arkana yaslan: bilgisayardaki Claude Code'u görev sonuna kadar yürüten masaüstü uygulaması.",
-   sonuc: "Kurulum dosyası olan Windows uygulaması, <b>149 commit.</b> Görev öncesi fikir danışmak için sohbet ekranı.",
-   damga: ["Kurulabilir", "notr"], alt: ["Electron", "Node.js"], link: []},
-  {t: "oyun", em: "🚚", ad: "Zabıta Geliyor!", ne: "Tek başına ya da arkadaşlarla oynanan, seyyar tezgâhlı kaos oyunu. Herkesin kendi arabası, ortak ya da rakip günlük kira hedefi.",
-   sonuc: "Godot ile erken prototip. Sıfır bütçe: yalnızca kalıcı ücretsiz araçlar.",
-   damga: ["Prototip", "notr"], alt: ["Godot", "GDScript"], link: []},
-  {t: "oyun", em: "🎯", ad: "DDNet Ödül", ne: "DDNet oyunu için kendi istemcim: sakin ekran, ödüllendirici geri bildirim, kavgada yol gösterme.",
-   sonuc: "C++ istemci kodunda yeni bileşen. Kural net: <b>hile yok</b>; otomatik nişan ya da vuruş yok, yalnızca görsel ve sesli bilgi.",
-   damga: ["Hile yok", "iyi"], alt: ["C++", "CMake"], link: []},
-  {t: "oyun", em: "🎧", ad: "Hardstyle Studio", ne: "Bir şarkıyı kendi yapısına uyan bir hardstyle versiyonuna çevirir: nakaratlar drop olur, kick'ler vuruşa ve akorlara kilitlenir.",
-   sonuc: "Demucs ile kanal ayrıştırma ve vuruş takibi; sonuç stem ve MIDI olarak DAW'a aktarılabiliyor.",
-   damga: ["Çalışıyor", "iyi"], alt: ["Python", "PyTorch", "Ses"], link: []},
-];
 const HEPSI = PROJELER;
-const TURLER = [["hepsi", "Hepsi"], ["yz", "Yapay zekâ"], ["urun", "İnsanlar için"], ["oyun", "Oyun ve müzik"]];
+const TURLER = [["hepsi", T("Hepsi", "All")], ["yz", T("Yapay zekâ", "AI")], ["urun", T("İnsanlar için", "For people")], ["oyun", T("Oyun ve müzik", "Games & music")]];
 
 function el(etiket, ozellik = {}, ...cocuk) {
   const e = document.createElement(etiket);
@@ -388,13 +375,13 @@ filtre.addEventListener("click", e => {
 
 // dönen soru
 const SORULAR = [
-  ["Vergi kanunu 20 yılda kaç kez değişti?", "https://birtohum.github.io/mevzuat-haritasi/"],
-  ["Bugün İstanbul'da nefes almak kaç sigara?", "https://birtohum.github.io/kac-sigara/"],
-  ["Meclis'te \"enflasyon\" en çok hangi yıl konuşuldu?", "https://birtohum.github.io/meclisin-dili/"],
-  ["Aynı market sepeti bugün kaç lira?", "https://birtohum.github.io/sepet-enflasyonu/"],
-  ["500T otobüsü planına ne kadar uyuyor?", "https://birtohum.github.io/iett-dakiklik/"],
-  ["Yapay zekâ başka bir yapay zekânın kodunu denetleyebilir mi?", "#yaramayan"],
-  ["Doğduğun gün Resmî Gazete'de ne yayımlandı?", "https://birtohum.github.io/mevzuat-haritasi/"],
+  [T("Vergi kanunu 20 yılda kaç kez değişti?", "How many times did the tax law change in 20 years?"), "https://birtohum.github.io/mevzuat-haritasi/"],
+  [T("Bugün İstanbul'da nefes almak kaç sigara?", "How many cigarettes is breathing in Istanbul today?"), "https://birtohum.github.io/kac-sigara/"],
+  [T("Meclis'te \"enflasyon\" en çok hangi yıl konuşuldu?", "In which year did Parliament talk most about \"inflation\"?"), "https://birtohum.github.io/meclisin-dili/"],
+  [T("Aynı market sepeti bugün kaç lira?", "What does the same grocery basket cost today?"), "https://birtohum.github.io/sepet-enflasyonu/"],
+  [T("500T otobüsü planına ne kadar uyuyor?", "How closely does the 500T bus keep to its timetable?"), "https://birtohum.github.io/iett-dakiklik/"],
+  [T("Yapay zekâ başka bir yapay zekânın kodunu denetleyebilir mi?", "Can one AI check another AI's code?"), "#yaramayan"],
+  [T("Doğduğun gün Resmî Gazete'de ne yayımlandı?", "What was in the Official Gazette on the day you were born?"), "https://birtohum.github.io/mevzuat-haritasi/"],
 ];
 const azHareket = matchMedia("(prefers-reduced-motion: reduce)").matches;
 let si = 0;
@@ -423,7 +410,7 @@ if (!azHareket) {
 }
 
 // sayaçlar ve görünürlük
-const bicim = n => n.toLocaleString("tr-TR");
+const bicim = n => n.toLocaleString(T("tr-TR", "en-GB"));
 const gozcu = new IntersectionObserver(girdiler => {
   for (const g of girdiler) {
     if (!g.isIntersecting) continue;
@@ -440,7 +427,34 @@ if (!azHareket) {
     requestAnimationFrame(adim);
   });
 }
+
+// ---------- canlı rakamlar: hava ve sepet siteleri her gün güncellenir; veri gelmezse sayfadaki son değer kalır
+const AYLAR = T(["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]);
+const ondalik = (n, b = 1) => n.toLocaleString(T("tr-TR", "en-GB"), {minimumFractionDigits: b, maximumFractionDigits: b});
+const ekGun = (iso, n) => { const d = new Date(iso + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d; };
+const gunAd = d => `${d.getUTCDate()} ${AYLAR[d.getUTCMonth()]}`;
+const dunMu = d => { const b = new Date(); b.setHours(0, 0, 0, 0); return Math.round((b - new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate())) / 864e5); };
+fetch("https://birtohum.github.io/kac-sigara/veri/veri.json", {cache: "no-cache"}).then(r => r.json()).then(v => {
+  const il = v.iller.find(x => x.plaka === 34); if (!il) return;
+  let i = il.pm.length - 1; while (i >= 0 && il.pm[i] == null) i--; if (i < 0) return;
+  const sig = il.pm[i] / v.kurallar.sigara_ugm3, gun = ekGun(v.ilk_gun, i), fark = dunMu(gun);
+  document.getElementById("hava-sayi").innerHTML = `= ${ondalik(sig)} <small>${T("sigara", "cigarettes")}</small>`;
+  document.getElementById("hava-gun").textContent = DIL === "en" ? (fark === 1 ? "yesterday" : fark === 0 ? "today" : `on ${gunAd(gun)}`) : fark === 1 ? "Dün" : fark === 0 ? "Bugün" : `${gunAd(gun)}'${["ta", "ta", "ta", "da", "ta", "da", "da", "ta", "de", "de", "da", "ta"][gun.getUTCMonth()]}`;
+  const tam = Math.floor(sig), kalan = sig - tam;
+  document.getElementById("hava-sigara").innerHTML = "<i></i>".repeat(Math.min(tam, 6)) + (kalan >= .25 && tam < 6 ? '<i class="yarim"></i>' : "");
+}).catch(() => {});
+Promise.all(["ozet", "urunler"].map(a => fetch(`https://birtohum.github.io/sepet-enflasyonu/veri/${a}.json`, {cache: "no-cache"}).then(r => r.json()))).then(([o, u]) => {
+  const f = u.filter(x => x.son_fiyat != null), top = (l) => l.reduce((t, x) => t + x.son_fiyat, 0);
+  const para = n => n.toLocaleString(T("tr-TR", "en-GB"), {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const satir = Object.entries(o.kategori_adlari).map(([k, ad]) => [ad, f.filter(x => x.kategori === k)]).sort((a, b) => top(b[1]) - top(a[1])).slice(0, 2);
+  const son = o.sepet.gunler.at(-1), d = new Date(son + "T00:00:00Z");
+  const fis = document.getElementById("fis");
+  fis.innerHTML = `<div class="mono" style="justify-content:center;opacity:.6">${`${d.getUTCDate()} ${AYLAR[d.getUTCMonth()]} ${d.getUTCFullYear()}`.toLocaleUpperCase(T("tr", "en"))} · ŞOK</div>`
+    + satir.map(([ad, l]) => `<div><span>${ad.toLocaleUpperCase("tr")} ×${l.length}</span><span>${para(top(l))}</span></div>`).join("")
+    + `<div><span>… ${f.length} ${T("ÜRÜN", "ITEMS")}</span><span></span></div><div class="top"><span>${T("TOPLAM", "TOTAL")}</span><span>${para(top(f))} ₺</span></div>`;
+}).catch(() => {});
 </script>
-<script src="hikaye.js?v=3"></script>
+<script src="hikaye.js?v=5"></script>
 </body>
 </html>

@@ -1,0 +1,213 @@
+"use strict";
+// İngilizce sürüm. veri.js'ten hemen sonra, sayfa betiklerinden önce yüklenir.
+// Dil: ?dil=en / ?dil=tr (hatırlanır), yoksa tarayıcı dili. T(tr, en) iki dilli kısa metinler içindir.
+const DIL = (() => {
+  const istek = new URLSearchParams(location.search).get("dil");
+  try {
+    if (istek === "en" || istek === "tr") { localStorage.setItem("dil", istek); return istek; }
+    const kayitli = localStorage.getItem("dil"); if (kayitli) return kayitli;
+  } catch (_) {}
+  if (istek === "en" || istek === "tr") return istek;
+  return /^tr\b/i.test(navigator.language || "tr") ? "tr" : "en";
+})();
+const T = (tr, en) => DIL === "en" ? en : tr;
+
+const EN_PROJE = {
+  "Usta": {ne: "A coding agent you give tasks in Turkish, which checks its own code with independent tests. Submitted to the Meta AI Developer Hackathon.",
+    sonuc: "<b>1,026 runs against hidden tests:</b> the model alone 60%, Usta 58%. The verification loop added nothing; the reason was measured and written up.",
+    damga: "No gain", alt: ["Python", "Meta Muse", "WSL sandbox"],
+    soru: "When an AI agent says \"done\", is the job really done? Can a second model that never sees the code catch it?",
+    sayilar: [["1,026", "runs with hidden tests"], ["58%", "Usta (model alone: 60%)"], ["94%", "code mutants caught"], ["≈ $31", "total API spend"]],
+    yaptim: ["You write a task in Turkish or say it out loud. One model writes and runs the code in a sealed, offline workspace. Meanwhile Muse Spark, in separate calls and without ever seeing the code, writes acceptance tests and a reference solution from the task text; tests the reference fails are dropped.",
+      "Failing tests first go to an arbiter: does the task really require this? If so, the failure goes back to the agent for up to three repair rounds. A round that breaks a passing test is rolled back. Then I measured 114 hard tasks, three times each, against hidden tests nobody in the loop had seen."],
+    ogrendim: "The mistakes were mostly in reading the task, not in the code. Was the invoice \"total\" before or after VAT? The text didn't say, and the model writing the code and the model writing the tests read it the same way. Two models from the same family agreeing with each other looks like verification, but it isn't.",
+    link: [["Read the write-up", "yazilar/usta/en/"], ["Code ↗", "https://github.com/birtohum/usta"], ["3-min demo ↗", "https://www.youtube.com/watch?v=f9RjvBsFDiU"]]},
+  "Tohum": {ne: "Training a tiny Turkish language model from scratch, then turning an open model into a Turkish-speaking assistant.",
+    sonuc: "<b>4.8M parameters</b> from scratch (RTX 3060, 21 min). Qwen3-8B + LoRA beat the official model <b>10–2</b> on a 30-question test. At 14B, an independent judge scored 7.79 vs 7.37 (intervals overlap).",
+    damga: "10–2", alt: ["PyTorch", "LoRA", "H100"],
+    soru: "Can a model that knows nothing learn Turkish letter by letter? Can an open model become an assistant that speaks Turkish?",
+    sayilar: [["4.8 M", "parameters, from scratch"], ["21 min", "training, RTX 3060"], ["10–2", "vs official Qwen3-8B, 30 questions"], ["156,334", "examples, open dataset"]],
+    yaptim: ["First I trained a 4.8-million-parameter, character-level language model from scratch on my own graphics card, and built a \"growth album\" that runs in the browser and shows how it continues the same sentence at eleven different ages.",
+      "Then I fine-tuned Qwen3 8B and 14B with LoRA on about 100,000 Turkish instruction examples. The 8B beat the official model 10–2 on a 30-question test (15 ties). At 14B an independent judge scored 7.79 vs 7.37, but the confidence intervals overlap."],
+    ogrendim: "Preference training (DPO) gave no measurable gain, so I dropped it. One version's model files were lost when Colab shut down; since then I back up every set of weights first. I opened up the collected data so anyone can use it.",
+    gorseller: [["gorsel/p-tohum.webp", "The growth album: how the same sentence changes as the loss falls (real screenshot)"]],
+    link: [["Dataset (Hugging Face) ↗", "https://huggingface.co/datasets/egenksban10/tohum-tr-talimat"]],
+    alt_sahne: "Tohum's growth album, running in the browser"},
+  "Kripto RL botu": {ad: "Crypto RL bot", ne: "A trading agent that learns by reinforcement on historical prices, without real money.",
+    sonuc: "Walk-forward test, 4 periods: it lost to buy-and-hold in <b>all 4</b>. A consistent failure, not bad luck.",
+    damga: "Lost", alt: ["Python", "RL", "Backtest"],
+    soru: "Can a reinforcement-learning agent trade Bitcoin better than simply buying and holding?",
+    sayilar: [["0 / 4", "periods beating buy-and-hold"], ["−18.2%", "agent, while the market made +1.9%"], ["≈ 19 mo", "walk-forward test"], ["$0", "real money"]],
+    yaptim: ["I built an RL agent on Binance's public price history, with no API key and no real money. I changed the reward in three stages: raw return, excess return over buy-and-hold plus a trading penalty, and finally validation across four different market periods."],
+    ogrendim: "A single test period can fool you; looking at four periods together showed a consistent failure, not chance. I put that at the top of the report instead of hiding it.",
+    gorseller: [["gorsel/p-kripto.webp", "One of the test periods: blue is the agent, orange is buy-and-hold (from the project's own report)"]],
+    alt_sahne: "Portfolio value of the agent and of buy-and-hold in a test period"},
+  "Gazete Özeti": {ad: "Gazette Digest", ne: "Summarises Turkey's Official Gazette in plain Turkish every day; every claim is matched to a verbatim quote from the Gazette.",
+    sonuc: "37 texts over 4 days: 172 of 180 claims published, 25 of 25 correct in a manual check. About $0.04 a day.",
+    damga: "25/25", alt: ["Python", "OCR", "Verification"],
+    soru: "Who has time to read the Official Gazette every morning? And how do you know an AI summary isn't making things up?",
+    sayilar: [["172 / 180", "claims verified and published"], ["25 / 25", "correct in manual check"], ["≈ $0.04", "per day"]],
+    yaptim: ["It fetches the day's index and extra issues, reads scanned PDFs and summarises every regulation in plain Turkish. Every claim in a summary has to match a verbatim quote from the Gazette; claims that don't match are not published. Readers can open the \"source in the text\" under each point."],
+    ogrendim: "The judge that checks the summaries is the same model that writes them, so it isn't independent. I haven't yet measured completeness (missed items); the next step is a week with real readers.",
+    gorseller: [["gorsel/p-gazete.webp", "The 1 November 2026 issue: 33 of 36 claims verified against the text (real output)"]],
+    link: [["Code ↗", "https://github.com/birtohum/gazete-ozeti"]], alt_sahne: "Gazette Digest page"},
+  "Yorum Yanıtlayıcı": {ad: "Review Replier", ne: "Drafts replies to customer reviews for small shops, based only on what the business itself provided.",
+    sonuc: "15 of 15 unseen hair-salon reviews accepted on manual review. Invented promises, numbers or phone numbers are caught in code.",
+    damga: "15/15", alt: ["Python", "Rules + model"],
+    soru: "Shop owners want to answer every review but have no time. Can AI reply without making promises or making things up?",
+    sayilar: [["15 / 15", "unseen salon reviews accepted"], ["60 / 60", "on the development set"], ["≈ $0.001", "per review"]],
+    yaptim: ["You paste reviews; replies rely only on the information the business entered. Code catches promised discounts or refunds that weren't offered, numbers without a source and phone numbers, and a problematic draft is rewritten once. For health, safety or legal complaints, no details about the incident are given."],
+    ogrendim: "In one version, a mistake in an allergy reply slipped past the checking model; I fixed it with a rule instead of the model. One person wrote the test reviews and judged them; it hasn't been tried with a real shop yet.",
+    gorseller: [["gorsel/p-yorum.webp", "The interface: business info on the left, reviews on the right (real screenshot)"]],
+    link: [["Code ↗", "https://github.com/birtohum/yorum-yanitlayici"]], alt_sahne: "Review Replier interface"},
+  "Tişört Atölyesi": {ad: "T-shirt Workshop", ne: "For my uncle, who sells T-shirts on Etsy: write an idea in Turkish, get two designs, a dark-shirt version and the Etsy listing in one tap.",
+    sonuc: "One question and one big button per screen, so a 70-year-old can use it too. Live stages and tips while you wait.",
+    damga: "In use", alt: ["Python", "Image generation", "Accessibility"],
+    soru: "Can a 70-year-old and a 10-year-old both design a T-shirt at first sight?",
+    sayilar: [["≈ 45 s", "two designs at once"], ["≈ 4¢", "per design"], ["3", "steps: idea, text, design"]],
+    yaptim: ["My uncle sells T-shirts on Etsy. You type an idea in Turkish, say it, or tap a ready-made card. The model turns it into an English drawing brief and suggests three slogans with their Turkish meaning; two designs are drawn at once. While you wait you see the real stages, the time left and tips.",
+      "The result shows a preview on five shirt colours. If dark lines would disappear on a dark shirt you get a warning, and a dark version is one tap away. The Etsy title, 13 tags and description come with copy buttons."],
+    ogrendim: "I tried generating ideas from the day's news: 10 out of 10 items were people, teams or tragedies and had to be dropped. The calendar and seasonality are far safer. The decision to publish always stays with the designer.",
+    gorseller: [["gorsel/p-tisort-tasarim.webp", "A real design from testing: \"a grumpy owl that won't talk before its morning coffee\""]],
+    link: [["Code ↗", "https://github.com/birtohum/tisort-bulteni"]], alt_sahne: "First screen of the T-shirt Workshop"},
+  "Bizim Masa": {ne: "A family games room for my mum and dad: no passwords, big text, each on their own phone. Okey is next.",
+    sonuc: "<b>13+ games:</b> Ludo, Tombala (bingo), Sudoku, a Countdown-style numbers game, proverbs, memory… Take turns or play live, or against a bot.",
+    damga: "Family", alt: ["React Native", "Expo", "Firebase"],
+    soru: "Can my mum and dad play games together on their phones? No login, no passwords, no ads, no strangers.",
+    sayilar: [["13+", "games"], ["0", "passwords, ads"], ["35", "commits"]],
+    yaptim: ["A family games room I built with Expo; it isn't on the Play Store, it's installed as an APK. Ludo, Tombala, Sudoku, a numbers game, proverbs, memory and more; big text, big buttons, taps instead of drags. Okey is next.",
+      "Each phone plays for itself; the game state lives in Firebase, turn by turn (\"your move\") or live. Each game's rules sit in a separate, tested engine file, and moves are validated with that engine on the server. You can also play against a bot."],
+    ogrendim: "Few games, but good ones. After every stage I changed direction based on how my parents reacted.",
+    not: "Illustration, not a screenshot. The icon in the middle is the app's real icon."},
+  "Seslendir.io": {ne: "A multiplayer \"blind dubbing\" party game: everyone records their lines without hearing the others, then the dub is watched together.",
+    sonuc: "It was live with real players: on its own server, with leaderboards and profiles. <b>283 commits.</b> Currently paused.",
+    damga: "Paused", alt: ["Next.js", "VPS", "Audio recording"],
+    soru: "What happens if you and your friends dub a scene without hearing each other, then watch the result together for the first time?",
+    sayilar: [["283", "commits"], ["Real", "players, while it was live"], ["Paused", "currently offline"]],
+    yaptim: ["A multiplayer \"blind dubbing\" party game: you join a room, get a scene and a random character, and everyone records their lines without hearing the others. The finished dub plays for everyone at the same time.",
+      "It ran on its own server (Oracle VPS, pm2, Caddy): leaderboards, profiles, a public status page, admin tools and IP bans against abuse."],
+    ogrendim: "Keeping a system with real users running is a different job from writing code: deploys, backups, security and the server bill.",
+    not: "Illustration, not a screenshot. The server is currently offline.", roller: ["Captain", "Dragon", "Lion", "Astronaut"]},
+  "Kaynaş": {ne: "A platform that brings together 15–24-year-olds who struggle to make friends, through shared interests.",
+    sonuc: "No photos, drawn avatars; parental consent and a parent panel for under-18s; messages only between friends. In setup.",
+    damga: "Prototype", alt: ["Next.js", "Supabase", "Safety"],
+    soru: "How does a young person who finds it hard to make friends meet people their age safely?",
+    sayilar: [["15–24", "age range"], ["0", "photos, drawn avatars"], ["Parent", "consent under 18"]],
+    yaptim: ["A platform that matches people their age through shared interests. Google sign-in, a nickname and a drawn avatar; for under-18s, parental consent by QR code or link and a parent panel (account status, friends list, withdrawing consent). Messaging only between friends."],
+    ogrendim: "Most of the design is rules about what can't happen: no messages from strangers, no photos, consent a parent can withdraw. It's currently in setup, waiting for the database account to be connected.",
+    not: "Illustration, not a screenshot."},
+  "Mahalle Site": {ad: "Neighbourhood Sites", ne: "Fast one-page websites for local shops. A preview is sent to the business; it goes live only if they say yes.",
+    sonuc: "Free hosting on Cloudflare Pages, with a simple pipeline for tracking leads and offers.",
+    damga: "Live", alt: ["HTML/CSS", "Cloudflare"],
+    soru: "How hard is it to build a website for a five-star neighbourhood shop that doesn't have one?",
+    sayilar: [["1", "page, fast"], ["$0", "hosting"], ["Consent", "before publishing"]],
+    yaptim: ["One-page sites that load fast on a phone. A preview is prepared and sent to the business; if they say \"yes\", it goes live. Hosted for free on Cloudflare Pages; leads and offers are tracked in a spreadsheet."],
+    ogrendim: "A real business's site is published only after the business agrees; previews are hidden from search engines.",
+    gorseller: [["gorsel/p-mahalle.webp", "Sample site \"Mola Kahve\" (a template, not a real business)"]],
+    link: [["Open the sample site ↗", "https://mahallesite.pages.dev/kafe/"]], alt_sahne: "Sample café website"},
+  "S.": {ne: "Write a task and lean back: a desktop app that drives Claude Code on your computer until the task is done.",
+    sonuc: "A Windows app with an installer, <b>149 commits.</b> Includes a chat screen for thinking a task through first.",
+    damga: "Installable", alt: ["Electron", "Node.js"],
+    soru: "Can someone non-technical give their computer a job and lean back?",
+    sayilar: [["149", "commits"], ["4", "stages: review, work, check, done"], ["Windows", "installer"]],
+    yaptim: ["You write the task; the app drives Claude Code on your computer until it's finished. It checks its own work and tries again if something is missing. There's a usage meter, undo, files, and a chat screen for discussing ideas before starting a task."],
+    gorseller: [["gorsel/p-s-app.webp", "Real screen: the check found something missing; the second attempt finished with 92/100"]],
+    alt_sahne: "A finished task in the S. app"},
+  "Zabıta Geliyor!": {ad: "Here Comes the Inspector!", ne: "A chaotic street-vendor game, solo or with friends: everyone has their own cart and a shared or rival daily rent target.",
+    sonuc: "An early prototype in Godot. Zero budget: only permanently free tools.",
+    damga: "Prototype", alt: ["Godot", "GDScript"],
+    soru: "How funny is it to sell from a street cart and run from the municipal inspector, with friends?",
+    sayilar: [["Godot", "game engine"], ["$0", "budget"], ["Prototype", "early stage"]],
+    yaptim: ["A chaotic game you play alone or with friends: everyone has their own cart and a shared or rival daily rent target. You shout into the microphone to attract customers; as the inspector (zabıta) gets closer, you have to run."],
+    gorseller: [["gorsel/p-zabita.webp", "Real in-game screen: till, rent target, \"Zabıta 37 m\" and the shout meter"]],
+    alt_sahne: "A screen from the game"},
+  "DDNet Ödül": {ad: "DDNet Reward", ne: "My own client for the game DDNet: a calm screen, rewarding feedback and guidance in fights.",
+    sonuc: "A new component in the C++ client code. The rule is clear: <b>no cheats</b>; no auto-aim or auto-fire, only visual and audio cues.",
+    damga: "No cheats", alt: ["C++", "CMake"],
+    soru: "Can a game be more fun without cheating, just with better feedback?",
+    sayilar: [["49", "commits"], ["C++", "client code"], ["0", "cheats"]],
+    yaptim: ["I built my own client on DDNet's open-source C++ code: reward effects on hits, a calm screen, and visual and audio cues that guide you in fights. The rule was set from the start: no auto-aim, no auto-fire, no auto-hook."],
+    not: "Illustration, not a screenshot."},
+  "Hardstyle Studio": {ne: "Turns a song into a hardstyle version that follows the song's own structure: choruses become drops, kicks lock to the beat and chords.",
+    sonuc: "Stem separation with Demucs and beat tracking; the result exports to a DAW as stems and MIDI.",
+    damga: "Works", alt: ["Python", "PyTorch", "Audio"],
+    soru: "Can any song be turned automatically into a hardstyle version that fits its own structure?",
+    sayilar: [["Demucs", "stem separation"], ["Stems + MIDI", "export to a DAW"], ["6", "commits"]],
+    yaptim: ["It splits the song into vocals, drums, bass and the rest with Demucs, and finds the beat and the chords. It turns choruses into drops with a build-up before them, and locks the kicks to the song's beat and chords. On the result screen you can adjust drops, bars, levels and target BPM and render again."],
+    not: "Illustration, not a screenshot."},
+};
+
+if (DIL === "en") {
+  document.documentElement.lang = "en";
+  for (const p of PROJELER) {
+    const e = EN_PROJE[p.ad]; if (!e) continue;
+    const h = HIKAYE[p.ad];
+    Object.assign(p, {ne: e.ne, sonuc: e.sonuc, damga: [e.damga, p.damga[1]], alt: e.alt});
+    if (h) {
+      Object.assign(h, {soru: e.soru, sayilar: e.sayilar, yaptim: e.yaptim});
+      for (const k of ["ogrendim", "not", "gorseller", "link", "roller"]) if (e[k]) h[k] = e[k];
+      if (e.alt_sahne && typeof h.sahne === "object") h.sahne = {...h.sahne, alt: e.alt_sahne};
+      if (e.ad) { HIKAYE[e.ad] = h; delete HIKAYE[p.ad]; }
+    }
+    if (e.ad) p.ad = e.ad;
+  }
+
+  const metin = {
+    "nav.mono": `<a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
+    ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
+    ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 19 projects. Five are live on the web, and three update themselves every day.`,
+    ".soru .s-et": "Question", "#soru-git": "See the answer →",
+    "#soru-metin": "How many times did the tax law change in 20 years?",
+    ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live data sites",
+    ".sayac div:nth-child(3) span": "Official Gazette regulations read", ".sayac div:nth-child(4) span": "words counted in Parliament",
+    ".sayac div:nth-child(5) span": "measured AI agent runs",
+    "#canli .bas h2": "Live now",
+    "#canli .bas p": "Each one answers a single question, and each has its own visual identity. Source, method and limits are written at the bottom of every site. The sites themselves are in Turkish.",
+    ".s-mevzuat h3": `Turkey publishes <em>10</em> new regulations a day, on average`,
+    ".s-mevzuat .kanca": "10,608 issues of the Official Gazette since 2000, 99,697 regulations. Which law changed how many times, and what was published on the day you were born?",
+    ".s-meclis .kanca": "Type a word and see how much it was spoken in the Turkish Parliament, year by year, since 1996. 3,731 sessions, 69 million words. No commentary, just counts.",
+    ".s-hava .ust-satir span:last-child": "Daily", ".s-enflasyon .ust-satir span:last-child": "Daily", ".s-iett .ust-satir span:last-child": "Collecting data",
+    ".s-mevzuat .ust-satir span:last-child": "Live", ".s-meclis .ust-satir span:last-child": "Live",
+    ".s-hava .kanca": `Breathing in Istanbul, <span id="hava-gun">3 November</span>. PM2.5 from the ministry's 210 stations, province by province, as a rough but memorable comparison.`,
+    ".s-enflasyon h3": "What does the same basket cost today?",
+    ".s-enflasyon .kanca": "Build your own basket and see your own inflation next to the official CPI.",
+    ".s-iett h3": `1 <small>min late</small>`, ".s-iett .ic > .mono": "500T · 10 AM · EARLY RESULT, STILL COLLECTING",
+    ".s-iett .kanca": "Type your bus line: how closely does it keep to the timetable? From İETT's live vehicle positions, once a minute.",
+    "#projeler .bas h2": "14 more projects",
+    "#projeler .bas p": "AI experiments, apps I built for my family and people I know, and games. Each card says what I built and what actually came out of it; the stamp sums up the result.",
+    "#yaramayan .etiket": "03 · A rare section",
+    "#yaramayan h2": `Most portfolios <s>hide</s> leave these out.`,
+    "#yaramayan > div > p": "Some of my experiments didn't work. But each one has a measured answer to \"why\", and I think they taught me the most.",
+    "#yaramayan .liste div:nth-child(1)": `<b><span class="x">✗</span>AI couldn't verify AI</b><span>Usta: 1,026 runs. The model alone 60%, with independent verification 58%. Both models misread the task the same way.</span>`,
+    "#yaramayan .liste div:nth-child(2)": `<b><span class="x">✗</span>The crypto bot couldn't beat the market</b><span>It trailed buy-and-hold in all 4 periods. In one, the market gained 1.9% while the bot lost 18.2%.</span>`,
+    "#yaramayan .liste div:nth-child(3)": `<b><span class="x">✗</span>Preference training (DPO) gave nothing</b><span>No measurable difference on Tohum's 8B and 14B models, so I dropped it.</span>`,
+    "#yaramayan .liste div:nth-child(4)": `<b><span class="x">✗</span>T-shirt ideas from the daily news: 10/10 rejected</b><span>Every news item was a person, a team or a tragedy, none sellable on Etsy. I switched to the calendar and seasonality.</span>`,
+    ".yazi-afis": `<span class="etiket">Writing · 6 min read</span><b>I built an AI agent that checks its own code. After 1,026 runs, it was no better than not checking.</b><span class="oku">Read →</span>`,
+    ".ilke": `<div><b>Question first, then code.</b><p>Every project starts with one sentence: "How many cigarettes is breathing today?" Features that don't answer it don't get built.</p></div>
+      <div><b>No "it works" without measuring.</b><p>Hidden tests, manually checked samples, confidence intervals. No number, no claim.</p></div>
+      <div><b>For real people.</b><p>A games app for my parents, a T-shirt workshop for my uncle, websites for local shops. A 70-year-old should be able to use it.</p></div>`,
+    "section:has(.ilke) .bas h2": "How I work",
+    "footer .buyuk": `Got a question?<br><span class="fos">Let's answer it with data.</span>`,
+    "footer .linkler .ana": "Message me on LinkedIn ↗",
+    "footer .linkler a:last-child": "My favourite: Mevzuat Haritası ↗",
+    "#f-yazi": "Writing",
+    "footer .kucuk": "This page and most of the projects were built with AI assistance (Claude Code). Numbers come from each project's own records.",
+  };
+  for (const [secici, html] of Object.entries(metin)) { const e = document.querySelector(secici); if (e) e.innerHTML = html; }
+  document.querySelector(".yazi-afis")?.setAttribute("href", "yazilar/usta/en/");
+  document.getElementById("f-cv")?.setAttribute("href", "cv/en/");
+  document.getElementById("f-yazi")?.setAttribute("href", "yazilar/usta/en/");
+  const mn = document.querySelector("[data-son]"); if (mn) { mn.dataset.son = " M"; mn.textContent = "69 M"; }
+  const hs = document.getElementById("hava-sayi"); if (hs) hs.innerHTML = `= 0.7 <small>cigarettes</small>`;
+  document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
+  document.title = "Ege — I turn questions I'm curious about into things that work";
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "19 projects, 5 live data sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses. Measured results, including what didn't work.");
+}
+// dil düğmesi (her iki dilde)
+(() => {
+  const d = document.createElement("a");
+  d.className = "dil-dugme"; d.href = `?dil=${T("en", "tr")}${location.hash}`; d.textContent = T("EN", "TR");
+  d.setAttribute("aria-label", T("Switch to English", "Türkçeye geç")); d.setAttribute("hreflang", T("en", "tr"));
+  document.querySelector(".ust")?.append(d);
+})();
