@@ -188,7 +188,7 @@ if (DIL === "en") {
     "nav.mono": `<a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 32 projects. Twenty-two are live on the web, and twelve update themselves.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 32 projects. Twenty-three are live on the web, and twelve update themselves.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
     ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
@@ -250,7 +250,7 @@ if (DIL === "en") {
   const hs = document.getElementById("hava-sayi"); if (hs) hs.innerHTML = `= 0.7 <small>cigarettes</small>`;
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "32 projects, 22 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "32 projects, 23 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {
