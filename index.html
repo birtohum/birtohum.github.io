@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ege — merak ettiğim soruları çalışan şeylere çeviriyorum</title>
-<meta name="description" content="22 proje, 9 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
-<meta property="og:title" content="Ege — 22 proje, 9 canlı site">
+<meta name="description" content="26 proje, 11 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları, barajlar, Vikipedi merakı ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
+<meta property="og:title" content="Ege — 26 proje, 11 canlı site">
 <meta property="og:description" content="Vergi kanunu kaç kez değişti? Bugün nefes almak kaç sigara? Yapay zekâ yapay zekâyı denetleyebilir mi? Cevaplar veriyle.">
 <meta property="og:image" content="https://birtohum.github.io/og/ana.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -142,6 +142,17 @@ section{padding:80px 0 0}
 .s-ses .resim img{object-position:left top}
 @media (max-width:760px){.site.s-ses{flex-direction:column}.s-ses .resim{height:190px;border-left:0;border-top:2px solid #ff7a45}}
 @media (prefers-reduced-motion:reduce){.s-ses .ses-dalga i{animation:none}}
+.site.s-baraj,.site.s-viki{grid-column:span 3}
+@media (max-width:620px){.site.s-baraj,.site.s-viki{grid-column:1/-1}}
+.s-baraj{background:linear-gradient(180deg,#0d2347 0%,#16376b 100%);color:#eef3fb}
+.s-baraj h3{font-size:3.4rem;font-weight:800;letter-spacing:-.04em;line-height:1}
+.s-baraj h3 b{color:#90caf9}
+.s-baraj h3 small{display:block;font-size:.3em;font-weight:600;letter-spacing:0;color:#b9c8e2;margin-top:8px;max-width:28ch}
+.s-viki{background:#fbf6ea;color:#1b1a17}
+.s-viki .viki-tarih{font:600 .7rem "IBM Plex Mono",monospace;letter-spacing:.08em;color:#b23a1d;margin-top:14px}
+.s-viki h3{font-family:Georgia,"Times New Roman",serif;font-size:2.1rem;font-weight:700;letter-spacing:-.02em;margin-top:6px}
+.s-viki .viki-kat{margin:-2px 0 12px;font-size:.95rem}
+.s-viki .viki-kat b{color:#b23a1d;font-size:1.2rem}
 /* yeni üçlü */
 .s-deprem{background:#f4efe4;color:#1f2a33}
 .s-deprem h3{font-family:Georgia,"Times New Roman",serif;font-size:1.9rem;font-weight:700;letter-spacing:-.01em}
@@ -223,7 +234,7 @@ const SAYAC = "birtohum";
 if (SAYAC) { const g = document.createElement("script"); g.async = true; g.src = "//gc.zgo.at/count.js"; g.dataset.goatcounter = `https://${SAYAC}.goatcounter.com/count`; document.head.append(g); }
 const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yol, title: baslik, event: true}); } catch (_) {} };
 </script>
-<link rel="stylesheet" href="hikaye.css?v=5">
+<link rel="stylesheet" href="hikaye.css?v=6">
 </head>
 <body>
 <div class="sar">
@@ -235,7 +246,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   <div class="hero">
     <div class="etiket">Ege · Portfolyo · Eylül–Kasım 2026</div>
     <h1>Merak ettiğim soruları <span class="fos">çalışan şeylere</span> çeviriyorum.</h1>
-    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 22 proje var. Dokuzu şu an internette canlı, beşi kendi kendini güncelliyor.</p>
+    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 26 proje var. On biri şu an internette canlı, yedisi kendi kendini güncelliyor.</p>
 
     <div class="soru" aria-live="polite">
       <div class="s-et etiket">Soru</div>
@@ -244,8 +255,8 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
     </div>
 
     <div class="sayac">
-      <div><b data-say="22">22</b><span>proje</span></div>
-      <div><b data-say="9">9</b><span>canlı site</span></div>
+      <div><b data-say="26">26</b><span>proje</span></div>
+      <div><b data-say="11">11</b><span>canlı site</span></div>
       <div><b data-say="99697">99.697</b><span>Resmî Gazete düzenlemesi okundu</span></div>
       <div><b data-say="69" data-son=" mn">69 mn</b><span>Meclis kelimesi sayıldı</span></div>
       <div><b data-say="1026">1.026</b><span>ölçülmüş yapay zekâ koşusu</span></div>
@@ -339,6 +350,26 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/istanbul-semalari.webp" alt="İstanbul semaları sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
+      <a class="site s-baraj gorun" href="https://birtohum.github.io/barajlar-uzaydan/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Barajlar uzaydan</span><span class="canli-n">Her gün</span></div>
+          <h3><b id="baraj-yuzde">%85</b> <small>İstanbul barajlarının su yüzeyi, en dolu hâline göre</small></h3>
+          <p class="kanca">Sentinel-2 uydusundan 2017'den bugüne 10 baraj: su kaplı alan, önce/sonra uydu fotoğrafı. Alan ölçülüyor, hacim değil.</p>
+        </div>
+        <div class="resim"><img src="gorsel/barajlar-uzaydan.webp" alt="Barajlar uzaydan sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-viki gorun" href="https://birtohum.github.io/turkiye-merak/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Türkiye neyi merak etti?</span><span class="canli-n">Her gün</span></div>
+          <div class="viki-tarih" id="viki-tarih">TÜRKÇE VİKİPEDİ · DÜN</div>
+          <h3 id="viki-ad">Birden merak edilenler</h3>
+          <p class="viki-kat" id="viki-kat"></p>
+          <p class="kanca">Türkçe Vikipedi'de her gün birdenbire çok okunan maddeler, 2015'ten bugüne. Doğduğun gün Türkiye neyi merak etti?</p>
+        </div>
+        <div class="resim"><img src="gorsel/turkiye-merak.webp" alt="Türkiye neyi merak etti sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
       <a class="site s-ses gorun" href="https://seslendir.site/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Seslendir.io</span><span class="canli-n">Canlı</span></div>
@@ -353,7 +384,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   </section>
 
   <section id="projeler">
-    <div class="bas gorun"><span class="no">02</span><h2>Diğer 14 proje</h2>
+    <div class="bas gorun"><span class="no">02</span><h2>Diğer 16 proje</h2>
       <p>Yapay zekâ deneyleri, aileme ve tanıdıklarıma yaptığım uygulamalar, oyunlar. Her kartta neyi yaptığım ve gerçekte ne çıktığı yazıyor; damga sonucu özetliyor.</p></div>
     <div class="filtre" role="group" aria-label="Projeleri süz" id="filtre"></div>
     <div class="izgara" id="izgara"></div>
@@ -403,8 +434,8 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   </footer>
 </div>
 
-<script src="veri.js?v=9"></script>
-<script src="en.js?v=9"></script>
+<script src="veri.js?v=11"></script>
+<script src="en.js?v=11"></script>
 <script>
 "use strict";
 const HEPSI = PROJELER;
@@ -507,6 +538,18 @@ fetch("https://birtohum.github.io/kac-sigara/veri/veri.json", {cache: "no-cache"
   document.getElementById("hava-sigara").innerHTML = "<i></i>".repeat(Math.min(tam, 6)) + (kalan >= .25 && tam < 6 ? '<i class="yarim"></i>' : "");
 }).catch(() => {});
 // yeni siteler: canlı sayılar (aynı alan adı)
+fetch("https://birtohum.github.io/barajlar-uzaydan/veri/ozet.json", {cache: "no-cache"}).then(r => r.json()).then(d => {
+  if (d.toplam && d.toplam.yuzde != null) document.getElementById("baraj-yuzde").textContent = "%" + Math.round(d.toplam.yuzde);
+}).catch(() => {});
+fetch("https://birtohum.github.io/turkiye-merak/veri/son.json", {cache: "no-cache"}).then(r => r.json()).then(s =>
+  fetch(`https://birtohum.github.io/turkiye-merak/veri/gun/${s.son.slice(0, 7)}.json`, {cache: "no-cache"}).then(r => r.json()).then(ay => {
+    const g = ay[s.son], p = g && g.p && g.p[0];
+    if (!p) return;
+    const t = new Date(s.son + "T12:00:00Z");
+    document.getElementById("viki-tarih").textContent = T(`TÜRKÇE VİKİPEDİ · ${t.getUTCDate()} ${AYLAR[t.getUTCMonth()].toLocaleUpperCase("tr")}`, `TURKISH WIKIPEDIA · ${t.getUTCDate()} ${AYLAR[t.getUTCMonth()].toUpperCase()}`);
+    document.getElementById("viki-ad").textContent = p.a.replace(/_/g, " ");
+    document.getElementById("viki-kat").innerHTML = T(`normalde günde ${bicim(p.b)} kişi, o gün <b>${bicim(p.v)}</b>`, `usually ${bicim(p.b)} readers a day, that day <b>${bicim(p.v)}</b>`);
+  })).catch(() => {});
 fetch("https://birtohum.github.io/turkiye-sallandi/veri/ozet.json", {cache: "no-cache"}).then(r => r.json()).then(d => {
   document.getElementById("deprem-sayi").textContent = bicim(d.bugun.n);
   const gun = new Date(d.guncelleme), bugun = new Date();
@@ -537,6 +580,6 @@ Promise.all(["ozet", "urunler"].map(a => fetch(`https://birtohum.github.io/sepet
     + `<div><span>… ${f.length} ${T("ÜRÜN", "ITEMS")}</span><span></span></div><div class="top"><span>${T("TOPLAM", "TOTAL")}</span><span>${para(top(f))} ₺</span></div>`;
 }).catch(() => {});
 </script>
-<script src="hikaye.js?v=6"></script>
+<script src="hikaye.js?v=7"></script>
 </body>
 </html>

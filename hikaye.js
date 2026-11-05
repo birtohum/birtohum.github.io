@@ -48,7 +48,12 @@ function sahneHard() {
   }).join("");
   return `<div class="et">BUILD-UP → DROP</div><div class="vurus"></div><div class="dalga">${b}</div>`;
 }
-const CIZIM = {usta: [sahneUsta, "c-usta"], masa: [sahneMasa, "c-masa"], ses: [sahneSes, "c-ses"], kaynas: [sahneKaynas, "c-kaynas"], ddnet: [sahneDdnet, "c-ddnet"], hard: [sahneHard, "c-hard"]};
+function sahneNakliyat() {
+  const y = T([["Koli", "×12"], ["Buzdolabı", "×1"], ["Akvaryum (dolu)", "×1"], ["Piyano", "×1"], ["Kasa", "×1"], ["Nitro varili", "×1 · dikkat"]],
+              [["Boxes", "×12"], ["Fridge", "×1"], ["Aquarium (full)", "×1"], ["Piano", "×1"], ["Safe", "×1"], ["Nitro barrel", "×1 · careful"]]);
+  return `<div class="irs"><div class="irs-bas">KORSAN NAKLİYAT A.Ş. · ${T("İRSALİYE", "DELIVERY NOTE")}</div>${y.map(([a, n]) => `<div class="irs-s"><span>${a}</span><span>${n}</span></div>`).join("")}<div class="irs-alt">${T("Teslimat: devirmeden", "Deliver without tipping")}</div></div>`;
+}
+const CIZIM = {usta: [sahneUsta, "c-usta"], masa: [sahneMasa, "c-masa"], ses: [sahneSes, "c-ses"], kaynas: [sahneKaynas, "c-kaynas"], ddnet: [sahneDdnet, "c-ddnet"], hard: [sahneHard, "c-hard"], nakliyat: [sahneNakliyat, "c-nakliyat"]};
 
 function esc(s) { return String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c])); }
 

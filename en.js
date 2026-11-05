@@ -138,6 +138,24 @@ const EN_PROJE = {
     sayilar: [["Demucs", "stem separation"], ["Stems + MIDI", "export to a DAW"], ["6", "commits"]],
     yaptim: ["It splits the song into vocals, drums, bass and the rest with Demucs, and finds the beat and the chords. It turns choruses into drops with a build-up before them, and locks the kicks to the song's beat and chords. On the result screen you can adjust drops, bars, levels and target BPM and render again."],
     not: "Illustration, not a screenshot."},
+  "Korsan Nakliyat": {ad: "Pirate Movers", ne: "A physics-based moving game for friends: load a piano, an aquarium and a fridge into a truck and deliver them without tipping anything over.",
+    sonuc: "Multiplayer Godot prototype: lobby, LAN discovery, server list. <b>~2,000 lines of GDScript.</b>",
+    damga: "Prototype", alt: ["Godot", "GDScript", "Multiplayer"],
+    soru: "Can you and your friends move a piano, an aquarium and a fridge in one truck without breaking anything?",
+    sayilar: [["6", "cargo types"], ["~2,000", "lines of GDScript"], ["LAN", "multiplayer lobby"]],
+    yaptim: ["A physics-based co-op moving game. Cargo (boxes, fridge, aquarium, piano, safe, nitro barrel) slides around the truck with real mass and collisions; brake too hard and the aquarium is gone.",
+      "I wrote the lobby, LAN discovery and server list on Godot's multiplayer API. Sound effects are synthesised in the game, not loaded from files."],
+    ogrendim: "In multiplayer physics the hard part isn't movement; it's everyone seeing the same falling fridge at the same moment.",
+    not: "Illustration, not a screenshot."},
+  "Yapay Yaşam": {ad: "Artificial Life", ne: "Herbivores and carnivores driven by small neural networks; their genes are inherited, mutate and change under natural selection.",
+    sonuc: "500 generations in <b>6 seconds</b> (my rerun); the effect of selection is measured with a statistical test. 16/16 tests pass.",
+    damga: "Tested", alt: ["JavaScript", "Neural net", "Evolution"],
+    soru: "Without anyone programming it, does natural selection alone produce faster or sharper-sighted creatures?",
+    sayilar: [["500", "generations"], ["6 s", "for 500 generations"], ["16/16", "tests"]],
+    yaptim: ["Each creature is driven by a small neural network; genes for speed, vision, size and diet pass to offspring and mutate. Herbivores look for plants, carnivores for herbivores.",
+      "On screen: a live population chart, click-to-inspect creatures, and disasters such as famine, epidemic and ice age. I also wrote a headless benchmark that checks over 500 generations that the population never dies out, that memory doesn't leak, and that traits really change, using statistical tests."],
+    ogrendim: "In an evolution sim it's easy to say \"something changed\"; showing it isn't random drift takes measurement. In my rerun the difference was very clear (Welch test p ≈ 5·10⁻⁹).",
+    gorseller: [["gorsel/p-yasam.webp", "Real screen from the simulator: first generation, herbivores, carnivores and plants"]]},
 };
 
 if (DIL === "en") {
@@ -159,7 +177,7 @@ if (DIL === "en") {
     "nav.mono": `<a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 22 projects. Nine are live on the web, and five update themselves.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 26 projects. Eleven are live on the web, and seven update themselves.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
     ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
@@ -178,12 +196,15 @@ if (DIL === "en") {
     ".s-iett h3": `1 <small>min late</small>`, ".s-iett .ic > .mono": "500T · 10 AM · EARLY RESULT, STILL COLLECTING",
     ".s-ses .ust-satir span:last-child": "Live",
     ".s-deprem h3": `<span id="deprem-gun">Today</span>, Turkey shook <b id="deprem-sayi">34</b> times`, "#ucak-birim": "aircraft over Istanbul",
+    ".s-baraj .ust-satir span:last-child": "Daily", ".s-baraj h3 small": "Istanbul reservoirs' water surface, relative to their fullest",
+    ".s-baraj .kanca": "Ten reservoirs from Sentinel-2 since 2017: water-covered area and before/after satellite images. It measures area, not volume.",
+    ".s-viki .ust-satir span:last-child": "Daily", ".s-viki .kanca": "Articles that suddenly got many readers on Turkish Wikipedia, every day since 2015. What was Turkey curious about on the day you were born?",
     ".s-deprem .ust-satir span:last-child": "Every 3 hours", ".s-deprem .kanca": "Every earthquake from international catalogues: a map, your province, and the big ones since 1990. Most are felt only by instruments.",
     ".s-gece .ust-satir span:last-child": "Live", ".s-gece h3": "Night light grew <em>122%</em> in 12 years", ".s-gece .kanca": "Satellite nights of 2012 and 2024 side by side: drag the line and see, district by district, where cities grew. Light rose by more than 10% in 967 of 973 districts.",
     ".s-ucak .ust-satir span:last-child": "Live", ".s-ucak .kanca": "Aircraft over the city from open flight data: a map, the busiest hours, Istanbul Airport versus Sabiha Gökçen.", ".s-ses h3": "Nobody hears the others <em>while recording.</em>",
     ".s-ses .kanca": "Dub a film scene with your friends: everyone gets a character, and you watch the finale together for the first time. With real players: 939 dubs, 10,830 recorded lines. Plus 23 free tools.",
     ".s-iett .kanca": "Type your bus line: how closely does it keep to the timetable? From İETT's live vehicle positions, once a minute.",
-    "#projeler .bas h2": "14 more projects",
+    "#projeler .bas h2": "16 more projects",
     "#projeler .bas p": "AI experiments, apps I built for my family and people I know, and games. Each card says what I built and what actually came out of it; the stamp sums up the result.",
     "#yaramayan .etiket": "03 · A rare section",
     "#yaramayan h2": `Most portfolios <s>hide</s> leave these out.`,
@@ -211,7 +232,7 @@ if (DIL === "en") {
   const hs = document.getElementById("hava-sayi"); if (hs) hs.innerHTML = `= 0.7 <small>cigarettes</small>`;
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "22 projects, 9 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies and a multiplayer dubbing game. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "26 projects, 11 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {

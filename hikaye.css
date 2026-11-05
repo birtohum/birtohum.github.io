@@ -93,6 +93,11 @@ body.kilit{overflow:hidden}
 .c-ses .rol span{font:700 .85rem "Bricolage Grotesque";color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:8px 14px;border-radius:99px;white-space:nowrap}
 .c-kaynas{background:linear-gradient(160deg,#fff4e0,#ffd9e8)}
 .c-kaynas svg{width:min(520px,90%);height:auto}
+.c-nakliyat{background:#2b2a26}
+.c-nakliyat .irs{width:min(360px,80%);background:#f4efe4;color:#1d1b17;padding:16px 18px;border-radius:4px;font:500 .82rem/1.5 "IBM Plex Mono",monospace;box-shadow:0 8px 24px rgba(0,0,0,.35);transform:rotate(-1.5deg)}
+.c-nakliyat .irs-bas{font-weight:700;border-bottom:2px solid #1d1b17;padding-bottom:6px;margin-bottom:6px;letter-spacing:.04em}
+.c-nakliyat .irs-s{display:flex;justify-content:space-between;border-bottom:1px dashed #b9b2a2;padding:3px 0}
+.c-nakliyat .irs-alt{margin-top:8px;font-weight:700;color:#a1361b}
 .c-ddnet{background:#1f2433;image-rendering:pixelated}
 .c-ddnet .tee{width:90px;height:90px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffd98a,#e0a03a 60%,#a86a1a);box-shadow:0 0 0 4px #141414;position:relative}
 .c-ddnet .tee::before,.c-ddnet .tee::after{content:"";position:absolute;top:30px;width:12px;height:18px;background:#141414;border-radius:6px}

@@ -43,6 +43,12 @@ const PROJELER = [
   {t: "oyun", em: "🎧", ad: "Hardstyle Studio", ne: "Bir şarkıyı kendi yapısına uyan bir hardstyle versiyonuna çevirir: nakaratlar drop olur, kick'ler vuruşa ve akorlara kilitlenir.",
    sonuc: "Demucs ile kanal ayrıştırma ve vuruş takibi; sonuç stem ve MIDI olarak DAW'a aktarılabiliyor.",
    damga: ["Çalışıyor", "iyi"], alt: ["Python", "PyTorch", "Ses"], link: []},
+  {t: "oyun", em: "", ad: "Korsan Nakliyat", ne: "Arkadaşlarla oynanan fizik tabanlı nakliye oyunu: kamyona piyano, akvaryum, buzdolabı yükleyip devirmeden teslim etmeye çalışıyorsunuz.",
+   sonuc: "Godot ile çok oyunculu prototip: lobi, yerel ağda oyun bulma, sunucu listesi. <b>~2.000 satır GDScript.</b>",
+   damga: ["Prototip", "notr"], alt: ["Godot", "GDScript", "Çok oyunculu"], link: []},
+  {t: "yz", em: "", ad: "Yapay Yaşam", ne: "Küçük sinir ağlarıyla yönetilen otçul ve etçil canlılar; genleri kalıtımla geçiyor, mutasyona uğruyor ve doğal seçilimle değişiyor.",
+   sonuc: "500 nesil <b>6 saniyede</b> (yeniden koşumum); seçilimin etkisi istatistik testiyle ölçülüyor. 16/16 test geçiyor.",
+   damga: ["Testli", "iyi"], alt: ["JavaScript", "Sinir ağı", "Evrim"], link: []},
 ];
 
 const G = "gorsel/";
@@ -140,6 +146,20 @@ const HIKAYE = {
     sayilar: [["Demucs", "kanal ayrıştırma"], ["Stem + MIDI", "DAW'a aktarım"], ["6", "commit"]],
     yaptim: ["Şarkıyı Demucs ile vokal, davul, bas ve diğer kanallara ayırıyor, vuruşu ve akorları buluyor. Nakaratları drop'a çevirip önüne build-up koyuyor, kick'leri şarkının vuruşuna ve akorlarına kilitliyor. Sonuç ekranında drop'lar, ölçüler, seviyeler ve hedef BPM düzeltilip yeniden oluşturulabiliyor."],
     not: "Çizim, ekran görüntüsü değil."},
+  "Korsan Nakliyat": {id: "nakliyat", sahne: "nakliyat",
+    soru: "Bir piyanoyu, bir akvaryumu ve bir buzdolabını aynı kamyonla, arkadaşlarınla birlikte ve hiçbir şeyi devirmeden taşıyabilir misin?",
+    sayilar: [["6", "yük türü"], ["~2.000", "satır GDScript"], ["LAN", "çok oyunculu lobi"]],
+    yaptim: ["Fizik tabanlı, arkadaşlarla oynanan bir taşıma oyunu. Yükler (koli, buzdolabı, akvaryum, piyano, kasa, nitro varili) gerçek kütle ve çarpışmayla kamyonda kayıyor; şoför frene sert basarsa akvaryum gider.",
+      "Godot'nun çok oyunculu altyapısıyla lobi, yerel ağda oyun bulma ve sunucu listesi yazdım. Ses efektleri dosyadan değil, oyun içinde sentezleniyor."],
+    ogrendim: "Çok oyunculu fizikte zor olan hareket değil, herkesin aynı devrilen buzdolabını aynı anda görmesi.",
+    not: "Çizim, ekran görüntüsü değil."},
+  "Yapay Yaşam": {id: "yasam", sahne: {img: G + "p-yasam.webp", alt: "Yapay yaşam simülatörünün ekranı", tam: true},
+    soru: "Kimse programlamadan, yalnızca doğal seçilimle daha hızlı ya da daha iyi gören canlılar ortaya çıkar mı?",
+    sayilar: [["500", "nesil"], ["6 sn", "500 neslin süresi"], ["16/16", "test"]],
+    yaptim: ["Her canlıyı küçük bir sinir ağı yönetiyor; hız, görüş, boyut ve beslenme genleri yavrulara geçiyor ve mutasyona uğruyor. Otçullar bitki, etçiller otçul arıyor.",
+      "Ekranda canlı nüfus grafiği, canlıyı tıklayıp inceleme, kıtlık, salgın ve buzul çağı gibi felaketler var. Ekransız çalışan bir ölçüm de yazdım: 500 nesil boyunca nüfusun hiç tükenmediğini, bellekte sızıntı olmadığını ve özelliklerin gerçekten değiştiğini istatistik testleriyle kontrol ediyor."],
+    ogrendim: "Evrim simülasyonunda \"bir şey değişti\" demek kolay; değişimin rastgele dalgalanma olmadığını göstermek için ölçüm gerekiyor. Benim yeniden koşumumda fark çok belirgin çıktı (Welch testi p ≈ 5·10⁻⁹).",
+    gorseller: [[G + "p-yasam.webp", "Simülatörden gerçek ekran: ilk nesil, otçullar, etçiller ve bitkiler"]]},
 };
 
 const SITELER = {
