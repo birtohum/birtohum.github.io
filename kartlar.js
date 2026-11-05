@@ -470,7 +470,26 @@
     yerlestir(kart, kap, EN() ? "Most-read Turkish Wikipedia article, each of the last 6 days" : "Son 6 günün her birinde en çok okunan madde");
   }
 
-  const KARTLAR = {"s-mevzuat": mevzuat, "s-enflasyon": enflasyon, "s-viki": viki, "s-hava": hava, "s-gece": gece, "s-meclis": meclis, "s-iett": iett, "s-tohum": tohum, "s-deniz": deniz, "s-yangin": yangin, "s-dizi": dizi, "s-uydu": gok, "s-baraj": baraj, "s-deprem": deprem, "s-ucak": ucak};
+  async function maas(kart) {
+    const v = await (await fetch("https://birtohum.github.io/maasim-kac-ekmek/veri/asgari.json")).json();
+    const s = v.seri, son = s[s.length - 1];
+    const zam = [...s].reverse().find((x, i, a) => i === a.length - 1 || a[i + 1].net !== x.net);
+    const kayip = (1 - son.bugun / zam.bugun) * 100, kayipY = kayip.toLocaleString(EN() ? "en-GB" : "tr-TR", {maximumFractionDigits: 1});
+    const AY = EN() ? ["January","February","March","April","May","June","July","August","September","October","November","December"] : ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
+    const zAy = AY[+zam.ay.slice(5) - 1];
+    kart.querySelector("#maas-baslik").innerHTML = EN() ? `The minimum wage paid in ${zAy} has lost <em>${kayipY}%</em> of its value since.` : `${zAy} zammıyla gelen asgari ücret, bugünün fiyatlarıyla <em>%${kayipY}</em> eridi.`;
+    const W = 520, H = 190, sol = 18, sag = 10, ust = 14, alt = 20, ymax = Math.max(...s.map(x => x.bugun)) * 1.06;
+    const x = i => sol + i / (s.length - 1) * (W - sol - sag), y = v => ust + (1 - v / ymax) * (H - ust - alt);
+    const yol = s.map((p, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(p.bugun).toFixed(1)}`).join("");
+    let g = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${EN() ? "Net minimum wage in today's prices, 2016–" : "Net asgari ücret bugünün fiyatlarıyla, 2016–"}${son.ay.slice(0, 4)}">`;
+    g += `<path d="${yol}L${x(s.length - 1)},${y(0)}L${x(0)},${y(0)}Z" fill="#b8742a" opacity=".14"/><path d="${yol}" fill="none" stroke="#7a4310" stroke-width="2"/>`;
+    s.forEach((p, i) => { if (p.ay.endsWith("-01") && +p.ay.slice(0, 4) % 2 === 0) g += `<text x="${x(i)}" y="${H - 5}" font-size="11" fill="#7a6a55" text-anchor="middle" font-family="IBM Plex Mono,monospace">${p.ay.slice(0, 4)}</text>`; });
+    g += `<circle cx="${x(s.length - 1)}" cy="${y(son.bugun)}" r="4" fill="#b3261e"/></svg>`;
+    const kap = kart.querySelector("#maas-testere");
+    kap.innerHTML = g + `<p>${EN() ? "Net minimum wage in today's money" : "Net asgari ücret, bugünün parasıyla"} · 2016–${son.ay.slice(0, 4)}</p>`;
+  }
+
+  const KARTLAR = {"s-maas": maas, "s-mevzuat": mevzuat, "s-enflasyon": enflasyon, "s-viki": viki, "s-hava": hava, "s-gece": gece, "s-meclis": meclis, "s-iett": iett, "s-tohum": tohum, "s-deniz": deniz, "s-yangin": yangin, "s-dizi": dizi, "s-uydu": gok, "s-baraj": baraj, "s-deprem": deprem, "s-ucak": ucak};
   const gozcu = new IntersectionObserver((girdiler) => {
     for (const g of girdiler) {
       if (!g.isIntersecting) continue;
