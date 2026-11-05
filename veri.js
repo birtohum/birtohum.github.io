@@ -12,7 +12,7 @@ const PROJELER = [
    damga: ["Yenemedi", ""], alt: ["Python", "RL", "Backtest"], link: []},
   {t: "yz", em: "📰", ad: "Gazete Özeti", ne: "Her gün Resmî Gazete'yi sade Türkçeyle özetler; her iddia gazetedeki birebir alıntıyla eşleştirilir.",
    sonuc: "4 günde 37 metin: 180 iddianın 172'si yayımlandı, elle denetlenen 25'in 25'i doğru. Günde yaklaşık 0,04 $.",
-   damga: ["25/25", "iyi"], alt: ["Python", "OCR", "Doğrulama"], link: [["Kod", "https://github.com/birtohum/gazete-ozeti"]]},
+   damga: ["Her gün", "iyi"], alt: ["Python", "OCR", "Doğrulama"], link: [["Canlı", "https://birtohum.github.io/gazete-ozeti/"], ["Kod", "https://github.com/birtohum/gazete-ozeti"]]},
   {t: "urun", em: "💬", ad: "Yorum Yanıtlayıcı", ne: "Esnafın müşteri yorumlarına, yalnızca işletmenin verdiği bilgilere dayanan yanıt taslakları yazar.",
    sonuc: "Hiç görülmemiş 15 kuaför yorumunun 15'i elle kabul edildi. Uydurma söz, sayı ya da telefon kodla yakalanıyor.",
    damga: ["15/15", "iyi"], alt: ["Python", "Kural + model"], link: [["Kod", "https://github.com/birtohum/yorum-yanitlayici"]]},
@@ -83,7 +83,7 @@ const HIKAYE = {
     yaptim: ["Günün fihristini ve mükerrer sayıları çekiyor, taranmış PDF'leri okuyor, her düzenlemeyi sade Türkçeyle özetliyor. Özetteki her iddia gazetedeki birebir bir alıntıyla eşleşmek zorunda; eşleşmeyen iddia yayımlanmıyor. Okuyan her maddenin altında \"metindeki dayanak\"ı açıp görebiliyor."],
     ogrendim: "Denetleyen hakem özetleyenle aynı model, yani bağımsız değil. Atlanan madde olup olmadığını (eksiksizliği) henüz ölçmedim; sıradaki iş gerçek okurlarla bir hafta denemek.",
     gorseller: [[G + "p-gazete.webp", "1 Kasım 2026 sayısı: 36 iddianın 33'ü metinle doğrulandı (gerçek çıktı)"]],
-    link: [["Kod ↗", "https://github.com/birtohum/gazete-ozeti"]]},
+    link: [["Bugünün özeti ↗", "https://birtohum.github.io/gazete-ozeti/"], ["Kod ↗", "https://github.com/birtohum/gazete-ozeti"]]},
   "Yorum Yanıtlayıcı": {id: "yorum", sahne: {img: G + "p-yorum.webp", alt: "Yorum Yanıtlayıcı arayüzü"},
     soru: "Esnaf her müşteri yorumuna cevap yazmak istiyor ama vakti yok. Yapay zekâ söz vermeden, uydurmadan cevap yazabilir mi?",
     sayilar: [["15 / 15", "hiç görülmemiş kuaför yorumu kabul"], ["60 / 60", "geliştirme setinde"], ["≈ 0,001 $", "yorum başına"]],
@@ -177,7 +177,7 @@ const HIKAYE = {
 const SITELER = {
   "mevzuat-haritasi": "Mevzuat Haritası", "meclisin-dili": "Meclis'in Dili", "kac-sigara": "Kaç Sigara?",
   "sepet-enflasyonu": "Sepet Enflasyonu", "iett-dakiklik": "İETT Dakiklik",
-  "bu-gece-gokyuzu": "Bu gece gökyüzü", "denizler-isiniyor": "Denizler ısınıyor mu?", "turk-dizileri-dunyada": "Türk dizileri dünyada", "orman-yanginlari-uzaydan": "Orman yangınları uzaydan",
+  "bu-gece-gokyuzu": "Bu gece gökyüzü", "gazete-ozeti": "Gazete Özeti", "yapay-yasam": "Yapay Yaşam", "denizler-isiniyor": "Denizler ısınıyor mu?", "turk-dizileri-dunyada": "Türk dizileri dünyada", "orman-yanginlari-uzaydan": "Orman yangınları uzaydan",
   "turkiye-sallandi": "Türkiye sallandı", "turkiye-geceleri": "Türkiye geceleri", "istanbul-semalari": "İstanbul semaları",
   "barajlar-uzaydan": "Barajlar uzaydan", "turkiye-merak": "Türkiye neyi merak etti?",
 };
