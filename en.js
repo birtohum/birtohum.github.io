@@ -159,7 +159,7 @@ if (DIL === "en") {
     "nav.mono": `<a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 19 projects. Six are live on the web, and three update themselves every day.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 22 projects. Nine are live on the web, and five update themselves.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
     ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
@@ -176,7 +176,11 @@ if (DIL === "en") {
     ".s-enflasyon h3": "What does the same basket cost today?",
     ".s-enflasyon .kanca": "Build your own basket and see your own inflation next to the official CPI.",
     ".s-iett h3": `1 <small>min late</small>`, ".s-iett .ic > .mono": "500T · 10 AM · EARLY RESULT, STILL COLLECTING",
-    ".s-ses .ust-satir span:last-child": "Live", ".s-ses h3": "Nobody hears the others <em>while recording.</em>",
+    ".s-ses .ust-satir span:last-child": "Live",
+    ".s-deprem h3": `<span id="deprem-gun">Today</span>, Turkey shook <b id="deprem-sayi">34</b> times`, "#ucak-birim": "aircraft over Istanbul",
+    ".s-deprem .ust-satir span:last-child": "Every 3 hours", ".s-deprem .kanca": "Every earthquake from international catalogues: a map, your province, and the big ones since 1990. Most are felt only by instruments.",
+    ".s-gece .ust-satir span:last-child": "Live", ".s-gece h3": "Night light grew <em>122%</em> in 12 years", ".s-gece .kanca": "Satellite nights of 2012 and 2024 side by side: drag the line and see, district by district, where cities grew. Light rose by more than 10% in 967 of 973 districts.",
+    ".s-ucak .ust-satir span:last-child": "Live", ".s-ucak .kanca": "Aircraft over the city from open flight data: a map, the busiest hours, Istanbul Airport versus Sabiha Gökçen.", ".s-ses h3": "Nobody hears the others <em>while recording.</em>",
     ".s-ses .kanca": "Dub a film scene with your friends: everyone gets a character, and you watch the finale together for the first time. With real players: 939 dubs, 10,830 recorded lines. Plus 23 free tools.",
     ".s-iett .kanca": "Type your bus line: how closely does it keep to the timetable? From İETT's live vehicle positions, once a minute.",
     "#projeler .bas h2": "14 more projects",
@@ -207,7 +211,7 @@ if (DIL === "en") {
   const hs = document.getElementById("hava-sayi"); if (hs) hs.innerHTML = `= 0.7 <small>cigarettes</small>`;
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "19 projects, 6 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses and a multiplayer dubbing game. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "22 projects, 9 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {

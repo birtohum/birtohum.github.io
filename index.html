@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ege — merak ettiğim soruları çalışan şeylere çeviriyorum</title>
-<meta name="description" content="19 proje, 6 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
-<meta property="og:title" content="Ege — 19 proje, 6 canlı site">
+<meta name="description" content="22 proje, 9 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
+<meta property="og:title" content="Ege — 22 proje, 9 canlı site">
 <meta property="og:description" content="Vergi kanunu kaç kez değişti? Bugün nefes almak kaç sigara? Yapay zekâ yapay zekâyı denetleyebilir mi? Cevaplar veriyle.">
 <meta property="og:image" content="https://birtohum.github.io/og/ana.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -134,7 +134,7 @@ section{padding:80px 0 0}
 .s-ses h3{font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:800;color:#fff}
 .s-ses h3 em{font-style:normal;color:#ff7a45}
 .s-ses .ses-dalga{display:flex;align-items:flex-end;gap:5px;height:44px;margin-top:auto;padding-bottom:30px}
-.s-ses .ses-dalga i{width:6px;height:calc(var(--h)*1%);background:#ff7a45;border-radius:3px;opacity:.85;animation:sesd 1.1s ease-in-out infinite alternate}
+.s-ses .ses-dalga i{width:6px;height:calc(var(--h)*1%);background:#ff7a45;border-radius:3px;opacity:.85;}
 .s-ses .ses-dalga i:nth-child(3n){animation-delay:-.4s}.s-ses .ses-dalga i:nth-child(3n+1){animation-delay:-.8s}
 @keyframes sesd{to{transform:scaleY(.35)}}
 .s-ses .ses-dalga i{transform-origin:bottom}
@@ -142,6 +142,18 @@ section{padding:80px 0 0}
 .s-ses .resim img{object-position:left top}
 @media (max-width:760px){.site.s-ses{flex-direction:column}.s-ses .resim{height:190px;border-left:0;border-top:2px solid #ff7a45}}
 @media (prefers-reduced-motion:reduce){.s-ses .ses-dalga i{animation:none}}
+/* yeni üçlü */
+.s-deprem{background:#f4efe4;color:#1f2a33}
+.s-deprem h3{font-family:Georgia,"Times New Roman",serif;font-size:1.9rem;font-weight:700;letter-spacing:-.01em}
+.s-deprem h3 b{color:#c0502b}
+.s-deprem .sismo{width:100%;height:40px;margin:0 0 12px}
+.s-deprem .sismo polyline{fill:none;stroke:#1f2a33;stroke-width:1.2;vector-effect:non-scaling-stroke}
+.s-gece{background:#070b1a;color:#e9ecf5}
+.s-gece h3{font-size:1.75rem;font-weight:800;letter-spacing:-.03em}
+.s-gece h3 em{font-style:normal;color:#ffb347}
+.s-ucak{background:#0a0f1c;color:#e8ecf4}
+.s-ucak h3{font-size:3.4rem;font-weight:700;letter-spacing:-.04em;line-height:1}
+.s-ucak h3 small{display:block;font-size:.3em;font-weight:600;letter-spacing:0;color:#93a0b8;margin-top:6px}
 .s-iett .hatlar span{font:800 .7rem "Bricolage Grotesque";color:#fff;padding:3px 7px;border-radius:4px}
 
 /* proje ızgarası */
@@ -223,7 +235,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   <div class="hero">
     <div class="etiket">Ege · Portfolyo · Eylül–Kasım 2026</div>
     <h1>Merak ettiğim soruları <span class="fos">çalışan şeylere</span> çeviriyorum.</h1>
-    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 19 proje var. Altısı şu an internette canlı, üçü her gün kendini güncelliyor.</p>
+    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 22 proje var. Dokuzu şu an internette canlı, beşi kendi kendini güncelliyor.</p>
 
     <div class="soru" aria-live="polite">
       <div class="s-et etiket">Soru</div>
@@ -232,8 +244,8 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
     </div>
 
     <div class="sayac">
-      <div><b data-say="19">19</b><span>proje</span></div>
-      <div><b data-say="6">6</b><span>canlı site</span></div>
+      <div><b data-say="22">22</b><span>proje</span></div>
+      <div><b data-say="9">9</b><span>canlı site</span></div>
       <div><b data-say="99697">99.697</b><span>Resmî Gazete düzenlemesi okundu</span></div>
       <div><b data-say="69" data-son=" mn">69 mn</b><span>Meclis kelimesi sayıldı</span></div>
       <div><b data-say="1026">1.026</b><span>ölçülmüş yapay zekâ koşusu</span></div>
@@ -297,6 +309,34 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
           <p class="kanca">Hattını yaz: otobüsün planına ne kadar uyuyor? İETT'nin canlı konum verisinden, dakikada bir.</p>
         </div>
         <div class="resim"><img src="gorsel/iett-dakiklik.webp" alt="İETT Dakiklik sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-deprem gorun" href="https://birtohum.github.io/turkiye-sallandi/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Türkiye sallandı</span><span class="canli-n">3 saatte bir</span></div>
+          <h3><span id="deprem-gun">Bugün</span> <b id="deprem-sayi">34</b> kez sallandı</h3>
+          <svg class="sismo" viewBox="0 0 300 40" preserveAspectRatio="none" aria-hidden="true"><polyline id="deprem-iz" points="0,20 300,20"/></svg>
+          <p class="kanca">Uluslararası kataloglardan her deprem: harita, senin ilin ve 1990'dan bu yana büyükler. Çoğunu yalnızca cihazlar fark ediyor.</p>
+        </div>
+        <div class="resim"><img src="gorsel/turkiye-sallandi.webp" alt="Türkiye sallandı sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-gece gorun" href="https://birtohum.github.io/turkiye-geceleri/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Türkiye geceleri</span><span class="canli-n">Canlı</span></div>
+          <h3>Gece ışığı 12 yılda <em>%122</em> arttı</h3>
+          <p class="kanca">Uydudan 2012 ve 2024 geceleri yan yana: çizgiyi kaydır, şehrin nereye büyüdüğünü ilçe ilçe gör. 973 ilçenin 967'sinde ışık %10'dan fazla arttı.</p>
+        </div>
+        <div class="resim"><img src="gorsel/turkiye-geceleri.webp" alt="Türkiye geceleri sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-ucak gorun" href="https://birtohum.github.io/istanbul-semalari/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>İstanbul semaları</span><span class="canli-n">Canlı</span></div>
+          <h3><b id="ucak-sayi">12</b> <small id="ucak-birim">uçak, İstanbul'un üstünde</small></h3>
+          <p class="kanca">Açık uçuş verisiyle şehrin üstündeki uçaklar: harita, en kalabalık saatler, İstanbul Havalimanı ile Sabiha Gökçen.</p>
+        </div>
+        <div class="resim"><img src="gorsel/istanbul-semalari.webp" alt="İstanbul semaları sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
       <a class="site s-ses gorun" href="https://seslendir.site/" target="_blank" rel="noopener">
@@ -363,8 +403,8 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   </footer>
 </div>
 
-<script src="veri.js?v=8"></script>
-<script src="en.js?v=8"></script>
+<script src="veri.js?v=9"></script>
+<script src="en.js?v=9"></script>
 <script>
 "use strict";
 const HEPSI = PROJELER;
@@ -465,6 +505,26 @@ fetch("https://birtohum.github.io/kac-sigara/veri/veri.json", {cache: "no-cache"
   document.getElementById("hava-gun").textContent = DIL === "en" ? (fark === 1 ? "yesterday" : fark === 0 ? "today" : `on ${gunAd(gun)}`) : fark === 1 ? "Dün" : fark === 0 ? "Bugün" : `${gunAd(gun)}'${["ta", "ta", "ta", "da", "ta", "da", "da", "ta", "de", "de", "da", "ta"][gun.getUTCMonth()]}`;
   const tam = Math.floor(sig), kalan = sig - tam;
   document.getElementById("hava-sigara").innerHTML = "<i></i>".repeat(Math.min(tam, 6)) + (kalan >= .25 && tam < 6 ? '<i class="yarim"></i>' : "");
+}).catch(() => {});
+// yeni siteler: canlı sayılar (aynı alan adı)
+fetch("https://birtohum.github.io/turkiye-sallandi/veri/ozet.json", {cache: "no-cache"}).then(r => r.json()).then(d => {
+  document.getElementById("deprem-sayi").textContent = bicim(d.bugun.n);
+  const gun = new Date(d.guncelleme), bugun = new Date();
+  if (gun.toDateString() !== bugun.toDateString()) document.getElementById("deprem-gun").textContent = T(`${gun.getDate()} ${AYLAR[gun.getMonth()]}'da`, `On ${gun.getDate()} ${AYLAR[gun.getMonth()]}`);
+  const g = (d.gunluk || []).slice(-60), enCok = Math.max(...g.map(x => x[1]), 1);
+  document.getElementById("deprem-iz").setAttribute("points", g.map((x, i) => {
+    const a = (x[1] / enCok) * 18, xx = (i / (g.length - 1)) * 300;
+    return `${xx.toFixed(1)},${(20 - a).toFixed(1)} ${(xx + 2.5).toFixed(1)},${(20 + a).toFixed(1)}`;
+  }).join(" "));
+}).catch(() => {});
+fetch("https://birtohum.github.io/istanbul-semalari/veri/son.json", {cache: "no-cache"}).then(r => r.json()).then(d => {
+  const n = d.ozet && d.ozet.havada;
+  if (n == null) return;
+  document.getElementById("ucak-sayi").textContent = bicim(n);
+  const dk = Math.max(0, Math.round((Date.now() / 1000 - d.t) / 60));
+  document.getElementById("ucak-birim").textContent = dk <= 15
+    ? T("uçak, şu an İstanbul'un üstünde", "aircraft over Istanbul right now")
+    : T(`uçak · ${dk <= 60 ? dk + " dk önceki" : "son"} fotoğraf`, `aircraft · ${dk <= 60 ? dk + "-minute-old" : "last"} snapshot`);
 }).catch(() => {});
 Promise.all(["ozet", "urunler"].map(a => fetch(`https://birtohum.github.io/sepet-enflasyonu/veri/${a}.json`, {cache: "no-cache"}).then(r => r.json()))).then(([o, u]) => {
   const f = u.filter(x => x.son_fiyat != null), top = (l) => l.reduce((t, x) => t + x.son_fiyat, 0);
