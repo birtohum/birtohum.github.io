@@ -14,6 +14,10 @@ def al(yol):
         return json.loads(r.read())
 
 
+def sade(ad):
+    return ad.replace("â", "a").replace("İ", "i").replace("I", "ı").lower()
+
+
 def sadelestir(halka, adim=0.06):
     """Ardışık noktalar arasında ~adim dereceden kısa sıçramaları atar; 2 ondalık yeterli."""
     cikti, son = [], None
@@ -25,13 +29,14 @@ def sadelestir(halka, adim=0.06):
 
 def main():
     sinir = al("sinirlar.json")
-    halkalar = [s for il in sinir for h in il["h"] if (s := sadelestir(h))]
+    plaka = {sade(ad): p for p, ad, *_ in json.loads((KOK.parent / "bugun-bot" / "bot" / "iller.json").read_text(encoding="utf-8"))}
+    halkalar = [[plaka[sade(il["ad"])], s] for il in sinir for h in il["h"] if (s := sadelestir(h))]   # [plaka, halka]
     yil = al("harita/2021.json")
     noktalar = [[x, y, ay] for x, y, ay, sn, n in yil["n"] if sn == 0]   # yalnız orman ve makilik
     istanbul = [s for il in sinir if il["ad"] == "İstanbul" for h in il["h"] if (s := sadelestir(h, 0.008))]
     cikti = {"kaynak": "NASA FIRMS (VIIRS), orman-yanginlari-uzaydan", "yil": 2021, "sinir": halkalar, "n": noktalar, "istanbul": istanbul}
     (KOK / "veri" / "kart-harita.json").write_text(json.dumps(cikti, separators=(",", ":")), encoding="utf-8")
-    print(f"İstanbul {sum(map(len, istanbul))} köşe; {len(halkalar)} halka, {sum(map(len, halkalar))} köşe, {len(noktalar)} orman noktası")
+    print(f"İstanbul {sum(map(len, istanbul))} köşe; {len(halkalar)} halka, {sum(len(h) for _, h in halkalar)} köşe, {len(noktalar)} orman noktası")
 
 
 if __name__ == "__main__":

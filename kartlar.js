@@ -33,8 +33,13 @@
     new IntersectionObserver(([e]) => { gorunur = e.isIntersecting; }).observe(kap);
     (function adim(t) { if (gorunur && !document.hidden) kare(t); requestAnimationFrame(adim); })(performance.now());
   }
-  function ilCiz(c, halkalar, p) {
-    for (const r of halkalar) { c.beginPath(); r.forEach(([x, y], i) => i ? c.lineTo(p.x(x), p.y(y)) : c.moveTo(p.x(x), p.y(y))); c.closePath(); c.fill(); c.stroke(); }
+  // halkalar: [[x,y]…] listesi ya da [plaka, [[x,y]…]] listesi; renk(plaka) verilirse her il kendi rengiyle
+  function ilCiz(c, halkalar, p, renk) {
+    for (const r of halkalar) {
+      const plaka = typeof r[0] === "number" ? r[0] : null, h = plaka === null ? r : r[1];
+      if (renk) c.fillStyle = renk(plaka);
+      c.beginPath(); h.forEach(([x, y], i) => i ? c.lineTo(p.x(x), p.y(y)) : c.moveTo(p.x(x), p.y(y))); c.closePath(); c.fill(); c.stroke();
+    }
   }
 
   function yerlestir(kart, dugum, etiket) {
@@ -99,7 +104,7 @@
       harita = document.createElement("canvas"); harita.width = cv.width; harita.height = cv.height;
       const h = harita.getContext("2d"); h.setTransform(dpr, 0, 0, dpr, 0, 0);
       h.fillStyle = "#2a211b"; h.strokeStyle = "#4a3b30"; h.lineWidth = 0.5;
-      for (const r of v.sinir) { h.beginPath(); r.forEach(([x, y], i) => i ? h.lineTo(px(x), py(y)) : h.moveTo(px(x), py(y))); h.closePath(); h.fill(); h.stroke(); }
+      ilCiz(h, v.sinir, {x: px, y: py});
     }
     // noktalar ay sırasına göre; her kare biraz daha
     const sirali = v.n.slice().sort((a, b) => a[2] - b[2]);
@@ -319,7 +324,153 @@
     });
   }
 
-  const KARTLAR = {"s-tohum": tohum, "s-deniz": deniz, "s-yangin": yangin, "s-dizi": dizi, "s-uydu": gok, "s-baraj": baraj, "s-deprem": deprem, "s-ucak": ucak};
+  // ---------------------------------------------------------------- Hava: dünün PM2,5'i il il
+  async function hava(kart) {
+    const [v, d] = await Promise.all([harita(), json(`${SITE}/kac-sigara/veri/veri.json`)]);
+    const SIG = d.kurallar.sigara_ugm3, deger = {};
+    let gun = null;
+    for (const il of d.iller) {
+      let i = il.pm.length - 1; while (i >= 0 && il.pm[i] == null) i--;
+      if (i >= 0 && il.pm.length - 1 - i <= 2) { deger[il.plaka] = il.pm[i]; gun = gun == null ? i : Math.max(gun, i); }
+    }
+    const tarih = new Date(Date.parse(d.ilk_gun + "T00:00:00Z") + gun * 864e5);
+    const ADIM = [[0, "#e9eef2"], [5, "#d4e4d1"], [10, "#b9d7a8"], [15, "#f1d27a"], [25, "#eea152"], [35, "#de6a3c"], [55, "#a8322b"], [80, "#5e1a1f"]];
+    const renk = (p) => { const x = deger[p]; if (x == null) return "#dfdcd5"; let c = ADIM[0][1]; for (const [s, r] of ADIM) if (x >= s) c = r; return c; };
+    const kap = document.createElement("div"); kap.className = "hava-kap";
+    const lejant = document.createElement("div"); lejant.className = "hava-lejant";
+    lejant.innerHTML = `<b>${tarih.toLocaleDateString(EN() ? "en-GB" : "tr-TR", {day: "numeric", month: "long", timeZone: "UTC"})}</b>` +
+      `<span class="hava-olcek">${[["#b9d7a8", "<10"], ["#f1d27a", "15+"], ["#eea152", "25+"], ["#de6a3c", "35+"], ["#a8322b", "55+"]].map(([r, t]) => `<i style="background:${r}"></i>${t}`).join("")}</span>` +
+      `<small>PM2,5 µg/m³ · ${EN() ? "grey: too few readings" : "gri: yeterli ölçüm yok"}</small>`;
+    kap.append(lejant);
+    yerlestir(kart, kap, EN() ? "Yesterday's fine dust, province by province · Ministry stations" : "Dünkü ince toz, il il · Bakanlık istasyonları");
+    const boyutla = tuval(kap);
+    const ipucu = document.createElement("div"); ipucu.className = "harita-ipucu"; kap.append(ipucu);
+    let p, W, H;
+    const ciz = () => {
+      const t = boyutla(); W = t.W; H = t.H; p = izdusum(W, H, [25.6, 35.8, 44.9, 42.2], 0.9);
+      t.c.strokeStyle = "rgba(255,255,255,.7)"; t.c.lineWidth = 0.5; ilCiz(t.c, v.sinir, p, renk);
+    };
+    ciz(); addEventListener("resize", ciz);
+    // üzerine gelince il ve değer: en yakın il merkezini bul (il merkezleri harita verisinde yok; halkaların ortalaması yeter)
+    const merkez = {};
+    for (const [pl, h] of v.sinir) { const m = merkez[pl] || (merkez[pl] = [0, 0, 0]); for (const [x, y] of h) { m[0] += x; m[1] += y; m[2]++; } }
+    const adlar = Object.fromEntries(d.iller.map(i => [i.plaka, i.ad]));
+    kap.addEventListener("pointermove", (e) => {
+      const r = kap.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
+      let en = null, ed = 1e9;
+      for (const [pl, [sx, sy, n]] of Object.entries(merkez)) { const dx = p.x(sx / n) - mx, dy = p.y(sy / n) - my, dd = dx * dx + dy * dy; if (dd < ed) { ed = dd; en = +pl; } }
+      if (ed > 900) { ipucu.hidden = true; return; }
+      const x = deger[en];
+      ipucu.hidden = false; ipucu.style.left = mx + "px"; ipucu.style.top = my + "px";
+      ipucu.textContent = x == null ? `${adlar[en]}: —` : `${adlar[en]}: ${sayi(x, 1)} µg/m³ ≈ ${sayi(x / SIG, 1)} ${EN() ? "cig." : "sigara"}`;
+    });
+    kap.addEventListener("pointerleave", () => { ipucu.hidden = true; });
+  }
+
+  // ---------------------------------------------------------------- Gece: ışıklar yıl yıl
+  async function gece(kart) {
+    const [v, d] = await Promise.all([harita(), json(`${SITE}/turkiye-geceleri/veri/veri.json`)]);
+    const yillar = d.ozet.yillar, yog = {};
+    for (const il of d.iller) yog[+il.plaka] = il.isik.map(x => x / il.alan);
+    const tum = Object.values(yog).flat().filter(x => x > 0), lo = Math.log(Math.min(...tum)), hi = Math.log(Math.max(...tum));
+    const kap = document.createElement("div"); kap.className = "gece-kap";
+    const yil = document.createElement("div"); yil.className = "gece-yil"; kap.append(yil);
+    yerlestir(kart, kap, EN() ? "Night light per km², each province · VIIRS" : "Km² başına gece ışığı, il il · VIIRS uydusu");
+    const boyutla = tuval(kap);
+    let k = 0;
+    const ciz = () => {
+      const {c, W, H} = boyutla(), p = izdusum(W, H, [25.6, 35.8, 44.9, 42.2], 0.9);
+      c.fillStyle = "#070a12"; c.fillRect(0, 0, W, H);
+      c.strokeStyle = "rgba(255,255,255,.08)"; c.lineWidth = 0.5;
+      ilCiz(c, v.sinir, p, (pl) => {
+        const x = yog[pl] && yog[pl][k]; if (!x) return "#0d1220";
+        const u = Math.max(0, Math.min(1, (Math.log(x) - lo) / (hi - lo)));
+        return `rgb(${Math.round(20 + 235 * u)},${Math.round(22 + 180 * u ** 1.3)},${Math.round(40 + 60 * u ** 3)})`;
+      });
+      const top = d.ozet.turkiye[k] / d.ozet.turkiye[0];
+      yil.innerHTML = `<b>${yillar[k]}</b><span>${EN() ? "Turkey total" : "Türkiye toplamı"}: ${k ? "×" + sayi(top, 2) : (EN() ? "baseline" : "başlangıç")}</span>`;
+    };
+    ciz(); addEventListener("resize", ciz);
+    if (AZ_HAREKET) return;
+    let son = 0;
+    dongu(kap, (t) => { if (t - son < (k === yillar.length - 1 ? 2600 : 700)) return; son = t; k = (k + 1) % yillar.length; ciz(); });
+  }
+
+  // ---------------------------------------------------------------- Meclis: her yıl yükselen kelimeler
+  async function meclis(kart) {
+    const y = await json(`${SITE}/meclisin-dili/veri/yukselen.json`);
+    const yillar = Object.keys(y).sort();
+    const kap = document.createElement("div"); kap.className = "meclis-kap";
+    kap.innerHTML = `<div class="meclis-yil"></div><div class="meclis-kelimeler"></div>`;
+    yerlestir(kart, kap, EN() ? "Words that suddenly rose in parliament that year" : "O yıl Meclis'te birden yükselen kelimeler");
+    const yilE = kap.querySelector(".meclis-yil"), kel = kap.querySelector(".meclis-kelimeler");
+    let k = Math.max(0, yillar.indexOf("2001"));
+    const goster = () => {
+      const liste = (y[yillar[k]]["1"] || []).filter(w => w[0].length > 3).sort((a, b) => b[1] - a[1]).slice(0, 7);
+      const en = liste[0] ? liste[0][1] : 1;
+      yilE.textContent = yillar[k];
+      kel.innerHTML = liste.map((w, i) => `<span style="--b:${(0.75 + 0.9 * Math.sqrt(w[1] / en)).toFixed(2)}em;animation-delay:${i * 120}ms">${w[0]} <small>×${sayi(w[1], 0)}</small></span>`).join("");
+    };
+    goster();
+    if (AZ_HAREKET) return;
+    setInterval(() => { if (!document.hidden) { k = (k + 1) % yillar.length; goster(); } }, 3200);
+  }
+
+  // ---------------------------------------------------------------- İETT: hat hat dakiklik
+  async function iett(kart) {
+    const o = await json(`${SITE}/iett-dakiklik/veri/ozet.json`);
+    const tum = o.hatlar.filter(h => h.kalkis).sort((a, b) => b.dakik - a.dakik);
+    const hatlar = tum.length > 7 ? tum.slice(0, 4).concat(tum.slice(-3)) : tum;   // en dakik 4 ve en az dakik 3
+    const kap = document.createElement("div"); kap.className = "iett-kap";
+    kap.innerHTML = hatlar.map((h, i) => `<div class="iett-satir"><b>${h.hat}</b><span class="iett-cubuk"><i style="--d:${h.dakik};animation-delay:${i * 80}ms"></i><i class="gec" style="--g:${h.gec5};--d:${h.dakik};animation-delay:${i * 80}ms"></i></span><em>%${h.dakik}</em></div>`).join("");
+    yerlestir(kart, kap, EN() ? `On time (−1…+5 min) vs. 5+ min late · ${o.meta.gunler.length} days, early data` : `Zamanında (−1…+5 dk) ve 5 dk'dan fazla geç · ${o.meta.gunler.length} gün, ilk veriler`);
+  }
+
+  // ---------------------------------------------------------------- Mevzuat: yıl yıl düzenleme sayısı
+  async function mevzuat(kart) {
+    const o = await json(`${SITE}/mevzuat-haritasi/veri/ozet.json`);
+    const yillar = o.yillar.filter(y => o.yil_tur[y]);
+    const top = (y) => Object.values(o.yil_tur[y]).reduce((a, b) => a + b, 0);
+    const en = Math.max(...yillar.map(top));
+    const kap = document.createElement("div"); kap.className = "mevzuat-kap";
+    kap.innerHTML = `<div class="mz-sutunlar">${yillar.map((y, i) => {
+      const t = top(y), k = (o.yil_tur[y].kanun || 0) + (o.yil_tur[y].khk || 0) + (o.yil_tur[y].cbk || 0);
+      return `<div class="mz-yil" title="${y}: ${sayi(t)} ${EN() ? "items" : "düzenleme"}, ${sayi(k)} ${EN() ? "laws/decrees" : "kanun/kararname"}" style="--h:${(t / en * 100).toFixed(1)};--k:${(k / t * 100).toFixed(1)};animation-delay:${i * 35}ms"><i></i></div>`;
+    }).join("")}</div><div class="mz-eksen"><span>${yillar[0]}</span><span>${yillar.at(-1)}${o.son.slice(0, 4) === yillar.at(-1) ? (EN() ? " (so far)" : " (şimdiye dek)") : ""}</span></div>`;
+    yerlestir(kart, kap, EN() ? "Items in the Official Gazette per year · red: laws and decrees" : "Resmî Gazete'de yıl yıl düzenleme · kırmızı: kanun ve kararnameler");
+  }
+
+  // ---------------------------------------------------------------- Enflasyon: hal fiyatları ve TÜFE
+  async function enflasyon(kart) {
+    const o = await json(`${SITE}/sepet-enflasyonu/veri/ozet.json`);
+    const aylar = o.hal.aylar.filter(a => a.yillik != null);
+    const en = Math.max(...aylar.map(a => Math.max(a.yillik, a.tufe_yillik || 0)));
+    const AY = EN() ? ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] : ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"];
+    const kap = document.createElement("div"); kap.className = "enf-kap";
+    const nokta = aylar.map((a, i) => `${((i + 0.5) / aylar.length * 100).toFixed(2)},${(100 - (a.tufe_yillik || 0) / en * 100).toFixed(2)}`).join(" ");
+    kap.innerHTML = `<div class="enf-cizim">${aylar.map((a, i) => `<div class="enf-ay" title="${a.ay}: ${EN() ? "wholesale produce" : "hal"} %${sayi(a.yillik, 1)}, TÜFE %${sayi(a.tufe_yillik || 0, 1)}" style="--h:${(a.yillik / en * 100).toFixed(1)};animation-delay:${i * 70}ms"><i></i><span>${AY[+a.ay.slice(5) - 1]}</span></div>`).join("")}
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="${nokta}" fill="none" stroke="#1b1b1b" stroke-width="1.6" vector-effect="non-scaling-stroke" stroke-dasharray="4 3"/></svg></div>
+      <div class="enf-lejant"><span><i></i>${EN() ? "Istanbul wholesale produce, yearly change" : "İstanbul hal fiyatları, yıllık değişim"}</span><span><b></b>${EN() ? "CPI, yearly" : "TÜFE, yıllık"}</span></div>`;
+    yerlestir(kart, kap, null);
+  }
+
+  // ---------------------------------------------------------------- Vikipedi: her günün en çok okunanı
+  async function viki(kart) {
+    const s = await json(`${SITE}/turkiye-merak/veri/son.json`);
+    const ay = s.son.slice(0, 7), onceki = new Date(Date.parse(ay + "-01T00:00:00Z") - 864e5).toISOString().slice(0, 7);
+    const [a, b] = await Promise.all([json(`${SITE}/turkiye-merak/veri/gun/${ay}.json`), json(`${SITE}/turkiye-merak/veri/gun/${onceki}.json`).catch(() => ({}))]);
+    const gunler = {...b, ...a};
+    const son7 = Object.keys(gunler).sort().slice(-6).reverse().map(g => [g, gunler[g].top && gunler[g].top[0]]).filter(x => x[1]);
+    const en = Math.max(...son7.map(x => x[1][1]));
+    const kap = document.createElement("div"); kap.className = "viki-kap";
+    kap.innerHTML = son7.map(([g, t], i) => {
+      const d = new Date(g + "T12:00:00Z").toLocaleDateString(EN() ? "en-GB" : "tr-TR", {day: "numeric", month: "short", timeZone: "UTC"});
+      return `<div class="viki-satir" style="--w:${(t[1] / en * 100).toFixed(1)};animation-delay:${i * 90}ms"><span class="viki-gun">${d}</span><b>${t[0].replace(/_/g, " ")}</b><em>${sayi(t[1])}</em></div>`;
+    }).join("");
+    yerlestir(kart, kap, EN() ? "Most-read Turkish Wikipedia article, each of the last 6 days" : "Son 6 günün her birinde en çok okunan madde");
+  }
+
+  const KARTLAR = {"s-mevzuat": mevzuat, "s-enflasyon": enflasyon, "s-viki": viki, "s-hava": hava, "s-gece": gece, "s-meclis": meclis, "s-iett": iett, "s-tohum": tohum, "s-deniz": deniz, "s-yangin": yangin, "s-dizi": dizi, "s-uydu": gok, "s-baraj": baraj, "s-deprem": deprem, "s-ucak": ucak};
   const gozcu = new IntersectionObserver((girdiler) => {
     for (const g of girdiler) {
       if (!g.isIntersecting) continue;
