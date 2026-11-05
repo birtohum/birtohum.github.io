@@ -157,6 +157,16 @@ const EN_PROJE = {
     ogrendim: "In an evolution sim it's easy to say \"something changed\"; showing it isn't random drift takes measurement. In my rerun the difference was very clear (Welch test p ≈ 5·10⁻⁹).",
     gorseller: [["gorsel/p-yasam.webp", "Real screen from the simulator: first generation, herbivores, carnivores and plants"]],
     link: [["Open the simulation ↗", "https://birtohum.github.io/yapay-yasam/"], ["Code ↗", "https://github.com/birtohum/yapay-yasam"]]},
+  "Sesli Klasikler": {ad: "Sesli Klasikler (Audio Classics)", ne: "18 stories by Ömer Seyfettin as a free audiobook: the sentence being read is highlighted in the text, and tapping a sentence continues from there.",
+    sonuc: "4.4 hours of audio generated on my computer with an openly licensed Turkish voice. Transcribed back with Whisper, the word error rate is 11.2%; the measurement also caught grammar notes mixed into one text.",
+    damga: "Live", alt: ["Python", "Piper TTS", "Whisper"],
+    soru: "Can a child reading these stories at school, or an adult whose eyes get tired, both listen and follow along in the text?",
+    sayilar: [["18", "stories"], ["4.4 h", "audio"], ["11.2%", "word error rate (via Whisper)"]],
+    yaptim: ["A pipeline that takes public-domain stories from Turkish Wikisource, reads every sentence separately with Piper's Turkish voice and records sentence timings, plus a player that highlights the current sentence and remembers where you left off.",
+      "I judged the voice by measuring, not by ear: the first minute of each story was transcribed back with Whisper and compared with the original. That check also caught notes like 'görmediğim(-me, verbal noun)' that someone had added to a Wikisource text and that were being read aloud."],
+    ogrendim: "The first measurement came out at 17.8%; part of the error came from my measuring window, not the voice. Before trusting a number, measure the thing that measures.",
+    gorseller: [["gorsel/p-sesliklasik.webp", "Kaşağı with the sentence being read highlighted (real screenshot)"]],
+    link: [["Listen ↗", "https://birtohum.github.io/sesli-klasikler/"], ["Code ↗", "https://github.com/birtohum/sesli-klasikler"]]},
   "Ne Diyor?": {ad: "Ne Diyor? (What does it say?)", ne: "A site and browser extension that turns official Turkish letters into plain language: what it says, what you're asked to do, and by when.",
     sonuc: "Every date, deadline and amount the model writes is looked up in the original; numbers that aren't there are flagged in red. ID numbers, IBANs and phone numbers are masked before leaving the browser.",
     damga: "Live", alt: ["Python", "LLM", "Chrome extension"],
@@ -218,7 +228,7 @@ if (DIL === "en") {
     "nav.mono": `<a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 37 projects. Twenty-seven are live on the web, and thirteen update themselves.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 38 projects. Twenty-eight are live on the web, and thirteen update themselves.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
     ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
@@ -283,7 +293,7 @@ if (DIL === "en") {
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.querySelectorAll(".s-karne .sat b").forEach(b => b.textContent = b.textContent.replace(",", "."));
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "37 projects, 27 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "38 projects, 28 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {
