@@ -157,6 +157,36 @@ const EN_PROJE = {
     ogrendim: "In an evolution sim it's easy to say \"something changed\"; showing it isn't random drift takes measurement. In my rerun the difference was very clear (Welch test p ≈ 5·10⁻⁹).",
     gorseller: [["gorsel/p-yasam.webp", "Real screen from the simulator: first generation, herbivores, carnivores and plants"]],
     link: [["Open the simulation ↗", "https://birtohum.github.io/yapay-yasam/"], ["Code ↗", "https://github.com/birtohum/yapay-yasam"]]},
+  "Ne Diyor?": {ad: "Ne Diyor? (What does it say?)", ne: "A site and browser extension that turns official Turkish letters into plain language: what it says, what you're asked to do, and by when.",
+    sonuc: "Every date, deadline and amount the model writes is looked up in the original; numbers that aren't there are flagged in red. ID numbers, IBANs and phone numbers are masked before leaving the browser.",
+    damga: "Live", alt: ["Python", "LLM", "Chrome extension"],
+    soru: "Can someone holding an official notice, or a letter on e-Devlet, see at a glance what is being asked of them and how long they have?",
+    sayilar: [["3", "parts: summary, actions, plain text"], ["0", "texts stored"], ["10", "daily uses per person"]],
+    yaptim: ["A site and Chrome/Edge extension that turns a pasted or selected official letter into a one-line summary, a to-do list with deadlines, a plain-Turkish version and a glossary. The model is called through my own small server on AWS, with per-person and daily limits.",
+      "The model's most dangerous mistake is writing '15 days' instead of '7 days'. So every number in the output is looked up in the original and missing ones are flagged. Personal numbers are masked in the browser, and the paid model tier that doesn't train on content is used."],
+    ogrendim: "In simplification the real work isn't writing, it's deciding what must not change: deadlines, amounts and article numbers have to stay word for word.",
+    gorseller: [["gorsel/p-nediyor.webp", "A made-up municipal notice and the real result on the live site"]],
+    link: [["Use ↗", "https://birtohum.github.io/ne-diyor/"], ["Extension ↗", "https://github.com/birtohum/ne-diyor/releases/latest"], ["Code ↗", "https://github.com/birtohum/ne-diyor"]]},
+  "Sesli Oku": {ad: "Sesli Oku (Read Aloud)", ne: "A Turkish page reader for Chrome and Edge: reads the main text of a page aloud and highlights where it is; large text and high contrast with one key.",
+    sonuc: "Skips menus, notice boxes and captions and starts straight from the main text. No data leaves the computer; the voice is the system's own Turkish voice.",
+    damga: "Extension", alt: ["JavaScript", "Chrome extension", "Accessibility"],
+    soru: "Can someone with low vision, or who struggles to read, listen to a news story or Wikipedia article without getting stuck on menus and ads?",
+    sayilar: [["4", "shortcuts"], ["0", "servers, data"], ["0.5–2×", "reading speed"]],
+    yaptim: ["A reader that finds the main text of a page and skips menus, notice boxes and image captions. It reads paragraph by paragraph in a Turkish voice, highlighting and scrolling to the current one.",
+      "Large text and high contrast with one key. It counts images without a description (alt text) and tells the user. It doesn't replace a full screen reader like NVDA; it's a light helper."],
+    ogrendim: "Finding the main text is harder than reading it: on Wikipedia the first version started reading from a 'citation needed' box before the article itself.",
+    gorseller: [["gorsel/p-sesli.webp", "Turkish Wikipedia, Photosynthesis article: the paragraph being read is highlighted (real screenshot)"]],
+    link: [["Download ↗", "https://github.com/birtohum/sesli-oku/releases/latest"], ["Code ↗", "https://github.com/birtohum/sesli-oku"]]},
+  "Görselin İzi": {ad: "Görselin İzi (Trace of an Image)", ne: "Check a photo before sharing it: the date, device, editing software and location inside it; error level analysis; reverse image search in one click.",
+    sonuc: "The photo is never uploaded; everything runs in the browser. Findings are presented as clues, not proof.",
+    damga: "Live", alt: ["JavaScript", "EXIF", "ELA"],
+    soru: "How much of a photo that lands in front of you can you check in a minute, before sharing it?",
+    sayilar: [["4", "reverse search engines"], ["0", "photos uploaded"], ["3", "kinds of clues"]],
+    yaptim: ["A page that reads a photo's EXIF data (capture date, device, editing software, location) and explains it in plain sentences, runs error level analysis (ELA), and opens Google Lens, Yandex, TinEye and Bing search in one click.",
+      "Every finding is written as a clue: missing EXIF isn't suspicious (social media strips it), and bright edges in ELA are normal. Reverse search gives the real answer."],
+    ogrendim: "Most fake photos aren't edited; they're old photos from a different event. That's why the most important button is 'where did it first appear?'.",
+    gorseller: [["gorsel/p-gorsel.webp", "With a test photo carrying made-up EXIF data (real screenshot)"]],
+    link: [["Use ↗", "https://birtohum.github.io/gorsel-iz/"], ["Code ↗", "https://github.com/birtohum/gorsel-iz"]]},
   "Masaüstü ekranı": {ad: "Desk display", ne: "A morning summary for a small e-ink desk display: air quality, earthquakes, reservoirs, the day's Wikipedia spike and aircraft, all from my own sites.",
     sonuc: "The software works and draws a preview from live data four times a day; <b>52 tests</b>. The hardware hasn't been bought yet, and the driver hasn't been tried on a real panel.",
     damga: "Awaiting hardware", alt: ["Python", "e-ink", "Raspberry Pi"],
@@ -188,7 +218,7 @@ if (DIL === "en") {
     "nav.mono": `<a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 36 projects. Twenty-six are live on the web, and thirteen update themselves.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 37 projects. Twenty-seven are live on the web, and thirteen update themselves.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
     ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
@@ -253,7 +283,7 @@ if (DIL === "en") {
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.querySelectorAll(".s-karne .sat b").forEach(b => b.textContent = b.textContent.replace(",", "."));
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "36 projects, 26 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "37 projects, 27 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {
