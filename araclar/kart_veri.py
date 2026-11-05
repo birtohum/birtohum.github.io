@@ -28,9 +28,10 @@ def main():
     halkalar = [s for il in sinir for h in il["h"] if (s := sadelestir(h))]
     yil = al("harita/2021.json")
     noktalar = [[x, y, ay] for x, y, ay, sn, n in yil["n"] if sn == 0]   # yalnız orman ve makilik
-    cikti = {"kaynak": "NASA FIRMS (VIIRS), orman-yanginlari-uzaydan", "yil": 2021, "sinir": halkalar, "n": noktalar}
-    (KOK / "veri" / "kart-yangin.json").write_text(json.dumps(cikti, separators=(",", ":")), encoding="utf-8")
-    print(f"{len(halkalar)} halka, {sum(map(len, halkalar))} köşe, {len(noktalar)} orman noktası")
+    istanbul = [s for il in sinir if il["ad"] == "İstanbul" for h in il["h"] if (s := sadelestir(h, 0.008))]
+    cikti = {"kaynak": "NASA FIRMS (VIIRS), orman-yanginlari-uzaydan", "yil": 2021, "sinir": halkalar, "n": noktalar, "istanbul": istanbul}
+    (KOK / "veri" / "kart-harita.json").write_text(json.dumps(cikti, separators=(",", ":")), encoding="utf-8")
+    print(f"İstanbul {sum(map(len, istanbul))} köşe; {len(halkalar)} halka, {sum(map(len, halkalar))} köşe, {len(noktalar)} orman noktası")
 
 
 if __name__ == "__main__":

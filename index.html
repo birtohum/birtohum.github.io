@@ -114,7 +114,7 @@ section{padding:80px 0 0}
 .yangin-kap{position:relative;height:100%;background:#17110d}
 .yangin-cv{position:absolute;inset:0}
 .yangin-ay{position:absolute;right:14px;top:10px;text-align:right;color:#ffd9b8;font:500 .7rem "IBM Plex Mono",monospace}
-.yangin-ay b{display:block;font:800 1.15rem/1.1 inherit;font-family:inherit;color:#ff8a3d;letter-spacing:-.01em}
+.yangin-ay b{display:block;font-weight:800;font-size:1.15rem;line-height:1.1;color:#ff8a3d;letter-spacing:-.01em}
 .s-yangin .gorsel-not{color:#d9b9a0}
 .dizi-kap{height:100%;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;padding:14px 18px 14px 16px}
 .dizi-izgara{display:grid;grid-template-columns:repeat(12,9px);gap:3px}
@@ -132,6 +132,29 @@ section{padding:80px 0 0}
 @keyframes pirilti{50%{opacity:.15}}
 .gok-svg .iz{stroke-dasharray:1 1;stroke-dashoffset:1}
 .s-uydu .gorsel-not{color:#8ea0bf}
+.kart-cv{position:absolute;inset:0}
+.baraj-kap{height:100%;display:grid;grid-template-columns:repeat(10,1fr);gap:6px;align-items:end;padding:30px 14px 50px;background:linear-gradient(#0f2847,#0b1f38)}
+.depo{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0}
+.depo-ic{position:relative;width:100%;height:96px;border:1.5px solid #5b88b8;border-top:0;border-radius:0 0 6px 6px;overflow:hidden;background:rgba(255,255,255,.03)}
+.depo .su{position:absolute;left:0;right:0;bottom:0;height:calc(var(--y)*1%);background:linear-gradient(#6fb6ff,#2f6fc0);animation:dol 1.4s cubic-bezier(.2,.7,.2,1) both}
+.depo .su::before{content:"";position:absolute;left:-50%;top:-5px;width:200%;height:10px;background:radial-gradient(circle at 10px -4px,transparent 9px,#6fb6ff 10px) 0 0/20px 10px repeat-x;animation:dalga 2.4s linear infinite}
+@keyframes dol{from{height:0}}
+@keyframes dalga{to{transform:translateX(20px)}}
+.depo .gecen{position:absolute;left:-2px;right:-2px;bottom:calc(var(--g)*1%);border-top:1.5px dashed #ffd27a}
+.depo-y{font:700 .78rem/1 "IBM Plex Mono",monospace;color:#e6f1ff}
+.depo-ad{font:500 .58rem/1.1 "IBM Plex Mono",monospace;color:#8fb2d9;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.s-baraj .gorsel-not{color:#8fb2d9}
+.deprem-kap{position:relative;height:100%;background:#f6f1e7}
+.deprem-saat,.ucak-sayi{position:absolute;right:14px;top:10px;z-index:1;text-align:right;font:500 .7rem "IBM Plex Mono",monospace;pointer-events:none}
+.deprem-saat{color:#5a5046}.deprem-saat b{display:block;font:700 .95rem/1.2 "IBM Plex Mono",monospace;color:#c93c20}
+.ucak-kap{position:relative;height:100%;background:#0b1422}
+.ucak-sayi{color:#8ea0bf}.ucak-sayi b{display:block;font-weight:800;font-size:1.6rem;line-height:1;color:#fff}
+.ucak-sayi small{display:block;margin-top:4px;font-size:.62rem}
+.ucak-sayi i{display:inline-block;width:8px;height:8px;border-radius:2px;background:#ffcf5a;margin:0 3px 0 6px;vertical-align:-1px}.ucak-sayi i.in{background:#7cc4ff}
+.s-ucak .gorsel-not{color:#8ea0bf}
+.s-deprem .gorsel-not,.s-ucak .gorsel-not{top:auto;bottom:12px;max-width:52%}
+@media (max-width:620px){.baraj-kap{gap:3px;padding:30px 8px 50px}.depo-ad{font-size:.5rem}.depo-y{font-size:.66rem}}
+@media (prefers-reduced-motion:reduce){.depo .su,.depo .su::before{animation:none}}
 @media (max-width:620px){.site .resim.canli-gorsel{height:200px}.dizi-izgara{grid-template-columns:repeat(12,7px);gap:2px}.dizi-izgara i{width:7px;height:7px}}
 @media (prefers-reduced-motion:reduce){.seritler i,.dizi-izgara i.o,.gok-svg .pirilti,.dizi-dil.gir{animation:none}}
 
@@ -717,6 +740,6 @@ Promise.all(["ozet", "urunler"].map(a => fetch(`https://birtohum.github.io/sepet
 }).catch(() => {});
 </script>
 <script src="hikaye.js?v=8"></script>
-<script src="kartlar.js?v=2" defer></script>
+<script src="kartlar.js?v=4" defer></script>
 </body>
 </html>

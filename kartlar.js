@@ -9,6 +9,33 @@
   const json = (u) => fetch(u, {cache: "no-cache"}).then(r => { if (!r.ok) throw new Error(u); return r.json(); });
   const AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
   const EN = () => document.documentElement.lang === "en";
+  let _harita = null;
+  const harita = () => _harita || (_harita = json("veri/kart-harita.json"));
+
+  // Coğrafi kutuyu kabın içine sığdıran izdüşüm (orta enlemde boylam kısaltılır)
+  function izdusum(W, H, [bati, guney, dogu, kuzey], pay = 0.94) {
+    const kx = Math.cos(((guney + kuzey) / 2) * Math.PI / 180);
+    const olcek = Math.min(W / ((dogu - bati) * kx), H / (kuzey - guney)) * pay;
+    const ox = (W - (dogu - bati) * kx * olcek) / 2, oy = (H - (kuzey - guney) * olcek) / 2;
+    return {x: (lon) => ox + (lon - bati) * kx * olcek, y: (lat) => oy + (kuzey - lat) * olcek};
+  }
+  function tuval(kap) {
+    const cv = document.createElement("canvas"); cv.className = "kart-cv"; kap.append(cv);
+    return () => {
+      const dpr = devicePixelRatio || 1, W = kap.clientWidth, H = kap.clientHeight;
+      cv.width = W * dpr; cv.height = H * dpr; cv.style.width = W + "px"; cv.style.height = H + "px";
+      const c = cv.getContext("2d"); c.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return {c, W, H};
+    };
+  }
+  function dongu(kap, kare) {   // yalnız kart görünürken çizer
+    let gorunur = true;
+    new IntersectionObserver(([e]) => { gorunur = e.isIntersecting; }).observe(kap);
+    (function adim(t) { if (gorunur && !document.hidden) kare(t); requestAnimationFrame(adim); })(performance.now());
+  }
+  function ilCiz(c, halkalar, p) {
+    for (const r of halkalar) { c.beginPath(); r.forEach(([x, y], i) => i ? c.lineTo(p.x(x), p.y(y)) : c.moveTo(p.x(x), p.y(y))); c.closePath(); c.fill(); c.stroke(); }
+  }
 
   function yerlestir(kart, dugum, etiket) {
     const resim = kart.querySelector(".resim");
@@ -51,7 +78,7 @@
 
   // ---------------------------------------------------------------- Yangınlar: 2021, ay ay
   async function yangin(kart) {
-    const v = await json("veri/kart-yangin.json");
+    const v = await harita();
     const BATI = 25.6, DOGU = 44.9, GUNEY = 35.8, KUZEY = 42.2, KX = Math.cos(39 * Math.PI / 180);
     const cv = document.createElement("canvas"); cv.className = "yangin-cv";
     const kap = document.createElement("div"); kap.className = "yangin-kap";
@@ -165,7 +192,96 @@
     (function adim(t) { koy(((t - bas) % SURE) / SURE); requestAnimationFrame(adim); })(bas);
   }
 
-  const KARTLAR = {"s-deniz": deniz, "s-yangin": yangin, "s-dizi": dizi, "s-uydu": gok};
+  // ---------------------------------------------------------------- Barajlar: 10 depo
+  async function baraj(kart) {
+    const o = await json(`${SITE}/barajlar-uzaydan/veri/ozet.json`);
+    const kap = document.createElement("div"); kap.className = "baraj-kap";
+    kap.innerHTML = o.barajlar.filter(b => b.son).map((b, i) => {
+      const g = b.gecen_yil && b.gecen_yil.yuzde;
+      const ipucu = `${b.ad}: %${sayi(b.son.yuzde)}` + (g != null ? (EN() ? ` (a year ago %${sayi(g)})` : ` (bir yıl önce %${sayi(g)})`) : "");
+      return `<div class="depo" title="${ipucu}"><div class="depo-ic"><i class="su" style="--y:${b.son.yuzde};animation-delay:${i * 90}ms"></i>` +
+        (g != null ? `<b class="gecen" style="--g:${g}"></b>` : "") +
+        `</div><span class="depo-y">%${sayi(b.son.yuzde)}</span><span class="depo-ad">${b.ad}</span></div>`;
+    }).join("");
+    yerlestir(kart, kap, EN() ? "Water surface vs. fullest, by satellite · line: a year ago" : "Su yüzeyi, en dolu hâline göre · çizgi: bir yıl önce");
+  }
+
+  // ---------------------------------------------------------------- Deprem: son günler, zaman sırasıyla
+  async function deprem(kart) {
+    const [v, d] = await Promise.all([harita(), json(`${SITE}/turkiye-sallandi/veri/son.json`)]);
+    const A = Object.fromEntries(d.alanlar.map((a, i) => [a, i]));
+    const ol = d.olaylar.map(o => ({t: o[A.t], la: o[A.enlem], lo: o[A.boylam], m: o[A.m]})).filter(o => o.m != null).sort((a, b) => a.t - b.t);
+    const bas = ol[0].t, son = ol.at(-1).t, gun = Math.round((son - bas) / 86400);
+    const kap = document.createElement("div"); kap.className = "deprem-kap";
+    const etiket = document.createElement("div"); etiket.className = "deprem-saat"; kap.append(etiket);
+    yerlestir(kart, kap, EN() ? `Last ${gun} days, sped up · AFAD, Kandilli, EMSC` : `Son ${gun} gün, hızlandırılmış · AFAD, Kandilli, EMSC`);
+    const boyutla = tuval(kap);
+    let c, W, H, p, zemin;
+    const hazirla = () => {
+      ({c, W, H} = boyutla()); p = izdusum(W, H, [25.6, 35.8, 44.9, 42.2]);
+      zemin = document.createElement("canvas"); zemin.width = c.canvas.width; zemin.height = c.canvas.height;
+      const z = zemin.getContext("2d"); z.setTransform(devicePixelRatio || 1, 0, 0, devicePixelRatio || 1, 0, 0);
+      z.fillStyle = "#ebe4d6"; z.strokeStyle = "#d3c9b7"; z.lineWidth = 0.5;
+      ilCiz(z, v.sinir, p);
+    };
+    hazirla(); addEventListener("resize", hazirla);
+    const SURE = 14000, SONRA = 2500, OMUR = 0.06;   // 14 sn'de bütün dönem; her halka dönemin %6'sı kadar yayılır
+    const fmt = (t) => new Date(t * 1000).toLocaleString(EN() ? "en-GB" : "tr-TR", {day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Istanbul"});
+    const ciz = (u) => {
+      c.clearRect(0, 0, W, H); c.drawImage(zemin, 0, 0, W, H);
+      const simdi = bas + (son - bas) * Math.min(u, 1);
+      let n = 0;
+      for (const o of ol) {
+        if (o.t > simdi) break;
+        n++;
+        const yas = (simdi - o.t) / ((son - bas) * OMUR);
+        const x = p.x(o.lo), y = p.y(o.la), r0 = 0.8 + Math.max(0, o.m) ** 1.6 * 0.9, buyuk = o.m >= 3;
+        c.fillStyle = buyuk ? "rgba(201,60,32,.85)" : "rgba(60,52,44,.33)";
+        c.beginPath(); c.arc(x, y, buyuk ? r0 * 0.6 : 1.1, 0, 7); c.fill();
+        if (yas < 1) {
+          c.strokeStyle = buyuk ? `rgba(201,60,32,${1 - yas})` : `rgba(60,52,44,${0.6 * (1 - yas)})`;
+          c.lineWidth = buyuk ? 1.6 : 0.8;
+          c.beginPath(); c.arc(x, y, r0 + yas * r0 * 3, 0, 7); c.stroke();
+        }
+      }
+      etiket.innerHTML = `<b>${fmt(simdi)}</b><span>${sayi(n)} ${EN() ? "earthquakes" : "deprem"}</span>`;
+    };
+    if (AZ_HAREKET) { ciz(1); return; }
+    const t0 = performance.now();
+    dongu(kap, (t) => ciz(((t - t0) % (SURE + SONRA)) / SURE));
+  }
+
+  // ---------------------------------------------------------------- Uçaklar: son ölçümdeki konumlar
+  async function ucak(kart) {
+    const [v, d] = await Promise.all([harita(), json(`${SITE}/istanbul-semalari/veri/son.json`)]);
+    const kap = document.createElement("div"); kap.className = "ucak-kap";
+    const etiket = document.createElement("div"); etiket.className = "ucak-sayi"; kap.append(etiket);
+    const dk = Math.max(0, Math.round((Date.now() / 1000 - d.t) / 60));
+    yerlestir(kart, kap, EN() ? `Positions ${dk} min ago · OpenSky` : `${dk} dakika önceki konumlar · OpenSky`);
+    const boyutla = tuval(kap);
+    const ucaklar = d.ucaklar.filter(u => u.la && u.lo && !u.g);
+    const ciz = () => {
+      const {c, W, H} = boyutla(), p = izdusum(W, H, [27.9, 40.75, 29.95, 41.62], 1.02);
+      c.fillStyle = "#0b1422"; c.fillRect(0, 0, W, H);
+      c.fillStyle = "#132238"; c.strokeStyle = "#2a4466"; c.lineWidth = 1;
+      ilCiz(c, v.istanbul, p);
+      for (const u of ucaklar) {
+        const iniyor = u.v != null && u.v < -1, renk = iniyor ? "#7cc4ff" : "#ffcf5a";
+        c.save(); c.translate(p.x(u.lo), p.y(u.la)); c.rotate((u.y || 0) * Math.PI / 180);
+        c.strokeStyle = renk; c.globalAlpha = 0.35; c.lineWidth = 1.2;   // arkadaki iz: yer hızıyla orantılı
+        c.beginPath(); c.moveTo(0, 4); c.lineTo(0, 4 + Math.min(40, (u.h || 300) / 20)); c.stroke();
+        c.globalAlpha = u.i ? 1 : 0.4; c.fillStyle = renk;   // il sınırı dışındakiler soluk
+        c.beginPath(); c.moveTo(0, -6); c.lineTo(4.5, 4); c.lineTo(0, 2); c.lineTo(-4.5, 4); c.closePath(); c.fill();
+        c.restore();
+      }
+    };
+    const icerde = ucaklar.filter(u => u.i).length;
+    etiket.innerHTML = `<b>${icerde}</b><span>${EN() ? "aircraft over the province" : "uçak il sınırı içinde"}</span>` +
+      `<small><i class="in"></i>${EN() ? "descending" : "alçalıyor"} <i></i>${EN() ? "climbing or cruising" : "yükseliyor ya da seyirde"}</small>`;
+    ciz(); addEventListener("resize", ciz);
+  }
+
+  const KARTLAR = {"s-deniz": deniz, "s-yangin": yangin, "s-dizi": dizi, "s-uydu": gok, "s-baraj": baraj, "s-deprem": deprem, "s-ucak": ucak};
   const gozcu = new IntersectionObserver((girdiler) => {
     for (const g of girdiler) {
       if (!g.isIntersecting) continue;
