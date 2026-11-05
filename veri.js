@@ -30,7 +30,7 @@ const PROJELER = [
    damga: ["Prototip", "notr"], alt: ["Next.js", "Supabase", "Güvenlik"], link: [["Vitrini gez", "https://birtohum.github.io/kaynas/"]]},
   {t: "urun", em: "🏪", ad: "Mahalle Site", ne: "Mahalledeki esnafa tek sayfalık, hızlı site. Önizleme hazırlanıp işletmeye gönderiliyor; \"evet\" derse yayına alınıyor.",
    sonuc: "Cloudflare Pages'te ücretsiz yayın; müşteri takibi ve teklif süreciyle birlikte.",
-   damga: ["Yayında", "iyi"], alt: ["HTML/CSS", "Cloudflare"], link: [["Örnek", "https://mahallesite.pages.dev/kafe/"]]},
+   damga: ["Yayında", "iyi"], alt: ["HTML/CSS", "Cloudflare"], link: [["Kendi siteni yap", "https://birtohum.github.io/mahalle-site/"], ["Örnek", "https://mahallesite.pages.dev/kafe/"]]},
   {t: "urun", em: "🖥️", ad: "S.", ne: "Görevi yaz, arkana yaslan: bilgisayardaki Claude Code'u görev sonuna kadar yürüten masaüstü uygulaması.",
    sonuc: "Kurulum dosyası olan Windows uygulaması, <b>149 commit.</b> Görev öncesi fikir danışmak için sohbet ekranı.",
    damga: ["Kurulabilir", "notr"], alt: ["Electron", "Node.js"], link: [["İndir (Windows)", "https://github.com/birtohum/s/releases/latest"]]},
