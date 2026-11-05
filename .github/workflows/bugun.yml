@@ -1,0 +1,33 @@
+name: Bugün Türkiye
+
+on:
+  schedule:
+    - cron: "30 5 * * *"   # 08:30 Türkiye saati; diğer sitelerin günlük verisi bu saate kadar güncelleniyor
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bugun
+  cancel-in-progress: false
+
+jobs:
+  yaz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Paragrafı üret ve doğrula
+        env:
+          META_MODEL_API_KEY: ${{ secrets.META_MODEL_API_KEY }}
+        run: node araclar/bugun.mjs
+      - name: Değiştiyse kaydet
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add veri/bugun.json veri/bugun-arsiv.json
+          git diff --cached --quiet || (git commit -m "Bugün Türkiye: $(date -u +%F)" && git push)
