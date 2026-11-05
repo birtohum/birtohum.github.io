@@ -97,7 +97,7 @@ const HIKAYE = {
     sayilar: [["172 / 180", "iddia doğrulanıp yayımlandı"], ["25 / 25", "elle denetimde doğru"], ["≈ 0,04 $", "günlük maliyet"]],
     yaptim: ["Günün fihristini ve mükerrer sayıları çekiyor, taranmış PDF'leri okuyor, her düzenlemeyi sade Türkçeyle özetliyor. Özetteki her iddia gazetedeki birebir bir alıntıyla eşleşmek zorunda; eşleşmeyen iddia yayımlanmıyor. Okuyan her maddenin altında \"metindeki dayanak\"ı açıp görebiliyor."],
     ogrendim: "Denetleyen hakem özetleyenle aynı model, yani bağımsız değil. Atlanan madde olup olmadığını (eksiksizliği) henüz ölçmedim; sıradaki iş gerçek okurlarla bir hafta denemek.",
-    gorseller: [[G + "p-gazete.webp", "1 Kasım 2026 sayısı: 36 iddianın 33'ü metinle doğrulandı (gerçek çıktı)"]],
+    gorseller: [[G + "p-gazete.webp", "31 Ekim 2026 sayısı: 20 düzenleme, 88 iddia metinle doğrulandı (gerçek çıktı)"]],
     link: [["Bugünün özeti ↗", "https://birtohum.github.io/gazete-ozeti/"], ["Kod ↗", "https://github.com/birtohum/gazete-ozeti"]]},
   "Yorum Yanıtlayıcı": {id: "yorum", sahne: {img: G + "p-yorum.webp", alt: "Yorum Yanıtlayıcı arayüzü"},
     soru: "Esnaf her müşteri yorumuna cevap yazmak istiyor ama vakti yok. Yapay zekâ söz vermeden, uydurmadan cevap yazabilir mi?",

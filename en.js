@@ -49,7 +49,7 @@ const EN_PROJE = {
     sayilar: [["172 / 180", "claims verified and published"], ["25 / 25", "correct in manual check"], ["≈ $0.04", "per day"]],
     yaptim: ["It fetches the day's index and extra issues, reads scanned PDFs and summarises every regulation in plain Turkish. Every claim in a summary has to match a verbatim quote from the Gazette; claims that don't match are not published. Readers can open the \"source in the text\" under each point."],
     ogrendim: "The judge that checks the summaries is the same model that writes them, so it isn't independent. I haven't yet measured completeness (missed items); the next step is a week with real readers.",
-    gorseller: [["gorsel/p-gazete.webp", "The 1 November 2026 issue: 33 of 36 claims verified against the text (real output)"]],
+    gorseller: [["gorsel/p-gazete.webp", "The 31 October 2026 issue: 20 regulations, 88 claims verified against the text (real output)"]],
     link: [["Today's digest ↗", "https://birtohum.github.io/gazete-ozeti/"], ["Code ↗", "https://github.com/birtohum/gazete-ozeti"]], alt_sahne: "Gazette Digest page"},
   "Yorum Yanıtlayıcı": {ad: "Review Replier", ne: "Drafts replies to customer reviews for small shops, based only on what the business itself provided.",
     sonuc: "15 of 15 unseen hair-salon reviews accepted on manual review. Invented promises, numbers or phone numbers are caught in code.",
