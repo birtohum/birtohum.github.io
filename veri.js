@@ -33,7 +33,7 @@ const PROJELER = [
    damga: ["Yayında", "iyi"], alt: ["HTML/CSS", "Cloudflare"], link: [["Örnek", "https://mahallesite.pages.dev/kafe/"]]},
   {t: "urun", em: "🖥️", ad: "S.", ne: "Görevi yaz, arkana yaslan: bilgisayardaki Claude Code'u görev sonuna kadar yürüten masaüstü uygulaması.",
    sonuc: "Kurulum dosyası olan Windows uygulaması, <b>149 commit.</b> Görev öncesi fikir danışmak için sohbet ekranı.",
-   damga: ["Kurulabilir", "notr"], alt: ["Electron", "Node.js"], link: []},
+   damga: ["Kurulabilir", "notr"], alt: ["Electron", "Node.js"], link: [["İndir (Windows)", "https://github.com/birtohum/s/releases/latest"]]},
   {t: "oyun", em: "🚚", ad: "Zabıta Geliyor!", ne: "Tek başına ya da arkadaşlarla oynanan, seyyar tezgâhlı kaos oyunu. Herkesin kendi arabası, ortak ya da rakip günlük kira hedefi.",
    sonuc: "Godot ile erken prototip. Sıfır bütçe: yalnızca kalıcı ücretsiz araçlar.",
    damga: ["Prototip", "notr"], alt: ["Godot", "GDScript"], link: []},
