@@ -157,6 +157,16 @@ const EN_PROJE = {
     ogrendim: "In an evolution sim it's easy to say \"something changed\"; showing it isn't random drift takes measurement. In my rerun the difference was very clear (Welch test p ≈ 5·10⁻⁹).",
     gorseller: [["gorsel/p-yasam.webp", "Real screen from the simulator: first generation, herbivores, carnivores and plants"]],
     link: [["Open the simulation ↗", "https://birtohum.github.io/yapay-yasam/"], ["Code ↗", "https://github.com/birtohum/yapay-yasam"]]},
+  "Bilgi Yarışması": {ad: "Bilgi Yarışması (Live Quiz)", ne: "A live quiz for friends, classrooms or families: one screen hosts the room and everyone joins from their phone; after each question you see whether ten AI models knew it.",
+    sonuc: "Questions come from the report card's 1,136 Wikidata-generated questions, with disputed ones removed. The server uses only Python's standard library; live updates via Server-Sent Events.",
+    damga: "Live", alt: ["Python", "SSE", "JavaScript"],
+    soru: "Can a classroom or a family dinner table compete on Turkey trivia, with each other and with AI?",
+    sayilar: [["1,136", "verified questions"], ["10", "models compared"], ["0", "extra libraries (server)"]],
+    yaptim: ["A live quiz where one screen hosts a room and players join from their phones with a four-letter code. Ten questions, 20 seconds each; faster correct answers score more. After each question: the answer distribution, the scoreboard and whether each of ten models knew it.",
+      "Questions come from the Turkish AI report card; 11 questions whose Wikidata answer was flagged as doubtful were removed. The server runs on AWS in plain Python, and the correct answer is never sent to phones until the question closes."],
+    ogrendim: "One project's by-product becomes another's material: the questions I generated and verified for the report card turned into a game here.",
+    gorseller: [["gorsel/p-yarisma.webp", "A test game played on the live server (player names are placeholders)"]],
+    link: [["Play ↗", "https://birtohum.github.io/bilgi-yarismasi/"], ["Code ↗", "https://github.com/birtohum/bilgi-yarismasi"]]},
   "Sesli Klasikler": {ad: "Sesli Klasikler (Audio Classics)", ne: "18 stories by Ömer Seyfettin as a free audiobook: the sentence being read is highlighted in the text, and tapping a sentence continues from there.",
     sonuc: "4.4 hours of audio generated on my computer with an openly licensed Turkish voice. Transcribed back with Whisper, the word error rate is 11.2%; the measurement also caught grammar notes mixed into one text.",
     damga: "Live", alt: ["Python", "Piper TTS", "Whisper"],
@@ -228,7 +238,7 @@ if (DIL === "en") {
     "nav.mono": `<a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 38 projects. Twenty-eight are live on the web, and thirteen update themselves.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 39 projects. Twenty-nine are live on the web, and thirteen update themselves.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
     ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
@@ -293,7 +303,7 @@ if (DIL === "en") {
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.querySelectorAll(".s-karne .sat b").forEach(b => b.textContent = b.textContent.replace(",", "."));
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "38 projects, 28 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "39 projects, 29 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {
