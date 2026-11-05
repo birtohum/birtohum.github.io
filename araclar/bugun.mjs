@@ -96,7 +96,7 @@ async function yazdir(olg, dil) {
     : `From the verified facts below, write one calm, plain English paragraph in a newspaper style (3-4 sentences, at most 90 words). Rules: use only these facts; do not add, round or compute any number, write every number exactly as given in digits; no opinions, guesses, causes, exclamations or hype; keep the article title in quotes exactly. Return only the paragraph.\n\nFacts:\n${satirlar}`;
   const r = await fetch("https://api.meta.ai/v1/chat/completions", {
     method: "POST", headers: {"Authorization": `Bearer ${anahtar}`, "Content-Type": "application/json"},
-    body: JSON.stringify({model: MODEL, messages: [{role: "user", content: istem}], max_tokens: 400, temperature: 0.3}),
+    body: JSON.stringify({model: MODEL, messages: [{role: "user", content: istem}], max_tokens: 6000, reasoning_effort: "low", temperature: 0.3}),
   });
   if (!r.ok) throw new Error(`model ${r.status}: ${(await r.text()).slice(0, 200)}`);
   const v = await r.json();
