@@ -199,7 +199,7 @@ addEventListener("hashchange", () => { if (!location.hash.startsWith("#" + pence
 document.querySelectorAll("a.site").forEach(a => {
   const id = (a.getAttribute("href").match(/github\.io\/([\w-]+)/) || [])[1];
   a.addEventListener("click", e => {
-    if (!id || e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return;  // yeni sekme isteyen bırakılsın
+    if (!id || !SITELER[id] || e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return;  // listede olmayan ya da yeni sekme isteyen: bağlantı normal açılsın
     e.preventDefault(); ac("site", id);
   });
 });

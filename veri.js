@@ -165,5 +165,7 @@ const HIKAYE = {
 const SITELER = {
   "mevzuat-haritasi": "Mevzuat Haritası", "meclisin-dili": "Meclis'in Dili", "kac-sigara": "Kaç Sigara?",
   "sepet-enflasyonu": "Sepet Enflasyonu", "iett-dakiklik": "İETT Dakiklik",
+  "turkiye-sallandi": "Türkiye sallandı", "turkiye-geceleri": "Türkiye geceleri", "istanbul-semalari": "İstanbul semaları",
+  "barajlar-uzaydan": "Barajlar uzaydan", "turkiye-merak": "Türkiye neyi merak etti?",
 };
 
