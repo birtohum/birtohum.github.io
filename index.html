@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ege — merak ettiğim soruları çalışan şeylere çeviriyorum</title>
-<meta name="description" content="34 proje, 24 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları, barajlar, Vikipedi merakı ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
-<meta property="og:title" content="Ege — 34 proje, 24 canlı site">
+<meta name="description" content="35 proje, 25 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları, barajlar, Vikipedi merakı ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
+<meta property="og:title" content="Ege — 35 proje, 25 canlı site">
 <meta property="og:description" content="Vergi kanunu kaç kez değişti? Bugün nefes almak kaç sigara? Yapay zekâ yapay zekâyı denetleyebilir mi? Cevaplar veriyle.">
 <meta property="og:image" content="https://birtohum.github.io/og/ana.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -279,6 +279,20 @@ section{padding:80px 0 0}
 @keyframes imlec{50%{opacity:0}}
 @media (max-width:760px){.site.s-tohum{flex-direction:column}.s-tohum .resim{border-left:0;border-top:2px solid #2f7a3d}.site.s-tohum .resim.canli-gorsel{min-height:260px;position:relative}}
 @media (prefers-reduced-motion:reduce){.tohum-metin::after{animation:none}}
+.site.s-karne{grid-column:1/-1;background:#fbf8f1;color:#1d2433;flex-direction:row;min-height:300px;
+  background-image:linear-gradient(#fbf8f1 31px,#e4e9f2 32px);background-size:100% 32px}
+.s-karne .ic{padding:26px 26px 22px;flex:1 1 50%}
+.s-karne h3{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.8rem,3.2vw,2.5rem);font-weight:700;line-height:1.12}
+.s-karne h3 em{font-style:normal;color:#c0392b}
+.s-karne .cizelge{flex:1 1 50%;margin:22px 22px 22px 0;padding:14px 18px;background:#fff;border:1.5px solid #1d2433;border-radius:4px;align-self:center;font:500 .86rem/1.2 "IBM Plex Mono",monospace}
+.s-karne .cizelge .cbas{display:flex;justify-content:space-between;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;opacity:.65;padding-bottom:8px;border-bottom:1px solid #1d2433;margin-bottom:6px}
+.s-karne .sat{display:grid;grid-template-columns:9.5em 1fr 2.9em;align-items:center;gap:10px;padding:4px 0}
+.s-karne .sat i{display:block;height:10px;background:#1d2433;width:calc(var(--p)*1%);border-radius:2px}
+.s-karne .sat.yerel i{background:#8a93a6}
+.s-karne .sat.sans{opacity:.6}.s-karne .sat.sans i{background:repeating-linear-gradient(90deg,#8a93a6 0 4px,transparent 4px 8px)}
+.s-karne .sat b{text-align:right;color:#c0392b;font-family:Georgia,serif;font-size:1.05rem}
+.s-karne .ara{border-top:1px dashed #8a93a6;margin:4px 0}
+@media (max-width:760px){.site.s-karne{flex-direction:column}.s-karne .cizelge{margin:0 18px 56px;align-self:stretch;font-size:.78rem}.s-karne .sat{grid-template-columns:8.6em 1fr 2.7em;gap:8px}}
 .site.s-oyun{grid-column:1/-1;background:#f5f0e6;color:#1f1c17;flex-direction:row;min-height:300px}
 .s-oyun .ic{padding:26px 26px 22px;flex:1 1 55%}
 .s-oyun h3{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:700;line-height:1.12}
@@ -409,7 +423,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   <div class="hero">
     <div class="etiket">Ege · Portfolyo · Eylül–Kasım 2026</div>
     <h1>Merak ettiğim soruları <span class="fos">çalışan şeylere</span> çeviriyorum.</h1>
-    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 34 proje var. Yirmi dördü şu an internette canlı, on ikisi kendi kendini güncelliyor.</p>
+    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 35 proje var. Yirmi beşi şu an internette canlı, on ikisi kendi kendini güncelliyor.</p>
 
     <div class="soru" aria-live="polite">
       <div class="s-et etiket">Soru</div>
@@ -418,8 +432,8 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
     </div>
 
     <div class="sayac">
-      <div><b data-say="34">34</b><span>proje</span></div>
-      <div><b data-say="24">24</b><span>canlı site</span></div>
+      <div><b data-say="35">35</b><span>proje</span></div>
+      <div><b data-say="25">25</b><span>canlı site</span></div>
       <div><b data-say="99697">99.697</b><span>Resmî Gazete düzenlemesi okundu</span></div>
       <div><b data-say="69" data-son=" mn">69 mn</b><span>Meclis kelimesi sayıldı</span></div>
       <div><b data-say="1026">1.026</b><span>ölçülmüş yapay zekâ koşusu</span></div>
@@ -578,6 +592,15 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/tohum.webp" alt="Tohum sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
+      <a class="site s-karne gorun" href="https://birtohum.github.io/turkce-yz-karnesi/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Türkçe yapay zekâ karnesi</span><span class="canli-n">Canlı</span></div>
+          <h3>Türkiye sorularında büyük yapay zekâ <em>98</em> aldı. Bilgisayarımdakiler <em>49</em>.</h3>
+          <p class="kanca">Wikidata'dan otomatik üretilmiş 1.209 soru: hangi ilçe hangi ilde, hangi şehir daha yüksekte, plaka kodu, doğum yılı. 10 model, her soru iki farklı ifadeyle, güven aralıklarıyla. Kendin de deneyebilirsin.</p>
+        </div>
+        <div class="cizelge" aria-label="Genel puanlar"><div class="cbas"><span>Model</span><span>Puan / 100</span></div><div class="sat "><span>Muse Wonder 1.0</span><i style="--p:98.6"></i><b>98,6</b></div><div class="sat "><span>Muse Spark 1.1</span><i style="--p:98.3"></i><b>98,3</b></div><div class="sat "><span>Muse Spark 1.3</span><i style="--p:97.8"></i><b>97,8</b></div><div class="ara"></div><div class="sat yerel"><span>Qwen3 14B</span><i style="--p:49.2"></i><b>49,2</b></div><div class="sat yerel"><span>Gemma 3 4B</span><i style="--p:46.6"></i><b>46,6</b></div><div class="sat yerel"><span>Llama 3.2 3B</span><i style="--p:38.9"></i><b>38,9</b></div><div class="sat sans"><span>Rastgele tahmin</span><i style="--p:31.3"></i><b>31,3</b></div></div>
+        <span class="git">Karneye bak ↗</span>
+      </a>
       <a class="site s-oyun gorun" href="https://birtohum.github.io/alti-ipucu/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Altı İpucu</span><span class="canli-n">Her gün</span></div>
@@ -659,7 +682,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
 </div>
 
 <script src="veri.js?v=14"></script>
-<script src="en.js?v=14"></script>
+<script src="en.js?v=15"></script>
 <script>
 "use strict";
 const HEPSI = PROJELER;
