@@ -59,7 +59,7 @@ const EN_PROJE = {
     yaptim: ["You paste reviews; replies rely only on the information the business entered. Code catches promised discounts or refunds that weren't offered, numbers without a source and phone numbers, and a problematic draft is rewritten once. For health, safety or legal complaints, no details about the incident are given."],
     ogrendim: "In one version, a mistake in an allergy reply slipped past the checking model; I fixed it with a rule instead of the model. One person wrote the test reviews and judged them; it hasn't been tried with a real shop yet.",
     gorseller: [["gorsel/p-yorum.webp", "The interface: business info on the left, reviews on the right (real screenshot)"]],
-    link: [["Code ↗", "https://github.com/birtohum/yorum-yanitlayici"]], alt_sahne: "Review Replier interface"},
+    link: [["Live demo ↗", "https://51-20-66-93.sslip.io/"], ["Code ↗", "https://github.com/birtohum/yorum-yanitlayici"]], alt_sahne: "Review Replier interface"},
   "Tişört Atölyesi": {ad: "T-shirt Workshop", ne: "For my uncle, who sells T-shirts on Etsy: write an idea in Turkish, get two designs, a dark-shirt version and the Etsy listing in one tap.",
     sonuc: "One question and one big button per screen, so a 70-year-old can use it too. Live stages and tips while you wait.",
     damga: "In use", alt: ["Python", "Image generation", "Accessibility"],
@@ -188,7 +188,7 @@ if (DIL === "en") {
     "nav.mono": `<a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 32 projects. Nineteen are live on the web, and twelve update themselves.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 32 projects. Twenty are live on the web, and twelve update themselves.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
     ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
@@ -250,7 +250,7 @@ if (DIL === "en") {
   const hs = document.getElementById("hava-sayi"); if (hs) hs.innerHTML = `= 0.7 <small>cigarettes</small>`;
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "32 projects, 19 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "32 projects, 20 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {
