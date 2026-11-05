@@ -1,6 +1,6 @@
 {
  "tarih": "2026-11-04",
- "uretim": "2026-11-05T09:29:15.531Z",
+ "uretim": "2026-11-05T09:30:19.448Z",
  "model": "muse-spark-1.3-contributor",
  "olgular": [
   {
@@ -29,14 +29,36 @@
    "en": "4 November: the article that suddenly drew the most readers on Turkish Wikipedia was \"Ahmet Nazif Zorlu\": 27,616 views, about 363 times its usual day."
   }
  ],
+ "kullanim_tr": {
+  "completion_tokens": 1366,
+  "prompt_tokens": 310,
+  "total_tokens": 1676,
+  "completion_tokens_details": {
+   "reasoning_tokens": 1163
+  },
+  "prompt_tokens_details": {
+   "cached_tokens": 0
+  }
+ },
  "tr": {
-  "metin": "4 Kasım: Türkiye ve yakınında 90 deprem kaydedildi; hiçbiri 3 ve üzerinde değil, en büyüğü 2,3. 4 Kasım: İstanbul'da bir gün boyunca hava solumak, ince toz (PM2,5) bakımından yaklaşık 0,6 sigaraya denkti. İstanbul'un 10 barajında su kaplı alan, uydudan ölçülen en dolu hâlinin %85'i (alan, hacim değil). 3 Kasım: Türkiye kıyılarında deniz suyu, 1991–2020 ortalamasına göre 0,3 °C daha sıcak; 41 noktanın 29 tanesi normalden sıcak. 4 Kasım: Türkçe Vikipedi'de birdenbire en çok \"Ahmet Nazif Zorlu\" okundu: 27.616 kez, olağan gününün yaklaşık 363 katı.",
-  "kaynak": "sablon",
-  "neden": "doğrulanamadı: uzunluk 0"
+  "metin": "4 Kasım'da Türkiye ve yakınında 90 deprem kaydedildi, hiçbiri 3 ve üzerinde değildi, en büyüğü 2,3 oldu. Aynı gün İstanbul'da bir gün boyunca hava solumak, ince toz (PM2,5) bakımından yaklaşık 0,6 sigaraya denkti, İstanbul'un 10 barajında su kaplı alan uydudan ölçülen en dolu halinin %85'i oldu (alan, hacim değil). 3 Kasım'da Türkiye kıyılarında deniz suyu, 1991–2020 ortalamasına göre 0,3 °C daha sıcaktı, 41 noktanın 29 tanesi normalden sıcaktı. 4 Kasım'da Türkçe Vikipedi'de birdenbire en çok \"Ahmet Nazif Zorlu\" okundu, 27.616 kez, olağan gününün yaklaşık 363 katı.",
+  "kaynak": "model",
+  "neden": null
+ },
+ "kullanim_en": {
+  "completion_tokens": 5451,
+  "prompt_tokens": 258,
+  "total_tokens": 5709,
+  "completion_tokens_details": {
+   "reasoning_tokens": 5294
+  },
+  "prompt_tokens_details": {
+   "cached_tokens": 0
+  }
  },
  "en": {
-  "metin": "4 November: 90 earthquakes were recorded in and around Turkey; none reached magnitude 3, the largest 2.3. 4 November: breathing Istanbul's air for a day was roughly equal to 0.6 cigarettes in fine particles (PM2.5). The water-covered area of Istanbul's 10 reservoirs is 85% of their fullest, measured by satellite (area, not volume). 3 November: sea water along Turkey's coasts was 0.3 °C warmer than the 1991–2020 average; 29 of 41 points were warmer than normal. 4 November: the article that suddenly drew the most readers on Turkish Wikipedia was \"Ahmet Nazif Zorlu\": 27,616 views, about 363 times its usual day.",
-  "kaynak": "sablon",
-  "neden": "doğrulanamadı: uzunluk 0"
+  "metin": "On 4 November, 90 earthquakes were recorded in and around Turkey, largest 2.3, none reaching magnitude 3, and breathing Istanbul's air for a day was roughly equal to 0.6 cigarettes in fine particles (PM2.5). Istanbul's 10 reservoirs are at 85% of fullest water-covered area by satellite (area, not volume). On 3 November, sea water along Turkey's coasts was 0.3 °C warmer than the 1991–2020 average; 29 of 41 points warmer than normal. On 4 November, \"Ahmet Nazif Zorlu\" led Turkish Wikipedia with 27,616 views, about 363 times its usual day.",
+  "kaynak": "model",
+  "neden": null
  }
 }
