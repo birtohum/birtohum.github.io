@@ -188,7 +188,7 @@ if (DIL === "en") {
     "nav.mono": `<a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 32 projects. Eighteen are live on the web, and twelve update themselves.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 32 projects. Nineteen are live on the web, and twelve update themselves.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
     ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
@@ -209,6 +209,7 @@ if (DIL === "en") {
     ".s-uydu .ust-satir span:last-child": "Every night", ".s-uydu h3": "The space station passes <em>over your head</em> tonight.", ".s-uydu .kanca": "Pick your city: when and from which direction will the International Space Station and Tiangong pass, and can you see them with the naked eye? Computed in your browser; within 1–2 seconds of an independent astronomy library across 54 passes.",
     ".s-deniz .ust-satir span:last-child": "Daily", ".s-deniz h3 small": "change in yearly average sea temperature along Turkey's coasts since 1982", ".s-deniz .kanca": "41 coastal points, NOAA satellite measurements, every day since 1981. Pick your bay and compare it with the year you were born.",
     ".s-dizi .ust-satir span:last-child": "Monthly", ".s-dizi .kanca": "Wikipedia pages of 465 Turkish TV series in 87 languages since 2015: which language discovered which series, and when? Curiosity, not ratings.",
+    ".s-tohum .ust-satir span:last-child": "In your browser", ".s-tohum h3": "It was born knowing nothing. In <em>21 minutes</em> it learned to write Turkish.", ".s-tohum .kanca": "A 4.8-million-parameter language model trained from scratch. On the site it runs in your browser; the \"age\" slider takes you back to any moment of training to see how it wrote. Not an assistant: most of what it says is made up, but you can watch learning happen.",
     ".s-oyun .ust-satir span:last-child": "Daily", ".s-oyun h3": "A Turkish province is hidden every day. <em>How many clues</em> do you need?", ".s-oyun .kanca": "A daily game. The clues come from the real data of my own sites: a year of earthquakes, fires seen by satellites, yearly air pollution. Each wrong guess opens a new clue and shows distance and direction. Results are shared as coloured squares that don't give the answer away.",
     ".s-yangin .ust-satir span:last-child": "Since 2001", ".s-yangin h3 small": "hectares: burned area of the 2021 Manavgat fire, measured from satellite", ".s-yangin .kanca": "Every hot spot NASA satellites have seen in Turkey since 2001, and Sentinel-2 before/after images of the biggest fires.",
     "#bugun-et span:first-child": "Turkey today", "#bugun-not": "From yesterday's data on my live sites. The paragraph was written by Meta's Muse Spark model; before publishing, a program matched every number in it against its source.",
@@ -249,7 +250,7 @@ if (DIL === "en") {
   const hs = document.getElementById("hava-sayi"); if (hs) hs.innerHTML = `= 0.7 <small>cigarettes</small>`;
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "32 projects, 18 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "32 projects, 19 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {

@@ -6,7 +6,7 @@ const PROJELER = [
    damga: ["Kazanç yok", ""], alt: ["Python", "Meta Muse", "WSL korumalı alan"], link: [["Kod", "https://github.com/birtohum/usta"], ["Demo", "https://www.youtube.com/watch?v=f9RjvBsFDiU"]]},
   {t: "yz", em: "🌱", ad: "Tohum", ne: "Sıfırdan küçük bir Türkçe dil modeli eğitip, sonra açık bir modeli Türkçe asistana dönüştürme denemesi.",
    sonuc: "<b>4,8M parametre</b> sıfırdan (RTX 3060, 21 dk). Qwen3-8B + LoRA, 30 soruluk testte resmi modeli <b>10–2</b> geçti. 14B'de bağımsız hakem 7,79'a 7,37 (aralıklar çakışıyor).",
-   damga: ["10–2", "iyi"], alt: ["PyTorch", "LoRA", "H100"], link: []},
+   damga: ["10–2", "iyi"], alt: ["PyTorch", "LoRA", "H100"], link: [["Canlı", "https://birtohum.github.io/tohum/"], ["Kod", "https://github.com/birtohum/tohum"]]},
   {t: "yz", em: "📉", ad: "Kripto RL botu", ne: "Gerçek para kullanmadan, geçmiş verilerle pekiştirmeli öğrenen bir alım-satım ajanı.",
    sonuc: "Walk-forward test, 4 dönem: <b>4'ünde de</b> al-ve-tut stratejisini yenemedi. Tutarlı bir başarısızlık, şans değil.",
    damga: ["Yenemedi", ""], alt: ["Python", "RL", "Backtest"], link: []},
@@ -177,7 +177,7 @@ const HIKAYE = {
 const SITELER = {
   "mevzuat-haritasi": "Mevzuat Haritası", "meclisin-dili": "Meclis'in Dili", "kac-sigara": "Kaç Sigara?",
   "sepet-enflasyonu": "Sepet Enflasyonu", "iett-dakiklik": "İETT Dakiklik",
-  "bu-gece-gokyuzu": "Bu gece gökyüzü", "gazete-ozeti": "Gazete Özeti", "yapay-yasam": "Yapay Yaşam", "denizler-isiniyor": "Denizler ısınıyor mu?", "turk-dizileri-dunyada": "Türk dizileri dünyada", "orman-yanginlari-uzaydan": "Orman yangınları uzaydan", "alti-ipucu": "Altı İpucu",
+  "bu-gece-gokyuzu": "Bu gece gökyüzü", "gazete-ozeti": "Gazete Özeti", "yapay-yasam": "Yapay Yaşam", "denizler-isiniyor": "Denizler ısınıyor mu?", "turk-dizileri-dunyada": "Türk dizileri dünyada", "orman-yanginlari-uzaydan": "Orman yangınları uzaydan", "alti-ipucu": "Altı İpucu", "tohum": "Tohum",
   "turkiye-sallandi": "Türkiye sallandı", "turkiye-geceleri": "Türkiye geceleri", "istanbul-semalari": "İstanbul semaları",
   "barajlar-uzaydan": "Barajlar uzaydan", "turkiye-merak": "Türkiye neyi merak etti?",
 };

@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ege — merak ettiğim soruları çalışan şeylere çeviriyorum</title>
-<meta name="description" content="32 proje, 18 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları, barajlar, Vikipedi merakı ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
-<meta property="og:title" content="Ege — 32 proje, 18 canlı site">
+<meta name="description" content="32 proje, 19 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları, barajlar, Vikipedi merakı ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
+<meta property="og:title" content="Ege — 32 proje, 19 canlı site">
 <meta property="og:description" content="Vergi kanunu kaç kez değişti? Bugün nefes almak kaç sigara? Yapay zekâ yapay zekâyı denetleyebilir mi? Cevaplar veriyle.">
 <meta property="og:image" content="https://birtohum.github.io/og/ana.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -205,6 +205,25 @@ section{padding:80px 0 0}
 .s-ses .resim img{object-position:left top}
 @media (max-width:760px){.site.s-ses{flex-direction:column}.s-ses .resim{height:190px;border-left:0;border-top:2px solid #ff7a45}}
 @media (prefers-reduced-motion:reduce){.s-ses .ses-dalga i{animation:none}}
+.site.s-tohum{grid-column:1/-1;background:#eef1ea;color:#16251a;flex-direction:row;min-height:300px}
+.s-tohum .ic{padding:26px 26px 22px;flex:1 1 50%}
+.s-tohum h3{font-size:clamp(1.8rem,3.2vw,2.5rem);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.s-tohum h3 em{font-style:normal;color:#2f7a3d}
+.s-tohum .resim{flex:1 1 50%;height:auto;margin:0;border-top:0;border-left:2px solid #2f7a3d}
+.site.s-tohum .resim.canli-gorsel{height:auto;min-height:300px}
+.tohum-kap{position:absolute;inset:0;display:grid;grid-template-columns:70px 1fr;background:#f7f8f3}
+.tohum-fidan{display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(transparent 80%,#efe2bf 80%)}
+.tohum-fidan svg{width:56px;height:86%}
+.tohum-yazi{padding:46px 18px 52px 6px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.tohum-ust{display:flex;gap:14px;align-items:baseline;font:500 .68rem "IBM Plex Mono",monospace;color:#5f6b60}
+.tohum-ust b{font:700 1.15rem "IBM Plex Mono",monospace;color:#16251a}
+.tohum-cubuk{height:5px;background:#dfe5da;border-radius:3px;overflow:hidden}
+.tohum-cubuk i{display:block;height:100%;width:0;background:#2f7a3d;transition:width .6s}
+.tohum-metin{font:500 .9rem/1.55 "IBM Plex Mono",monospace;color:#16251a;white-space:pre-wrap;overflow-wrap:anywhere;overflow:hidden}
+.tohum-metin::after{content:"";display:inline-block;width:.55em;height:1em;background:#b5892e;vertical-align:-2px;margin-left:1px;animation:imlec 1s steps(1) infinite}
+@keyframes imlec{50%{opacity:0}}
+@media (max-width:760px){.site.s-tohum{flex-direction:column}.s-tohum .resim{border-left:0;border-top:2px solid #2f7a3d}.site.s-tohum .resim.canli-gorsel{min-height:260px;position:relative}}
+@media (prefers-reduced-motion:reduce){.tohum-metin::after{animation:none}}
 .site.s-oyun{grid-column:1/-1;background:#f5f0e6;color:#1f1c17;flex-direction:row;min-height:300px}
 .s-oyun .ic{padding:26px 26px 22px;flex:1 1 55%}
 .s-oyun h3{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:700;line-height:1.12}
@@ -335,7 +354,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   <div class="hero">
     <div class="etiket">Ege · Portfolyo · Eylül–Kasım 2026</div>
     <h1>Merak ettiğim soruları <span class="fos">çalışan şeylere</span> çeviriyorum.</h1>
-    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 32 proje var. On sekizi şu an internette canlı, on ikisi kendi kendini güncelliyor.</p>
+    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 32 proje var. On dokuzu şu an internette canlı, on ikisi kendi kendini güncelliyor.</p>
 
     <div class="soru" aria-live="polite">
       <div class="s-et etiket">Soru</div>
@@ -345,7 +364,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
 
     <div class="sayac">
       <div><b data-say="32">32</b><span>proje</span></div>
-      <div><b data-say="18">18</b><span>canlı site</span></div>
+      <div><b data-say="19">19</b><span>canlı site</span></div>
       <div><b data-say="99697">99.697</b><span>Resmî Gazete düzenlemesi okundu</span></div>
       <div><b data-say="69" data-son=" mn">69 mn</b><span>Meclis kelimesi sayıldı</span></div>
       <div><b data-say="1026">1.026</b><span>ölçülmüş yapay zekâ koşusu</span></div>
@@ -493,6 +512,15 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
           <p class="kanca">NASA uydularının 2001'den bu yana Türkiye'de gördüğü her sıcak nokta ve en büyük yangınlarda Sentinel-2'nin önce/sonra görüntüleri.</p>
         </div>
         <div class="resim"><img src="gorsel/orman-yanginlari-uzaydan.webp" alt="Orman yangınları uzaydan sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-tohum gorun" href="https://birtohum.github.io/tohum/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Tohum</span><span class="canli-n">Tarayıcıda</span></div>
+          <h3>Hiçbir şey bilmeden doğdu. <em>21 dakikada</em> Türkçe yazmayı öğrendi.</h3>
+          <p class="kanca">4,8 milyon parametrelik, sıfırdan eğitilmiş bir dil modeli. Sitede senin tarayıcında çalışıyor; "yaş" çubuğuyla eğitimin her anına dönüp nasıl yazdığını görebilirsin. Asistan değil: söylediklerinin çoğu uydurma, ama öğrenmenin kendisi görünüyor.</p>
+        </div>
+        <div class="resim"><img src="gorsel/tohum.webp" alt="Tohum sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
       <a class="site s-oyun gorun" href="https://birtohum.github.io/alti-ipucu/" target="_blank" rel="noopener">
@@ -740,6 +768,6 @@ Promise.all(["ozet", "urunler"].map(a => fetch(`https://birtohum.github.io/sepet
 }).catch(() => {});
 </script>
 <script src="hikaye.js?v=8"></script>
-<script src="kartlar.js?v=4" defer></script>
+<script src="kartlar.js?v=6" defer></script>
 </body>
 </html>

@@ -281,7 +281,45 @@
     ciz(); addEventListener("resize", ciz);
   }
 
-  const KARTLAR = {"s-deniz": deniz, "s-yangin": yangin, "s-dizi": dizi, "s-uydu": gok, "s-baraj": baraj, "s-deprem": deprem, "s-ucak": ucak};
+  // ---------------------------------------------------------------- Tohum: eğitim boyunca gerçek çıktılar
+  async function tohum(kart) {
+    const anlar = await json("veri/kart-tohum.json");
+    const kap = document.createElement("div"); kap.className = "tohum-kap";
+    kap.innerHTML = `<div class="tohum-fidan"><svg viewBox="0 0 40 100" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+        <path class="govde" d="M20 100 C 19 80, 22 60, 20 5" stroke="#2f7a3d" stroke-width="3" fill="none" stroke-linecap="round" pathLength="1"/>
+        <g class="yapraklar" fill="#3f8f4c"></g></svg></div>
+      <div class="tohum-yazi"><div class="tohum-ust"><span>${EN() ? "step" : "adım"} <b class="t-adim">0</b></span><span>${EN() ? "real words" : "gerçek kelime"} <b class="t-oran">%0</b></span></div>
+        <div class="tohum-cubuk"><i></i></div><div class="tohum-metin"></div></div>`;
+    yerlestir(kart, kap, EN() ? "Tohum's real outputs during training, each starting with \"Türkiye\"" : "Tohum'un eğitim sırasındaki gerçek çıktıları, hepsi \"Türkiye\" ile başlıyor");
+    const govde = kap.querySelector(".govde"), yap = kap.querySelector(".yapraklar"), metin = kap.querySelector(".tohum-metin");
+    const enSon = anlar.at(-1).adim;
+    yap.innerHTML = Array.from({length: 10}, (_, i) => {
+      const y = 90 - i * 8.5, sag = i % 2;
+      return `<ellipse cx="${sag ? 25 : 15}" cy="${y}" rx="5.5" ry="2.6" transform="rotate(${sag ? -30 : 30} ${sag ? 25 : 15} ${y})" opacity="0"/>`;
+    }).join("");
+    const yapraklar = [...yap.children];
+    const goster = (k) => {
+      const a = anlar[k], oran = (a.adim / enSon) ** 0.45;
+      kap.querySelector(".t-adim").textContent = sayi(a.adim);
+      kap.querySelector(".t-oran").textContent = "%" + sayi(a.gercek || 0);
+      kap.querySelector(".tohum-cubuk i").style.width = `${Math.max(2, oran * 100)}%`;
+      govde.style.strokeDasharray = "1 1"; govde.style.strokeDashoffset = String(1 - Math.max(0.05, oran));
+      yapraklar.forEach((e, i) => { e.setAttribute("opacity", i < Math.round(oran * yapraklar.length) ? "1" : "0"); });
+      return a.metin.replace(/\s+/g, " ").slice(0, 120);
+    };
+    if (AZ_HAREKET) { metin.textContent = goster(anlar.length - 1); return; }
+    let k = 0, harf = 0, hedef = goster(0), bekle = 0;
+    const KARE = 22;   // her 22 ms'de bir harf
+    let son = 0;
+    dongu(kap, (t) => {
+      if (t - son < KARE) return; son = t;
+      if (harf < hedef.length) { harf++; metin.textContent = hedef.slice(0, harf); return; }
+      if (++bekle < 70) return;
+      bekle = 0; harf = 0; k = (k + 1) % anlar.length; hedef = goster(k); metin.textContent = "";
+    });
+  }
+
+  const KARTLAR = {"s-tohum": tohum, "s-deniz": deniz, "s-yangin": yangin, "s-dizi": dizi, "s-uydu": gok, "s-baraj": baraj, "s-deprem": deprem, "s-ucak": ucak};
   const gozcu = new IntersectionObserver((girdiler) => {
     for (const g of girdiler) {
       if (!g.isIntersecting) continue;
