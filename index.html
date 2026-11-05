@@ -56,6 +56,11 @@ a{color:inherit}
 .hero .alt b{color:var(--murekkep)}
 
 /* soru şeridi */
+.bugun{margin:40px 0 0;padding:22px 24px 18px;border-left:6px solid var(--fosfor);background:var(--kart);border-radius:0 6px 6px 0;max-width:62ch}
+.bugun .b-et{display:flex;gap:12px;flex-wrap:wrap;font:600 .72rem "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--soluk)}
+.bugun .b-et span:first-child{color:var(--murekkep)}
+.bugun .b-metin{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.08rem,1.9vw,1.28rem);line-height:1.55;margin:10px 0 10px}
+.bugun .b-not{font-size:.8rem;color:var(--soluk);margin:0}
 .soru{margin:44px 0 0;border:2px solid var(--kenar);background:var(--kart);border-radius:4px;display:grid;grid-template-columns:auto 1fr auto;align-items:stretch;box-shadow:6px 6px 0 var(--kenar)}
 .soru .s-et{padding:18px;border-right:2px solid var(--kenar);display:grid;place-items:center;background:var(--fosfor);color:#141414}
 .soru .s-metin{padding:16px 20px;font-size:clamp(1.15rem,2.6vw,1.75rem);font-weight:600;letter-spacing:-.01em;min-height:3.4em;display:flex;align-items:center}
@@ -248,6 +253,12 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
     <h1>Merak ettiğim soruları <span class="fos">çalışan şeylere</span> çeviriyorum.</h1>
     <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 26 proje var. On biri şu an internette canlı, yedisi kendi kendini güncelliyor.</p>
 
+    <section class="bugun" id="bugun" hidden aria-labelledby="bugun-et">
+      <div class="b-et" id="bugun-et"><span>Bugün Türkiye</span><span id="bugun-tarih"></span></div>
+      <p class="b-metin" id="bugun-metin"></p>
+      <p class="b-not" id="bugun-not">Canlı sitelerimin dünkü verisinden. Paragrafı Meta'nın Muse Spark modeli yazdı; yayımlanmadan önce içindeki her sayı kaynağıyla program tarafından tek tek eşleştirildi.</p>
+    </section>
+
     <div class="soru" aria-live="polite">
       <div class="s-et etiket">Soru</div>
       <div class="s-metin"><span id="soru-metin">Vergi kanunu 20 yılda kaç kez değişti?</span></div>
@@ -435,7 +446,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
 </div>
 
 <script src="veri.js?v=12"></script>
-<script src="en.js?v=11"></script>
+<script src="en.js?v=12"></script>
 <script>
 "use strict";
 const HEPSI = PROJELER;
@@ -536,6 +547,15 @@ fetch("https://birtohum.github.io/kac-sigara/veri/veri.json", {cache: "no-cache"
   document.getElementById("hava-gun").textContent = DIL === "en" ? (fark === 1 ? "yesterday" : fark === 0 ? "today" : `on ${gunAd(gun)}`) : fark === 1 ? "Dün" : fark === 0 ? "Bugün" : `${gunAd(gun)}'${["ta", "ta", "ta", "da", "ta", "da", "da", "ta", "de", "de", "da", "ta"][gun.getUTCMonth()]}`;
   const tam = Math.floor(sig), kalan = sig - tam;
   document.getElementById("hava-sigara").innerHTML = "<i></i>".repeat(Math.min(tam, 6)) + (kalan >= .25 && tam < 6 ? '<i class="yarim"></i>' : "");
+}).catch(() => {});
+// Bugün Türkiye: her sabah GitHub Actions'ın yazdığı, sayıları doğrulanmış paragraf
+fetch("veri/bugun.json", {cache: "no-cache"}).then(r => r.json()).then(d => {
+  const k = d[DIL] || d.tr; if (!k || !k.metin) return;
+  const t = new Date(d.tarih + "T12:00:00Z");
+  document.getElementById("bugun-tarih").textContent = DIL === "en" ? `${t.getUTCDate()} ${AYLAR[t.getUTCMonth()]}` : `${t.getUTCDate()} ${AYLAR[t.getUTCMonth()]}`;
+  document.getElementById("bugun-metin").textContent = k.metin;
+  if (k.kaynak !== "model") document.getElementById("bugun-not").textContent = T("Canlı sitelerimin dünkü verisinden, sabit bir kalıpla. (Model metni bugün doğrulamadan geçemedi, bu yüzden yayımlanmadı.)", "From yesterday's data on my live sites, in a fixed template. (Today the model's text failed verification, so it was not published.)");
+  document.getElementById("bugun").hidden = false;
 }).catch(() => {});
 // yeni siteler: canlı sayılar (aynı alan adı)
 fetch("https://birtohum.github.io/barajlar-uzaydan/veri/ozet.json", {cache: "no-cache"}).then(r => r.json()).then(d => {

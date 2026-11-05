@@ -195,6 +195,7 @@ if (DIL === "en") {
     ".s-enflasyon .kanca": "Build your own basket and see your own inflation next to the official CPI.",
     ".s-iett h3": `1 <small>min late</small>`, ".s-iett .ic > .mono": "500T · 10 AM · EARLY RESULT, STILL COLLECTING",
     ".s-ses .ust-satir span:last-child": "Live",
+    "#bugun-et span:first-child": "Turkey today", "#bugun-not": "From yesterday's data on my live sites. The paragraph was written by Meta's Muse Spark model; before publishing, a program matched every number in it against its source.",
     ".s-deprem h3": `<span id="deprem-gun">Today</span>, Turkey shook <b id="deprem-sayi">34</b> times`, "#ucak-birim": "aircraft over Istanbul",
     ".s-baraj .ust-satir span:last-child": "Daily", ".s-baraj h3 small": "Istanbul reservoirs' water surface, relative to their fullest",
     ".s-baraj .kanca": "Ten reservoirs from Sentinel-2 since 2017: water-covered area and before/after satellite images. It measures area, not volume.",
