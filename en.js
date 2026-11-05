@@ -198,7 +198,7 @@ if (DIL === "en") {
     "#canli .bas p": "Each one answers a single question, and each has its own visual identity. Source, method and limits are written at the bottom of every site. The sites themselves are in Turkish.",
     ".s-mevzuat h3": `Turkey publishes <em>10</em> new regulations a day, on average`,
     ".s-mevzuat .kanca": "10,608 issues of the Official Gazette since 2000, 99,697 regulations. Which law changed how many times, and what was published on the day you were born?",
-    ".s-meclis .kanca": "Type a word and see how much it was spoken in the Turkish Parliament, year by year, since 1996. 3,731 sessions, 69 million words. No commentary, just counts.",
+    ".s-meclis .kanca": "Type a word and see how much it was spoken in the Turkish Parliament, year by year, since 1996. 3,731 sessions, 69 million words. No commentary, just counts. The cleaned transcripts are an open dataset on Hugging Face.",
     ".s-hava .ust-satir span:last-child": "Daily", ".s-enflasyon .ust-satir span:last-child": "Daily", ".s-iett .ust-satir span:last-child": "Collecting data",
     ".s-mevzuat .ust-satir span:last-child": "Live", ".s-meclis .ust-satir span:last-child": "Live",
     ".s-hava .kanca": `Breathing in Istanbul, <span id="hava-gun">3 November</span>. PM2.5 from the ministry's 210 stations, province by province, as a rough but memorable comparison.`,
