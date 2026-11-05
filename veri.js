@@ -177,7 +177,7 @@ const HIKAYE = {
 const SITELER = {
   "mevzuat-haritasi": "Mevzuat Haritası", "meclisin-dili": "Meclis'in Dili", "kac-sigara": "Kaç Sigara?",
   "sepet-enflasyonu": "Sepet Enflasyonu", "iett-dakiklik": "İETT Dakiklik",
-  "bu-gece-gokyuzu": "Bu gece gökyüzü", "gazete-ozeti": "Gazete Özeti", "yapay-yasam": "Yapay Yaşam", "denizler-isiniyor": "Denizler ısınıyor mu?", "turk-dizileri-dunyada": "Türk dizileri dünyada", "orman-yanginlari-uzaydan": "Orman yangınları uzaydan",
+  "bu-gece-gokyuzu": "Bu gece gökyüzü", "gazete-ozeti": "Gazete Özeti", "yapay-yasam": "Yapay Yaşam", "denizler-isiniyor": "Denizler ısınıyor mu?", "turk-dizileri-dunyada": "Türk dizileri dünyada", "orman-yanginlari-uzaydan": "Orman yangınları uzaydan", "alti-ipucu": "Altı İpucu",
   "turkiye-sallandi": "Türkiye sallandı", "turkiye-geceleri": "Türkiye geceleri", "istanbul-semalari": "İstanbul semaları",
   "barajlar-uzaydan": "Barajlar uzaydan", "turkiye-merak": "Türkiye neyi merak etti?",
 };

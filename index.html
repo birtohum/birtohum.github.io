@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ege — merak ettiğim soruları çalışan şeylere çeviriyorum</title>
-<meta name="description" content="31 proje, 17 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları, barajlar, Vikipedi merakı ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
-<meta property="og:title" content="Ege — 31 proje, 17 canlı site">
+<meta name="description" content="32 proje, 18 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları, barajlar, Vikipedi merakı ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
+<meta property="og:title" content="Ege — 32 proje, 18 canlı site">
 <meta property="og:description" content="Vergi kanunu kaç kez değişti? Bugün nefes almak kaç sigara? Yapay zekâ yapay zekâyı denetleyebilir mi? Cevaplar veriyle.">
 <meta property="og:image" content="https://birtohum.github.io/og/ana.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -147,6 +147,15 @@ section{padding:80px 0 0}
 .s-ses .resim img{object-position:left top}
 @media (max-width:760px){.site.s-ses{flex-direction:column}.s-ses .resim{height:190px;border-left:0;border-top:2px solid #ff7a45}}
 @media (prefers-reduced-motion:reduce){.s-ses .ses-dalga i{animation:none}}
+.site.s-oyun{grid-column:1/-1;background:#f5f0e6;color:#1f1c17;flex-direction:row;min-height:300px}
+.s-oyun .ic{padding:26px 26px 22px;flex:1 1 55%}
+.s-oyun h3{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:700;line-height:1.12}
+.s-oyun h3 em{font-style:normal;color:#b3261e}
+.s-oyun .ipucu-satir{display:flex;gap:6px;margin-top:auto;padding-bottom:30px}
+.s-oyun .ipucu-satir i{width:22px;height:22px;border-radius:5px;background:#c9473e}
+.s-oyun .ipucu-satir i:nth-child(2){background:#e08a2c}.s-oyun .ipucu-satir i:nth-child(3){background:#d9b72b}.s-oyun .ipucu-satir i:nth-child(4){background:#2f7d4f}
+.s-oyun .resim{flex:1 1 45%;height:auto;margin:0;border-top:0;border-left:2px solid #b3261e;max-height:340px}
+@media (max-width:760px){.site.s-oyun{flex-direction:column}.s-oyun .resim{height:190px;border-left:0;border-top:2px solid #b3261e}}
 .site.s-uydu,.site.s-deniz,.site.s-dizi,.site.s-yangin{grid-column:span 3}
 @media (max-width:620px){.site.s-uydu,.site.s-deniz,.site.s-dizi,.site.s-yangin{grid-column:1/-1}}
 .s-uydu{background:#0d1320;color:#e8ecf3}
@@ -268,7 +277,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   <div class="hero">
     <div class="etiket">Ege · Portfolyo · Eylül–Kasım 2026</div>
     <h1>Merak ettiğim soruları <span class="fos">çalışan şeylere</span> çeviriyorum.</h1>
-    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 31 proje var. On yedisi şu an internette canlı, on biri kendi kendini güncelliyor.</p>
+    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 32 proje var. On sekizi şu an internette canlı, on ikisi kendi kendini güncelliyor.</p>
 
     <div class="soru" aria-live="polite">
       <div class="s-et etiket">Soru</div>
@@ -277,8 +286,8 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
     </div>
 
     <div class="sayac">
-      <div><b data-say="31">31</b><span>proje</span></div>
-      <div><b data-say="17">17</b><span>canlı site</span></div>
+      <div><b data-say="32">32</b><span>proje</span></div>
+      <div><b data-say="18">18</b><span>canlı site</span></div>
       <div><b data-say="99697">99.697</b><span>Resmî Gazete düzenlemesi okundu</span></div>
       <div><b data-say="69" data-son=" mn">69 mn</b><span>Meclis kelimesi sayıldı</span></div>
       <div><b data-say="1026">1.026</b><span>ölçülmüş yapay zekâ koşusu</span></div>
@@ -427,6 +436,16 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         </div>
         <div class="resim"><img src="gorsel/orman-yanginlari-uzaydan.webp" alt="Orman yangınları uzaydan sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-oyun gorun" href="https://birtohum.github.io/alti-ipucu/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Altı İpucu</span><span class="canli-n">Her gün</span></div>
+          <h3>Her gün bir il gizleniyor. <em>Kaç ipucunda</em> bulursun?</h3>
+          <p class="kanca">Günlük oyun. İpuçları kendi sitelerimin gerçek verisinden: son bir yıldaki depremler, uyduların gördüğü yangınlar, yıllık hava kirliliği. Her yanlış tahminde yeni ipucu, uzaklık ve yön. Sonuç, il adını vermeyen renkli karelerle paylaşılıyor.</p>
+          <div class="ipucu-satir" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="resim"><img src="gorsel/alti-ipucu.webp" alt="Altı İpucu oyununun ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Oyna ↗</span>
       </a>
       <a class="site s-ses gorun" href="https://seslendir.site/" target="_blank" rel="noopener">
         <div class="ic">
