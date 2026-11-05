@@ -48,7 +48,10 @@ const PROJELER = [
    damga: ["Prototip", "notr"], alt: ["Godot", "GDScript", "Çok oyunculu"], link: []},
   {t: "yz", em: "", ad: "Yapay Yaşam", ne: "Küçük sinir ağlarıyla yönetilen otçul ve etçil canlılar; genleri kalıtımla geçiyor, mutasyona uğruyor ve doğal seçilimle değişiyor.",
    sonuc: "500 nesil <b>6 saniyede</b> (yeniden koşumum); seçilimin etkisi istatistik testiyle ölçülüyor. 16/16 test geçiyor.",
-   damga: ["Testli", "iyi"], alt: ["JavaScript", "Sinir ağı", "Evrim"], link: []},
+   damga: ["Canlı", "iyi"], alt: ["JavaScript", "Sinir ağı", "Evrim"], link: [["Canlı", "https://birtohum.github.io/yapay-yasam/"]]},
+  {t: "urun", em: "", ad: "Masaüstü ekranı", ne: "Mürekkep ekranlı küçük bir masa ekranı için sabah özeti: hava, depremler, barajlar, günün Vikipedi merakı ve uçaklar, hepsi kendi sitelerimden.",
+   sonuc: "Yazılım hazır ve günde dört kez canlı veriden önizleme çiziyor; <b>52 test</b>. Donanım henüz alınmadı, sürücü gerçek panelde denenmedi.",
+   damga: ["Donanım bekliyor", "notr"], alt: ["Python", "e-ink", "Raspberry Pi"], link: [["Önizleme", "https://birtohum.github.io/masaustu-ekran/"]]},
 ];
 
 const G = "gorsel/";
@@ -159,12 +162,22 @@ const HIKAYE = {
     yaptim: ["Her canlıyı küçük bir sinir ağı yönetiyor; hız, görüş, boyut ve beslenme genleri yavrulara geçiyor ve mutasyona uğruyor. Otçullar bitki, etçiller otçul arıyor.",
       "Ekranda canlı nüfus grafiği, canlıyı tıklayıp inceleme, kıtlık, salgın ve buzul çağı gibi felaketler var. Ekransız çalışan bir ölçüm de yazdım: 500 nesil boyunca nüfusun hiç tükenmediğini, bellekte sızıntı olmadığını ve özelliklerin gerçekten değiştiğini istatistik testleriyle kontrol ediyor."],
     ogrendim: "Evrim simülasyonunda \"bir şey değişti\" demek kolay; değişimin rastgele dalgalanma olmadığını göstermek için ölçüm gerekiyor. Benim yeniden koşumumda fark çok belirgin çıktı (Welch testi p ≈ 5·10⁻⁹).",
-    gorseller: [[G + "p-yasam.webp", "Simülatörden gerçek ekran: ilk nesil, otçullar, etçiller ve bitkiler"]]},
+    gorseller: [[G + "p-yasam.webp", "Simülatörden gerçek ekran: ilk nesil, otçullar, etçiller ve bitkiler"]],
+    link: [["Simülasyonu aç ↗", "https://birtohum.github.io/yapay-yasam/"], ["Kod ↗", "https://github.com/birtohum/yapay-yasam"]]},
+  "Masaüstü ekranı": {id: "ekran", sahne: {img: G + "p-ekran.webp", alt: "Masaüstü ekranının canlı veriden çizilmiş önizlemesi", tam: true},
+    soru: "Telefona bakmadan, sabah masadaki sessiz bir ekrandan günün özetini okuyabilir miyim?",
+    sayilar: [["800×480", "e-ink çözünürlüğü"], ["4", "günlük çizim"], ["52", "test"]],
+    yaptim: ["Kendi beş sitemin herkese açık verisini okuyup 800×480 piksellik, tek renkli bir sabah özeti çizen bir program: İstanbul'un havası (sigara karşılığı), dünkü depremler, barajların su yüzeyi, Vikipedi'de günün merakı ve İstanbul semalarındaki uçaklar. Kaynak eskimiş ya da kapalıysa ekran bunu açıkça yazıyor.",
+      "Program şimdilik bilgisayarda önizleme üretiyor; GitHub günde dört kez canlı veriden yeniden çizip sayfaya koyuyor. Raspberry Pi ve Waveshare e-ink sürücüsü takılabilir yapıldı; parça listesi ve kurulum adımları depoda."],
+    ogrendim: "Mürekkep ekranda her piksel ya siyah ya beyaz; tasarım, gölge ve renk olmadan yalnız yazı boyutu ve boşlukla kuruluyor.",
+    gorseller: [[G + "p-ekran.webp", "Canlı veriden çizilmiş gerçek önizleme (donanımda değil)"]],
+    link: [["Önizleme ↗", "https://birtohum.github.io/masaustu-ekran/"], ["Kod ↗", "https://github.com/birtohum/masaustu-ekran"]]},
 };
 
 const SITELER = {
   "mevzuat-haritasi": "Mevzuat Haritası", "meclisin-dili": "Meclis'in Dili", "kac-sigara": "Kaç Sigara?",
   "sepet-enflasyonu": "Sepet Enflasyonu", "iett-dakiklik": "İETT Dakiklik",
+  "bu-gece-gokyuzu": "Bu gece gökyüzü", "denizler-isiniyor": "Denizler ısınıyor mu?", "turk-dizileri-dunyada": "Türk dizileri dünyada", "orman-yanginlari-uzaydan": "Orman yangınları uzaydan",
   "turkiye-sallandi": "Türkiye sallandı", "turkiye-geceleri": "Türkiye geceleri", "istanbul-semalari": "İstanbul semaları",
   "barajlar-uzaydan": "Barajlar uzaydan", "turkiye-merak": "Türkiye neyi merak etti?",
 };

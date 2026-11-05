@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ege — merak ettiğim soruları çalışan şeylere çeviriyorum</title>
-<meta name="description" content="26 proje, 11 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları, barajlar, Vikipedi merakı ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
-<meta property="og:title" content="Ege — 26 proje, 11 canlı site">
+<meta name="description" content="31 proje, 17 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları, barajlar, Vikipedi merakı ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
+<meta property="og:title" content="Ege — 31 proje, 17 canlı site">
 <meta property="og:description" content="Vergi kanunu kaç kez değişti? Bugün nefes almak kaç sigara? Yapay zekâ yapay zekâyı denetleyebilir mi? Cevaplar veriyle.">
 <meta property="og:image" content="https://birtohum.github.io/og/ana.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -56,7 +56,7 @@ a{color:inherit}
 .hero .alt b{color:var(--murekkep)}
 
 /* soru şeridi */
-.bugun{margin:40px 0 0;padding:22px 24px 18px;border-left:6px solid var(--fosfor);background:var(--kart);border-radius:0 6px 6px 0;max-width:62ch}
+.bugun{margin:0 0 70px;padding:22px 24px 18px;border-left:6px solid var(--fosfor);background:var(--kart);border-radius:0 6px 6px 0;max-width:62ch}
 .bugun .b-et{display:flex;gap:12px;flex-wrap:wrap;font:600 .72rem "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--soluk)}
 .bugun .b-et span:first-child{color:var(--murekkep)}
 .bugun .b-metin{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.08rem,1.9vw,1.28rem);line-height:1.55;margin:10px 0 10px}
@@ -147,6 +147,23 @@ section{padding:80px 0 0}
 .s-ses .resim img{object-position:left top}
 @media (max-width:760px){.site.s-ses{flex-direction:column}.s-ses .resim{height:190px;border-left:0;border-top:2px solid #ff7a45}}
 @media (prefers-reduced-motion:reduce){.s-ses .ses-dalga i{animation:none}}
+.site.s-uydu,.site.s-deniz,.site.s-dizi,.site.s-yangin{grid-column:span 3}
+@media (max-width:620px){.site.s-uydu,.site.s-deniz,.site.s-dizi,.site.s-yangin{grid-column:1/-1}}
+.s-uydu{background:#0d1320;color:#e8ecf3}
+.s-uydu h3{font-size:1.9rem;font-weight:800;letter-spacing:-.025em}
+.s-uydu h3 em{font-style:normal;color:#f2b84b}
+.s-deniz{background:#f7f6f2;color:#17202b}
+.s-deniz h3{font-size:3.4rem;font-weight:800;letter-spacing:-.04em;line-height:1}
+.s-deniz h3 b{color:#c8372d}
+.s-deniz h3 small{display:block;font-size:.3em;font-weight:600;letter-spacing:0;color:#4d5866;margin-top:8px;max-width:30ch}
+.s-dizi{background:#fcfcfb;color:#141413}
+.s-dizi h3{font-family:Georgia,"Times New Roman",serif;font-size:1.9rem;font-weight:700;line-height:1.15}
+.s-dizi h3 small{display:block;font:600 .8rem "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:#77766f;margin-bottom:6px}
+.s-dizi h3 b{color:#256abf;font-size:1.5em}
+.s-yangin{background:#fbf7f2;color:#231a14}
+.s-yangin h3{font-size:3.2rem;font-weight:800;letter-spacing:-.04em;line-height:1}
+.s-yangin h3 b{color:#c2410c}
+.s-yangin h3 small{display:block;font-size:.3em;font-weight:600;letter-spacing:0;color:#5c4d42;margin-top:8px;max-width:32ch}
 .site.s-baraj,.site.s-viki{grid-column:span 3}
 @media (max-width:620px){.site.s-baraj,.site.s-viki{grid-column:1/-1}}
 .s-baraj{background:linear-gradient(180deg,#0d2347 0%,#16376b 100%);color:#eef3fb}
@@ -251,13 +268,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   <div class="hero">
     <div class="etiket">Ege · Portfolyo · Eylül–Kasım 2026</div>
     <h1>Merak ettiğim soruları <span class="fos">çalışan şeylere</span> çeviriyorum.</h1>
-    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 26 proje var. On biri şu an internette canlı, yedisi kendi kendini güncelliyor.</p>
-
-    <section class="bugun" id="bugun" hidden aria-labelledby="bugun-et">
-      <div class="b-et" id="bugun-et"><span>Bugün Türkiye</span><span id="bugun-tarih"></span></div>
-      <p class="b-metin" id="bugun-metin"></p>
-      <p class="b-not" id="bugun-not">Canlı sitelerimin dünkü verisinden. Paragrafı Meta'nın Muse Spark modeli yazdı; yayımlanmadan önce içindeki her sayı kaynağıyla program tarafından tek tek eşleştirildi.</p>
-    </section>
+    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 31 proje var. On yedisi şu an internette canlı, on biri kendi kendini güncelliyor.</p>
 
     <div class="soru" aria-live="polite">
       <div class="s-et etiket">Soru</div>
@@ -266,8 +277,8 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
     </div>
 
     <div class="sayac">
-      <div><b data-say="26">26</b><span>proje</span></div>
-      <div><b data-say="11">11</b><span>canlı site</span></div>
+      <div><b data-say="31">31</b><span>proje</span></div>
+      <div><b data-say="17">17</b><span>canlı site</span></div>
       <div><b data-say="99697">99.697</b><span>Resmî Gazete düzenlemesi okundu</span></div>
       <div><b data-say="69" data-son=" mn">69 mn</b><span>Meclis kelimesi sayıldı</span></div>
       <div><b data-say="1026">1.026</b><span>ölçülmüş yapay zekâ koşusu</span></div>
@@ -381,6 +392,42 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/turkiye-merak.webp" alt="Türkiye neyi merak etti sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
+      <a class="site s-uydu gorun" href="https://birtohum.github.io/bu-gece-gokyuzu/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Bu gece gökyüzü</span><span class="canli-n">Her gece</span></div>
+          <h3>Uzay istasyonu bu gece <em>başının üstünden</em> geçiyor.</h3>
+          <p class="kanca">Şehrini seç: Uluslararası Uzay İstasyonu ve Tiangong hangi saatte, hangi yönden geçecek, çıplak gözle görülür mü? Hesap tarayıcında yapılıyor; 54 geçişte bağımsız bir gökbilim kütüphanesiyle 1–2 saniye içinde aynı.</p>
+        </div>
+        <div class="resim"><img src="gorsel/bu-gece-gokyuzu.webp" alt="Bu gece gökyüzü sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-deniz gorun" href="https://birtohum.github.io/denizler-isiniyor/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Denizler ısınıyor mu?</span><span class="canli-n">Her gün</span></div>
+          <h3><b id="deniz-artis">+1,9°</b> <small>1982'den bu yana Türkiye kıyılarında yıllık ortalama deniz sıcaklığı</small></h3>
+          <p class="kanca" id="deniz-kanca">41 kıyı noktası, NOAA'nın uydu ölçümleri, 1981'den bugüne her gün. Kendi koyunu seç, doğduğun yılla karşılaştır.</p>
+        </div>
+        <div class="resim"><img src="gorsel/denizler-isiniyor.webp" alt="Denizler ısınıyor mu sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-dizi gorun" href="https://birtohum.github.io/turk-dizileri-dunyada/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Türk dizileri dünyada</span><span class="canli-n">Her ay</span></div>
+          <h3><small>Arapça Vikipedi'de okunan</small> her <b id="dizi-bir">144</b> sayfadan biri bir Türk dizisi.</h3>
+          <p class="kanca">465 Türk dizisinin Vikipedi sayfası 87 dilde, 2015'ten bugüne: hangi dil hangi diziyi ne zaman keşfetti? İzlenme değil, merak.</p>
+        </div>
+        <div class="resim"><img src="gorsel/turk-dizileri-dunyada.webp" alt="Türk dizileri dünyada sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-yangin gorun" href="https://birtohum.github.io/orman-yanginlari-uzaydan/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Orman yangınları uzaydan</span><span class="canli-n">2001'den beri</span></div>
+          <h3><b id="yangin-ha">31.886</b> <small>hektar: 2021 Manavgat yangınında uydudan ölçülen yanmış alan</small></h3>
+          <p class="kanca">NASA uydularının 2001'den bu yana Türkiye'de gördüğü her sıcak nokta ve en büyük yangınlarda Sentinel-2'nin önce/sonra görüntüleri.</p>
+        </div>
+        <div class="resim"><img src="gorsel/orman-yanginlari-uzaydan.webp" alt="Orman yangınları uzaydan sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
       <a class="site s-ses gorun" href="https://seslendir.site/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Seslendir.io</span><span class="canli-n">Canlı</span></div>
@@ -394,8 +441,14 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
     </div>
   </section>
 
+  <section class="bugun" id="bugun" hidden aria-labelledby="bugun-et">
+    <div class="b-et" id="bugun-et"><span>Bugün Türkiye</span><span id="bugun-tarih"></span></div>
+    <p class="b-metin" id="bugun-metin"></p>
+    <p class="b-not" id="bugun-not">Canlı sitelerimin dünkü verisinden. Paragrafı Meta'nın Muse Spark modeli yazdı; yayımlanmadan önce içindeki her sayı kaynağıyla program tarafından tek tek eşleştirildi.</p>
+  </section>
+
   <section id="projeler">
-    <div class="bas gorun"><span class="no">02</span><h2>Diğer 16 proje</h2>
+    <div class="bas gorun"><span class="no">02</span><h2>Diğer 17 proje</h2>
       <p>Yapay zekâ deneyleri, aileme ve tanıdıklarıma yaptığım uygulamalar, oyunlar. Her kartta neyi yaptığım ve gerçekte ne çıktığı yazıyor; damga sonucu özetliyor.</p></div>
     <div class="filtre" role="group" aria-label="Projeleri süz" id="filtre"></div>
     <div class="izgara" id="izgara"></div>
@@ -445,8 +498,8 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   </footer>
 </div>
 
-<script src="veri.js?v=12"></script>
-<script src="en.js?v=12"></script>
+<script src="veri.js?v=13"></script>
+<script src="en.js?v=13"></script>
 <script>
 "use strict";
 const HEPSI = PROJELER;
@@ -558,6 +611,15 @@ fetch("veri/bugun.json", {cache: "no-cache"}).then(r => r.json()).then(d => {
   document.getElementById("bugun").hidden = false;
 }).catch(() => {});
 // yeni siteler: canlı sayılar (aynı alan adı)
+fetch("https://birtohum.github.io/denizler-isiniyor/veri/ozet.json", {cache: "no-cache"}).then(r => r.json()).then(d => {
+  const e = d.tum_kiyi && d.tum_kiyi.egilim; if (!e) return;
+  const fark = e.egim * (e.son - e.bas) / 10;   // sitenin kendi hesabı: eğilim × yıl sayısı
+  if (isFinite(fark)) document.getElementById("deniz-artis").textContent = (fark >= 0 ? "+" : "−") + ondalik(Math.abs(fark)) + "°";
+}).catch(() => {});
+fetch("https://birtohum.github.io/orman-yanginlari-uzaydan/veri/olaylar.json", {cache: "no-cache"}).then(r => r.json()).then(o => {
+  const e = (Array.isArray(o) ? o : []).filter(x => x.yanik_ha).sort((a, b) => b.yanik_ha - a.yanik_ha)[0]; if (!e) return;
+  document.getElementById("yangin-ha").textContent = bicim(e.yanik_ha);
+}).catch(() => {});
 fetch("https://birtohum.github.io/barajlar-uzaydan/veri/ozet.json", {cache: "no-cache"}).then(r => r.json()).then(d => {
   if (d.toplam && d.toplam.yuzde != null) document.getElementById("baraj-yuzde").textContent = "%" + Math.round(d.toplam.yuzde);
 }).catch(() => {});

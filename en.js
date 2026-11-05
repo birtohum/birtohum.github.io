@@ -149,13 +149,24 @@ const EN_PROJE = {
     not: "Illustration, not a screenshot."},
   "Yapay Yaşam": {ad: "Artificial Life", ne: "Herbivores and carnivores driven by small neural networks; their genes are inherited, mutate and change under natural selection.",
     sonuc: "500 generations in <b>6 seconds</b> (my rerun); the effect of selection is measured with a statistical test. 16/16 tests pass.",
-    damga: "Tested", alt: ["JavaScript", "Neural net", "Evolution"],
+    damga: "Live", alt: ["JavaScript", "Neural net", "Evolution"],
     soru: "Without anyone programming it, does natural selection alone produce faster or sharper-sighted creatures?",
     sayilar: [["500", "generations"], ["6 s", "for 500 generations"], ["16/16", "tests"]],
     yaptim: ["Each creature is driven by a small neural network; genes for speed, vision, size and diet pass to offspring and mutate. Herbivores look for plants, carnivores for herbivores.",
       "On screen: a live population chart, click-to-inspect creatures, and disasters such as famine, epidemic and ice age. I also wrote a headless benchmark that checks over 500 generations that the population never dies out, that memory doesn't leak, and that traits really change, using statistical tests."],
     ogrendim: "In an evolution sim it's easy to say \"something changed\"; showing it isn't random drift takes measurement. In my rerun the difference was very clear (Welch test p ≈ 5·10⁻⁹).",
-    gorseller: [["gorsel/p-yasam.webp", "Real screen from the simulator: first generation, herbivores, carnivores and plants"]]},
+    gorseller: [["gorsel/p-yasam.webp", "Real screen from the simulator: first generation, herbivores, carnivores and plants"]],
+    link: [["Open the simulation ↗", "https://birtohum.github.io/yapay-yasam/"], ["Code ↗", "https://github.com/birtohum/yapay-yasam"]]},
+  "Masaüstü ekranı": {ad: "Desk display", ne: "A morning summary for a small e-ink desk display: air quality, earthquakes, reservoirs, the day's Wikipedia spike and aircraft, all from my own sites.",
+    sonuc: "The software works and draws a preview from live data four times a day; <b>52 tests</b>. The hardware hasn't been bought yet, and the driver hasn't been tried on a real panel.",
+    damga: "Awaiting hardware", alt: ["Python", "e-ink", "Raspberry Pi"],
+    soru: "Can I read the day's summary from a quiet screen on my desk in the morning, without picking up my phone?",
+    sayilar: [["800×480", "e-ink resolution"], ["4", "renders a day"], ["52", "tests"]],
+    yaptim: ["A program that reads the public data of five of my sites and draws an 800×480, one-colour morning summary: Istanbul's air (as cigarettes), yesterday's earthquakes, reservoir surface, the day's Wikipedia curiosity and aircraft over Istanbul. If a source is stale or down, the screen says so.",
+      "For now it renders a preview on the computer, and GitHub redraws it from live data four times a day. The Raspberry Pi and Waveshare e-ink driver can be plugged in; the parts list and setup steps are in the repo."],
+    ogrendim: "On e-ink every pixel is black or white; the design is built only from type size and spacing, with no shadows or colour.",
+    gorseller: [["gorsel/p-ekran.webp", "Real preview drawn from live data (not on hardware)"]],
+    link: [["Preview ↗", "https://birtohum.github.io/masaustu-ekran/"], ["Code ↗", "https://github.com/birtohum/masaustu-ekran"]]},
 };
 
 if (DIL === "en") {
@@ -177,7 +188,7 @@ if (DIL === "en") {
     "nav.mono": `<a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 26 projects. Eleven are live on the web, and seven update themselves.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 31 projects. Seventeen are live on the web, and eleven update themselves.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
     ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
@@ -195,6 +206,10 @@ if (DIL === "en") {
     ".s-enflasyon .kanca": "Build your own basket and see your own inflation next to the official CPI.",
     ".s-iett h3": `1 <small>min late</small>`, ".s-iett .ic > .mono": "500T · 10 AM · EARLY RESULT, STILL COLLECTING",
     ".s-ses .ust-satir span:last-child": "Live",
+    ".s-uydu .ust-satir span:last-child": "Every night", ".s-uydu h3": "The space station passes <em>over your head</em> tonight.", ".s-uydu .kanca": "Pick your city: when and from which direction will the International Space Station and Tiangong pass, and can you see them with the naked eye? Computed in your browser; within 1–2 seconds of an independent astronomy library across 54 passes.",
+    ".s-deniz .ust-satir span:last-child": "Daily", ".s-deniz h3 small": "change in yearly average sea temperature along Turkey's coasts since 1982", ".s-deniz .kanca": "41 coastal points, NOAA satellite measurements, every day since 1981. Pick your bay and compare it with the year you were born.",
+    ".s-dizi .ust-satir span:last-child": "Monthly", ".s-dizi .kanca": "Wikipedia pages of 465 Turkish TV series in 87 languages since 2015: which language discovered which series, and when? Curiosity, not ratings.",
+    ".s-yangin .ust-satir span:last-child": "Since 2001", ".s-yangin h3 small": "hectares: burned area of the 2021 Manavgat fire, measured from satellite", ".s-yangin .kanca": "Every hot spot NASA satellites have seen in Turkey since 2001, and Sentinel-2 before/after images of the biggest fires.",
     "#bugun-et span:first-child": "Turkey today", "#bugun-not": "From yesterday's data on my live sites. The paragraph was written by Meta's Muse Spark model; before publishing, a program matched every number in it against its source.",
     ".s-deprem h3": `<span id="deprem-gun">Today</span>, Turkey shook <b id="deprem-sayi">34</b> times`, "#ucak-birim": "aircraft over Istanbul",
     ".s-baraj .ust-satir span:last-child": "Daily", ".s-baraj h3 small": "Istanbul reservoirs' water surface, relative to their fullest",
@@ -205,7 +220,7 @@ if (DIL === "en") {
     ".s-ucak .ust-satir span:last-child": "Live", ".s-ucak .kanca": "Aircraft over the city from open flight data: a map, the busiest hours, Istanbul Airport versus Sabiha Gökçen.", ".s-ses h3": "Nobody hears the others <em>while recording.</em>",
     ".s-ses .kanca": "Dub a film scene with your friends: everyone gets a character, and you watch the finale together for the first time. With real players: 939 dubs, 10,830 recorded lines. Plus 23 free tools.",
     ".s-iett .kanca": "Type your bus line: how closely does it keep to the timetable? From İETT's live vehicle positions, once a minute.",
-    "#projeler .bas h2": "16 more projects",
+    "#projeler .bas h2": "17 more projects",
     "#projeler .bas p": "AI experiments, apps I built for my family and people I know, and games. Each card says what I built and what actually came out of it; the stamp sums up the result.",
     "#yaramayan .etiket": "03 · A rare section",
     "#yaramayan h2": `Most portfolios <s>hide</s> leave these out.`,
@@ -233,7 +248,7 @@ if (DIL === "en") {
   const hs = document.getElementById("hava-sayi"); if (hs) hs.innerHTML = `= 0.7 <small>cigarettes</small>`;
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "26 projects, 11 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "31 projects, 17 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {
