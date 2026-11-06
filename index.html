@@ -301,6 +301,25 @@ section{padding:80px 0 0}
 .s-maas .testere svg{display:block;width:100%;height:auto}
 .s-maas .testere p{margin:2px 4px 4px;font:500 .72rem/1.3 "IBM Plex Mono",monospace;color:#7a6a55}
 @media (max-width:760px){.site.s-maas{flex-direction:column}.s-maas .testere{margin:0 18px 56px;align-self:stretch}}
+.site.yarim{grid-column:span 3}
+.site.s-sokak{grid-column:1/-1;background:#0d1430;color:#eef1fb;flex-direction:row;min-height:340px}
+.s-sokak .ic{padding:26px 26px 22px;flex:1 1 44%}
+.s-sokak h3{font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:800;line-height:1.06;color:#fff}
+.s-sokak h3 em{font-style:normal;color:#ffb627}
+.s-sokak .resim{flex:1 1 56%;height:auto;margin:0;border-top:0;background:#0d1430;display:flex;align-items:center}
+.s-sokak .resim img{width:100%;height:auto;object-fit:contain}
+.s-klasik{background:#f4ead5;color:#2b1d12}
+.s-klasik h3{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:700;line-height:1.12;color:#5a2d14}
+.s-klasik .resim{border-top:2px solid #5a2d14}
+.s-usta{background:#10151c;color:#e7edf3;font-family:"IBM Plex Mono",monospace}
+.s-usta h3{font-family:"IBM Plex Mono",monospace;font-size:clamp(1.3rem,2.3vw,1.8rem);font-weight:600;line-height:1.2}
+.s-usta h3 em{font-style:normal;color:#ff7a6b}
+.s-usta .kanca{padding-bottom:44px}
+.s-usta .terminal{border:1px solid #2c3743;border-radius:6px;padding:12px 14px;margin:6px 0 14px;font-size:.92rem}
+.s-usta .terminal div{display:flex;justify-content:space-between;gap:10px;padding:4px 0}
+.s-usta .terminal b{color:#7fe0a8}.s-usta .terminal b.kir{color:#ff7a6b}
+@media (max-width:760px){.site.s-sokak{flex-direction:column}.s-sokak .resim{padding-bottom:48px}}
+@media (max-width:620px){.site.yarim{grid-column:1/-1}}
 .site.s-oyun{grid-column:1/-1;background:#f5f0e6;color:#1f1c17;flex-direction:row;min-height:300px}
 .s-oyun .ic{padding:26px 26px 22px;flex:1 1 55%}
 .s-oyun h3{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:700;line-height:1.12}
@@ -425,7 +444,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
 <div class="sar">
   <header class="ust">
     <a class="ad" href="#" id="ad">Ege</a>
-    <nav class="mono"><a href="#canli">Canlı siteler</a><a href="#projeler">Projeler</a><a href="#yaramayan">İşe yaramayanlar</a><a href="yazilar/">Yazılar</a><a href="cv/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a></nav>
+    <nav class="mono"><a href="#secki">Öne çıkanlar</a><a href="#canli">Canlı siteler</a><a href="#projeler">Projeler</a><a href="#yaramayan">İşe yaramayanlar</a><a href="yazilar/">Yazılar</a><a href="cv/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a></nav>
   </header>
 
   <div class="hero">
@@ -448,11 +467,20 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
     </div>
   </div>
 
-  <section id="canli">
-    <div class="bas gorun"><span class="no">01</span><h2>Şu an canlı</h2>
-      <p>Her biri tek bir soruyu cevaplıyor ve her biri kendi kimliğiyle tasarlandı. Kaynak, yöntem ve sınırlar her sitenin altında yazıyor.</p></div>
+  <section id="secki">
+    <div class="bas gorun"><span class="no">01</span><h2>Önce bunlara bak</h2>
+      <p>Bir dakikan varsa en çok önereceklerim. Kalanların hepsi hemen aşağıda.</p></div>
     <div class="canli">
-      <a class="site s-mevzuat gorun" href="https://birtohum.github.io/mevzuat-haritasi/" target="_blank" rel="noopener">
+      <a class="site s-sokak gorun" href="https://birtohum.github.io/sokak-adlari/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Sokaklarımız</span><span class="canli-n">Canlı</span></div>
+          <h3>Bir insanın adını taşıyan her 100 sokaktan <em>4</em> tanesi kadın.</h3>
+          <p class="kanca">OpenStreetMap'teki 231.889 sokağı tek tek saydım. %40'ının adı bile yok, yalnız numarası var. En çok Atatürk'ün adı geçiyor (1.114), kadınlarda Zübeyde Hanım (124). Senin ilinde durum ne?</p>
+        </div>
+        <div class="resim"><img src="gorsel/sokaklar-harita.webp" alt="Türkiye haritasında kişi adı taşıyan sokaklar: kadın adları turuncu, erkek adları mavi" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-mevzuat yarim gorun" href="https://birtohum.github.io/mevzuat-haritasi/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Mevzuat Haritası</span><span class="canli-n">Canlı</span></div>
           <h3>Türkiye'de her gün ortalama <em>10</em> yeni düzenleme yayımlanıyor</h3>
@@ -461,7 +489,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/mevzuat-haritasi.webp" alt="Mevzuat Haritası sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
-      <a class="site s-meclis gorun" href="https://birtohum.github.io/meclisin-dili/" target="_blank" rel="noopener">
+      <a class="site s-meclis yarim gorun" href="https://birtohum.github.io/meclisin-dili/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Meclis'in Dili</span><span class="canli-n">Canlı</span></div>
           <h3>&gt; <span id="daktilo">enflasyon</span><span class="imlec"></span></h3>
@@ -470,7 +498,64 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/meclisin-dili.webp" alt="Meclis'in Dili sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
-      <a class="site s-hava gorun" href="https://birtohum.github.io/kac-sigara/" target="_blank" rel="noopener">
+      <a class="site s-karne gorun" href="https://birtohum.github.io/turkce-yz-karnesi/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Türkçe yapay zekâ karnesi</span><span class="canli-n">Canlı</span></div>
+          <h3>Türkiye sorularında büyük yapay zekâ <em>98</em> aldı. Bilgisayarımdakiler <em>49</em>.</h3>
+          <p class="kanca">Wikidata'dan otomatik üretilmiş 1.209 soru: hangi ilçe hangi ilde, hangi şehir daha yüksekte, plaka kodu, doğum yılı. 10 model, her soru iki farklı ifadeyle, güven aralıklarıyla. Kendin de deneyebilirsin.</p>
+        </div>
+        <div class="cizelge" aria-label="Genel puanlar"><div class="cbas"><span>Model</span><span>Puan / 100</span></div><div class="sat "><span>Muse Wonder 1.0</span><i style="--p:98.6"></i><b>98,6</b></div><div class="sat "><span>Muse Spark 1.1</span><i style="--p:98.3"></i><b>98,3</b></div><div class="sat "><span>Muse Spark 1.3</span><i style="--p:97.8"></i><b>97,8</b></div><div class="ara"></div><div class="sat yerel"><span>Qwen3 14B</span><i style="--p:49.2"></i><b>49,2</b></div><div class="sat yerel"><span>Gemma 3 4B</span><i style="--p:46.6"></i><b>46,6</b></div><div class="sat yerel"><span>Llama 3.2 3B</span><i style="--p:38.9"></i><b>38,9</b></div><div class="sat sans"><span>Rastgele tahmin</span><i style="--p:31.3"></i><b>31,3</b></div></div>
+        <span class="git">Karneye bak ↗</span>
+      </a>
+      <a class="site s-klasik yarim gorun" href="https://birtohum.github.io/sesli-klasikler/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Sesli Klasikler</span><span class="canli-n">Canlı</span></div>
+          <h3>Kürk Mantolu Madonna'yı dinle, okunan cümleyi takip et.</h3>
+          <p class="kanca">Telifi düşmüş Türk klasikleri, ücretsiz: 1 roman ve 18 hikâye, 10 saat. Metinler ilk baskılardan, ses açık lisanslı bir modelden; anlaşılırlığı Whisper'la ölçüldü.</p>
+        </div>
+        <div class="resim"><img src="gorsel/sesli-kmm.webp" alt="Kürk Mantolu Madonna: okunan cümle metinde vurgulu" loading="lazy"></div>
+        <span class="git">Dinle ↗</span>
+      </a>
+      <a class="site s-usta yarim gorun" href="yazilar/usta/">
+        <div class="ic">
+          <div class="ust-satir"><span>Usta</span><span class="canli-n">Açık kaynak</span></div>
+          <h3>Yapay zekâ kendi kodunu denetlerse daha iyi olur mu? <em>Olmadı.</em></h3>
+          <div class="terminal" aria-label="Sonuçlar: tek başına model yüzde 60, bağımsız denetimle yüzde 58">
+            <div><span>koşu</span><b>1.026</b></div>
+            <div><span>tek başına model</span><b>%60</b></div>
+            <div><span>bağımsız denetimle</span><b class="kir">%58</b></div>
+          </div>
+          <p class="kanca">Türkçe kodlama ajanı, gizli testlerle ölçüldü. Meta AI Developer Hackathon gönderimi. Kazanç çıkmadı; nedenini de ölçüp yazdım.</p>
+        </div>
+        <span class="git">Yazıyı oku →</span>
+      </a>
+      <a class="site s-tohum gorun" href="https://birtohum.github.io/tohum/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Tohum</span><span class="canli-n">Tarayıcıda</span></div>
+          <h3>Hiçbir şey bilmeden doğdu. <em>21 dakikada</em> Türkçe yazmayı öğrendi.</h3>
+          <p class="kanca">4,8 milyon parametrelik, sıfırdan eğitilmiş bir dil modeli. Sitede senin tarayıcında çalışıyor; "yaş" çubuğuyla eğitimin her anına dönüp nasıl yazdığını görebilirsin. Asistan değil: söylediklerinin çoğu uydurma, ama öğrenmenin kendisi görünüyor.</p>
+        </div>
+        <div class="resim"><img src="gorsel/tohum.webp" alt="Tohum sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-ses gorun" href="https://seslendir.site/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Seslendir.io</span><span class="canli-n">Canlı</span></div>
+          <h3>Kimse diğerini <em>duymadan</em> kaydediyor.</h3>
+          <p class="kanca">Arkadaşlarınla bir film sahnesini seslendir: herkese bir karakter düşer, finali birlikte ilk kez izlersiniz. Gerçek oyuncularla: 939 dublaj, 10.830 replik. Yanında 23 ücretsiz araç.</p>
+          <div class="ses-dalga" aria-hidden="true"><i style="--h:30"></i><i style="--h:55"></i><i style="--h:80"></i><i style="--h:45"></i><i style="--h:95"></i><i style="--h:60"></i><i style="--h:35"></i><i style="--h:70"></i><i style="--h:90"></i><i style="--h:50"></i><i style="--h:25"></i><i style="--h:65"></i><i style="--h:85"></i><i style="--h:40"></i><i style="--h:75"></i><i style="--h:55"></i><i style="--h:30"></i><i style="--h:60"></i></div>
+        </div>
+        <div class="resim"><img src="gorsel/p-seslendir.webp" alt="Seslendir.io sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="canli">
+    <div class="bas gorun"><span class="no">02</span><h2>Daha fazla canlı site</h2>
+      <p>Her biri tek bir soruyu cevaplıyor ve her biri kendi kimliğiyle tasarlandı. Kaynak, yöntem ve sınırlar her sitenin altında yazıyor.</p></div>
+    <div class="canli">
+      <a class="site s-hava yarim gorun" href="https://birtohum.github.io/kac-sigara/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Kaç Sigara?</span><span class="canli-n">Her gün</span></div>
           <h3 id="hava-sayi">= 0,7 <small>sigara</small></h3>
@@ -480,7 +565,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/kac-sigara.webp" alt="Kaç Sigara sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
-      <a class="site s-enflasyon gorun" href="https://birtohum.github.io/sepet-enflasyonu/" target="_blank" rel="noopener">
+      <a class="site s-enflasyon yarim gorun" href="https://birtohum.github.io/sepet-enflasyonu/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Sepet Enflasyonu</span><span class="canli-n">Her gün</span></div>
           <h3>Aynı sepet bugün kaç lira?</h3>
@@ -507,15 +592,6 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/iett-dakiklik.webp" alt="İETT Dakiklik sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
-      <a class="site s-maas gorun" href="https://birtohum.github.io/maasim-kac-ekmek/" target="_blank" rel="noopener">
-        <div class="ic">
-          <div class="ust-satir"><span>Maaşım kaç ekmek?</span><span class="canli-n">Her ay</span></div>
-          <h3 id="maas-baslik">Ocak'ta gelen asgari ücret, bugünün fiyatlarıyla <em>%17,8</em> eridi.</h3>
-          <p class="kanca">Maaşını ve fırınındaki ekmek fiyatını yaz: kaç ekmek ettiğini, on yılın testere dişlerini ve market rafındaki karşılığını gör. Resmî asgari ücret ve TÜİK verisiyle, her ay kendini güncelliyor.</p>
-        </div>
-        <div class="testere" id="maas-testere"><p>Net asgari ücret, bugünün parasıyla · 2016–2026</p></div>
-        <span class="git">Hesapla ↗</span>
-      </a>
       <a class="site s-deprem gorun" href="https://birtohum.github.io/turkiye-sallandi/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Türkiye sallandı</span><span class="canli-n">3 saatte bir</span></div>
@@ -534,6 +610,15 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         </div>
         <div class="resim"><img src="gorsel/turkiye-geceleri.webp" alt="Türkiye geceleri sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-maas gorun" href="https://birtohum.github.io/maasim-kac-ekmek/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Maaşım kaç ekmek?</span><span class="canli-n">Her ay</span></div>
+          <h3 id="maas-baslik">Ocak'ta gelen asgari ücret, bugünün fiyatlarıyla <em>%17,8</em> eridi.</h3>
+          <p class="kanca">Maaşını ve fırınındaki ekmek fiyatını yaz: kaç ekmek ettiğini, on yılın testere dişlerini ve market rafındaki karşılığını gör. Resmî asgari ücret ve TÜİK verisiyle, her ay kendini güncelliyor.</p>
+        </div>
+        <div class="testere" id="maas-testere"><p>Net asgari ücret, bugünün parasıyla · 2016–2026</p></div>
+        <span class="git">Hesapla ↗</span>
       </a>
       <a class="site s-ucak gorun" href="https://birtohum.github.io/istanbul-semalari/" target="_blank" rel="noopener">
         <div class="ic">
@@ -564,7 +649,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/turkiye-merak.webp" alt="Türkiye neyi merak etti sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
-      <a class="site s-uydu gorun" href="https://birtohum.github.io/bu-gece-gokyuzu/" target="_blank" rel="noopener">
+      <a class="site s-uydu yarim gorun" href="https://birtohum.github.io/bu-gece-gokyuzu/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Bu gece gökyüzü</span><span class="canli-n">Her gece</span></div>
           <h3>Uzay istasyonu bu gece <em>başının üstünden</em> geçiyor.</h3>
@@ -573,7 +658,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/bu-gece-gokyuzu.webp" alt="Bu gece gökyüzü sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
-      <a class="site s-deniz gorun" href="https://birtohum.github.io/denizler-isiniyor/" target="_blank" rel="noopener">
+      <a class="site s-deniz yarim gorun" href="https://birtohum.github.io/denizler-isiniyor/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Denizler ısınıyor mu?</span><span class="canli-n">Her gün</span></div>
           <h3><b id="deniz-artis">+1,9°</b> <small>1982'den bu yana Türkiye kıyılarında yıllık ortalama deniz sıcaklığı</small></h3>
@@ -582,7 +667,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/denizler-isiniyor.webp" alt="Denizler ısınıyor mu sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
-      <a class="site s-dizi gorun" href="https://birtohum.github.io/turk-dizileri-dunyada/" target="_blank" rel="noopener">
+      <a class="site s-dizi yarim gorun" href="https://birtohum.github.io/turk-dizileri-dunyada/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Türk dizileri dünyada</span><span class="canli-n">Her ay</span></div>
           <h3><small>Arapça Vikipedi'de okunan</small> her <b id="dizi-bir">144</b> sayfadan biri bir Türk dizisi.</h3>
@@ -591,7 +676,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/turk-dizileri-dunyada.webp" alt="Türk dizileri dünyada sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
-      <a class="site s-yangin gorun" href="https://birtohum.github.io/orman-yanginlari-uzaydan/" target="_blank" rel="noopener">
+      <a class="site s-yangin yarim gorun" href="https://birtohum.github.io/orman-yanginlari-uzaydan/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Orman yangınları uzaydan</span><span class="canli-n">2001'den beri</span></div>
           <h3><b id="yangin-ha">31.886</b> <small>hektar: 2021 Manavgat yangınında uydudan ölçülen yanmış alan</small></h3>
@@ -599,24 +684,6 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         </div>
         <div class="resim"><img src="gorsel/orman-yanginlari-uzaydan.webp" alt="Orman yangınları uzaydan sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
-      </a>
-      <a class="site s-tohum gorun" href="https://birtohum.github.io/tohum/" target="_blank" rel="noopener">
-        <div class="ic">
-          <div class="ust-satir"><span>Tohum</span><span class="canli-n">Tarayıcıda</span></div>
-          <h3>Hiçbir şey bilmeden doğdu. <em>21 dakikada</em> Türkçe yazmayı öğrendi.</h3>
-          <p class="kanca">4,8 milyon parametrelik, sıfırdan eğitilmiş bir dil modeli. Sitede senin tarayıcında çalışıyor; "yaş" çubuğuyla eğitimin her anına dönüp nasıl yazdığını görebilirsin. Asistan değil: söylediklerinin çoğu uydurma, ama öğrenmenin kendisi görünüyor.</p>
-        </div>
-        <div class="resim"><img src="gorsel/tohum.webp" alt="Tohum sitesinin ekran görüntüsü" loading="lazy"></div>
-        <span class="git">Siteye git ↗</span>
-      </a>
-      <a class="site s-karne gorun" href="https://birtohum.github.io/turkce-yz-karnesi/" target="_blank" rel="noopener">
-        <div class="ic">
-          <div class="ust-satir"><span>Türkçe yapay zekâ karnesi</span><span class="canli-n">Canlı</span></div>
-          <h3>Türkiye sorularında büyük yapay zekâ <em>98</em> aldı. Bilgisayarımdakiler <em>49</em>.</h3>
-          <p class="kanca">Wikidata'dan otomatik üretilmiş 1.209 soru: hangi ilçe hangi ilde, hangi şehir daha yüksekte, plaka kodu, doğum yılı. 10 model, her soru iki farklı ifadeyle, güven aralıklarıyla. Kendin de deneyebilirsin.</p>
-        </div>
-        <div class="cizelge" aria-label="Genel puanlar"><div class="cbas"><span>Model</span><span>Puan / 100</span></div><div class="sat "><span>Muse Wonder 1.0</span><i style="--p:98.6"></i><b>98,6</b></div><div class="sat "><span>Muse Spark 1.1</span><i style="--p:98.3"></i><b>98,3</b></div><div class="sat "><span>Muse Spark 1.3</span><i style="--p:97.8"></i><b>97,8</b></div><div class="ara"></div><div class="sat yerel"><span>Qwen3 14B</span><i style="--p:49.2"></i><b>49,2</b></div><div class="sat yerel"><span>Gemma 3 4B</span><i style="--p:46.6"></i><b>46,6</b></div><div class="sat yerel"><span>Llama 3.2 3B</span><i style="--p:38.9"></i><b>38,9</b></div><div class="sat sans"><span>Rastgele tahmin</span><i style="--p:31.3"></i><b>31,3</b></div></div>
-        <span class="git">Karneye bak ↗</span>
       </a>
       <a class="site s-oyun gorun" href="https://birtohum.github.io/alti-ipucu/" target="_blank" rel="noopener">
         <div class="ic">
@@ -628,16 +695,6 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/alti-ipucu.webp" alt="Altı İpucu oyununun ekran görüntüsü" loading="lazy"></div>
         <span class="git">Oyna ↗</span>
       </a>
-      <a class="site s-ses gorun" href="https://seslendir.site/" target="_blank" rel="noopener">
-        <div class="ic">
-          <div class="ust-satir"><span>Seslendir.io</span><span class="canli-n">Canlı</span></div>
-          <h3>Kimse diğerini <em>duymadan</em> kaydediyor.</h3>
-          <p class="kanca">Arkadaşlarınla bir film sahnesini seslendir: herkese bir karakter düşer, finali birlikte ilk kez izlersiniz. Gerçek oyuncularla: 939 dublaj, 10.830 replik. Yanında 23 ücretsiz araç.</p>
-          <div class="ses-dalga" aria-hidden="true"><i style="--h:30"></i><i style="--h:55"></i><i style="--h:80"></i><i style="--h:45"></i><i style="--h:95"></i><i style="--h:60"></i><i style="--h:35"></i><i style="--h:70"></i><i style="--h:90"></i><i style="--h:50"></i><i style="--h:25"></i><i style="--h:65"></i><i style="--h:85"></i><i style="--h:40"></i><i style="--h:75"></i><i style="--h:55"></i><i style="--h:30"></i><i style="--h:60"></i></div>
-        </div>
-        <div class="resim"><img src="gorsel/p-seslendir.webp" alt="Seslendir.io sitesinin ekran görüntüsü" loading="lazy"></div>
-        <span class="git">Siteye git ↗</span>
-      </a>
     </div>
   </section>
 
@@ -648,15 +705,15 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   </section>
 
   <section id="projeler">
-    <div class="bas gorun"><span class="no">02</span><h2>Diğer 17 proje</h2>
-      <p>Yapay zekâ deneyleri, aileme ve tanıdıklarıma yaptığım uygulamalar, oyunlar. Her kartta neyi yaptığım ve gerçekte ne çıktığı yazıyor; damga sonucu özetliyor.</p></div>
+    <div class="bas gorun"><span class="no">03</span><h2>Bütün projeler</h2>
+      <p>Türkiye verisi, yapay zekâ deneyleri, aileme ve tanıdıklarıma yaptığım uygulamalar, oyunlar. Her kartta neyi yaptığım ve gerçekte ne çıktığı yazıyor; damga sonucu özetliyor.</p></div>
     <div class="filtre" role="group" aria-label="Projeleri süz" id="filtre"></div>
     <div class="izgara" id="izgara"></div>
   </section>
 
   <section id="yaramayan">
     <div class="yaramayan gorun">
-      <div class="etiket" style="color:inherit;opacity:.7">03 · Nadir bir bölüm</div>
+      <div class="etiket" style="color:inherit;opacity:.7">04 · Nadir bir bölüm</div>
       <h2>Çoğu portfolyo bunları <s>saklar</s> göstermez.</h2>
       <p>Deneylerimin bir kısmı işe yaramadı. Ama her birinde "neden" sorusunun ölçülmüş bir cevabı var, ve bence en çok şeyi bunlardan öğrendim.</p>
       <div class="liste">
@@ -677,7 +734,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   </section>
 
   <section>
-    <div class="bas gorun"><span class="no">04</span><h2>Nasıl çalışıyorum</h2></div>
+    <div class="bas gorun"><span class="no">05</span><h2>Nasıl çalışıyorum</h2></div>
     <div class="ilke gorun">
       <div><b>Önce soru, sonra kod.</b><p>Her proje tek bir cümleyle başlıyor: "Bugün nefes almak kaç sigara?" Cevaplamayan özellik eklenmiyor.</p></div>
       <div><b>Ölçmeden "işe yarıyor" demem.</b><p>Gizli testler, elle denetlenmiş örneklemler, güven aralıkları. Sayı yoksa iddia da yok.</p></div>
@@ -698,12 +755,12 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   </footer>
 </div>
 
-<script src="veri.js?v=25"></script>
-<script src="en.js?v=27"></script>
+<script src="veri.js?v=26"></script>
+<script src="en.js?v=28"></script>
 <script>
 "use strict";
 const HEPSI = PROJELER;
-const TURLER = [["hepsi", T("Hepsi", "All")], ["yz", T("Yapay zekâ", "AI")], ["urun", T("İnsanlar için", "For people")], ["oyun", T("Oyun ve müzik", "Games & music")]];
+const TURLER = [["hepsi", T("Hepsi", "All")], ["veri", T("Türkiye verisi", "Data on Turkey")], ["yz", T("Yapay zekâ", "AI")], ["urun", T("İnsanlar için", "For people")], ["oyun", T("Oyun ve müzik", "Games & music")]];
 
 function el(etiket, ozellik = {}, ...cocuk) {
   const e = document.createElement(etiket);
