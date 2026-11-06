@@ -44,7 +44,7 @@ const PROJELER = [
    sonuc: "81 ilin ilk 30 listesinde 268 farklı soyadı; 134'ü yalnız bir ilde. Yılmaz 57 ilde birinci. Kendine özgü soyadları: Rize Kopuz, Hatay Şanverdi, Artvin Ustabaş, Trabzon Birinci. Yazıcı Rize'de 2. (binde 11,9).",
    damga: ["Canlı", "iyi"], alt: ["Python", "JavaScript", "SVG"], link: [["Dene", "https://birtohum.github.io/soyadin-nereli/"], ["Kod", "https://github.com/birtohum/soyadin-nereli"]]},
   {t: "veri", em: "🪧", ad: "Sokaklarımız", ne: "Türkiye'de bir insanın adını taşıyan her 100 sokaktan 4'ü kadın. OpenStreetMap'teki 231.889 sokak il il: kimin adı var, kaçının adı bile yok.",
-   sonuc: "26.181 kişi adlı sokağın 1.002'si kadın; sokakların %40'ının adı yok. Elle denetimde 150 kararda 2 hata. Yalnız ilk adıyla geçenler de sayılırsa %12, sözcük olanlar da sayılırsa %26; üç sayı da sayfada yazıyor.",
+   sonuc: "26.181 kişi adlı sokağın 1.002'si kadın; sokakların %40'ının adı yok. Elle denetimde 150 kararda 2 hata. Yalnız ilk adıyla geçenler de sayılırsa %12, onların yerine sözcük olanlar sayılırsa %26; üç sayı da sayfada yazıyor.",
    damga: ["Canlı", "iyi"], alt: ["Python", "OpenStreetMap", "LLM"], link: [["Dene", "https://birtohum.github.io/sokak-adlari/"], ["Kod", "https://github.com/birtohum/sokak-adlari"]]},
   {t: "veri", em: "🏷️", ad: "Adın kaç yaşında?", ne: "Bir isim yaz; 1930'dan 2025'e her doğum yılında kaçıncı sırada olduğunu ve en moda olduğu yılı gör.",
    sonuc: "1.205 isim, 1930–2025 (TÜİK). Fatma 1991'e kadar her kuşakta birinci; 1992 Merve, 2000 Zeynep, 2025 Alya. Erkeklerde Mehmet 2002'ye kadar, 2022'den beri Alparslan.",
