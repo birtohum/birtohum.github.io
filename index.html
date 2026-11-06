@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ege — merak ettiğim soruları çalışan şeylere çeviriyorum</title>
-<meta name="description" content="50 proje, 41 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları, barajlar, Vikipedi merakı ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
-<meta property="og:title" content="Ege — 50 proje, 41 canlı site">
+<meta name="description" content="51 proje, 42 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları, barajlar, Vikipedi merakı ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
+<meta property="og:title" content="Ege — 51 proje, 42 canlı site">
 <meta property="og:description" content="Vergi kanunu kaç kez değişti? Bugün nefes almak kaç sigara? Yapay zekâ yapay zekâyı denetleyebilir mi? Cevaplar veriyle.">
 <meta property="og:image" content="https://birtohum.github.io/og/ana.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -415,6 +415,13 @@ section{padding:80px 0 0}
 .s-ekran .resim{height:210px}
 .s-masa .resim img,.s-ekran .resim img{object-fit:contain;object-position:center}
 .s-masa .resim{background:#fff4e0}
+.site.s-plaka{grid-column:1/-1;background:#20242a;color:#f3f4f6;flex-direction:row;min-height:320px}
+.s-plaka .ic{padding:26px 26px 22px;flex:1 1 42%}
+.s-plaka h3{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.02;color:#fff}
+.s-plaka h3 em{font-style:normal;color:#ffd21f}
+.s-plaka .resim{flex:1 1 58%;height:auto;margin:0;border-top:0;background:#20242a}
+.s-plaka .resim img{object-position:center}
+@media (max-width:760px){.site.s-plaka{flex-direction:column}.s-plaka .resim{height:220px}}
 .site.s-oyun{grid-column:1/-1;background:#f5f0e6;color:#1f1c17;flex-direction:row;min-height:300px}
 .s-oyun .ic{padding:26px 26px 22px;flex:1 1 55%}
 .s-oyun h3{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:700;line-height:1.12}
@@ -545,7 +552,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   <div class="hero">
     <div class="etiket">Ege · Portfolyo · Eylül–Kasım 2026</div>
     <h1>Merak ettiğim soruları <span class="fos">çalışan şeylere</span> çeviriyorum.</h1>
-    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 50 proje var. Kırk biri şu an internette canlı, on üçü kendi kendini güncelliyor.</p>
+    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 51 proje var. Kırk ikisi şu an internette canlı, on dördü kendi kendini güncelliyor.</p>
 
     <div class="soru" aria-live="polite">
       <div class="s-et etiket">Soru</div>
@@ -554,8 +561,8 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
     </div>
 
     <div class="sayac">
-      <div><b data-say="50">50</b><span>proje</span></div>
-      <div><b data-say="41">41</b><span>canlı site</span></div>
+      <div><b data-say="51">51</b><span>proje</span></div>
+      <div><b data-say="42">42</b><span>canlı site</span></div>
       <div><b data-say="99697">99.697</b><span>Resmî Gazete düzenlemesi okundu</span></div>
       <div><b data-say="69" data-son=" mn">69 mn</b><span>Meclis kelimesi sayıldı</span></div>
       <div><b data-say="1026">1.026</b><span>ölçülmüş yapay zekâ koşusu</span></div>
@@ -574,6 +581,15 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         </div>
         <div class="resim"><img src="gorsel/sokaklar-harita.webp" alt="Türkiye haritasında kişi adı taşıyan sokaklar: kadın adları turuncu, erkek adları mavi" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-plaka gorun" href="https://birtohum.github.io/il-kimligi/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>İlin Kimliği</span><span class="canli-n">81 il</span></div>
+          <h3>81 plaka. <em>Seninki hangisi?</em></h3>
+          <p class="kanca">Plakana dokun: ilinin nüfusu, göçü, havası, depremi, yangını, sokak adları ve soyadları tek sayfada, 81 il içinde kaçıncı olduğuyla. Bütün veri sitelerimin birleştiği yer.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kart-plaka.webp" alt="81 ilin araç plakalarından oluşan ana sayfa" loading="lazy"></div>
+        <span class="git">Plakanı bul ↗</span>
       </a>
       <a class="site s-mevzuat yarim gorun" href="https://birtohum.github.io/mevzuat-haritasi/" target="_blank" rel="noopener">
         <div class="ic">
@@ -1073,8 +1089,8 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   </footer>
 </div>
 
-<script src="veri.js?v=34"></script>
-<script src="en.js?v=35"></script>
+<script src="veri.js?v=35"></script>
+<script src="en.js?v=36"></script>
 <script>
 "use strict";
 const HEPSI = PROJELER;
