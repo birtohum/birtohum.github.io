@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ege — merak ettiğim soruları çalışan şeylere çeviriyorum</title>
-<meta name="description" content="52 proje, 43 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları, barajlar, Vikipedi merakı ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
-<meta property="og:title" content="Ege — 52 proje, 43 canlı site">
+<meta name="description" content="53 proje, 44 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları, barajlar, Vikipedi merakı ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
+<meta property="og:title" content="Ege — 53 proje, 44 canlı site">
 <meta property="og:description" content="Vergi kanunu kaç kez değişti? Bugün nefes almak kaç sigara? Yapay zekâ yapay zekâyı denetleyebilir mi? Cevaplar veriyle.">
 <meta property="og:image" content="https://birtohum.github.io/og/ana.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -429,6 +429,13 @@ section{padding:80px 0 0}
 .s-kus .resim{flex:1 1 58%;height:auto;margin:0;border-top:0;background:#102a24}
 @media (max-width:760px){.site.s-kus{flex-direction:column}.s-kus .resim{height:220px}}
 .s-plaka .resim img{object-position:left center}
+.site.s-senin{grid-column:1/-1;background:#5c0c1f;color:#f8f0dd;flex-direction:row;min-height:300px}
+.s-senin .ic{padding:26px 26px 22px;flex:1 1 44%}
+.s-senin h3{font-family:Georgia,serif;font-size:clamp(1.8rem,3.2vw,2.5rem);font-weight:700;line-height:1.12}
+.s-senin h3 em{font-style:normal;color:#e8c56b}
+.s-senin .resim{flex:1 1 56%;height:auto;margin:0;border-top:0;background:#3d0714}
+.s-senin .resim img{object-position:left top}
+@media (max-width:760px){.site.s-senin{flex-direction:column}.s-senin .resim{height:220px}}
 .site.s-oyun{grid-column:1/-1;background:#f5f0e6;color:#1f1c17;flex-direction:row;min-height:300px}
 .s-oyun .ic{padding:26px 26px 22px;flex:1 1 55%}
 .s-oyun h3{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:700;line-height:1.12}
@@ -559,7 +566,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   <div class="hero">
     <div class="etiket">Ege · Portfolyo · Eylül–Kasım 2026</div>
     <h1>Merak ettiğim soruları <span class="fos">çalışan şeylere</span> çeviriyorum.</h1>
-    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 52 proje var. Kırk üçü şu an internette canlı, on dördü kendi kendini güncelliyor.</p>
+    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 53 proje var. Kırk dördü şu an internette canlı, on dördü kendi kendini güncelliyor.</p>
 
     <div class="soru" aria-live="polite">
       <div class="s-et etiket">Soru</div>
@@ -568,8 +575,8 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
     </div>
 
     <div class="sayac">
-      <div><b data-say="52">52</b><span>proje</span></div>
-      <div><b data-say="43">43</b><span>canlı site</span></div>
+      <div><b data-say="53">53</b><span>proje</span></div>
+      <div><b data-say="44">44</b><span>canlı site</span></div>
       <div><b data-say="99697">99.697</b><span>Resmî Gazete düzenlemesi okundu</span></div>
       <div><b data-say="69" data-son=" mn">69 mn</b><span>Meclis kelimesi sayıldı</span></div>
       <div><b data-say="1026">1.026</b><span>ölçülmüş yapay zekâ koşusu</span></div>
@@ -943,6 +950,15 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
     <div class="bas gorun"><span class="no">03</span><h2>Uygulamalar, araçlar, oyunlar</h2>
       <p>Ailem, eniştem, esnaf ve meraklı biri için yaptıklarım. Durumu her kartın köşesinde yazıyor: canlı, vitrin ya da prototip.</p></div>
     <div class="canli">
+      <a class="site s-senin gorun" href="https://birtohum.github.io/senin-turkiyen/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Senin Türkiyen</span><span class="canli-n">Canlı</span></div>
+          <h3>Adın, soyadın, yaşın, ilin: <em>Türkiye'nin neresindesin?</em></h3>
+          <p class="kanca">Dört bilgi yaz, kişisel kartın çıksın: adın hangi yıllarda modaydı, soyadın nerede yaygın, ülkenin yüzde kaçı senden yaşlı. Yazdıkların tarayıcından çıkmaz.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kart-senin.webp" alt="Örnek kişisel kart: ad, soyad, yaş ve il bilgileri" loading="lazy"></div>
+        <span class="git">Kartını çıkar ↗</span>
+      </a>
       <a class="site s-gazete ucte gorun" href="https://birtohum.github.io/gazete-ozeti/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Gazete Özeti</span><span class="canli-n">Her sabah</span></div>
@@ -1105,8 +1121,8 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   </footer>
 </div>
 
-<script src="veri.js?v=36"></script>
-<script src="en.js?v=38"></script>
+<script src="veri.js?v=37"></script>
+<script src="en.js?v=39"></script>
 <script>
 "use strict";
 const HEPSI = PROJELER;

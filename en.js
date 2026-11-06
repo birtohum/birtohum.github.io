@@ -265,6 +265,15 @@ const EN_PROJE = {
     ogrendim: "In observation data \"many records\" is not \"many birds\"; scaling each species to itself removes much of that bias.",
     gorseller: [["gorsel/p-sehrininkuslar.webp", "Real screenshot"]],
     link: [["Try ↗", "https://birtohum.github.io/sehrinin-kuslari/"], ["Code ↗", "https://github.com/birtohum/sehrinin-kuslari"]]},
+  "Senin Türkiyen": {ad: "Senin Türkiyen (Your Turkey)", ne: "Enter your name, surname, birth year and province: when your name was in fashion, where your surname is common, how much of Turkey is older than you, where your province stands.",
+    sonuc: "Combines four of my sites into one personal card you can download. Nothing leaves the browser; testing confirmed no personal data is sent.",
+    damga: "Live", alt: ["JavaScript", "TurkStat", "Canvas"],
+    soru: "With my name, surname, age and province, where am I in Turkey?",
+    sayilar: [["4", "sites combined"], ["0", "personal data sent"], ["1", "downloadable card"]],
+    yaptim: ["A site that computes a name's peak years, a surname's spread across provinces, how many people are older than you and your province's most extreme trait, all in the browser.", "The result becomes a shareable image without the surname. If a surname isn't listed it isn't called rare, because TurkStat only publishes the top 30."],
+    ogrendim: "Testing five edge cases found what a screenshot would hide: wrong claims like Mehmet being 'in fashion in 1930' and wrong Turkish suffixes on numbers.",
+    gorseller: [["gorsel/p-seninturkiyen.webp", "The page with a made-up example person (real screenshot)"]],
+    link: [["Try ↗", "https://birtohum.github.io/senin-turkiyen/"], ["Code ↗", "https://github.com/birtohum/senin-turkiyen"]]},
   "Doğduğun Gün": {ad: "Doğduğun Gün (The Day You Were Born)", ne: "Pick your birth date and province: the temperature that day, every birthday since, and how much the city has warmed.",
     sonuc: "81 provinces, 1940 to today. Example: Istanbul 1996–2025 annual-mean trend +1.6 °C. One request, computed in the browser; no server.",
     damga: "Live", alt: ["JavaScript", "Open-Meteo", "ERA5"],
@@ -356,7 +365,7 @@ if (DIL === "en") {
     "nav.mono": `<a href="#secki">Highlights</a><a href="#canli">Live sites</a><a href="#uygulamalar">Apps</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 52 projects. Forty-three are live on the web, and fourteen update themselves.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 53 projects. Forty-four are live on the web, and fourteen update themselves.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
     ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
@@ -409,6 +418,7 @@ if (DIL === "en") {
     ".s-ekran .ust-satir span:first-child": "Desk Display", ".s-ekran .ust-satir span:last-child": "Awaiting hardware", ".s-ekran h3": "A morning summary <em>on e-ink</em>.", ".s-ekran .kanca": "Drawn from my own sites' data four times a day. The software is ready with 52 tests; the hardware hasn't been bought yet.",
     ".s-plaka .ust-satir span:first-child": "Province ID", ".s-plaka .ust-satir span:last-child": "81 provinces", ".s-plaka h3": "81 licence plates. <em>Which is yours?</em>", ".s-plaka .kanca": "Tap your plate: your province's population, migration, air, earthquakes, fires, street names and surnames on one page, with its rank among 81. Where all my data sites meet.",
     ".s-kus .ust-satir span:first-child": "Which birds are in your city?", ".s-kus .ust-satir span:last-child": "567 species", ".s-kus h3": "Storks arrive in April. <em>Which birds are in your province</em> this month?", ".s-kus .kanca": "Turkey's bird migration calendar: 3.34 million observations for every province and month. See which ones come only this season. GBIF data.",
+    ".s-senin .ust-satir span:first-child": "Your Turkey", ".s-senin .ust-satir span:last-child": "Live", ".s-senin h3": "Your name, surname, age, province: <em>where are you in Turkey?</em>", ".s-senin .kanca": "Type four things and get a personal card: when your name was in fashion, where your surname is common, how much of the country is older than you. Nothing leaves your browser.",
     ".s-maas .ust-satir span:first-child": "How many loaves is my salary?", ".s-maas .ust-satir span:last-child": "Monthly", ".s-maas h3": "The minimum wage paid in January has lost <em>17.8%</em> of its value since.", ".s-maas .kanca": "Enter your salary and what your bakery charges for a loaf: see how many loaves it buys, a decade of the wage's saw-tooth in today's money, and what it buys on a supermarket shelf. Official minimum-wage and TurkStat data, updated every month.", ".s-maas .testere p": "Net minimum wage in today's money · 2016–2026",
     ".s-karne .ust-satir span:first-child": "Turkish AI report card", ".s-karne .ust-satir span:last-child": "Live", ".s-karne h3": "On questions about Turkey, big AI scored <em>98</em>. The models on my computer scored <em>49</em>.", ".s-karne .kanca": "1,209 questions generated automatically from Wikidata: which province a district is in, which city sits higher, licence plate codes, birth years. 10 models, every question asked in two wordings, with confidence intervals. You can take the test too.", ".s-karne .git": "See the report card ↗", ".s-karne .cbas span:first-child": "Model", ".s-karne .cbas span:last-child": "Score / 100", ".s-karne .sans span": "Random guessing",
     ".s-oyun .ust-satir span:last-child": "Daily", ".s-oyun h3": "A Turkish province is hidden every day. <em>How many clues</em> do you need?", ".s-oyun .kanca": "A daily game. The clues come from the real data of my own sites: a year of earthquakes, fires seen by satellites, yearly air pollution. Each wrong guess opens a new clue and shows distance and direction. Results are shared as coloured squares that don't give the answer away.",
@@ -452,7 +462,7 @@ if (DIL === "en") {
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.querySelectorAll(".s-karne .sat b").forEach(b => b.textContent = b.textContent.replace(",", "."));
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "52 projects, 43 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "53 projects, 44 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {
