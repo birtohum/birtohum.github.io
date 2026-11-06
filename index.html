@@ -302,6 +302,9 @@ section{padding:80px 0 0}
 .s-maas .testere p{margin:2px 4px 4px;font:500 .72rem/1.3 "IBM Plex Mono",monospace;color:#7a6a55}
 @media (max-width:760px){.site.s-maas{flex-direction:column}.s-maas .testere{margin:0 18px 56px;align-self:stretch}}
 .site.yarim{grid-column:span 3}
+.site.ucte{grid-column:span 2}
+@media (max-width:900px){.site.ucte{grid-column:span 3}}
+@media (max-width:620px){.site.ucte{grid-column:1/-1}}
 .site.s-sokak{grid-column:1/-1;background:#0d1430;color:#eef1fb;flex-direction:row;min-height:340px}
 .s-sokak .ic{padding:26px 26px 22px;flex:1 1 44%}
 .s-sokak h3{font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:800;line-height:1.06;color:#fff}
@@ -555,7 +558,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
     <div class="bas gorun"><span class="no">02</span><h2>Daha fazla canlı site</h2>
       <p>Her biri tek bir soruyu cevaplıyor ve her biri kendi kimliğiyle tasarlandı. Kaynak, yöntem ve sınırlar her sitenin altında yazıyor.</p></div>
     <div class="canli">
-      <a class="site s-hava yarim gorun" href="https://birtohum.github.io/kac-sigara/" target="_blank" rel="noopener">
+      <a class="site s-hava ucte gorun" href="https://birtohum.github.io/kac-sigara/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Kaç Sigara?</span><span class="canli-n">Her gün</span></div>
           <h3 id="hava-sayi">= 0,7 <small>sigara</small></h3>
@@ -565,7 +568,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/kac-sigara.webp" alt="Kaç Sigara sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
-      <a class="site s-enflasyon yarim gorun" href="https://birtohum.github.io/sepet-enflasyonu/" target="_blank" rel="noopener">
+      <a class="site s-enflasyon ucte gorun" href="https://birtohum.github.io/sepet-enflasyonu/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Sepet Enflasyonu</span><span class="canli-n">Her gün</span></div>
           <h3>Aynı sepet bugün kaç lira?</h3>
@@ -611,6 +614,15 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/turkiye-geceleri.webp" alt="Türkiye geceleri sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
+      <a class="site s-ucak gorun" href="https://birtohum.github.io/istanbul-semalari/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>İstanbul semaları</span><span class="canli-n">Canlı</span></div>
+          <h3><b id="ucak-sayi">12</b> <small id="ucak-birim">uçak, İstanbul'un üstünde</small></h3>
+          <p class="kanca">Açık uçuş verisiyle şehrin üstündeki uçaklar: harita, en kalabalık saatler, İstanbul Havalimanı ile Sabiha Gökçen.</p>
+        </div>
+        <div class="resim"><img src="gorsel/istanbul-semalari.webp" alt="İstanbul semaları sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
       <a class="site s-maas gorun" href="https://birtohum.github.io/maasim-kac-ekmek/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Maaşım kaç ekmek?</span><span class="canli-n">Her ay</span></div>
@@ -620,13 +632,40 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="testere" id="maas-testere"><p>Net asgari ücret, bugünün parasıyla · 2016–2026</p></div>
         <span class="git">Hesapla ↗</span>
       </a>
-      <a class="site s-ucak gorun" href="https://birtohum.github.io/istanbul-semalari/" target="_blank" rel="noopener">
+      <a class="site s-uydu gorun" href="https://birtohum.github.io/bu-gece-gokyuzu/" target="_blank" rel="noopener">
         <div class="ic">
-          <div class="ust-satir"><span>İstanbul semaları</span><span class="canli-n">Canlı</span></div>
-          <h3><b id="ucak-sayi">12</b> <small id="ucak-birim">uçak, İstanbul'un üstünde</small></h3>
-          <p class="kanca">Açık uçuş verisiyle şehrin üstündeki uçaklar: harita, en kalabalık saatler, İstanbul Havalimanı ile Sabiha Gökçen.</p>
+          <div class="ust-satir"><span>Bu gece gökyüzü</span><span class="canli-n">Her gece</span></div>
+          <h3>Uzay istasyonu bu gece <em>başının üstünden</em> geçiyor.</h3>
+          <p class="kanca">Şehrini seç: Uluslararası Uzay İstasyonu ve Tiangong hangi saatte, hangi yönden geçecek, çıplak gözle görülür mü? Hesap tarayıcında yapılıyor; 54 geçişte bağımsız bir gökbilim kütüphanesiyle 1–2 saniye içinde aynı.</p>
         </div>
-        <div class="resim"><img src="gorsel/istanbul-semalari.webp" alt="İstanbul semaları sitesinin ekran görüntüsü" loading="lazy"></div>
+        <div class="resim"><img src="gorsel/bu-gece-gokyuzu.webp" alt="Bu gece gökyüzü sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-deniz gorun" href="https://birtohum.github.io/denizler-isiniyor/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Denizler ısınıyor mu?</span><span class="canli-n">Her gün</span></div>
+          <h3><b id="deniz-artis">+1,9°</b> <small>1982'den bu yana Türkiye kıyılarında yıllık ortalama deniz sıcaklığı</small></h3>
+          <p class="kanca" id="deniz-kanca">41 kıyı noktası, NOAA'nın uydu ölçümleri, 1981'den bugüne her gün. Kendi koyunu seç, doğduğun yılla karşılaştır.</p>
+        </div>
+        <div class="resim"><img src="gorsel/denizler-isiniyor.webp" alt="Denizler ısınıyor mu sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-dizi gorun" href="https://birtohum.github.io/turk-dizileri-dunyada/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Türk dizileri dünyada</span><span class="canli-n">Her ay</span></div>
+          <h3><small>Arapça Vikipedi'de okunan</small> her <b id="dizi-bir">144</b> sayfadan biri bir Türk dizisi.</h3>
+          <p class="kanca">465 Türk dizisinin Vikipedi sayfası 87 dilde, 2015'ten bugüne: hangi dil hangi diziyi ne zaman keşfetti? İzlenme değil, merak.</p>
+        </div>
+        <div class="resim"><img src="gorsel/turk-dizileri-dunyada.webp" alt="Türk dizileri dünyada sitesinin ekran görüntüsü" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-yangin gorun" href="https://birtohum.github.io/orman-yanginlari-uzaydan/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Orman yangınları uzaydan</span><span class="canli-n">2001'den beri</span></div>
+          <h3><b id="yangin-ha">31.886</b> <small>hektar: 2021 Manavgat yangınında uydudan ölçülen yanmış alan</small></h3>
+          <p class="kanca">NASA uydularının 2001'den bu yana Türkiye'de gördüğü her sıcak nokta ve en büyük yangınlarda Sentinel-2'nin önce/sonra görüntüleri.</p>
+        </div>
+        <div class="resim"><img src="gorsel/orman-yanginlari-uzaydan.webp" alt="Orman yangınları uzaydan sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
       <a class="site s-baraj gorun" href="https://birtohum.github.io/barajlar-uzaydan/" target="_blank" rel="noopener">
@@ -647,42 +686,6 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
           <p class="kanca">Türkçe Vikipedi'de her gün birdenbire çok okunan maddeler, 2015'ten bugüne. Doğduğun gün Türkiye neyi merak etti?</p>
         </div>
         <div class="resim"><img src="gorsel/turkiye-merak.webp" alt="Türkiye neyi merak etti sitesinin ekran görüntüsü" loading="lazy"></div>
-        <span class="git">Siteye git ↗</span>
-      </a>
-      <a class="site s-uydu yarim gorun" href="https://birtohum.github.io/bu-gece-gokyuzu/" target="_blank" rel="noopener">
-        <div class="ic">
-          <div class="ust-satir"><span>Bu gece gökyüzü</span><span class="canli-n">Her gece</span></div>
-          <h3>Uzay istasyonu bu gece <em>başının üstünden</em> geçiyor.</h3>
-          <p class="kanca">Şehrini seç: Uluslararası Uzay İstasyonu ve Tiangong hangi saatte, hangi yönden geçecek, çıplak gözle görülür mü? Hesap tarayıcında yapılıyor; 54 geçişte bağımsız bir gökbilim kütüphanesiyle 1–2 saniye içinde aynı.</p>
-        </div>
-        <div class="resim"><img src="gorsel/bu-gece-gokyuzu.webp" alt="Bu gece gökyüzü sitesinin ekran görüntüsü" loading="lazy"></div>
-        <span class="git">Siteye git ↗</span>
-      </a>
-      <a class="site s-deniz yarim gorun" href="https://birtohum.github.io/denizler-isiniyor/" target="_blank" rel="noopener">
-        <div class="ic">
-          <div class="ust-satir"><span>Denizler ısınıyor mu?</span><span class="canli-n">Her gün</span></div>
-          <h3><b id="deniz-artis">+1,9°</b> <small>1982'den bu yana Türkiye kıyılarında yıllık ortalama deniz sıcaklığı</small></h3>
-          <p class="kanca" id="deniz-kanca">41 kıyı noktası, NOAA'nın uydu ölçümleri, 1981'den bugüne her gün. Kendi koyunu seç, doğduğun yılla karşılaştır.</p>
-        </div>
-        <div class="resim"><img src="gorsel/denizler-isiniyor.webp" alt="Denizler ısınıyor mu sitesinin ekran görüntüsü" loading="lazy"></div>
-        <span class="git">Siteye git ↗</span>
-      </a>
-      <a class="site s-dizi yarim gorun" href="https://birtohum.github.io/turk-dizileri-dunyada/" target="_blank" rel="noopener">
-        <div class="ic">
-          <div class="ust-satir"><span>Türk dizileri dünyada</span><span class="canli-n">Her ay</span></div>
-          <h3><small>Arapça Vikipedi'de okunan</small> her <b id="dizi-bir">144</b> sayfadan biri bir Türk dizisi.</h3>
-          <p class="kanca">465 Türk dizisinin Vikipedi sayfası 87 dilde, 2015'ten bugüne: hangi dil hangi diziyi ne zaman keşfetti? İzlenme değil, merak.</p>
-        </div>
-        <div class="resim"><img src="gorsel/turk-dizileri-dunyada.webp" alt="Türk dizileri dünyada sitesinin ekran görüntüsü" loading="lazy"></div>
-        <span class="git">Siteye git ↗</span>
-      </a>
-      <a class="site s-yangin yarim gorun" href="https://birtohum.github.io/orman-yanginlari-uzaydan/" target="_blank" rel="noopener">
-        <div class="ic">
-          <div class="ust-satir"><span>Orman yangınları uzaydan</span><span class="canli-n">2001'den beri</span></div>
-          <h3><b id="yangin-ha">31.886</b> <small>hektar: 2021 Manavgat yangınında uydudan ölçülen yanmış alan</small></h3>
-          <p class="kanca">NASA uydularının 2001'den bu yana Türkiye'de gördüğü her sıcak nokta ve en büyük yangınlarda Sentinel-2'nin önce/sonra görüntüleri.</p>
-        </div>
-        <div class="resim"><img src="gorsel/orman-yanginlari-uzaydan.webp" alt="Orman yangınları uzaydan sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
       <a class="site s-oyun gorun" href="https://birtohum.github.io/alti-ipucu/" target="_blank" rel="noopener">
@@ -755,7 +758,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   </footer>
 </div>
 
-<script src="veri.js?v=26"></script>
+<script src="veri.js?v=29"></script>
 <script src="en.js?v=28"></script>
 <script>
 "use strict";
