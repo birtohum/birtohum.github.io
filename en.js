@@ -157,6 +157,15 @@ const EN_PROJE = {
     ogrendim: "In an evolution sim it's easy to say \"something changed\"; showing it isn't random drift takes measurement. In my rerun the difference was very clear (Welch test p ≈ 5·10⁻⁹).",
     gorseller: [["gorsel/p-yasam.webp", "Real screen from the simulator: first generation, herbivores, carnivores and plants"]],
     link: [["Open the simulation ↗", "https://birtohum.github.io/yapay-yasam/"], ["Code ↗", "https://github.com/birtohum/yapay-yasam"]]},
+  "İstanbul'da 30 Dakika": {ad: "Where can you get in 30 minutes in Istanbul?", ne: "Tap anywhere on the map to paint the area reachable in 15, 30 and 45 minutes by bus, metro, Marmaray, ferry and walking.",
+    sonuc: "20,789 stops, 322,805 timetable connections in the 08:00 window; one query takes 5–20 ms in the browser. District medians (08:00, 30 min): Güngören 73.8 km², Adalar 2.7 km².",
+    damga: "Live", alt: ["Python", "GTFS", "Connection Scan"],
+    soru: "How much of Istanbul can you reach in half an hour, depending on where you live?",
+    sayilar: [["20,789", "stops"], ["323k", "connections (08:00)"], ["39", "districts compared"]],
+    yaptim: ["I merged Istanbul's two open GTFS feeds (IETT buses 2026; metro, Marmaray, ferries, minibuses 2024) into compact binary timetables per departure window. I fixed coordinates written with thousand separators, interpolated missing stop times by distance and dropped connections implying more than 110 km/h.", "The browser runs the Connection Scan algorithm (1.2 m/s walking, ×1.3 detour, 300 m transfers, 60 s change buffer). Reachable area is counted on a 100 m land mask built from district boundaries, so the sea is excluded. The first screen is a heat map of 30-minute reach from 1,594 points on a 1 km grid."],
+    ogrendim: "Even official open timetables need cleaning (coordinate format, missing times, impossible speeds) before results can be trusted.",
+    gorseller: [["gorsel/p-ist30.webp", "First screen: 30-minute reach heat map from 1,594 points (real screenshot)"]],
+    link: [["Try ↗", "https://birtohum.github.io/istanbul-30-dakika/"], ["Code ↗", "https://github.com/birtohum/istanbul-30-dakika"]]},
   "Doğduğun Gün": {ad: "Doğduğun Gün (The Day You Were Born)", ne: "Pick your birth date and province: the temperature that day, every birthday since, and how much the city has warmed.",
     sonuc: "81 provinces, 1940 to today. Example: Istanbul 1996–2025 annual-mean trend +1.6 °C. One request, computed in the browser; no server.",
     damga: "Live", alt: ["JavaScript", "Open-Meteo", "ERA5"],
@@ -248,7 +257,7 @@ if (DIL === "en") {
     "nav.mono": `<a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 40 projects. Thirty-one are live on the web, and thirteen update themselves.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 41 projects. Thirty-two are live on the web, and thirteen update themselves.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
     ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
@@ -313,7 +322,7 @@ if (DIL === "en") {
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.querySelectorAll(".s-karne .sat b").forEach(b => b.textContent = b.textContent.replace(",", "."));
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "40 projects, 31 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "41 projects, 32 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {
