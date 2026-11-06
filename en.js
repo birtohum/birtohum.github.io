@@ -193,6 +193,15 @@ const EN_PROJE = {
     ogrendim: "The most-common lists look the same everywhere; the interesting part is the small differences that set one apart.",
     gorseller: [["gorsel/p-soyadinnereli.webp", "Real screenshot"]],
     link: [["Try ↗", "https://birtohum.github.io/soyadin-nereli/"], ["Code ↗", "https://github.com/birtohum/soyadin-nereli"]]},
+  "Sokaklarımız": {ad: "Sokaklarımız (Our Streets)", ne: "Of every 100 streets in Turkey named after a person, 4 are named after a woman. 231,889 OpenStreetMap streets, province by province: whose names are there, and how many have no name at all.",
+    sonuc: "1,002 of 26,181 person-named streets are women; 40% of streets have no name. 2 errors in 150 hand-checked decisions. Counting ambiguous one-word names as people would give 26%, and the page says so.",
+    damga: "Live", alt: ["Python", "OpenStreetMap", "LLM"],
+    soru: "Whose names do the streets we walk every day carry, and how many of those people are women?",
+    sayilar: [["231,889", "unique streets"], ["3.9%", "women among person-named streets"], ["40%", "numbers only"]],
+    yaptim: ["I extracted 410,000 road segments from OpenStreetMap's Turkey file and merged segments into unique streets. A language model classified 42,071 distinct names: is it a person, man or woman, what did they do. Total cost: $0.62.", "I didn't trust the model blindly: I hand-checked random samples and read the top lists one by one. It had taken the word 'Gazi' for Atatürk and 'Yıldırım' (lightning) for a sultan; I corrected those. I left out 40,000 streets with names like 'Gül' or 'Murat' that may or may not be people, and wrote under the headline what the result would be if they all counted."],
+    ogrendim: "I first drew the women's dots larger and orange dominated the map, visually exaggerating a 4% result. Charts can lie too.",
+    gorseller: [["gorsel/p-sokaklar.webp", "Streets named after women in orange, men in blue (real data)"]],
+    link: [["Try ↗", "https://birtohum.github.io/sokak-adlari/"], ["Code ↗", "https://github.com/birtohum/sokak-adlari"]]},
   "Doğduğun Gün": {ad: "Doğduğun Gün (The Day You Were Born)", ne: "Pick your birth date and province: the temperature that day, every birthday since, and how much the city has warmed.",
     sonuc: "81 provinces, 1940 to today. Example: Istanbul 1996–2025 annual-mean trend +1.6 °C. One request, computed in the browser; no server.",
     damga: "Live", alt: ["JavaScript", "Open-Meteo", "ERA5"],
@@ -284,7 +293,7 @@ if (DIL === "en") {
     "nav.mono": `<a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 44 projects. Thirty-five are live on the web, and thirteen update themselves.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 45 projects. Thirty-six are live on the web, and thirteen update themselves.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
     ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
@@ -349,7 +358,7 @@ if (DIL === "en") {
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.querySelectorAll(".s-karne .sat b").forEach(b => b.textContent = b.textContent.replace(",", "."));
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "44 projects, 35 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "45 projects, 36 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {
