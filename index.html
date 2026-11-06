@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ege — merak ettiğim soruları çalışan şeylere çeviriyorum</title>
-<meta name="description" content="53 proje, 44 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları, barajlar, Vikipedi merakı ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
-<meta property="og:title" content="Ege — 53 proje, 44 canlı site">
+<meta name="description" content="54 proje, 45 canlı site: Resmî Gazete, Meclis tutanakları, hava kirliliği, market fiyatları, İstanbul otobüsleri, depremler, gece ışıkları, İstanbul semaları, barajlar, Vikipedi merakı ve çok oyunculu bir dublaj oyunu. Ölçülmüş sonuçlar, işe yaramayanlar dahil.">
+<meta property="og:title" content="Ege — 54 proje, 45 canlı site">
 <meta property="og:description" content="Vergi kanunu kaç kez değişti? Bugün nefes almak kaç sigara? Yapay zekâ yapay zekâyı denetleyebilir mi? Cevaplar veriyle.">
 <meta property="og:image" content="https://birtohum.github.io/og/ana.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -436,6 +436,17 @@ section{padding:80px 0 0}
 .s-senin .resim{flex:1 1 56%;height:auto;margin:0;border-top:0;background:#3d0714}
 .s-senin .resim img{object-position:left top}
 @media (max-width:760px){.site.s-senin{flex-direction:column}.s-senin .resim{height:220px}}
+.site.s-durum{grid-column:1/-1;background:#0d0f10;color:#f1eee4;flex-direction:row;min-height:300px}
+.s-durum .ic{padding:26px 26px 22px;flex:1 1 44%}
+.s-durum h3{font-family:Impact,"Arial Narrow",sans-serif;font-size:clamp(2rem,3.6vw,2.9rem);font-weight:400;line-height:1.05;text-transform:uppercase}
+.s-durum h3 em{font-style:normal;color:#ffb000}
+.s-durum .kanca{color:#c3c6be}
+.s-durum .resim{flex:1 1 56%;height:auto;margin:0;border-top:0;background:#0d0f10}
+.s-durum .resim img{object-position:left top}
+@media (max-width:760px){.site.s-durum{flex-direction:column}.s-durum .resim{height:220px}}
+.canli-durum{display:inline-flex;align-items:center;gap:8px;margin:12px 0 0;font-size:.92rem;font-weight:600;color:inherit;text-decoration:underline;text-underline-offset:3px}
+.canli-durum::before{content:"";width:10px;height:10px;border-radius:50%;background:#1f9d55;flex:none}
+.canli-durum.uyar::before{background:#d9480f}
 .site.s-oyun{grid-column:1/-1;background:#f5f0e6;color:#1f1c17;flex-direction:row;min-height:300px}
 .s-oyun .ic{padding:26px 26px 22px;flex:1 1 55%}
 .s-oyun h3{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:700;line-height:1.12}
@@ -566,7 +577,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   <div class="hero">
     <div class="etiket">Ege · Portfolyo · Eylül–Kasım 2026</div>
     <h1>Merak ettiğim soruları <span class="fos">çalışan şeylere</span> çeviriyorum.</h1>
-    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 53 proje var. Kırk dördü şu an internette canlı, on dördü kendi kendini güncelliyor.</p>
+    <p class="alt">Sonra ölçüyorum. <b>İşe yaramadıysa onu da yazıyorum.</b> Aşağıda 54 proje var. Kırk beşi şu an internette canlı, on dördü kendi kendini güncelliyor.</p>
 
     <div class="soru" aria-live="polite">
       <div class="s-et etiket">Soru</div>
@@ -574,9 +585,11 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
       <a class="s-git" id="soru-git" href="https://birtohum.github.io/mevzuat-haritasi/" target="_blank" rel="noopener">Cevabı gör →</a>
     </div>
 
-    <div class="sayac">
-      <div><b data-say="53">53</b><span>proje</span></div>
-      <div><b data-say="44">44</b><span>canlı site</span></div>
+    <a class="canli-durum" id="canli-durum" href="https://birtohum.github.io/durum/" target="_blank" rel="noopener" hidden></a>
+<script>fetch("/durum/veri/durum.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{if(!d||(Date.now()-new Date(d.zaman))>1728e5)return;const e=document.getElementById("canli-durum"),a=d.toplam-d.bozuk,en=new URLSearchParams(location.search).get("dil")==="en"||document.documentElement.lang==="en",k=(n)=>n%10?{1:"i",2:"si",3:"ü",4:"ü",5:"i",6:"sı",7:"si",8:"i",9:"u"}[n%10]:{10:"u",20:"si",30:"u",40:"ı",50:"si",60:"ı",70:"i",80:"i",90:"ı"}[n%100]||"ü";e.textContent=en?`Checked today: ${a} of ${d.toplam} sites are up`:`Bugün denendi: ${d.toplam} siteden ${a}'${k(a)} açık`;if(d.bozuk)e.classList.add("uyar");e.hidden=false}).catch(()=>{});</script>
+<div class="sayac">
+      <div><b data-say="54">54</b><span>proje</span></div>
+      <div><b data-say="45">45</b><span>canlı site</span></div>
       <div><b data-say="99697">99.697</b><span>Resmî Gazete düzenlemesi okundu</span></div>
       <div><b data-say="69" data-son=" mn">69 mn</b><span>Meclis kelimesi sayıldı</span></div>
       <div><b data-say="1026">1.026</b><span>ölçülmüş yapay zekâ koşusu</span></div>
@@ -959,6 +972,15 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/kart-senin.webp" alt="Örnek kişisel kart: ad, soyad, yaş ve il bilgileri" loading="lazy"></div>
         <span class="git">Kartını çıkar ↗</span>
       </a>
+      <a class="site s-durum gorun" href="https://birtohum.github.io/durum/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Durum Panosu</span><span class="canli-n">Her gün</span></div>
+          <h3>Sitelerim bugün <em>çalışıyor mu?</em></h3>
+          <p class="kanca">Her gün gerçek bir tarayıcı bütün sitelerimi açıyor, düğmelerine basıyor, verisi eskimiş mi diye bakıyor. Bozuk olan da burada görünür.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kart-durum.webp" alt="Durum panosu: sitelerin çalışıyor, uyarı ve bozuk sayıları" loading="lazy"></div>
+        <span class="git">Panoyu aç ↗</span>
+      </a>
       <a class="site s-gazete ucte gorun" href="https://birtohum.github.io/gazete-ozeti/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Gazete Özeti</span><span class="canli-n">Her sabah</span></div>
@@ -1121,8 +1143,8 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
   </footer>
 </div>
 
-<script src="veri.js?v=37"></script>
-<script src="en.js?v=39"></script>
+<script src="veri.js?v=38"></script>
+<script src="en.js?v=40"></script>
 <script>
 "use strict";
 const HEPSI = PROJELER;
