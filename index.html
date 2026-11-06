@@ -323,6 +323,48 @@ section{padding:80px 0 0}
 .s-usta .terminal b{color:#7fe0a8}.s-usta .terminal b.kir{color:#ff7a6b}
 @media (max-width:760px){.site.s-sokak{flex-direction:column}.s-sokak .resim{padding-bottom:48px}}
 @media (max-width:620px){.site.yarim{grid-column:1/-1}}
+.s-ist30{background:#10141a;color:#f4f6f8}
+.s-ist30 h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(1.35rem,2.2vw,1.75rem);line-height:1.14}
+.s-ist30 h3 em{font-style:normal;color:#2fd08d}
+.s-goc{background:#0e1c22;color:#fdf3df}
+.s-goc h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0;font-size:clamp(1.35rem,2.2vw,1.75rem);line-height:1.14}
+.s-goc h3 em{font-style:normal;color:#ffb000}
+.s-soyad{background:#dff0ea;color:#123a3a}
+.s-soyad h3{font-family:Georgia,serif;font-weight:700;font-size:clamp(1.35rem,2.2vw,1.75rem);line-height:1.14}
+.s-soyad h3 em{font-style:normal;color:#b3122f}
+.s-yasli{background:#1b1130;color:#f6efff}
+.s-yasli h3{font-weight:800;font-size:clamp(1.35rem,2.2vw,1.75rem);line-height:1.14}
+.s-yasli h3 em{font-style:normal;color:#ffc53d}
+.s-adin{background:#fff0ee;color:#3a0d22}
+.s-adin h3{font-family:Georgia,serif;font-weight:800;font-size:clamp(1.35rem,2.2vw,1.75rem);line-height:1.14}
+.s-adin h3 em{font-style:normal;color:#d81e5b}
+.s-kelime{background:#14131a;color:#f3efe6}
+.s-kelime h3{font-family:Georgia,serif;font-style:italic;font-weight:700;font-size:clamp(1.35rem,2.2vw,1.75rem);line-height:1.14}
+.s-kelime h3 em{font-style:normal;color:#f2c14e}
+.s-damla{background:#04161f;color:#e6f8ff}
+.s-damla h3{font-weight:800;font-size:clamp(1.35rem,2.2vw,1.75rem);line-height:1.14}
+.s-damla h3 em{font-style:normal;color:#3be0ff}
+.s-gunes{background:linear-gradient(180deg,#160f2e,#3a1c58);color:#fff4e3}
+.s-gunes h3{font-weight:800;font-size:clamp(1.35rem,2.2vw,1.75rem);line-height:1.14}
+.s-gunes h3 em{font-style:normal;color:#ffb347}
+.s-deprem{background:#f0ede6;color:#1d2530}
+.s-deprem h3{font-weight:800;font-size:clamp(1.35rem,2.2vw,1.75rem);line-height:1.14}
+.s-deprem h3 em{font-style:normal;color:#a4161a}
+.s-dogdu{background:linear-gradient(180deg,#bfe2f7,#eaf4fb);color:#0d2b45}
+.s-dogdu h3{font-family:Georgia,serif;font-weight:800;font-size:clamp(1.35rem,2.2vw,1.75rem);line-height:1.14}
+.s-dogdu h3 em{font-style:normal;color:#d9481c}
+.s-yarisma{background:#fff7ec;color:#1d1a2e}
+.s-yarisma h3{font-weight:800;font-size:clamp(1.35rem,2.2vw,1.75rem);line-height:1.14}
+.s-yarisma h3 em{font-style:normal;color:#e4572e}
+.s-nediyor{background:#eef0f3;color:#1b2a4a}
+.s-nediyor h3{font-family:Georgia,serif;font-weight:700;font-size:clamp(1.35rem,2.2vw,1.75rem);line-height:1.14}
+.s-nediyor h3 em{font-style:normal;color:#1f4fa3}
+.s-ist30 .resim,.s-goc .resim,.s-soyad .resim,.s-yasli .resim,.s-adin .resim,.s-kelime .resim,.s-damla .resim,.s-gunes .resim,.s-deprem .resim,.s-dogdu .resim,.s-yarisma .resim,.s-nediyor .resim{height:210px;margin-top:auto}
+.s-soyad .resim img,.s-yasli .resim img,.s-gunes .resim img,.s-deprem .resim img,.s-goc .resim img,.s-damla .resim img,.s-adin .resim img{object-fit:contain;object-position:center}
+.s-dogdu .resim img{object-fit:fill}
+.s-kelime .resim img{object-position:left center}
+.s-yarisma .resim{background:#fff7ec;display:flex;align-items:center;border-top:0;padding:0 14px 48px}
+.s-yarisma .resim img{height:auto;object-fit:contain;border-radius:12px}
 .site.s-oyun{grid-column:1/-1;background:#f5f0e6;color:#1f1c17;flex-direction:row;min-height:300px}
 .s-oyun .ic{padding:26px 26px 22px;flex:1 1 55%}
 .s-oyun h3{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:700;line-height:1.12}
@@ -688,6 +730,114 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
         <div class="resim"><img src="gorsel/turkiye-merak.webp" alt="Türkiye neyi merak etti sitesinin ekran görüntüsü" loading="lazy"></div>
         <span class="git">Siteye git ↗</span>
       </a>
+      <a class="site s-ist30 gorun" href="https://birtohum.github.io/istanbul-30-dakika/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>İstanbul'da 30 Dakika</span><span class="canli-n">Canlı</span></div>
+          <h3>Güngören'den yarım saatte <em>73,8 km²</em>. Adalar'dan 2,7.</h3>
+          <p class="kanca">Haritada bir yere dokun: otobüs, metro, Marmaray, vapur ve yürüyüşle 15, 30, 45 dakikada ulaştığın alan boyansın. İBB'nin açık tarifesi, tarayıcıda hesap.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kart-istanbul-30-dakika.webp" alt="İstanbul'da 30 dakikalık erişim ısı haritası" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-goc gorun" href="https://birtohum.github.io/goc-haritasi/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Memleketten kim gitti?</span><span class="canli-n">2008–2025</span></div>
+          <h3>Ağrı 2008'den beri net <em>247.370</em> kişi kaybetti.</h3>
+          <p class="kanca">İlini seç: kim gitti, kim geldi, nereye. 81 ilin iller arası göçü, TÜİK verisiyle.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kart-goc-haritasi.webp" alt="Ağrı'dan gidenlerin illere göre haritası" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-soyad gorun" href="https://birtohum.github.io/soyadin-nereli/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Soyadın nereli?</span><span class="canli-n">2025</span></div>
+          <h3>Rize'de Kopuz, Hatay'da Şanverdi, Trabzon'da <em>Birinci</em>.</h3>
+          <p class="kanca">Her ilin kendine özgü soyadı haritada. Kendi soyadını yaz, hangi illerde ilk 30'da gör.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kart-soyadin-nereli.webp" alt="Her ilin kendine özgü soyadı yazan harita" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-yasli gorun" href="https://birtohum.github.io/kac-kisi-senden-yasli/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Kaç kişi senden yaşlı?</span><span class="canli-n">1935–2025</span></div>
+          <h3>2000 doğumluysan Türkiye'nin <em>%64</em>'ü senden yaşlı.</h3>
+          <p class="kanca">Doğum yılını yaz, 90 yıllık nüfus piramidinde kuşağının yerini gör. TÜİK verisi.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kart-kac-kisi-senden-yasli.webp" alt="Türkiye nüfus piramidi" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-adin gorun" href="https://birtohum.github.io/adin-kac-yasinda/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Adın kaç yaşında?</span><span class="canli-n">1930–2025</span></div>
+          <h3>Fatma 1991'e kadar birinciydi. 2025'te <em>Alya</em>.</h3>
+          <p class="kanca">1.205 ismin 95 yıllık modası. Adını yaz, hangi kuşakta moda olduğunu gör.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kart-adin-kac-yasinda.webp" alt="Kız isimlerinin yıllara göre sıralaması" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-kelime gorun" href="https://birtohum.github.io/kelimelerin-kokeni/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Bu kelimeler nereden geldi?</span><span class="canli-n">12.020 kelime</span></div>
+          <h3>Gençliğe Hitabe'nin kelimelerinin <em>%46</em>'sı Arapça.</h3>
+          <p class="kanca">Bir metin yapıştır, her kelime geldiği dilin rengine boyansın. Kökenler Vikisözlük'ten.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kart-kelimelerin-kokeni.webp" alt="Kelimeleri kökenine göre renklenmiş bir metin" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-damla gorun" href="https://birtohum.github.io/damlanin-yolu/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Yağmur damlan nereye akar?</span><span class="canli-n">15.430 akarsu</span></div>
+          <h3>Haritaya dokun: damlanın <em>denize giden</em> yolunu izle.</h3>
+          <p class="kanca">Dereler, nehirler, sınırlar. Türkiye'nin bütün akarsu ağı, HydroRIVERS verisiyle.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kart-damlanin-yolu.webp" alt="Türkiye'nin akarsu ağı ve bir damlanın yolu" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-gunes gorun" href="https://birtohum.github.io/gunes-kacta-doguyor/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Güneş kaçta doğuyor?</span><span class="canli-n">81 il</span></div>
+          <h3>21 Aralık: Hakkari'de 07:16, Edirne'de <em>08:37</em>.</h3>
+          <p class="kanca">Aynı saat diliminde 81 dakika fark. Günü kaydır, UTC+2 olsaydı ne olurdu gör.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kart-gunes-kacta-doguyor.webp" alt="İllere göre gün doğumu saati haritası" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-deprem gorun" href="https://birtohum.github.io/mahallen-depremde/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Mahallen depremde</span><span class="canli-n">959 mahalle</span></div>
+          <h3>İBB senaryosu: binaların <em>%4,1</em>'inde ağır hasar bekleniyor.</h3>
+          <p class="kanca">Mahalleni yaz: 7,5 büyüklüğündeki senaryoda beklenen hasar ve bina yaşı. Kehanet değil, hazırlık hesabı.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kart-mahallen-depremde.webp" alt="İstanbul ilçelerinin hasar oranı haritası" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-dogdu gorun" href="https://birtohum.github.io/dogdugum-gun/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Doğduğun gün</span><span class="canli-n">1940'tan beri</span></div>
+          <h3>Doğduğun gün hava nasıldı, şehrin o günden beri <em>ne kadar ısındı</em>?</h3>
+          <p class="kanca">Tarihini ve ilini seç. 81 il, ERA5 yeniden analizi; paylaşılabilir kart.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kart-dogdugum-gun.webp" alt="Yıl yıl ısınma şeritleri" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-yarisma gorun" href="https://birtohum.github.io/bilgi-yarismasi/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Bilgi Yarışması</span><span class="canli-n">Her cuma</span></div>
+          <h3>Bu hafta 10 soru. Yapay zekâ kaç bildi, <em>sen kaç bilirsin?</em></h3>
+          <p class="kanca">Tek başına ya da arkadaşlarınla canlı: bir ekran odayı kurar, herkes telefondan katılır.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kart-yarisma.webp" alt="Yarışma ekranı: cevaplar, yapay zekâ ve puan tablosu" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
+      <a class="site s-nediyor gorun" href="https://birtohum.github.io/ne-diyor/" target="_blank" rel="noopener">
+        <div class="ic">
+          <div class="ust-satir"><span>Ne Diyor?</span><span class="canli-n">Canlı</span></div>
+          <h3>Resmî yazı geldi. <em>Senden ne istiyor</em>, ne zamana kadar?</h3>
+          <p class="kanca">Yapıştır, sade Türkçesini oku. Modelin yazdığı her sayı asıl metinde aranıyor; uymayan kırmızıyla işaretleniyor.</p>
+        </div>
+        <div class="resim"><img src="gorsel/kart-nediyor.webp" alt="Bir ihtarnamenin sade Türkçe özeti" loading="lazy"></div>
+        <span class="git">Siteye git ↗</span>
+      </a>
       <a class="site s-oyun gorun" href="https://birtohum.github.io/alti-ipucu/" target="_blank" rel="noopener">
         <div class="ic">
           <div class="ust-satir"><span>Altı İpucu</span><span class="canli-n">Her gün</span></div>
@@ -759,7 +909,7 @@ const sayacOlay = (yol, baslik) => { try { window.goatcounter?.count?.({path: yo
 </div>
 
 <script src="veri.js?v=34"></script>
-<script src="en.js?v=33"></script>
+<script src="en.js?v=34"></script>
 <script>
 "use strict";
 const HEPSI = PROJELER;
