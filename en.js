@@ -194,7 +194,7 @@ const EN_PROJE = {
     gorseller: [["gorsel/p-soyadinnereli.webp", "Real screenshot"]],
     link: [["Try ↗", "https://birtohum.github.io/soyadin-nereli/"], ["Code ↗", "https://github.com/birtohum/soyadin-nereli"]]},
   "Sokaklarımız": {ad: "Sokaklarımız (Our Streets)", ne: "Of every 100 streets in Turkey named after a person, 4 are named after a woman. 231,889 OpenStreetMap streets, province by province: whose names are there, and how many have no name at all.",
-    sonuc: "1,002 of 26,181 person-named streets are women; 40% of streets have no name. 2 errors in 150 hand-checked decisions. Counting first-name-only streets gives 12%, and words that are also names 26%; the page shows all three.",
+    sonuc: "1,002 of 26,181 person-named streets are women; 40% of streets have no name. 2 errors in 150 hand-checked decisions. Counting first-name-only streets gives 12%; counting words that are also names 26%; the page shows all three.",
     damga: "Live", alt: ["Python", "OpenStreetMap", "LLM"],
     soru: "Whose names do the streets we walk every day carry, and how many of those people are women?",
     sayilar: [["231,889", "unique streets"], ["3.9%", "women among person-named streets"], ["40%", "numbers only"]],
