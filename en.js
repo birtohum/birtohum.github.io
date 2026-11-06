@@ -220,6 +220,33 @@ const EN_PROJE = {
     ogrendim: "The real information sat in the plain-text etymology tree rather than the templates; reading the source closely raised accuracy markedly.",
     gorseller: [["gorsel/p-kelimelerinkok.webp", "Real screenshot"]],
     link: [["Try ↗", "https://birtohum.github.io/kelimelerin-kokeni/"], ["Code ↗", "https://github.com/birtohum/kelimelerin-kokeni"]]},
+  "Yağmur damlan nereye akar?": {ad: "Where does your raindrop flow?", ne: "Tap anywhere in Türkiye and follow a raindrop from streams to rivers to the sea or a lake.",
+    sonuc: "15,430 river reaches (HydroRIVERS). From Erzurum via the Euphrates to the Persian Gulf, ~2,803 km; from Kars via the Aras and Kura to the Caspian; from Sivas via the Kızılırmak to the Black Sea, ~1,046 km; Van and Konya drain into closed basins.",
+    damga: "Live", alt: ["Python", "JavaScript", "Canvas"],
+    soru: "Which sea does the rain falling where I stand finally reach?",
+    sayilar: [["15,430", "river reaches"], ["2,803 km", "Erzurum → Basra"], ["7", "possible ends: seas, gulf, closed basins"]],
+    yaptim: ["From HydroRIVERS' Europe and Middle East region (938,544 reaches) I extracted the 13,603 reaches inside Türkiye with at least 100 km² upstream area, plus their continuation through Syria, Iraq, Georgia and Azerbaijan to the sea. In the browser, the nearest river to the tapped point is found, downstream links are followed to the mouth, and the path is drawn live.", "The mouth's coordinates decide the sea (Black Sea, Marmara, Aegean, Mediterranean, Persian Gulf, Caspian) or closed basin (Lake Van, Lake Tuz, Konya Plain…), and the provinces crossed are found from province borders. The page states that dams and canals are ignored and that results near basin divides can be wrong."],
+    ogrendim: "A single \"next reach\" column is enough to trace water across a continent; the hard part was shrinking the data to fit in a browser.",
+    gorseller: [["gorsel/p-damlaninyolu.webp", "Real screenshot"]],
+    link: [["Try ↗", "https://birtohum.github.io/damlanin-yolu/"], ["Code ↗", "https://github.com/birtohum/damlanin-yolu"]]},
+  "Senin ilinde güneş kaçta doğuyor?": {ad: "When does the sun rise in your province?", ne: "Türkiye stays on UTC+3 all year: when the sun rises and sets in each of 81 provinces every day, and what UTC+2 would change.",
+    sonuc: "On 21 December the sun rises at 07:16 in Hakkari and 08:37 in Edirne: 81 minutes apart within one time zone. In Istanbul it rises after 08:00 on 84 days a year.",
+    damga: "Live", alt: ["JavaScript", "SVG", "astronomi"],
+    soru: "In a country on a single clock, how differently does the morning start in the east and the west?",
+    sayilar: [["81", "provinces"], ["365", "days"], ["81 min", "Hakkari–Edirne gap (21 Dec)"]],
+    yaptim: ["Using NOAA's solar position equations (refraction −0.833°), the browser computes sunrise and sunset for all 81 provincial centres for every day of the year, with no external data. The map colours provinces by sunrise or sunset time for the chosen day and labels each one.", "Selecting a province shows its yearly sunrise/sunset chart and how many days the sun rises after 08:00 and 07:30 or sets before 17:30. A \"what if UTC+2\" toggle shifts the same moment back an hour. Results were checked against published tables (Istanbul, 6 Nov: 07:40 / 17:56)."],
+    ogrendim: "The best way to answer a contested question without taking sides is a calculation everyone can check for their own province.",
+    gorseller: [["gorsel/p-guneskactadogu.webp", "Real screenshot"]],
+    link: [["Try ↗", "https://birtohum.github.io/gunes-kacta-doguyor/"], ["Code ↗", "https://github.com/birtohum/gunes-kacta-doguyor"]]},
+  "Mahallen büyük depremde ne yaşar?": {ad: "What would a major earthquake do to your neighbourhood?", ne: "Expected building damage and building age in Istanbul's 959 neighbourhoods under the city's M7.5 night-time earthquake scenario.",
+    sonuc: "47,830 of 1,165,936 buildings (4.1%) are expected to suffer heavy or very heavy damage; by district from 18.1% (Adalar) to 0.6% (Çekmeköy). Pre-1980 building share correlates moderately with damage (r = 0.37, 946 neighbourhoods).",
+    damga: "Live", alt: ["Python", "JavaScript", "SVG"],
+    soru: "How many buildings in my neighbourhood could be heavily damaged in the big Istanbul earthquake?",
+    sayilar: [["959", "neighbourhoods"], ["1.17 million", "buildings"], ["4.1%", "heavy/very heavy damage expected"]],
+    yaptim: ["I joined Istanbul Metropolitan Municipality's earthquake scenario results with 2017 neighbourhood building counts by address code (959/959 matched). Searching a neighbourhood shows its building count, damage-class breakdown, share of pre-1980 buildings and a comparison with the district average, plus the scenario's casualty and shelter estimates in a calm tone.", "A district map is shaded by heavy-damage share; tapping a district ranks its neighbourhoods; a scatter plot shows how building age relates to damage, with the correlation coefficient. The page states that this is one scenario's model estimate, that building data is from 2017, and that individual buildings need on-site assessment."],
+    ogrendim: "On a sensitive topic, how data is said matters as much as the data; explaining what drives the risk is more useful than alarming people.",
+    gorseller: [["gorsel/p-mahallendeprem.webp", "Real screenshot"]],
+    link: [["Try ↗", "https://birtohum.github.io/mahallen-depremde/"], ["Code ↗", "https://github.com/birtohum/mahallen-depremde"]]},
   "Doğduğun Gün": {ad: "Doğduğun Gün (The Day You Were Born)", ne: "Pick your birth date and province: the temperature that day, every birthday since, and how much the city has warmed.",
     sonuc: "81 provinces, 1940 to today. Example: Istanbul 1996–2025 annual-mean trend +1.6 °C. One request, computed in the browser; no server.",
     damga: "Live", alt: ["JavaScript", "Open-Meteo", "ERA5"],
@@ -311,7 +338,7 @@ if (DIL === "en") {
     "nav.mono": `<a href="#secki">Highlights</a><a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 47 projects. Thirty-eight are live on the web, and thirteen update themselves.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 50 projects. Forty-one are live on the web, and thirteen update themselves.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
     ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
@@ -380,7 +407,7 @@ if (DIL === "en") {
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.querySelectorAll(".s-karne .sat b").forEach(b => b.textContent = b.textContent.replace(",", "."));
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "47 projects, 38 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "50 projects, 41 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {
