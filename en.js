@@ -202,6 +202,24 @@ const EN_PROJE = {
     ogrendim: "I first drew the women's dots larger and orange dominated the map, visually exaggerating a 4% result. Charts can lie too.",
     gorseller: [["gorsel/p-sokaklar.webp", "Streets named after women in orange, men in blue (real data)"]],
     link: [["Try ↗", "https://birtohum.github.io/sokak-adlari/"], ["Code ↗", "https://github.com/birtohum/sokak-adlari"]]},
+  "Adın kaç yaşında?": {ad: "How old is your name?", ne: "Type a name to see its rank in every birth year from 1930 to 2025 and when it was most fashionable.",
+    sonuc: "1,205 names, 1930–2025 (TurkStat). Fatma was the top girls' name for every cohort until 1991; then Merve (1992), Zeynep (2000), Alya (2025). For boys, Mehmet until 2002, Alparslan since 2022.",
+    damga: "Live", alt: ["Python", "JavaScript", "SVG"],
+    soru: "When was my name in fashion, and how old are the people born that year today?",
+    sayilar: [["1,205", "names"], ["96", "birth years (1930–2025)"], ["4", "rare names without data"]],
+    yaptim: ["TurkStat's name-chart endpoint cannot be called from the browser (no CORS), so I collected birth-year ranks once, slowly, for 1,209 name/sex pairs drawn from TurkStat's own lists; rare names that return an error count as \"no data\". The list combines the top 30 newborn names for 2018–2025 nationally and for 2025 in every province, plus today's 30 most common names.", "The page plots a name's rank on a log axis, states its peak year and that cohort's age today, and opens with the Fatma → Merve → Zeynep → Defne → Alya succession. It says TurkStat publishes ranks rather than counts and that unlisted names cannot be shown."],
+    ogrendim: "When a source is closed to the browser, a small, honestly scoped static copy makes a more reliable product than a live query.",
+    gorseller: [["gorsel/p-adinkacyasinda.webp", "Real screenshot"]],
+    link: [["Try ↗", "https://birtohum.github.io/adin-kac-yasinda/"], ["Code ↗", "https://github.com/birtohum/adin-kac-yasinda"]]},
+  "Bu kelimeler nereden geldi?": {ad: "Where did these words come from?", ne: "Paste a Turkish text and every word is coloured by the language it came from: Arabic, Persian, French, Italian, Greek…",
+    sonuc: "12,020 words from Wiktionary etymology trees: 3,374 Arabic, 3,086 Turkic, 2,612 French, 1,017 Persian. In Atatürk's Address to the Youth, 46% of words are Arabic and 38% Turkic; the first stanza of the national anthem is 88% Turkic.",
+    damga: "Live", alt: ["Python", "JavaScript", "Vikisözlük"],
+    soru: "How many of the words I use every day actually came from other languages?",
+    sayilar: [["12,020", "words"], ["12", "origin classes"], ["441 MB", "dictionary dump processed"]],
+    yaptim: ["I processed the kaikki.org dump (441 MB) of English Wiktionary's Turkish entries. Each entry's etymology tree, text and templates are read; Ottoman Turkish is treated as an intermediate step, and the first language the word entered Turkish from is taken. Words derived from a Turkish root inherit the root's origin.", "In the browser, inflected words are matched to the longest dictionary stem (including consonant softening, e.g. kitabı → kitap), the text is coloured as you type, and language shares are shown as a bar and a summary. The sample texts are in the public domain. The page states that matching can be wrong and unknown words stay grey."],
+    ogrendim: "The real information sat in the plain-text etymology tree rather than the templates; reading the source closely raised accuracy markedly.",
+    gorseller: [["gorsel/p-kelimelerinkok.webp", "Real screenshot"]],
+    link: [["Try ↗", "https://birtohum.github.io/kelimelerin-kokeni/"], ["Code ↗", "https://github.com/birtohum/kelimelerin-kokeni"]]},
   "Doğduğun Gün": {ad: "Doğduğun Gün (The Day You Were Born)", ne: "Pick your birth date and province: the temperature that day, every birthday since, and how much the city has warmed.",
     sonuc: "81 provinces, 1940 to today. Example: Istanbul 1996–2025 annual-mean trend +1.6 °C. One request, computed in the browser; no server.",
     damga: "Live", alt: ["JavaScript", "Open-Meteo", "ERA5"],
@@ -293,7 +311,7 @@ if (DIL === "en") {
     "nav.mono": `<a href="#secki">Highlights</a><a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 45 projects. Thirty-six are live on the web, and thirteen update themselves.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 47 projects. Thirty-eight are live on the web, and thirteen update themselves.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
     ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
@@ -362,7 +380,7 @@ if (DIL === "en") {
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.querySelectorAll(".s-karne .sat b").forEach(b => b.textContent = b.textContent.replace(",", "."));
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "45 projects, 36 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "47 projects, 38 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {
