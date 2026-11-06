@@ -166,6 +166,33 @@ const EN_PROJE = {
     ogrendim: "Even official open timetables need cleaning (coordinate format, missing times, impossible speeds) before results can be trusted.",
     gorseller: [["gorsel/p-ist30.webp", "First screen: 30-minute reach heat map from 1,594 points (real screenshot)"]],
     link: [["Try ↗", "https://birtohum.github.io/istanbul-30-dakika/"], ["Code ↗", "https://github.com/birtohum/istanbul-30-dakika"]]},
+  "Memleketten kim gitti?": {ad: "Who left home?", ne: "Pick a province: who left between 2008 and 2025, who arrived, and where to and from.",
+    sonuc: "81 provinces, 18 years, 116,640 province pairs (TurkStat). Relative to population, Ağrı lost the most (−25.8 per 1,000 people a year), Tekirdağ gained the most (+17.8). Istanbul sent 7.28 million and received 7.28 million: net −7,631. In 2023, 164,247 people moved out of Hatay.",
+    damga: "Live", alt: ["Python", "JavaScript", "SVG"],
+    soru: "Where do people from my home province go, and who moves to mine?",
+    sayilar: [["116,640", "province pairs × years"], ["18", "years (2008–2025)"], ["81", "provinces"]],
+    yaptim: ["I fetched TurkStat's interprovincial migration table once, in 5,000-row pages, and turned it into an 18-year 81×81 origin–destination matrix. The map is my own simplified SVG from geoBoundaries province borders, with no external map service.", "For the chosen province, the browser computes inflow and outflow, the top 10 destinations or origins with arrows, a choropleth of each province's share, a yearly net-migration chart, and a population-adjusted ranking of all provinces. The page states that migration here means a change of registered address, excluding seasonal and international moves."],
+    ogrendim: "Absolute numbers favour big provinces; dividing by population changes the story (Istanbul is roughly even, eastern provinces lose clearly).",
+    gorseller: [["gorsel/p-gocharitasi.webp", "Real screenshot"]],
+    link: [["Try ↗", "https://birtohum.github.io/goc-haritasi/"], ["Code ↗", "https://github.com/birtohum/goc-haritasi"]]},
+  "Kaç kişi senden yaşlı?": {ad: "How many people are older than you?", ne: "Enter your birth year: how many people in Türkiye are older than you, and where your generation sits in the population pyramid since 1935.",
+    sonuc: "32 years of TurkStat population pyramids (1935–2025). Median age bottomed at 19.0 in 1970 and reached 34.9 in 2025 (TurkStat's single-year figure: 34.4). Someone born in 2000 is younger than about 64% of the population in 2025.",
+    damga: "Live", alt: ["JavaScript", "SVG", "TÜİK"],
+    soru: "How many people in Türkiye are older than me, and how much has the country aged since I was born?",
+    sayilar: [["32", "years of pyramids"], ["1935", "first census"], ["34.9", "median age, 2025"]],
+    yaptim: ["I took TurkStat's population by five-year age group and sex for the 1935–2000 censuses and the 2007–2025 address-based register in a single request. From the birth year, the page computes the share of the population older than you, assuming people are spread evenly within each five-year group.", "The pyramid plays from 1935 to 2025 on a fixed scale, with your age group highlighted each year. The median-age chart uses the same groups, and the gap to the official figure is stated on the page."],
+    ogrendim: "A median from grouped data comes close to the official value but not exactly; stating the gap builds more trust than hiding it.",
+    gorseller: [["gorsel/p-kackisisendeny.webp", "Real screenshot"]],
+    link: [["Try ↗", "https://birtohum.github.io/kac-kisi-senden-yasli/"], ["Code ↗", "https://github.com/birtohum/kac-kisi-senden-yasli"]]},
+  "Soyadın nereli?": {ad: "Where is your surname from?", ne: "Type your surname to see which provinces list it among their most common; the map shows each province's most distinctive surname.",
+    sonuc: "268 different surnames across 81 provincial top-30 lists; 134 appear in only one. Yılmaz is first in 57 provinces. Distinctive surnames: Rize Kopuz, Hatay Şanverdi, Artvin Ustabaş, Trabzon Birinci. Yazıcı ranks 2nd in Rize (11.9 per 1,000).",
+    damga: "Live", alt: ["Python", "JavaScript", "SVG"],
+    soru: "Where is my surname common, and what is each province's own surname?",
+    sayilar: [["81", "provinces"], ["268", "different surnames"], ["134", "in only one province"]],
+    yaptim: ["I fetched TurkStat's 30 most common surnames for Türkiye and each of the 81 provinces (2025). For each province, the surname that is in its top 30 but in the fewest other provinces' lists is marked as its distinctive surname and written on the map.", "A search colours the provinces where the surname is in the top 30 by rank, shows the rank on each, and computes the province with the highest share using TurkStat population. The page states that only the top 30 is published and that the province is the current registered residence, not the name's origin."],
+    ogrendim: "The most-common lists look the same everywhere; the interesting part is the small differences that set one apart.",
+    gorseller: [["gorsel/p-soyadinnereli.webp", "Real screenshot"]],
+    link: [["Try ↗", "https://birtohum.github.io/soyadin-nereli/"], ["Code ↗", "https://github.com/birtohum/soyadin-nereli"]]},
   "Doğduğun Gün": {ad: "Doğduğun Gün (The Day You Were Born)", ne: "Pick your birth date and province: the temperature that day, every birthday since, and how much the city has warmed.",
     sonuc: "81 provinces, 1940 to today. Example: Istanbul 1996–2025 annual-mean trend +1.6 °C. One request, computed in the browser; no server.",
     damga: "Live", alt: ["JavaScript", "Open-Meteo", "ERA5"],
@@ -257,7 +284,7 @@ if (DIL === "en") {
     "nav.mono": `<a href="#canli">Live sites</a><a href="#projeler">Projects</a><a href="#yaramayan">What didn't work</a><a href="yazilar/usta/en/">Writing</a><a href="cv/en/">CV</a><a href="https://www.linkedin.com/in/ege-k%C4%B1smet-300a5a445/" target="_blank" rel="noopener">LinkedIn</a>`,
     ".hero .etiket": "Ege · Portfolio · Sep–Nov 2026",
     ".hero h1": `I turn questions I'm curious about into <span class="fos">things that work</span>.`,
-    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 41 projects. Thirty-two are live on the web, and thirteen update themselves.`,
+    ".hero p.alt": `Then I measure them. <b>If something didn't work, I write that down too.</b> Below are 44 projects. Thirty-five are live on the web, and thirteen update themselves.`,
     ".soru .s-et": "Question", "#soru-git": "See the answer →",
     "#soru-metin": "How many times did the tax law change in 20 years?",
     ".sayac div:nth-child(1) span": "projects", ".sayac div:nth-child(2) span": "live sites",
@@ -322,7 +349,7 @@ if (DIL === "en") {
   document.querySelectorAll(".site .git").forEach(g => g.textContent = "Open ↗");
   document.querySelectorAll(".s-karne .sat b").forEach(b => b.textContent = b.textContent.replace(",", "."));
   document.title = "Ege — I turn questions I'm curious about into things that work";
-  document.querySelector('meta[name="description"]')?.setAttribute("content", "41 projects, 32 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "44 projects, 35 live sites: Turkey's Official Gazette, parliamentary records, air pollution, grocery prices, Istanbul buses, earthquakes, night lights, Istanbul's skies, reservoirs, Wikipedia curiosity and a multiplayer dubbing game. Measured results, including what didn't work.");
 }
 // dil düğmesi (her iki dilde)
 (() => {
