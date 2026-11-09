@@ -1,12 +1,12 @@
 {
- "tarih": "2026-11-07",
- "uretim": "2026-11-08T06:20:05.723Z",
+ "tarih": "2026-11-08",
+ "uretim": "2026-11-09T06:33:41.612Z",
  "model": "muse-spark-1.3-contributor",
  "olgular": [
   {
    "konu": "deprem",
-   "tr": "7 Kasım: Türkiye ve yakınında 80 deprem kaydedildi; 1 tanesi 3 ve üzeri, en büyüğü 3,3.",
-   "en": "7 November: 80 earthquakes were recorded in and around Turkey; 1 of magnitude 3 or more, the largest 3.3."
+   "tr": "8 Kasım: Türkiye ve yakınında 56 deprem kaydedildi; 3 tanesi 3 ve üzeri, en büyüğü 3,3.",
+   "en": "8 November: 56 earthquakes were recorded in and around Turkey; 3 of magnitude 3 or more, the largest 3.3."
   },
   {
    "konu": "hava",
@@ -20,8 +20,8 @@
   },
   {
    "konu": "deniz",
-   "tr": "5 Kasım: Türkiye kıyılarında deniz suyu, 1991–2020 ortalamasına göre 0,4 °C daha sıcak; 41 noktanın 31 tanesi normalden sıcak.",
-   "en": "5 November: sea water along Turkey's coasts was 0.4 °C warmer than the 1991–2020 average; 31 of 41 points were warmer than normal."
+   "tr": "6 Kasım: Türkiye kıyılarında deniz suyu, 1991–2020 ortalamasına göre 0,4 °C daha sıcak; 41 noktanın 32 tanesi normalden sıcak.",
+   "en": "6 November: sea water along Turkey's coasts was 0.4 °C warmer than the 1991–2020 average; 32 of 41 points were warmer than normal."
   },
   {
    "konu": "vikipedi",
@@ -29,14 +29,36 @@
    "en": "6 November: the article that suddenly drew the most readers on Turkish Wikipedia was \"Fatma Betül Sayan Kaya\": 69,331 views, about 43 times its usual day."
   }
  ],
+ "kullanim_tr": {
+  "completion_tokens": 1952,
+  "prompt_tokens": 312,
+  "total_tokens": 2264,
+  "completion_tokens_details": {
+   "reasoning_tokens": 1749
+  },
+  "prompt_tokens_details": {
+   "cached_tokens": 0
+  }
+ },
  "tr": {
-  "metin": "7 Kasım: Türkiye ve yakınında 80 deprem kaydedildi; 1 tanesi 3 ve üzeri, en büyüğü 3,3. 5 Kasım: İstanbul'da bir gün boyunca hava solumak, ince toz (PM2,5) bakımından yaklaşık 0,3 sigaraya denkti. İstanbul'un 10 barajında su kaplı alan, uydudan ölçülen en dolu hâlinin %86'i (alan, hacim değil). 5 Kasım: Türkiye kıyılarında deniz suyu, 1991–2020 ortalamasına göre 0,4 °C daha sıcak; 41 noktanın 31 tanesi normalden sıcak. 6 Kasım: Türkçe Vikipedi'de birdenbire en çok \"Fatma Betül Sayan Kaya\" okundu: 69.331 kez, olağan gününün yaklaşık 43 katı.",
-  "kaynak": "sablon",
-  "neden": "doğrulanamadı: 3"
+  "metin": "8 Kasım'da Türkiye ve yakınında 56 deprem kaydedildi; 3 tanesi 3 ve üzeri, en büyüğü 3,3 oldu. 5 Kasım'da İstanbul'da bir gün boyunca hava solumak, ince toz (PM2,5) bakımından yaklaşık 0,3 sigaraya denkti. İstanbul'un 10 barajında su kaplı alan, uydudan ölçülen en dolu hâlinin %86'i (alan, hacim değil). 6 Kasım'da Türkiye kıyılarında deniz suyu, 1991–2020 ortalamasına göre 0,4 °C daha sıcaktı, 41 noktanın 32 tanesi normalden sıcaktı ve Türkçe Vikipedi'de birdenbire en çok \"Fatma Betül Sayan Kaya\" okundu: 69.331 kez, olağan gününün yaklaşık 43 katı.",
+  "kaynak": "model",
+  "neden": null
+ },
+ "kullanim_en": {
+  "completion_tokens": 5577,
+  "prompt_tokens": 262,
+  "total_tokens": 5839,
+  "completion_tokens_details": {
+   "reasoning_tokens": 5421
+  },
+  "prompt_tokens_details": {
+   "cached_tokens": 0
+  }
  },
  "en": {
-  "metin": "7 November: 80 earthquakes were recorded in and around Turkey; 1 of magnitude 3 or more, the largest 3.3. 5 November: breathing Istanbul's air for a day was roughly equal to 0.3 cigarettes in fine particles (PM2.5). The water-covered area of Istanbul's 10 reservoirs is 86% of their fullest, measured by satellite (area, not volume). 5 November: sea water along Turkey's coasts was 0.4 °C warmer than the 1991–2020 average; 31 of 41 points were warmer than normal. 6 November: the article that suddenly drew the most readers on Turkish Wikipedia was \"Fatma Betül Sayan Kaya\": 69,331 views, about 43 times its usual day.",
-  "kaynak": "sablon",
-  "neden": "doğrulanamadı: 3"
+  "metin": "On 8 November, 56 earthquakes were recorded in and around Turkey, 3 of magnitude 3 or more, largest 3.3. On 5 November, breathing Istanbul's air for a day was equal to 0.3 cigarettes in PM2.5. Istanbul's 10 reservoirs water-covered area is 86% of fullest by satellite area, not volume. On 6 November, sea water along Turkey's coasts was 0.4 °C warmer than 1991–2020 average with 32 of 41 points warmer than normal, and \"Fatma Betül Sayan Kaya\" was most read on Turkish Wikipedia with 69,331 views, about 43 times its usual.",
+  "kaynak": "model",
+  "neden": null
  }
 }
