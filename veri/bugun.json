@@ -1,12 +1,12 @@
 {
- "tarih": "2026-11-09",
- "uretim": "2026-11-10T06:25:45.682Z",
+ "tarih": "2026-11-10",
+ "uretim": "2026-11-11T06:27:22.206Z",
  "model": "muse-spark-1.3-contributor",
  "olgular": [
   {
    "konu": "deprem",
-   "tr": "9 Kasım: Türkiye ve yakınında 82 deprem kaydedildi; 3 tanesi 3 ve üzeri, en büyüğü 4,7.",
-   "en": "9 November: 82 earthquakes were recorded in and around Turkey; 3 of magnitude 3 or more, the largest 4.7."
+   "tr": "10 Kasım: Türkiye ve yakınında 99 deprem kaydedildi; 3 tanesi 3 ve üzeri, en büyüğü 3,7.",
+   "en": "10 November: 99 earthquakes were recorded in and around Turkey; 3 of magnitude 3 or more, the largest 3.7."
   },
   {
    "konu": "hava",
@@ -20,44 +20,44 @@
   },
   {
    "konu": "deniz",
-   "tr": "7 Kasım: Türkiye kıyılarında deniz suyu, 1991–2020 ortalamasına göre 0,4 °C daha sıcak; 41 noktanın 32 tanesi normalden sıcak.",
-   "en": "7 November: sea water along Turkey's coasts was 0.4 °C warmer than the 1991–2020 average; 32 of 41 points were warmer than normal."
+   "tr": "8 Kasım: Türkiye kıyılarında deniz suyu, 1991–2020 ortalamasına göre 0,3 °C daha sıcak; 41 noktanın 33 tanesi normalden sıcak.",
+   "en": "8 November: sea water along Turkey's coasts was 0.3 °C warmer than the 1991–2020 average; 33 of 41 points were warmer than normal."
   },
   {
    "konu": "vikipedi",
-   "tr": "8 Kasım: Türkçe Vikipedi'de birdenbire en çok \"Cevad Prekazi\" okundu: 22.734 kez, olağan gününün yaklaşık 529 katı.",
-   "en": "8 November: the article that suddenly drew the most readers on Turkish Wikipedia was \"Cevad Prekazi\": 22,734 views, about 529 times its usual day."
+   "tr": "10 Kasım: Türkçe Vikipedi'de birdenbire en çok \"İstanbul\" okundu: 24.936 kez, olağan gününün yaklaşık 11 katı.",
+   "en": "10 November: the article that suddenly drew the most readers on Turkish Wikipedia was \"İstanbul\": 24,936 views, about 11 times its usual day."
   }
  ],
  "kullanim_tr": {
-  "completion_tokens": 2002,
-  "prompt_tokens": 311,
-  "total_tokens": 2313,
+  "completion_tokens": 1737,
+  "prompt_tokens": 306,
+  "total_tokens": 2043,
   "completion_tokens_details": {
-   "reasoning_tokens": 1793
+   "reasoning_tokens": 1530
   },
   "prompt_tokens_details": {
    "cached_tokens": 0
   }
  },
  "tr": {
-  "metin": "9 Kasım'da Türkiye ve yakınında 82 deprem kaydedildi, 3 tanesi 3 ve üzeri büyüklükteydi ve en büyüğü 4,7 oldu. 5 Kasım'da İstanbul'da bir gün boyunca hava solumak, ince toz (PM2,5) bakımından yaklaşık 0,3 sigaraya denkti ve İstanbul'un 10 barajında su kaplı alan, uydudan ölçülen en dolu hâlinin %86'i (alan, hacim değil) idi. 7 Kasım'da Türkiye kıyılarında deniz suyu, 1991–2020 ortalamasına göre 0,4 °C daha sıcaktı ve 41 noktanın 32 tanesi normalden sıcaktı. 8 Kasım'da Türkçe Vikipedi'de en çok \"Cevad Prekazi\" okundu, 22.734 kez ve olağan gününün yaklaşık 529 katı.",
+  "metin": "10 Kasım'da Türkiye ve yakınında 99 deprem kaydedildi, 3 tanesi 3 ve üzeriydi ve en büyüğü 3,7 oldu. 5 Kasım'da \"İstanbul\"da bir gün boyunca hava solumak, ince toz (PM2,5) bakımından yaklaşık 0,3 sigaraya denkti ve \"İstanbul\"un 10 barajında su kaplı alan, uydudan ölçülen en dolu hâlinin %86'iydi (alan, hacim değil). 8 Kasım'da Türkiye kıyılarında deniz suyu, 1991–2020 ortalamasına göre 0,3 °C daha sıcaktı, 41 noktanın 33 tanesi normalden sıcaktı. 10 Kasım'da Türkçe Vikipedi'de birdenbire en çok \"İstanbul\" okundu: 24.936 kez, olağan gününün yaklaşık 11 katı.",
   "kaynak": "model",
   "neden": null
  },
  "kullanim_en": {
-  "completion_tokens": 4306,
-  "prompt_tokens": 261,
-  "total_tokens": 4567,
+  "completion_tokens": 5043,
+  "prompt_tokens": 256,
+  "total_tokens": 5299,
   "completion_tokens_details": {
-   "reasoning_tokens": 4146
+   "reasoning_tokens": 4887
   },
   "prompt_tokens_details": {
    "cached_tokens": 0
   }
  },
  "en": {
-  "metin": "On 9 November, 82 earthquakes recorded in and around Turkey; 3 of magnitude 3 or more, largest 4.7. On 5 November, Istanbul's air for a day was roughly equal to 0.3 cigarettes in fine particles (PM2.5). Istanbul's 10 reservoirs are at 86% of fullest by satellite area, not volume. On 7 November, sea water along Turkey's coasts was 0.4 °C warmer than the 1991–2020 average, 32 of 41 points warmer than normal, and on 8 November Turkish Wikipedia's most-read was \"Cevad Prekazi\": 22,734 views, about 529 times its usual day.",
+  "metin": "On 10 November, 99 earthquakes were recorded in and around Turkey, 3 of magnitude 3 or more, largest 3.7. On 5 November, breathing Istanbul's air for a day was roughly equal to 0.3 cigarettes in fine particles (PM2.5). Istanbul's 10 reservoirs cover 86% of fullest area by satellite (area, not volume). On 8 November, seawater along Turkey's coasts was 0.3 °C warmer than 1991–2020 average, 33 of 41 points warmer than normal, and on 10 November Turkish Wikipedia's top was \"İstanbul\" with 24,936 views, about 11 times its usual day.",
   "kaynak": "model",
   "neden": null
  }
