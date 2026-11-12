@@ -1,12 +1,12 @@
 {
- "tarih": "2026-11-10",
- "uretim": "2026-11-11T06:27:22.206Z",
+ "tarih": "2026-11-11",
+ "uretim": "2026-11-12T06:31:38.408Z",
  "model": "muse-spark-1.3-contributor",
  "olgular": [
   {
    "konu": "deprem",
-   "tr": "10 Kasım: Türkiye ve yakınında 99 deprem kaydedildi; 3 tanesi 3 ve üzeri, en büyüğü 3,7.",
-   "en": "10 November: 99 earthquakes were recorded in and around Turkey; 3 of magnitude 3 or more, the largest 3.7."
+   "tr": "11 Kasım: Türkiye ve yakınında 72 deprem kaydedildi; 1 tanesi 3 ve üzeri, en büyüğü 3,5.",
+   "en": "11 November: 72 earthquakes were recorded in and around Turkey; 1 of magnitude 3 or more, the largest 3.5."
   },
   {
    "konu": "hava",
@@ -20,45 +20,23 @@
   },
   {
    "konu": "deniz",
-   "tr": "8 Kasım: Türkiye kıyılarında deniz suyu, 1991–2020 ortalamasına göre 0,3 °C daha sıcak; 41 noktanın 33 tanesi normalden sıcak.",
-   "en": "8 November: sea water along Turkey's coasts was 0.3 °C warmer than the 1991–2020 average; 33 of 41 points were warmer than normal."
+   "tr": "9 Kasım: Türkiye kıyılarında deniz suyu, 1991–2020 ortalamasına göre 0,2 °C daha sıcak; 41 noktanın 30 tanesi normalden sıcak.",
+   "en": "9 November: sea water along Turkey's coasts was 0.2 °C warmer than the 1991–2020 average; 30 of 41 points were warmer than normal."
   },
   {
    "konu": "vikipedi",
-   "tr": "10 Kasım: Türkçe Vikipedi'de birdenbire en çok \"İstanbul\" okundu: 24.936 kez, olağan gününün yaklaşık 11 katı.",
-   "en": "10 November: the article that suddenly drew the most readers on Turkish Wikipedia was \"İstanbul\": 24,936 views, about 11 times its usual day."
+   "tr": "11 Kasım: Türkçe Vikipedi'de birdenbire en çok \"Türkiye\" okundu: 29.122 kez, olağan gününün yaklaşık 6 katı.",
+   "en": "11 November: the article that suddenly drew the most readers on Turkish Wikipedia was \"Türkiye\": 29,122 views, about 6 times its usual day."
   }
  ],
- "kullanim_tr": {
-  "completion_tokens": 1737,
-  "prompt_tokens": 306,
-  "total_tokens": 2043,
-  "completion_tokens_details": {
-   "reasoning_tokens": 1530
-  },
-  "prompt_tokens_details": {
-   "cached_tokens": 0
-  }
- },
  "tr": {
-  "metin": "10 Kasım'da Türkiye ve yakınında 99 deprem kaydedildi, 3 tanesi 3 ve üzeriydi ve en büyüğü 3,7 oldu. 5 Kasım'da \"İstanbul\"da bir gün boyunca hava solumak, ince toz (PM2,5) bakımından yaklaşık 0,3 sigaraya denkti ve \"İstanbul\"un 10 barajında su kaplı alan, uydudan ölçülen en dolu hâlinin %86'iydi (alan, hacim değil). 8 Kasım'da Türkiye kıyılarında deniz suyu, 1991–2020 ortalamasına göre 0,3 °C daha sıcaktı, 41 noktanın 33 tanesi normalden sıcaktı. 10 Kasım'da Türkçe Vikipedi'de birdenbire en çok \"İstanbul\" okundu: 24.936 kez, olağan gününün yaklaşık 11 katı.",
-  "kaynak": "model",
-  "neden": null
- },
- "kullanim_en": {
-  "completion_tokens": 5043,
-  "prompt_tokens": 256,
-  "total_tokens": 5299,
-  "completion_tokens_details": {
-   "reasoning_tokens": 4887
-  },
-  "prompt_tokens_details": {
-   "cached_tokens": 0
-  }
+  "metin": "11 Kasım: Türkiye ve yakınında 72 deprem kaydedildi; 1 tanesi 3 ve üzeri, en büyüğü 3,5. 5 Kasım: İstanbul'da bir gün boyunca hava solumak, ince toz (PM2,5) bakımından yaklaşık 0,3 sigaraya denkti. İstanbul'un 10 barajında su kaplı alan, uydudan ölçülen en dolu hâlinin %86'i (alan, hacim değil). 9 Kasım: Türkiye kıyılarında deniz suyu, 1991–2020 ortalamasına göre 0,2 °C daha sıcak; 41 noktanın 30 tanesi normalden sıcak. 11 Kasım: Türkçe Vikipedi'de birdenbire en çok \"Türkiye\" okundu: 29.122 kez, olağan gününün yaklaşık 6 katı.",
+  "kaynak": "sablon",
+  "neden": "doğrulanamadı: 3"
  },
  "en": {
-  "metin": "On 10 November, 99 earthquakes were recorded in and around Turkey, 3 of magnitude 3 or more, largest 3.7. On 5 November, breathing Istanbul's air for a day was roughly equal to 0.3 cigarettes in fine particles (PM2.5). Istanbul's 10 reservoirs cover 86% of fullest area by satellite (area, not volume). On 8 November, seawater along Turkey's coasts was 0.3 °C warmer than 1991–2020 average, 33 of 41 points warmer than normal, and on 10 November Turkish Wikipedia's top was \"İstanbul\" with 24,936 views, about 11 times its usual day.",
-  "kaynak": "model",
-  "neden": null
+  "metin": "11 November: 72 earthquakes were recorded in and around Turkey; 1 of magnitude 3 or more, the largest 3.5. 5 November: breathing Istanbul's air for a day was roughly equal to 0.3 cigarettes in fine particles (PM2.5). The water-covered area of Istanbul's 10 reservoirs is 86% of their fullest, measured by satellite (area, not volume). 9 November: sea water along Turkey's coasts was 0.2 °C warmer than the 1991–2020 average; 30 of 41 points were warmer than normal. 11 November: the article that suddenly drew the most readers on Turkish Wikipedia was \"Türkiye\": 29,122 views, about 6 times its usual day.",
+  "kaynak": "sablon",
+  "neden": "doğrulanamadı: 3"
  }
 }
